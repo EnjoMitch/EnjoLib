@@ -20,7 +20,7 @@ Here's a real life example: A dogmatic person argues, that since inlining functi
 
 For me, what counts is observation/measurement, modeling, testability, reproducibility and finally generalization once it becomes possible, thus extraction of the working idea in a form of an abstract and reusable module. Only this way you may grow, rather than moving in circles.
 
-Regarding the newschool and trending project management methods, "Agile" for me means "flexible" by **all** means and not just in another box, unlike the industry's take of it, where "Agile" quickly regressed into "Waterfall with even more micromanagement and artificial deadlines, cuz these smarta$$es can't be trusted.", which through prolonged demotivation of the most important actors, the devs, ultimately leads projects to collapse, until only the new business cycle is able to refubrish them. Only **if** the customer is still naive enough to believe in the supplier's sugar coated lies.
+Regarding the newschool and trending project management methods, "Agile" for me means "flexible" by **all** means and not just in another box, unlike the industry's take of it, where "Agile" quickly regressed into "Waterfall with even more micromanagement and artificial deadlines, cuz these smarta$$es can't be trusted.", which through prolonged demotivation of the most important actors, the devs, ultimately leads projects to collapse, until only the new business cycle is able to refubrish them. And this only **if** the customer is still naive enough to believe in the supplier's sugar coated lies.
 
 That's all about me! 
 
