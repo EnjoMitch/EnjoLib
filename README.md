@@ -13,11 +13,13 @@ Although the majority of the project is BSD-licensed, some specific parts are GP
 - (TODO: Other?)
 Unfortunatly it's not as easy as just moving them outside of the current directory.
 
-# Author
-I'm a passionate programmer, focusing on efficiency of work (better do less but it well) and clean solutions (anything above Assembly level is meant to be written **for humans**). 
+# Author's philosophy 
+I'm a passionate programmer, focusing on efficiency of work (better do less but do it well) and clean solutions (anything above Assembly level is meant to be written **for humans**). 
 Following these values is able to create wonderful feedback loops in your mind, able to heal the wounds, that the industry inflicts on you.
+
 I have experience with Java, C# and Python as well. I like to take the best of each language. Ultimately, what counts is not what specific syntax sugar of a given you use, but the proper design. After all, you want to be able to use a given algo in other languages as well, after just a quick adaptation.
-I like to optimize certain parts of the code for runtime speed, but not until these parts are proven to be bottlenecks through measurement tools like Valgrind. The motto I follow here is: "Don't optimize yet". I hate the dominating dogma in the IT sector ("I just know this is a bottleneck, because I read this in a book of XYZ Guru."). Many "proofs" of such claims are prepared only to proove the claim itself in isolation and are, strictly speaking, detached from reality. 
+
+I like to optimize certain parts of the code for runtime speed, but not until these parts are proven to be bottlenecks through measurement tools like Valgrind. The motto I follow here is: "Don't optimize yet". I hate the dominating dogma in the IT sector ("I just know this is a bottleneck, because I read this in a book of XYZ Guru."). Many "proofs" of such claims are prepared only to proove the claim itself in isolation and are, strictly speaking, detached from any reality. 
 
 Here's a real life example: A dogmatic person argues, that since inlining functions in his "proof" example, where the functions are tiny and called million of times, leads to repeatable and measurable ("I haz PhD") tripling of the execution speed, now **all** the small functions need to be inlined, even if they lead to additional header inclusions inside the current header. The rest of the dogmatic and passive team immediately concurs, inline every small function, leading to a massive compilation time cost, created by cascaded inclusion of headers, ultimately bringing the project to a collapse. Ah. I almost forgot to add. The promised 3x overall runtime speedup was never achieved with the inlining technique for the reason, that even though the small (in terms of lines of code, not included header tree) functions were indeed called 3x faster, all of these functions in question **in the real application** attributed for only 0.1% of the **total** runtime cost. Therefore now the application runs by whooping 0.3% times faster. I'm so sorry for bursting your bubble, kid. Even an extremely short Valgrind session would show you this relationship, before you even started your death march.
 
