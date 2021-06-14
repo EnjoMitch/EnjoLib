@@ -15,7 +15,7 @@ Unfortunatly it's not as easy as just moving them outside of the current directo
 
 # Author's philosophy 
 I'm a passionate programmer, focusing on efficiency of work (better do less but do it well) and clean solutions (anything above Assembly level is meant to be written **for humans**). 
-Following these values is able to create wonderful feedback loops in your mind, able to heal the wounds, that the industry inflicts on you.
+Following these values is able to create wonderful feedback loops in your mind, able to heal the damage, that the industry inflicts on you.
 
 I have experience with Java, C# and Python as well. I like to take the best of each language. Ultimately, what counts is not what specific syntax sugar of a given language you use, but the proper and readable design. After all, you want to be able to use a given algo in other languages as well, after just a quick adaptation.
 
