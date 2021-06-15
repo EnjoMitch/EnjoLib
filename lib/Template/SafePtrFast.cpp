@@ -1,0 +1,2 @@
+#include <Template/SafePtrFast.hpp>
+

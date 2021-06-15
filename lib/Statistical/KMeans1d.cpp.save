@@ -1,0 +1,126 @@
+#include <algorithm>
+#include "KMeans1d.hpp"
+#include "KMeans1dCluster.hpp"
+#include "../Util/StackTrace.hpp"
+
+using namespace std;
+using namespace EnjoLib;
+KMeans1d::KMeans1d(bool clustersSorted, bool membersSorted)
+: m_clustersSorted(clustersSorted)
+, m_membersSorted(membersSorted)
+{}
+KMeans1d::~KMeans1d(){}
+
+
+std::vector<float> KMeans1d::Reduce(int reductions) const
+{
+    const std::vector<KMeans1dCluster> & clusters = ReduceGetClusters(reductions);
+    std::vector<float> ret;
+    for (unsigned ic = 0; ic < clusters.size(); ++ic)
+        ret.push_back(clusters.at(ic).GetLevel());
+
+    return ret;
+}
+
+std::vector<KMeans1dCluster> KMeans1d::ReduceGetClusters(int reductions) const
+{
+    if (reductions <= 0)
+        return std::vector<KMeans1dCluster>();
+
+    const unsigned opSz = m_obs.size();
+
+    const int nClusters = opSz - reductions;
+    if (nClusters <= 0)
+    {
+        ostringstream oss;
+        oss << "Too large number of reductions = " << reductions << ", vs size of = " << opSz << endl;
+        throw std::runtime_error(STRACE_THROW(oss.str()));
+    }
+    //return op;
+
+    float lvlMax = m_obs.at(0);
+    float lvlMin = m_obs.at(0);
+    for (unsigned i = 0; i < opSz; ++i)
+    {
+        const float o = m_obs.at(i);
+        if (o > lvlMax)
+            lvlMax = o;
+        if (o < lvlMin)
+            lvlMin = o;
+    }
+
+    vector<float> distr = UniformDistr(nClusters, lvlMin, lvlMax);
+    vector<KMeans1dCluster> clusters;
+    for (float lvl : distr)
+    {
+        KMeans1dCluster c(m_obs, lvl);
+        clusters.push_back(c);
+    }
+
+    for(int iter = 0; iter < 200; ++iter)
+    {
+        const unsigned clSz = clusters.size();
+        for (unsigned io = 0; io < opSz; ++io)
+        {
+            const float o = m_obs.at(io);
+            const float minDistArtificial = -1001;
+            float minDist = minDistArtificial;
+            int minIc = 0;
+            for (unsigned ic = 0; ic < clSz; ++ic)
+            {
+                const KMeans1dCluster & c = clusters.at(ic);
+                const float dist = Dist(o, c.GetLevel());
+                if (minDist == minDistArtificial || dist < minDist)
+                {
+                    minDist = dist;
+                    minIc = ic;
+                }
+            }
+            clusters.at(minIc).Assign(io);
+        }
+        for (unsigned ic = 0; ic < clSz; ++ic)
+        {
+            clusters.at(ic).Recalc();
+        }
+        bool reassigned = false;
+        for (unsigned ic = 0; ic < clSz; ++ic)
+        {
+            if (clusters.at(ic).IsReassigned())
+            {
+                reassigned = true;
+                break;
+            }
+            clusters.at(ic).Reset();
+        }
+        if (!reassigned)
+            break;
+    }
+    if (m_clustersSorted)
+        std::sort(clusters.begin(), clusters.end());
+    return clusters;
+}
+
+void KMeans1d::AddObservation(float obs)
+{
+    m_obs.push_back(obs);
+}
+
+float KMeans1d::Dist(float p, float c)
+{
+    const float d = p-c;
+    const float d2 = d*d;
+    return d2;
+}
+
+std::vector<float> KMeans1d::UniformDistr(int n, float min, float max)
+{
+    const float len = (max - min) / float(n + 1);
+    std::vector<float> ret;
+
+    for (int i = 0; i < n; ++i)
+    {
+        const float pos = min + (i+1) * len;
+        ret.push_back(pos);
+    }
+    return ret;
+}
