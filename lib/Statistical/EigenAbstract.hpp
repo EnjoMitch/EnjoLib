@@ -54,7 +54,9 @@ class EigenAbstract
         static Corrade::Containers::Pointer<EigenAbstract> CreateEigen3();
         static Corrade::Containers::Pointer<EigenAbstract> CreateMKL();
         static Corrade::Containers::Pointer<EigenAbstract> CreateDefault();
-        //static Corrade::Containers::Pointer<EigenAbstract> CreateNewmat();
+#ifdef USE_LIB_NEWMAT
+        static Corrade::Containers::Pointer<EigenAbstract> CreateNewmat();
+#endif
         static Corrade::Containers::Pointer<EigenAbstract> CreateNumpy();
 
     protected:

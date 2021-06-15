@@ -7,17 +7,25 @@ include(../cmake/util.cmake)
 
 file( GLOB SRCS */*.cpp */*.h* Math/*/*.cpp */*/*.h*)
 
-option (WITH_FEATURE_EIGEN "Eigen" ON)
+option (WITH_FEATURE_EIGEN "With LibEigen" ON)
 if (WITH_FEATURE_EIGEN)
 	find_package(Eigen3)
 	include_directories(${EIGEN3_INCLUDE_DIRS})
-	
-	
 	
 	file( GLOB SRC_NM  Statistical/3rdParty/EigenEigen3.* )
 	file( GLOB SRC_MKL Statistical/3rdParty/EigenMKL.* )
     	file( GLOB SRC_NP  Statistical/3rdParty/EigenNumpy.* )
 	set( SRCS ${SRCS} ${SRC_NM} ${SRC_MKL} ${SRC_NP})
+endif()
+
+option (WITH_FEATURE_NEWMAT "With LibNewMat" OFF)
+if (WITH_FEATURE_NEWMAT)
+	add_definitions("-DUSE_LIB_NEWMAT")
+	include_directories("~/devel/lib/tree/include")
+	link_directories("~/devel/lib/tree/lib")
+	file( GLOB SRC_NM Statistical/3rdParty/EigenNewmat10.* )
+	set( SRCS ${SRCS} ${SRC_NM} )
+	set (EXTRA_LIBS ${EXTRA_LIBS} newmat)
 endif()
 
 add_library (${PROJECT_NAME} ${LINK_TYPE} ${SRCS})
