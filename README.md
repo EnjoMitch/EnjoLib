@@ -11,7 +11,7 @@ Copyright: Szymon Ender and other contributors (see individual files)
 License: **mostly** BSD. See below:
 
 Although the majority of the project is BSD-licensed, some specific parts are GPL-licensed. Please take note of the copyright notices of the headers of the classes, that you'd like to reuse in other projects. In near future, the copyleft GPL code shall be extracted into a seperate library, which will be GPL-only. Currently the classes awaiting for this extraction are:
-- Prof. Buckard's numerical classes (TODO: point directly to them)
+- Prof. Buckard's numerical classes under `lib/Math/Burkardt`
 - `GreatCircleMath` (TODO: point directly to them)
 - (TODO: Other?)
 Unfortunatly it's not as easy as just moving them outside of the current directory.
