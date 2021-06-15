@@ -3,6 +3,9 @@ Basic thin C++ libraries with focus on utility, portability, short compilation t
 
 Static polymorphism is prefered over template-based polymorphism, mainly due to the compilation time burden, that the template solutions typicaly impose (although they don't always have to: see the `Template/SafePtr*.hpp` templates).
 
+## A little bit or history
+The library had been originally written as a common part of [my modules](http://enderspace.de/projects/programs_en.php), written for [Orbiter Spaceflight Simulator](http://orbit.medphys.ucl.ac.uk/), and was originally developed [here](http://sf.net/p/enjomitchsorbit). In the following years, I found other mad uses of the library, so I extracted it from there. Occasionally I will make efforts of retaining the backward compatibility with the previous repository and backport the new features from this repo.  
+
 # Licensing
 Copyright: Szymon Ender and other contributors (see individual files)
 License: **mostly** BSD. See below:
