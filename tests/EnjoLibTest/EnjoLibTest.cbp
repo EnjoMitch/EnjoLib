@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="EnjoLibTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/EnjoLibTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../lib/bin/Debug" />
+					<Add directory="../../stock/multi-tf-lib/bin/Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/EnjoLibTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/bin/Release" />
+					<Add directory="../../stock/multi-tf-lib/bin/Release" />
+				</Linker>
+			</Target>
+			<Target title="Release-x64">
+				<Option output="bin/Release/EnjoLibTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release-x64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/bin/Release-x64" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add option="-fexceptions" />
+			<Add directory="../../lib" />
+		</Compiler>
+		<Linker>
+			<Add library="EnjoLib" />
+			<Add library="crypto" />
+			<Add library="pthread" />
+		</Linker>
+		<Unit filename="src/AxisRescaleTest.cpp" />
+		<Unit filename="src/AxisRescaleTest.h" />
+		<Unit filename="src/BashTest.cpp" />
+		<Unit filename="src/BashTest.h" />
+		<Unit filename="src/Brent.cpp" />
+		<Unit filename="src/Brent.h" />
+		<Unit filename="src/BrentRoot.cpp" />
+		<Unit filename="src/BrentRoot.h" />
+		<Unit filename="src/CentroidTest.cpp" />
+		<Unit filename="src/CentroidTest.h" />
+		<Unit filename="src/ClusteringTest.cpp" />
+		<Unit filename="src/ClusteringTest.h" />
+		<Unit filename="src/CoutBufTest.cpp" />
+		<Unit filename="src/CoutBufTest.h" />
+		<Unit filename="src/CoutBufTestEL.cpp" />
+		<Unit filename="src/CoutBufTestEL.h" />
+		<Unit filename="src/GeneralMathTest.cpp" />
+		<Unit filename="src/GeneralMathTest.h" />
+		<Unit filename="src/HasMutexImpl.cpp" />
+		<Unit filename="src/HasMutexImpl.hpp" />
+		<Unit filename="src/IHasMutex.cpp" />
+		<Unit filename="src/IHasMutex.hpp" />
+		<Unit filename="src/KMeansTest.cpp" />
+		<Unit filename="src/KMeansTest.h" />
+		<Unit filename="src/MeanWeightedTest.cpp" />
+		<Unit filename="src/MeanWeightedTest.h" />
+		<Unit filename="src/MultiDimIter.cpp" />
+		<Unit filename="src/MultiDimIter.h" />
+		<Unit filename="src/Nelder.cpp" />
+		<Unit filename="src/Nelder.h" />
+		<Unit filename="src/OptiMultiRosenbrok.cpp" />
+		<Unit filename="src/OptiMultiRosenbrok.h" />
+		<Unit filename="src/Rosenbrok.cpp" />
+		<Unit filename="src/Rosenbrok.h" />
+		<Unit filename="src/SafeNumberTest.cpp" />
+		<Unit filename="src/SafeNumberTest.h" />
+		<Unit filename="src/ScalingTest.cpp" />
+		<Unit filename="src/ScalingTest.h" />
+		<Unit filename="src/StandardizationTest.cpp" />
+		<Unit filename="src/StandardizationTest.h" />
+		<Unit filename="src/StrColourTest.cpp" />
+		<Unit filename="src/StrColourTest.hpp" />
+		<Unit filename="src/ThreadedLoopTplTest.cpp" />
+		<Unit filename="src/ThreadedLoopTplTest.hpp" />
+		<Unit filename="src/UniquePtrTest.cpp" />
+		<Unit filename="src/UniquePtrTest.h" />
+		<Unit filename="src/VectorDTest.cpp" />
+		<Unit filename="src/VectorDTest.h" />
+		<Unit filename="src/main.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

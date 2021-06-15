@@ -7,6 +7,19 @@ include(../cmake/util.cmake)
 
 file( GLOB SRCS */*.cpp */*.h* Math/*/*.cpp */*/*.h*)
 
+option (WITH_FEATURE_EIGEN "Eigen" ON)
+if (WITH_FEATURE_EIGEN)
+	find_package(Eigen3)
+	include_directories(${EIGEN3_INCLUDE_DIRS})
+	
+	
+	
+	file( GLOB SRC_NM  Statistical/3rdParty/EigenEigen3.* )
+	file( GLOB SRC_MKL Statistical/3rdParty/EigenMKL.* )
+    	file( GLOB SRC_NP  Statistical/3rdParty/EigenNumpy.* )
+	set( SRCS ${SRCS} ${SRC_NM} ${SRC_MKL} ${SRC_NP})
+endif()
+
 add_library (${PROJECT_NAME} ${LINK_TYPE} ${SRCS})
 
 target_link_libraries(${PROJECT_NAME} crypto pthread ${EXTRA_LIBS})

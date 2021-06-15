@@ -105,7 +105,7 @@ Matrix EigenAbstract::GetSortedFeatureVectorFactor( const Matrix & m, double lea
 #include "3rdParty/EigenEigen3.hpp"
 #include "3rdParty/EigenMKL.hpp"
 #include "3rdParty/EigenNumpy.hpp"
-#include "3rdParty/EigenNewmat10.hpp"
+//#include "3rdParty/EigenNewmat10.hpp"
 Corrade::Containers::Pointer<EigenAbstract> EigenAbstract::CreateEigen3()
 {
     return Corrade::Containers::Pointer<EigenAbstract>(new EigenEigen3());
@@ -119,10 +119,13 @@ Corrade::Containers::Pointer<EigenAbstract> EigenAbstract::CreateMKL()
 {
     return Corrade::Containers::Pointer<EigenAbstract>(new EigenMKL());
 }
+
+/*
 Corrade::Containers::Pointer<EigenAbstract> EigenAbstract::CreateNewmat()
 {
-    return Corrade::Containers::Pointer<EigenAbstract>(new EigenNewmat10());
+   return Corrade::Containers::Pointer<EigenAbstract>(new EigenNewmat10());
 }
+*/
 Corrade::Containers::Pointer<EigenAbstract> EigenAbstract::CreateNumpy()
 {
     return Corrade::Containers::Pointer<EigenAbstract>(new EigenNumpy());

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="EnjoLibUTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/EnjoLibUTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../lib/bin/Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release-x64">
+				<Option output="bin/Release-x64/EnjoLibUTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release-x64/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/bin/Release-x64" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add option="-fexceptions" />
+			<Add directory="../../lib" />
+		</Compiler>
+		<Linker>
+			<Add library="EnjoLib" />
+			<Add library="crypto" />
+			<Add library="UnitTest++" />
+			<Add library="pthread" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="#./run-tests.sh" />
+		</ExtraCommands>
+		<Unit filename="src/DataSets.cpp" />
+		<Unit filename="src/DataSets.hpp" />
+		<Unit filename="src/PimplT.cpp" />
+		<Unit filename="src/PimplT.hpp" />
+		<Unit filename="src/TesVecOp.cpp" />
+		<Unit filename="src/TestAlgoSTD.cpp" />
+		<Unit filename="src/TestArray.cpp" />
+		<Unit filename="src/TestAutocorrel.cpp" />
+		<Unit filename="src/TestCacheRAM.cpp" />
+		<Unit filename="src/TestCharManipulations.cpp" />
+		<Unit filename="src/TestClasses.cpp" />
+		<Unit filename="src/TestClasses.h" />
+		<Unit filename="src/TestCrossValidation.cpp" />
+		<Unit filename="src/TestFileUtils.cpp" />
+		<Unit filename="src/TestGeneralMath.cpp" />
+		<Unit filename="src/TestIfstream.cpp" />
+		<Unit filename="src/TestIiterable.cpp" />
+		<Unit filename="src/TestIsstream.cpp" />
+		<Unit filename="src/TestKMeansMulti.cpp" />
+		<Unit filename="src/TestLoopThreaded.cpp" />
+		<Unit filename="src/TestMatrix.cpp" />
+		<Unit filename="src/TestMovingWindow.cpp" />
+		<Unit filename="src/TestOfstream.cpp" />
+		<Unit filename="src/TestOpti.cpp" />
+		<Unit filename="src/TestPCA.cpp" />
+		<Unit filename="src/TestPimpl.cpp" />
+		<Unit filename="src/TestPimpl.h" />
+		<Unit filename="src/TestSelectBestFromBest.cpp" />
+		<Unit filename="src/TestStackTrace.cpp" />
+		<Unit filename="src/TestStatistical.cpp" />
+		<Unit filename="src/TestStr.cpp" />
+		<Unit filename="src/TestVector.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/pch_test.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
