@@ -40,6 +40,10 @@ EnjoLib::Str Isstream::str() const
     return m_istream->str();
 }
 
+void Isstream::PushVal(long long unsigned int * val)
+{
+    *m_istream >> *val;
+}
 void Isstream::PushVal(long unsigned int * val)
 {
     *m_istream >> *val;

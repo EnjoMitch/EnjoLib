@@ -62,6 +62,10 @@ stdfwd::istream & Ifstream::IStr()
     return *m_ifstream;
 }
 
+void Ifstream::PushVal(long long unsigned int * val)
+{
+    *m_ifstream >> *val;
+}
 void Ifstream::PushVal(long unsigned int * val)
 {
     *m_ifstream >> *val;

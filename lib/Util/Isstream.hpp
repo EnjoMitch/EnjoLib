@@ -22,6 +22,7 @@ class Isstream
         
         template <class T> friend Isstream& operator >> (Isstream&, T & val);
                 
+        void PushVal(long long unsigned int * val);
         void PushVal(long unsigned int * val);
         void PushVal(unsigned int * val);
         void PushVal(int * val);

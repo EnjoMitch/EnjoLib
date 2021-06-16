@@ -44,7 +44,8 @@ class Ifstream
         bool operator !() const;
         
         template <class T> friend Ifstream& operator >> (Ifstream&, T & val);
-                
+        
+        void PushVal(long long unsigned int * val);
         void PushVal(long unsigned int * val);
         void PushVal(unsigned int * val);
         void PushVal(int * val);
