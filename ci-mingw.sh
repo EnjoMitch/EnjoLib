@@ -13,8 +13,7 @@ mkdir -p $BUILD_DIR && cd $BUILD_DIR
 cmake -G "${GEN}" ../.. \
 -DCMAKE_C_COMPILER="${CMAKE_C_COMPILER}" \
 -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}" \
-&& ${MAKE} -j `nproc` || ${MAKE} 
+&& ${MAKE} -j `nproc` || ${MAKE} && ${MAKE} -j `nproc` install
 # TODO: Failing tests!
-# && ctest --verbose -R EnjoLibTest 
-# ctest --output-on-failure -j `nproc` && ${MAKE} -j `nproc` install
+ctest --verbose -R EnjoLibTest || ctest --output-on-failure -j `nproc` || true
 
