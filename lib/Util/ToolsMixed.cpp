@@ -1,4 +1,4 @@
-#include "ToolsMixed.hpp"
+#include <Util/ToolsMixed.hpp>
 #include "Tokenizer.hpp"
 #include "CharManipulations.hpp"
 #include "StrColour.hpp"
@@ -109,3 +109,13 @@ EnjoLib::Str ToolsMixed::GenUniqueStringID() const
 
     return oss.str();
 }
+
+EnjoLib::Str ToolsMixed::GetTmpDir()
+{
+#ifdef WIN32
+	return "./";
+#else
+	return "/tmp/";
+#endif
+}
+

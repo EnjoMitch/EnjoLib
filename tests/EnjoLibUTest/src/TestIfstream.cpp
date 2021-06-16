@@ -1,16 +1,17 @@
 #include "pch_test.h"
 
 #include <UnitTest++/UnitTest++.h>
+#include <Util/ToolsMixed.hpp>
 #include <Util/Ifstream.hpp>
 #include <Util/Ofstream.hpp>
 
 //#include <fstream>
 //#include <iistream>
 
-using namespace std;
+//using namespace std;
 using namespace EnjoLib;
 
-static const char * outFileIfstream = "/tmp/Ifstreamfile.txt";
+static const EnjoLib::Str outFileIfstream = ToolsMixed::GetTmpDir() + "/Ifstreamfile.txt";
 static const EnjoLib::Str strIn = "bla";
 
 /*

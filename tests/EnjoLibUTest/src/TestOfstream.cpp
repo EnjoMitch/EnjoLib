@@ -1,6 +1,7 @@
 #include "pch_test.h"
 
 #include <UnitTest++/UnitTest++.h>
+#include <Util/ToolsMixed.hpp>
 #include <Util/Ofstream.hpp>
 
 #include <fstream>
@@ -9,7 +10,7 @@
 using namespace std;
 using namespace EnjoLib;
 
-static const char * outFileOfstream = "/tmp/ofstreamfile.txt";
+static const EnjoLib::Str outFileOfstream = ToolsMixed::GetTmpDir() + "/ofstreamfile.txt";
 static const EnjoLib::Str strIn = "bla";
 
 static void OstrHandler(std::ostream & ostr, const EnjoLib::Str & strData)
@@ -32,7 +33,7 @@ TEST(Ofstream_2file)
         ostr << strIn;
     }
     {
-        ifstream ifs(outFileOfstream);
+        ifstream ifs(outFileOfstream.c_str());
         string strOut;
         getline(ifs, strOut);
         CHECK_EQUAL(strIn, strOut);

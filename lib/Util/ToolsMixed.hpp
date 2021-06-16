@@ -21,6 +21,7 @@ class ToolsMixed
         bool SystemCallWarnBool(const EnjoLib::Str & command, const EnjoLib::Str & functionName) const;
         void SystemCallThrow(const EnjoLib::Str & command, const EnjoLib::Str & functionName) const;
         EnjoLib::Str GenUniqueStringID() const;
+        static EnjoLib::Str GetTmpDir();
 
     protected:
 

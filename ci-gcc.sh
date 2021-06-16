@@ -7,6 +7,7 @@ BUILD_DIR="build/gcc"
 mkdir -p $BUILD_DIR && cd $BUILD_DIR
 
 cmake -G "${GEN}" ../.. \
+-DUSE_UNITY="ON" \
 && ${MAKE} -j `nproc` || ${MAKE} && ctest --verbose -R EnjoLibTest 
 ctest --output-on-failure -j `nproc` && ${MAKE} -j `nproc` install
 
