@@ -15,6 +15,7 @@ cmake -G "${GEN}" ../.. \
 -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}" \
 -DUSE_STATIC="ON" \
 && ${MAKE} -j `nproc` || ${MAKE} && ${MAKE} -j `nproc` install
-# TODO: Failing tests!
-ctest --verbose -R EnjoLibTest || ctest --output-on-failure -j `nproc` || true
+ctest --verbose -R EnjoLibTest || ctest --output-on-failure -j `nproc`
+
+# USE_STATIC="OFF" doesn't work, because the execs can't find the DLL.
 
