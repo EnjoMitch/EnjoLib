@@ -20,6 +20,7 @@ class Osstream
         void Add(const EnjoLib::Str & str); // TODO: Remove?
         
         void AddVal(long unsigned int val);
+        void AddVal(long long unsigned int val);
         void AddVal(unsigned int val);
         void AddVal(long int val);
         void AddVal(int val);

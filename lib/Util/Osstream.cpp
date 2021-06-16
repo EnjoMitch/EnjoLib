@@ -61,6 +61,11 @@ void Osstream::AddVal(long unsigned int val)
     *m_ostream << val;
 }
 
+void Osstream::AddVal(long long unsigned int val)
+{
+    *m_ostream << val;
+}
+
 void Osstream::AddVal(unsigned int val)
 {
     *m_ostream << val;
