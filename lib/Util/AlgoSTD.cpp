@@ -40,7 +40,7 @@ T AlgoSTD<T>::SumLast(const std::vector<T> & v, std::size_t num) const
 {
     if (num > v.size())
     {
-        throw std::out_of_range("AlgoSTD<T>::SumLast: size = " + to_string(v.size()) + ", requested = " + to_string(num) );
+        throw ExceptLengthError("AlgoSTD<T>::SumLast: size = " + to_string(v.size()) + ", requested = " + to_string(num) );
     }
     T sum = 0;
     return std::accumulate(v.cend() - num, v.cend(), sum);
