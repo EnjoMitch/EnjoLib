@@ -7,6 +7,9 @@ include(../cmake/util.cmake)
 
 file( GLOB SRCS ${PROJECT_NAME}/*.cpp */*.h */*.hpp)
 add_library (${PROJECT_NAME} ${LINK_TYPE} ${SRCS})
+
+find_package(Boost QUIET REQUIRED COMPONENTS system filesystem iostreams date_time serialization)
+
 #target_link_libraries(${PROJECT_NAME} boost_filesystem boost_system boost_iostreams boost_atomic boost_serialization)
 target_link_libraries(${PROJECT_NAME} boost_filesystem boost_system boost_iostreams boost_serialization
 EnjoLib # TODO: Should be EnjoLibTypes in the end
