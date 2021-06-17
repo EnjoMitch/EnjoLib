@@ -21,7 +21,7 @@ option(BUILD_QT    "Build QT apps"  ON)
 option(BUILD_CRYPT "Build Crypto"   OFF)
 
 add_subdirectory(lib)
-#add_subdirectory(progs/libBoost)
+add_subdirectory(libBoost)
 #add_subdirectory(progs/libPoco)
 
 
