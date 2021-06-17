@@ -33,7 +33,7 @@ Therefore the whole application now runs by whooping 0.67% times faster. I'm so 
 For me, what counts is observation/measurement, modeling, testability, reproducibility and finally generalization once it becomes possible, thus extraction of the working idea into a form of an abstract and reusable module. Only this way you may grow, rather than keep moving in circles (unless that's exactly what you're being paid for, eh?).
 
 Regarding the newschool and trending project management methods, "Agile" for me means "flexible" by **all** means and not just by being able to move around in yet another rusty cage, but of a different colour. 
-The industry's take of it is that "Agile" quickly regressed into "Waterfall with even more micromanagement and artificial deadlines, cuz these smarta$$es can't be trusted.", which through prolonged demotivation of the most important actors, the devs, ultimately leads projects to collapse, until only the new business cycle is able to refubrish them. And this can happen only **if** the customer is still naive enough to believe in the supplier's sugar coated lies.
+The industry's take of it is that "Agile" quickly regressed into Waterfall with even more micromanagement and artificial deadlines, "cuz these smarta$$es can't be trusted.", which through prolonged demotivation of the most important actors, the devs, ultimately leads projects to collapse, until only the new business cycle is able to refubrish them. And this can happen only **if** the customer is still naive enough to believe in the supplier's sugar coated lies.
 
 Well, that's all about me! 
 
