@@ -15,6 +15,7 @@ cmake -G "${GEN}" ../.. \
 -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}" \
 -DUSE_STATIC="ON" \
 -DUSE_UNITY="ON" \
+-DBUILD_BOOST="OFF" \
 && ${MAKE} -j `nproc` || ${MAKE} && ${MAKE} -j `nproc` install
 ctest --verbose -R EnjoLibTest
 ctest --output-on-failure -j `nproc`

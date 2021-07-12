@@ -15,13 +15,16 @@ enable_testing()
 option(BUILD_TESTS "Build Tests"   ON)
 option(BUILD_GAMES "Build games"    ON)
 option(BUILD_MDDC  "Build MDDClone" ON)
+option(BUILD_BOOST "Build libBoost"  ON)
 option(BUILD_WX    "Build WX basic"  ON)
 option(BUILD_WX_APPS "Build WX apps"  ON)
 option(BUILD_QT    "Build QT apps"  ON)
 option(BUILD_CRYPT "Build Crypto"   OFF)
 
 add_subdirectory(lib)
-add_subdirectory(libBoost)
+if (BUILD_BOOST)
+	add_subdirectory(libBoost)
+endif()
 #add_subdirectory(progs/libPoco)
 
 
