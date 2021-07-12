@@ -45,7 +45,7 @@ T  AlgoSTDIVec<T>::SumLast(const EnjoLib::IVecT<T>  & v, std::size_t num) const
     T sum {0};
     return std::accumulate(v.Data().cend() - num, v.Data().cend(), sum);
     
-    const IterAdaptStdConst<T> adapter(&v);
+    //const IterAdaptStdConst<T> adapter(&v);
     //return std::accumulate(adapter.cend() - num, adapter.cend(), sum);
 }
 
