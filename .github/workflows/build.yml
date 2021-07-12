@@ -41,6 +41,31 @@ jobs:
         ccache --max-size=150M
         util/ci-gcc.sh
 
+  build-ubuntu-clang:
+    runs-on: ubuntu-latest
+    env:
+      CCACHE_COMPRESS: 1
+      CCACHE_TEMPDIR: /tmp/.ccache-temp
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - uses: actions/cache@v2
+      with:
+        path: ~/.ccache
+        key: ccache-ubuntu-build-clang-${{ github.sha }}
+        restore-keys: ccache-ubuntu-build-clang-
+    - name: set apt conf
+      run: ${{env.APT_SET_CONF}}
+    - name: install dependencies
+      run: ${{env.APT_INSTALL_LINUX}}
+    - name: install clang
+      run: sudo apt -y install clang
+    - name: build
+      run: |
+        ccache --max-size=150M
+        util/ci-clang.sh
+
   build-windows:
     runs-on: windows-latest
     env:
