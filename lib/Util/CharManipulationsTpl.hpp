@@ -1,7 +1,7 @@
 #ifndef CHARMANIPULATIONSTPL_H
 #define CHARMANIPULATIONSTPL_H
 
-#include "CharManipulations.hpp"
+#include <Util/CharManipulations.hpp>
 #include <Statistical/Assertions.hpp>
 #include <Util/Except.hpp>
 #include <Util/VecStr.hpp>
@@ -43,7 +43,7 @@ template <class T> T CharManipulationsTpl::ToNumber(const Str & in) const
         const Str msg = "Not number: '" + in + "'";
         throw EnjoLib::ExceptInvalidArg(msg.c_str());
     }
-        
+
     return number;
 }
 

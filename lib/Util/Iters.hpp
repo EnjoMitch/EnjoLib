@@ -14,7 +14,8 @@ public:
 
     using iterator_category = std::random_access_iterator_tag;
     using value_type = blDataType;
-    using difference_type = std::ptrdiff_t;
+    //using difference_type = std::ptrdiff_t;
+    using difference_type = int; // Fix for clang 10
     using pointer = blDataType*;
     using reference = blDataType&;
 

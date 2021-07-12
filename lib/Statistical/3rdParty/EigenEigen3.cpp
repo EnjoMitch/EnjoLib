@@ -34,6 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "../Matrix.hpp"
 #include "../../Util/VecD.hpp"
 #include <Util/Except.hpp>
+#include <Util/CharManipulations.hpp>
 
 #include <STD/VectorCpp.hpp>
 
@@ -79,7 +80,7 @@ std::vector<EigenValueVector> EigenEigen3::GetEigenValVecClient( const Matrix & 
         ELO
         LOG << "Eigenvalue Calculation not successful: " << es.info() << NL3;
         //cout << m.Print() << endl;
-        throw EnjoLib::ExceptRuntimeError("Eigenvalue Calculation not successful " + es.info());
+        throw EnjoLib::ExceptRuntimeError("Eigenvalue Calculation not successful " + CharManipulations().ToStr(es.info()));
         LOG << "After throw: " << es.info() << NL3;
     }
 
