@@ -1,9 +1,12 @@
 name: ci/gh-actions/cli
 
-on: [push, pull_request]
-
-paths-ignore:
-  - 'docs/**'
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
 
 # The below variables reduce repetitions across similar targets
 env:
