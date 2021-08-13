@@ -43,7 +43,7 @@ PCA:: PCA(const EnjoLib::Str & fileNameBase)
     }
     catch (std::exception & ex)
     {
-        oss << "PCA:: PCA() Mean: " << ex.what() << ", lineMean = " << lineMean << NL2;
+        oss << "PCA:: PCA() Mean: " << ex.what() << ", lineMean = " << lineMean << Nl;
         throw EnjoLib::ExceptRuntimeError(oss.str());
     }
     try
@@ -63,7 +63,7 @@ PCA:: PCA(const EnjoLib::Str & fileNameBase)
     }
     catch (std::exception & ex)
     {
-        oss << "PCA:: PCA() Feat: " << ex.what() << NL2;
+        oss << "PCA:: PCA() Feat: " << ex.what() << Nl;
         throw EnjoLib::ExceptRuntimeError(oss.str());
     }
 }
@@ -82,7 +82,7 @@ void PCA::LoadFromStr(const EnjoLib::Str & str)
     }
     catch (std::exception & ex)
     {
-        oss << "PCA:: PCA() Mean: " << ex.what() << ", lineMean = " << lineMean << NL2;
+        oss << "PCA:: PCA() Mean: " << ex.what() << ", lineMean = " << lineMean << Nl;
         throw EnjoLib::ExceptRuntimeError(oss.str());
     }
     try
@@ -91,7 +91,7 @@ void PCA::LoadFromStr(const EnjoLib::Str & str)
     }
     catch (std::exception & ex)
     {
-        oss << "PCA:: PCA() Feat: " << ex.what() << NL2;
+        oss << "PCA:: PCA() Feat: " << ex.what() << Nl;
         throw EnjoLib::ExceptRuntimeError(oss.str());
     }
 }

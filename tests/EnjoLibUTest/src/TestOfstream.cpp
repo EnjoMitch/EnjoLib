@@ -2,7 +2,7 @@
 
 #include <UnitTest++/UnitTest++.h>
 #include <Util/ToolsMixed.hpp>
-#include <Util/Ofstream.hpp>
+#include <Ios/Ofstream.hpp>
 
 #include <fstream>
 //#include <STD/Iostream.hpp>

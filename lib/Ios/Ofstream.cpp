@@ -1,4 +1,4 @@
-#include "Ofstream.hpp"
+#include <Ios/Ofstream.hpp>
 #include <Util/Except.hpp>
 //#include <Util/CoutBuf.hpp>
 #include <STD/Fstream.hpp>
@@ -19,9 +19,9 @@ Ofstream::Ofstream(const EnjoLib::Str& fileName, bool tryOpen)
 }
 */
 
-Ofstream::Ofstream(const EnjoLib::Str& fileName, bool tryOpen)
+Ofstream::Ofstream(const EnjoLib::Str& fileName, bool tryOpen, bool append)
 : m_ostream(new ostringstream())
-, m_ofstream(new std::ofstream(fileName.c_str()))
+, m_ofstream(new std::ofstream(fileName.c_str(), append ? std::ios::app : std::ios::out))
 , m_fileName(fileName)
 {
     if (tryOpen)
@@ -54,16 +54,10 @@ EnjoLib::Str Ofstream::Str() const
     return m_ostream->str();
 }
 
-void Ofstream::Add(const EnjoLib::Str & str)
-{
-    *m_ostream << str.str();
-}
-
 void Ofstream::flush()
 {
     m_ostream->flush();
 }
-
 
 bool Ofstream::is_open() const
 {
@@ -75,6 +69,13 @@ stdfwd::ostream & Ofstream::OStr()
     return *m_ostream;
 }
 
+
+const stdfwd::ostream & Ofstream::OStr() const
+{
+    return *m_ostream;
+}
+
+/*
 void Ofstream::AddVal(double val)
 {
     *m_ostream << val;
@@ -109,3 +110,11 @@ void Ofstream::AddVal(const std::string & val)
 {
     Add(val);
 }
+
+
+void Ofstream::Add(const EnjoLib::Str & str)
+{
+    *m_ostream << str.str();
+}
+
+*/

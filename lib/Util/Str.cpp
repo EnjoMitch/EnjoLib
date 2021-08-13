@@ -1,8 +1,8 @@
 #include "Str.hpp"
 #include "StrImpl.hpp"
 
-#include <Util/Ofstream.hpp>
-#include <Util/Ifstream.hpp>
+#include <Ios/Ofstream.hpp>
+#include <Ios/Ifstream.hpp>
 
 using namespace EnjoLib;
 
@@ -123,18 +123,6 @@ std::istream& EnjoLib::operator>>(std::istream& os, EnjoLib::Str& str)
 {
     os >> str.strRW();
     return os;
-}
-
-EnjoLib::Ofstream& EnjoLib::operator<<(EnjoLib::Ofstream& os,  const EnjoLib::Str& str)
-{
-    os.Add(str);
-    return os;
-}
-
-EnjoLib::Ifstream& EnjoLib::operator>>(EnjoLib::Ifstream& is,  EnjoLib::Str& str)
-{
-    is.IStr() >> str.strRW();
-    return is;
 }
 
 bool  EnjoLib::operator== (const EnjoLib::Str& str, const EnjoLib::Str& strOther)

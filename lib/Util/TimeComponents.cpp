@@ -1,6 +1,6 @@
 #include "TimeComponents.hpp"
 #include "CharManipulations.hpp"
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

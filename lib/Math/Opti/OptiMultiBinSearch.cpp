@@ -24,10 +24,10 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
 {
     m_subj = &subj;
     const VecD & start = subj.GetStart();
-    const std::vector<OptiMultiSubject::Bounds> & bounds = subj.GetBounds();
+    const EnjoLib::Array<OptiMultiSubject::Bounds> & bounds = subj.GetBounds();
     m_vopt = VecD(bounds.size());
 
-    std::vector<OptiMultiSubject::Bounds> newBounds = bounds;
+    EnjoLib::Array<OptiMultiSubject::Bounds> newBounds = bounds;
     //for (unsigned dim = 0; dim < bounds.size())
     MultiDimIterTpl::VVt data;
     do

@@ -1,5 +1,4 @@
 #include "OptiMultiSubject.hpp"
-#include <STD/VectorCpp.hpp>
 
 using namespace EnjoLib;
 
@@ -13,4 +12,4 @@ OptiMultiSubject::~OptiMultiSubject()
     //dtor
 }
 
-std::vector<OptiMultiSubject::Bounds> OptiMultiSubject::GetBounds() const { return std::vector<Bounds>(); };
+EnjoLib::Array<OptiMultiSubject::Bounds> OptiMultiSubject::GetBounds() const { return EnjoLib::Array<OptiMultiSubject::Bounds>(); };

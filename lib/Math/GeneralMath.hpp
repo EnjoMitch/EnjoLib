@@ -64,8 +64,10 @@ struct GeneralMath
     float PercentDone(double iter, double maxIter) const;
     float Percent(double fraction) const;
     LineParams CalcLineParams(const Point & p1, const Point & p2) const;
+    double Log(double n) const;
 	double Log2(double n) const;
 	double PowInt(double x, int exp) const;
+	double Sqrt(double x) const;
 	/// Returns angle in <-PI, PI> range
 	double GetInPIRange( double angle ) const;
 	/// Returns angle in <-2PI, 2PI> range
@@ -74,6 +76,7 @@ struct GeneralMath
 	double GetIn0_2PIRange( double angle ) const;
 	/// Returns sign of argument: 1, -1 or 0, if x == 0
 	int sign( double x ) const;
+	double Cosh(double x) const;
 	/// Iteration limit for bound binary search
 	int GetMaxIterBinSearchBound(double minArg, double maxArg, double eps) const;
 	EnjoLib::VecD UniformDistr(int n, double min, double max) const;

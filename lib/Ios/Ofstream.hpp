@@ -1,7 +1,7 @@
 #ifndef OFSTREAM_H
 #define OFSTREAM_H
 
-#include <Util/Str.hpp>
+#include <Ios/Ostream.hpp>
 #include <Template/SafePtr.hpp>
 
 //#include <ostream>
@@ -27,10 +27,10 @@ class Ofstream : public std::ofstream
         const EnjoLib::Str m_fileName;
 };
 */
-class Ofstream
+class Ofstream : public Ostream
 {
     public:
-        explicit Ofstream(const EnjoLib::Str & fileName, bool tryOpen = true);
+        explicit Ofstream(const EnjoLib::Str & fileName, bool tryOpen = true, bool append = false);
         virtual ~Ofstream();
 
         const EnjoLib::Str & GetFileName() const { return m_fileName; }
@@ -38,23 +38,9 @@ class Ofstream
         bool is_open() const;
         void flush();
         
-        stdfwd::ostream & OStr();
-        
         EnjoLib::Str Str() const;
-        void Add(const EnjoLib::Str & str); // TODO: Remove?
-        
-        // AddVal avoids auto conversions to Str(char)
-        void AddVal(long unsigned int val);
-        void AddVal(unsigned int val);
-        void AddVal(int val);
-        void AddVal(char val);
-        void AddVal(double val);
-        void AddVal(const char * val);
-        void AddVal(const stdfwd::string & val);
-        
-        template <class T> Ofstream& operator << (const T & val);
-        
-        //friend EnjoLib::Ofstream& operator<<(EnjoLib::Ofstream& os,  const stdfwd::istream & istr);
+        stdfwd::ostream & OStr() override;
+        const stdfwd::ostream & OStr() const override;
 
     protected:
 
@@ -64,13 +50,6 @@ class Ofstream
         const EnjoLib::Str m_fileName;
 };
 
-template <class T> Ofstream& Ofstream::operator << (const T & val)
-{
-    this->AddVal(val);
-    return *this;
-}
-
-const char NL = '\n';
 }
 
 #endif // OFSTREAM_H

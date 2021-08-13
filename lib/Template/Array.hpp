@@ -86,7 +86,7 @@ class Array : public IIterable<T>
             Assertions::IndexInBounds(i, m_sz, "Array");
             return data()[i];
         }
-        T & atw(size_t i)
+        T & atw(size_t i) override
         {
             Assertions::IndexInBounds(i, m_sz, "Array");
             return data()[i];

@@ -55,10 +55,6 @@ class Str
         friend EnjoLib::Str&  operator+= (EnjoLib::Str& str, const EnjoLib::Str& strOther);
         friend std::ostream& operator<<(std::ostream& os,  const EnjoLib::Str& str);
         friend std::istream& operator>>(std::istream& os,  EnjoLib::Str& str);
-        
-        friend EnjoLib::Ofstream& operator<<(EnjoLib::Ofstream& os,  const EnjoLib::Str& str);
-        friend EnjoLib::Ifstream& operator>>(EnjoLib::Ifstream& os,        EnjoLib::Str& str);
-
     protected:
 
     private:
@@ -84,9 +80,6 @@ EnjoLib::Str  operator+ (const EnjoLib::Str& str, const EnjoLib::Str& strOther);
 EnjoLib::Str& operator+= (EnjoLib::Str& str, const EnjoLib::Str& strOther);
 std::ostream& operator<<(std::ostream& os,  const EnjoLib::Str& str);
 std::istream& operator>>(std::istream& os,  EnjoLib::Str& str);
-EnjoLib::Ofstream& operator<<(EnjoLib::Ofstream& os,  const EnjoLib::Str& str);
-EnjoLib::Ifstream& operator>>(EnjoLib::Ifstream& os,        EnjoLib::Str& str);
-
 }
 
 #endif // ISTR_HPP

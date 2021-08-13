@@ -34,14 +34,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Assertions.hpp"
 #include "../Util/CharManipulationsTplVec.hpp"
 #include "../Util/Tokenizer.hpp"
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
+#include <Math/GeneralMath.hpp>
 
 //#include <STD/Algorithm.hpp>
 #include <STD/Iostream.hpp>
 #include <numeric>
-#include <cmath>
-#include <iomanip>
+
+#include <STD/Iomanip.hpp>
 
 using namespace EnjoLib;
 
@@ -166,7 +167,8 @@ EnjoLib::Str VectorTpl<T>::PrintScilab( const char * varName ) const
 template<class T>
 T VectorTpl<T>::Len() const
 {
-    return sqrt( SumSquares() );
+    const GeneralMath gmat;
+    return gmat.Sqrt( SumSquares() );
 }
 
 template<class T>
@@ -191,9 +193,10 @@ T VectorTpl<T>::SumSquares() const
 template<class T>
 T VectorTpl<T>::SumAbs() const
 {
+    const GeneralMath gmat;
     T sumAbs = 0;
     for (CIt cit = this->begin(), citend = this->end(); cit != citend; ++cit)
-        sumAbs += fabs(*cit);
+        sumAbs += gmat.Fabs(*cit);
 
     return sumAbs;
 }
@@ -278,14 +281,15 @@ VectorTpl<T> VectorTpl<T>::Diffs() const
 template<class T>
 VectorTpl<T> VectorTpl<T>::LogSigned() const
 {
+    const GeneralMath gmat;
     VectorTpl<T> ret;
     /// TODO: If the input is too small, the log has no effect. Make unit and divide before returning.
     //const T & mean = Mean();
     for (size_t i = 0; i < this->size(); ++i)
     {
         const T & val = this->at(i);
-        const T & logArg = fabs(val) + 1;
-        T valNew = log(logArg);
+        const T & logArg = gmat.Fabs(val) + 1;
+        T valNew = gmat.Log(logArg);
         if (val < 0 )
         {
             valNew = -valNew;
@@ -315,10 +319,11 @@ T VectorTpl<T>::Max() const
 template<class T>
 T VectorTpl<T>::MaxAbs() const
 {
+    const GeneralMath gmat;
     T mx = -100;
     for (CIt cit = this->begin(), citend = this->end(); cit != citend; ++cit)
     {
-        const T val = fabs(*cit);
+        const T val = gmat.Fabs(*cit);
         if (mx == -100 || val > mx)
             mx = val;
     }

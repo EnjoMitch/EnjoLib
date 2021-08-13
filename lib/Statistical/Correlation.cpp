@@ -1,7 +1,7 @@
 #include "Correlation.hpp"
 #include <Util/Except.hpp>
 
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/CoutBuf.hpp>
 #include <numeric>
 #include <cmath>
@@ -59,7 +59,7 @@ double Correlation::Calculate(const VecD & x, const VecD & y) const
         ELO
         EnjoLib::Osstream oss;
         oss << "Correlation::Calculate(): Denominator is == 0, " << "meanX = " << meanX << ", meanY = " << meanY;
-        LOG << oss.str() << NL3;
+        LOG << oss.str() << Nl;
         return 0;
         throw EnjoLib::ExceptRuntimeError(oss.str());
     }

@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Util/Except.hpp>
 #include <Util/PimplDeleter.hpp>
 
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/CoutBuf.hpp>
 #include <STD/VectorCpp.hpp>
 

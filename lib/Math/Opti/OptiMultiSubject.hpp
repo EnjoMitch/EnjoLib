@@ -2,6 +2,7 @@
 #define OPTIMULTISUBJECT_H
 
 #include <Util/VecD.hpp>
+#include <Template/Array.hpp>
 
 namespace EnjoLib
 {
@@ -20,11 +21,11 @@ namespace EnjoLib
 
             struct Bounds
             {
-                Bounds(double min, double max) : min(min), max(max) {}
+                Bounds(double min = 0, double max = 0) : min(min), max(max) {}
                 double min;
                 double max;
             };
-            virtual stdfwd::vector<Bounds> GetBounds() const;
+            virtual EnjoLib::Array<Bounds> GetBounds() const;
 
 
         protected:

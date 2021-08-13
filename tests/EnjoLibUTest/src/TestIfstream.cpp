@@ -2,8 +2,8 @@
 
 #include <UnitTest++/UnitTest++.h>
 #include <Util/ToolsMixed.hpp>
-#include <Util/Ifstream.hpp>
-#include <Util/Ofstream.hpp>
+#include <Ios/Ifstream.hpp>
+#include <Ios/Ofstream.hpp>
 
 //#include <fstream>
 //#include <iistream>
@@ -93,4 +93,3 @@ TEST(Ifstream_chained_good)
         CHECK(true);
     }
 }
-

@@ -3,15 +3,15 @@
 #include "CharManipulations.hpp"
 #include "StrColour.hpp"
 
-#include <Util/Osstream.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 
 #include <STD/Iostream.hpp>
-#include <iomanip>
+#include <STD/Map.hpp>
+#include <STD/Iomanip.hpp>
 #include <ctime>
 #include <mutex>
-#include <map>
 
 using namespace std;
 using namespace EnjoLib;

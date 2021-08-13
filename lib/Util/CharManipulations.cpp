@@ -72,6 +72,10 @@ void CharManipulations::char_replace_s(char *src, char lookfor, char replacewith
 
 EnjoLib::Str CharManipulations::Replace(const EnjoLib::Str & in, const EnjoLib::Str & lookFor, const EnjoLib::Str & replaceWith ) const
 {
+    if (lookFor == replaceWith)
+    {
+        return in;
+    }
     //replace(baseDirNoZ.begin(), baseDirNoZ.end(), '\\', '/');
     std::string out = in.str();
     size_t pos;

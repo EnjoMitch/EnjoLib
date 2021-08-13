@@ -1,8 +1,8 @@
 #include "pch_test.h"
 
 #include <UnitTest++/UnitTest++.h>
-#include <Util/Isstream.hpp>
-#include <Util/Ofstream.hpp>
+#include <Ios/Isstream.hpp>
+#include <Ios/Ofstream.hpp>
 
 //#include <fstream>
 //#include <iistream>
@@ -102,3 +102,16 @@ TEST(Isstream_chained_good)
     }
 }
 
+TEST(Isstream_getline)
+{
+    const EnjoLib::Str strIn = "EURGBP-GBPCHF-h1 = -0.942323\nEURGBP-GBPCHF-h1 = -0.942323\n";
+    Isstream istr(strIn);
+    EnjoLib::Str line;
+    GetLine(istr, line);
+    
+    istringstream istrStd(strIn.str());
+    std::string lineStd;
+    std::getline(istrStd, lineStd);
+    
+    CHECK_EQUAL(lineStd, line.str());
+}

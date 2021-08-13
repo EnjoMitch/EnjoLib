@@ -1,7 +1,7 @@
 #include <Util/ProtocolCreator.h>
 #include <Util/PimplDeleter.hpp>
 
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -65,6 +65,8 @@ Str ProtocolCreator::Get() const
 {
     EnjoLib::Str ret = m_impl->Get().str();
     if (not ret.empty())
-        ret.pop_back();
+    {
+        //ret.pop_back(); // Popping makes problems with empty configs
+    }
     return ret;
 }

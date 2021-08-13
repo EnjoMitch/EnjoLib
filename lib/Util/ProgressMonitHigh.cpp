@@ -2,7 +2,7 @@
 #include "ProgressMonit.hpp"
 #include "../Math/GeneralMath.hpp"
 #include "../Util/TimeComponents.hpp"
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 #include <STD/Iostream.hpp>
 

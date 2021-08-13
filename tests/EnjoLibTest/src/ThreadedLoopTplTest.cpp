@@ -3,10 +3,9 @@
 #include <Util/VecD.hpp>
 #include <Template/LoopThreadedTpl.hpp>
 
-
+#include <STD/Iostream.hpp>
 #include <cmath>
 #include <sstream>
-#include <STD/Iostream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

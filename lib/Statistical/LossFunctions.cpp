@@ -2,7 +2,7 @@
 #include "Statistical.hpp"
 #include <Template/AlgoSTDThin.hpp>
 
-#include <cmath>
+#include <Math/GeneralMath.hpp>
 #include <Util/CoutBuf.hpp>
 
 using namespace std;
@@ -23,12 +23,13 @@ double LossFunctions::GetRMS(const VecD & diffs) const
 
 double LossFunctions::GetHuber(const VecD & diffs, const double delta) const
 {
+    const GeneralMath gmat;
     // loss = np.where(np.abs(true-pred) < delta , 0.5*((true-pred)**2), delta*np.abs(true - pred) - 0.5*(delta**2))
     // return np.sum(loss)
     double sum = 0;
     for (const double dif : diffs)
     {
-        const double absDif = fabs(dif);
+        const double absDif = gmat.Fabs(dif);
         if (absDif < delta)
         {
             const double err = 0.5 * dif * dif;
@@ -45,14 +46,15 @@ double LossFunctions::GetHuber(const VecD & diffs, const double delta) const
 
 double LossFunctions::GetLogCosh(const VecD & diffs) const
 {
+    const GeneralMath gmat;
     // loss = np.log(np.cosh(pred - true))
     // return np.sum(loss)
     VecD errors;
 
     for (const double dif : diffs)
     {
-        const double csh = cosh(dif);
-        const double lgLoss = log(csh);
+        const double csh = gmat.Cosh(dif);
+        const double lgLoss = gmat.Log(csh);
         errors.Add(lgLoss);
     }
     const double sum = errors.Sum();
@@ -70,11 +72,12 @@ double LossFunctions::GetLogCosh(const VecD & diffs) const
   */
 double LossFunctions::GetQuantileMAE(const VecD & diffs, const double quantile) const
 {
+    const GeneralMath gmat;
     double sum = 0;
     for (const double dif : diffs)
     {
-        const double one = fabs(dif) *  quantile;
-        const double two = fabs(dif) * (quantile - 1);
+        const double one = gmat.Fabs(dif) *  quantile;
+        const double two = gmat.Fabs(dif) * (quantile - 1);
         //const double two = (1 - quantile) * dif; // ?
         const double maxx = AlgoSTDThin().Max(one, two);
         sum += maxx;

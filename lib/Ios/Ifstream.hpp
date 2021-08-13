@@ -1,6 +1,7 @@
 #ifndef IFSTREAM_H
 #define IFSTREAM_H
 
+#include <Ios/Istream.hpp>
 #include <Util/Str.hpp>
 #include <Template/SafePtr.hpp>
 
@@ -11,7 +12,7 @@ namespace EnjoLib
 #ifndef IFSTREAM_NEW
 
 #include <STD/Istream.hpp>
-#include <Util/Ofstream.hpp>
+#include <Ios/Ofstream.hpp>
 class Ifstream : public std::ifstream
 {
     public:
@@ -27,7 +28,7 @@ class Ifstream : public std::ifstream
         const EnjoLib::Str m_fileName;
 };
 #else
-class Ifstream
+class Ifstream : public Istream
 {
     public:
         Ifstream(const EnjoLib::Str & fileName, bool tryOpen = true);
@@ -36,25 +37,12 @@ class Ifstream
         const EnjoLib::Str & GetFileName() const { return m_fileName; }
         void IsOpenThrow() const;
         
-        stdfwd::istream & IStr();
+        stdfwd::istream & IStr() override;
+        const stdfwd::istream & IStr() const override;
         
         bool is_open() const;
         void close();
-        
-        bool operator !() const;
-        
-        template <class T> friend Ifstream& operator >> (Ifstream&, T & val);
-        
-        void PushVal(long long unsigned int * val);
-        void PushVal(long unsigned int * val);
-        void PushVal(unsigned int * val);
-        void PushVal(int * val);
-        void PushVal(bool * val);
-        void PushVal(char * val);
-        void PushVal(double * val);
-        void PushVal(float * val);
-        void PushVal(stdfwd::string * val);
-
+    
     protected:
 
     private:
@@ -62,14 +50,6 @@ class Ifstream
         //SafePtr<std::istringstream> m_istream;
         const EnjoLib::Str m_fileName;
 };
-
-bool GetLine(Ifstream& ifs, EnjoLib::Str & lineOut);
-
-template <class T> Ifstream& operator >> (Ifstream& ifst, T & val)
-{
-    ifst.PushVal(&val);
-    return ifst;
-}
 
 #endif // IFSTREAM_NEW
 }

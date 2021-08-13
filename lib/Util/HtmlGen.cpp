@@ -1,5 +1,5 @@
 #include "HtmlGen.hpp"
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace EnjoLib;
 

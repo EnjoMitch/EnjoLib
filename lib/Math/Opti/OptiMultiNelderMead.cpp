@@ -5,8 +5,8 @@
 //#include "../../Statistical/VectorD.hpp"
 #include "../../Util/VecD.hpp"
 #include <STD/Iostream.hpp>
-#include <iomanip>
-#include <Util/Osstream.hpp>
+#include <STD/Iomanip.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

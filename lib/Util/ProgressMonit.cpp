@@ -1,5 +1,5 @@
 #include "ProgressMonit.hpp"
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/CoutBuf.hpp>
 
 using namespace std;
@@ -38,7 +38,7 @@ void ProgressMonit::PrintPercentDone(size_t i, size_t sz) const
     if (i == sz - 1)
     {
         ELO
-        LOG << "  Done!" << NL3;
+        LOG << "  Done!" << Nl;
     }
         
 }

@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cmath>
 #include <ctime>
 #include "Constants.hpp"
-#include "GeneralMath.hpp"
+#include <Math/GeneralMath.hpp>
 #include "SimpsonFunctor.hpp"
 #include "../Systems/Point.hpp"
 
@@ -81,9 +81,19 @@ double GeneralMath::Fabs(double x) const
     return std::fabs(x);
 }
 
+double GeneralMath::Log(double n) const
+{
+    return log(n);
+}
+
 double GeneralMath::Log2( double n ) const
 {
     return log(n) / log(2.0);
+}
+
+double GeneralMath::Cosh(double x) const
+{
+    return cosh(x);
 }
 
 // https://stackoverflow.com/a/34660211
@@ -103,6 +113,11 @@ double GeneralMath::PowInt(double base, int exp) const
         else
             return (temp2)/base; //negative exponent computation 
     }
+}
+
+double GeneralMath::Sqrt(double x) const
+{
+    return sqrt(x);
 }
 
 double GeneralMath::LinearInterpol( double x, const Point & p1, const Point & p2 ) const

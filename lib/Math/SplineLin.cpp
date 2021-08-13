@@ -3,7 +3,7 @@
 
 #include <STD/VectorCpp.hpp>
 #include <utility>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 
 using namespace std;

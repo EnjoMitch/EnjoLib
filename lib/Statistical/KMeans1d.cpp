@@ -6,7 +6,7 @@
 #include "../Util/StackTrace.hpp"
 #include "../Math/GeneralMath.hpp"
 #include <Util/Except.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 #include <STD/VectorCpp.hpp>
 
@@ -39,7 +39,7 @@ EnjoLib::Array<KMeans1dCluster> KMeans1d::ReduceGetClusters(int reductions) cons
     if (nClusters <= 0)
     {
         Osstream oss;
-        oss << "Too large number of reductions = " << reductions << ", vs size of = " << opSz << NL2;
+        oss << "Too large number of reductions = " << reductions << ", vs size of = " << opSz << Nl;
         throw ExceptRuntimeError(STRACE_THROW(oss.str()));
     }
     //return op;

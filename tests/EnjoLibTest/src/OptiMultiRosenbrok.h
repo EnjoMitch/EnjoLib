@@ -14,7 +14,7 @@ class OptiMultiRosenbrok : public EnjoLib::OptiMultiSubject
         EnjoLib::VecD GetStart() const override;
         EnjoLib::VecD GetStep() const override;
 
-        stdfwd::vector<EnjoLib::OptiMultiSubject::Bounds> GetBounds() const override;
+        EnjoLib::Array<EnjoLib::OptiMultiSubject::Bounds> GetBounds() const override;
 
     protected:
     private:

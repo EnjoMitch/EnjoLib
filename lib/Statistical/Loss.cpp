@@ -4,11 +4,11 @@
 #include <Util/Str.hpp>
 #include <Util/PimplCopier.hpp>
 #include <Util/PimplDeleter.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 #include <STD/Ostream.hpp>
 #include <STD/Map.hpp>
-#include <iomanip>
+#include <STD/Iomanip.hpp>
 
 using namespace std;
 using namespace EnjoLib;

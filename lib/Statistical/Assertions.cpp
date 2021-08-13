@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <Util/CharManipulations.hpp>
 #include <Util/Except.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace EnjoLib;
 

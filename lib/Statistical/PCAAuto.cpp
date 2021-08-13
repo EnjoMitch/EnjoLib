@@ -8,7 +8,7 @@
 #include "../Template/CorradePointer.h"
 
 #include <Util/CoutBuf.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 #include <STD/Map.hpp>
 
@@ -112,7 +112,7 @@ double PCAAuto::GetQuality(const Matrix & xxx, const Matrix & xxxT, const int fe
         Osstream oss;
         oss << "meanRmsSelf == 0";
         ELO
-        LOG << oss.str() << NL3;
+        LOG << oss.str() << Nl;
         throw EnjoLib::ExceptLogicError(oss.str());
     }
     const double meanRmsRel = meanRmsDiff / meanRmsSelf;
@@ -125,7 +125,7 @@ double PCAAuto::GetQuality(const Matrix & xxx, const Matrix & xxxT, const int fe
         oss << "relMax < 0, ";
         oss << "Curr quality = " << relMax << ", feat = " << feat2leave << ", currMax = " << meanRmsRel;
         ELO
-        LOG << oss.str() << NL3;
+        LOG << oss.str() << Nl;
         throw EnjoLib::ExceptLogicError(oss.str());
     }
     return relMax;

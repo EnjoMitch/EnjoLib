@@ -33,17 +33,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "FileUtils.hpp"
 #include "CharManipulations.hpp"
 #include <Util/CoutBuf.hpp>
-#include <Util/Ofstream.hpp>
-#include <Util/Ifstream.hpp>
+#include <Ios/Ofstream.hpp>
+#include <Ios/Ifstream.hpp>
 
 #include <STD/VectorCpp.hpp>
-#include <STD/Istream.hpp>
+#include <STD/String.hpp>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <cstdlib>
 
 using namespace EnjoLib;
 
-std::vector<VecStr > FileUtils::GetConfigSections( const EnjoLib::Str & fileName,
+EnjoLib::Array<VecStr > FileUtils::GetConfigSections( const EnjoLib::Str & fileName,
         const EnjoLib::Str & startMarker,
         const EnjoLib::Str & endMarker ) const
 {
@@ -57,18 +58,18 @@ std::vector<VecStr > FileUtils::GetConfigSections( const EnjoLib::Str & fileName
     {
         if (CharManipulations().Trim(line) == startMarker)
         {
-            VecStr section = GetOneSection( file.IStr(), endMarker );
+            VecStr section = GetOneSection( file, endMarker );
             sections.push_back(section);
         }
     }
     return sections;
 }
 
-VecStr FileUtils::GetOneSection( std::istream & file, const EnjoLib::Str & endMarker ) const
+VecStr FileUtils::GetOneSection( EnjoLib::Istream & file, const EnjoLib::Str & endMarker ) const
 {
     VecStr section;
     EnjoLib::Str line;
-    while ( std::getline(file, line.strRW()) && CharManipulations().Trim(line) != endMarker )
+    while ( GetLine(file, line) && CharManipulations().Trim(line) != endMarker )
         section.push_back(line);
     return section;
 }
@@ -102,7 +103,7 @@ void FileUtils::CreateDirIfNotExistsLinux(const EnjoLib::Str & dirName) const
     if (int err = system(command.c_str()))
     {
         ELO
-        LOG << "FileUtils::CreateDirIfNotExistsLinux(): err = " << err << NL3;
+        LOG << "FileUtils::CreateDirIfNotExistsLinux(): err = " << err << Nl;
     }
 }
 
@@ -120,16 +121,16 @@ EnjoLib::Str FileUtils::GetBaseDir(const EnjoLib::Str & fullPath) const
 size_t FileUtils::GetNumLinesFile( const EnjoLib::Str & fileName, bool skipHeader ) const
 {
     Ifstream is(fileName);
-    return GetNumLinesFile(is.IStr(), skipHeader);
+    return GetNumLinesFile(is, skipHeader);
 }
 
-size_t FileUtils::GetNumLinesFile( std::istream & is, bool skipHeader ) const
+size_t FileUtils::GetNumLinesFile( EnjoLib::Istream & is, bool skipHeader ) const
 {
     size_t size = 0;
     EnjoLib::Str line;
     if (skipHeader)
-        std::getline(is, line.strRW());
-    while ( std::getline(is, line.strRW()) )
+        GetLine(is, line);
+    while ( GetLine(is, line) )
         ++size;
     return size;
 }

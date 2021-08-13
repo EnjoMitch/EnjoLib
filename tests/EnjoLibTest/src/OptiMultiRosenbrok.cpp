@@ -43,7 +43,7 @@ EnjoLib::VecD OptiMultiRosenbrok::GetStep() const
     return ret;
 }
 
-std::vector<OptiMultiSubject::Bounds> OptiMultiRosenbrok::GetBounds() const
+EnjoLib::Array<OptiMultiSubject::Bounds> OptiMultiRosenbrok::GetBounds() const
 {
     std::vector<OptiMultiSubject::Bounds> ret;
     ret.push_back(OptiMultiSubject::Bounds(-3, 3));

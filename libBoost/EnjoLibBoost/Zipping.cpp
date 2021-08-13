@@ -19,7 +19,7 @@ Zipping::~Zipping()
 }
 
 
-void Zipping::UnzipFile(const std::string & zipFileName, std::ostream & sstrOut) const
+void Zipping::UnzipFile(const std::string & zipFileName, EnjoLib::Osstream & sstrOut) const
 {
     namespace bio = boost::iostreams;
     std::ifstream file(zipFileName, std::ios_base::binary);
@@ -27,6 +27,6 @@ void Zipping::UnzipFile(const std::string & zipFileName, std::ostream & sstrOut)
     //in.push(bio::zlib_decompressor());    // Windows
     in.push(bio::gzip_decompressor());      // Linux
     in.push(file);
-    bio::copy(in, sstrOut);
+    bio::copy(in, sstrOut.OStr());
 }
 

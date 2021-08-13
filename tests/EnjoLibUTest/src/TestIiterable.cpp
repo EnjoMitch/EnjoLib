@@ -21,7 +21,7 @@ static void RunIterable(const IIterableConst<T> & itr)
 {
     for (const auto & val : itr)
     {
-        //LOGL << val << NL3;
+        //LOGL << val << Nl;
         (void)val;
     }
 }

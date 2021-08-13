@@ -1,9 +1,7 @@
 #include "Tokenizer.hpp"
 
-#include <Util/Isstream.hpp>
-#include <Util/Ifstream.hpp>
-
-#include <STD/Istream.hpp>
+#include <Ios/Isstream.hpp>
+#include <Ios/Ifstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -30,18 +28,13 @@ VecStr Tokenizer::GetLines(const Str & fileName, bool excludeFirstLine) const
     return GetLines(file, excludeFirstLine);
 }
 
-VecStr Tokenizer::GetLines(EnjoLib::Ifstream & is, bool excludeFirstLine) const
+VecStr Tokenizer::GetLines(EnjoLib::Istream & is, bool excludeFirstLine) const
 {
-    return GetLines(is.IStr(), excludeFirstLine);
-}
-
-VecStr Tokenizer::GetLines(istream & is, bool excludeFirstLine) const
-{
-    string line;
+    Str line;
     VecStr lines;
     if (excludeFirstLine)
-        getline(is, line);
-    while (getline(is, line))
+        GetLine(is, line);
+    while (GetLine(is, line))
     {
         lines.push_back(line);
     }
@@ -56,16 +49,16 @@ VecStr Tokenizer::GetLinesStr(const Str & strData, bool excludeFirstLine) const
 void Tokenizer::WorkOnLines(const Str & fileName, IWorksOnLine & worker, bool excludeFirstLine) const
 {
     Ifstream file(fileName.c_str());
-    return WorkOnLines(file.IStr(), worker, excludeFirstLine);
+    return WorkOnLines(file, worker, excludeFirstLine);
 }
 
-void Tokenizer::WorkOnLines(istream & is, IWorksOnLine & worker, bool excludeFirstLine) const
+void Tokenizer::WorkOnLines(EnjoLib::Istream & is, IWorksOnLine & worker, bool excludeFirstLine) const
 {
-    string line;
+    Str line;
     VecStr lines;
     if (excludeFirstLine)
-        getline(is, line);
-    while (getline(is, line))
+        GetLine(is, line);
+    while (GetLine(is, line))
     {
         worker.Work(line);
     }

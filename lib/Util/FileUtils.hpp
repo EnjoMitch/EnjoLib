@@ -34,6 +34,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define FILE_UTILS_HPP_INCLUDED
 
 #include <Util/VecStr.hpp>
+#include <Ios/Istream.hpp>
+#include <Template/Array.hpp>
 
 class istream;
 
@@ -42,7 +44,7 @@ namespace EnjoLib
 class FileUtils
 {
 public:
-    stdfwd::vector<VecStr > GetConfigSections( const EnjoLib::Str & fileName,
+    EnjoLib::Array<VecStr > GetConfigSections( const EnjoLib::Str & fileName,
             const EnjoLib::Str & startMarker,
             const EnjoLib::Str & endMarker ) const;
     bool FileExists( const EnjoLib::Str & fileName ) const;
@@ -50,11 +52,11 @@ public:
     void CreateDirIfNotExistsLinux(const EnjoLib::Str & dirName) const;
     EnjoLib::Str GetBaseDir(const EnjoLib::Str & fullPath) const;
     size_t GetNumLinesFile( const EnjoLib::Str & fileName, bool skipHeader = false ) const;
-    size_t GetNumLinesFile( std::istream & is, bool skipHeader = false ) const;
+    size_t GetNumLinesFile( EnjoLib::Istream & is, bool skipHeader = false ) const;
     void Remove(const EnjoLib::Str & fileName);
 
 private:
-    VecStr GetOneSection( std::istream & file, const EnjoLib::Str & endMarker ) const;
+    VecStr GetOneSection( EnjoLib::Istream & file, const EnjoLib::Str & endMarker ) const;
 };
 }
 

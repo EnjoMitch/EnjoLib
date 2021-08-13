@@ -1,6 +1,6 @@
 #include "LinuxNetwork.hpp"
-#include <Util/Ifstream.hpp>
-#include <Util/Ofstream.hpp>
+#include <Ios/Ifstream.hpp>
+#include <Ios/Ofstream.hpp>
 #include <Util/CharManipulations.hpp>
 #include <Util/ToolsMixed.hpp>
 //#include <Util/Except.hpp>

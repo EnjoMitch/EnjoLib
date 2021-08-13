@@ -1,8 +1,8 @@
 #include "StrColour.hpp"
 
 #include <STD/Iostream.hpp>
-#include <Util/Osstream.hpp>
-#include <iomanip>
+#include <Ios/Osstream.hpp>
+#include <STD/Iomanip.hpp>
 
 using namespace std;
 using namespace EnjoLib;

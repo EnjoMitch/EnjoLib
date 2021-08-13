@@ -1,6 +1,7 @@
 #ifndef ZIPPING_H
 #define ZIPPING_H
 
+#include <Ios/Osstream.hpp>
 #include <3rdParty/stdfwd.hh>
 
 class Zipping
@@ -8,7 +9,7 @@ class Zipping
     public:
         Zipping();
         virtual ~Zipping();
-        void UnzipFile(const std::string & zipFileName, std::ostream & sstrOut) const;
+        void UnzipFile(const std::string & zipFileName, EnjoLib::Osstream & sstrOut) const;
 
     protected:
     private:

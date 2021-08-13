@@ -107,7 +107,7 @@ TEST(Array_copy)
     
     for (unsigned ii = 0; ii < arr2.size(); ++ii)
     {
-        //LOGL << "arr2[" << ii << "] = " << arr2.at(ii) << NL3;
+        //LOGL << "arr2[" << ii << "] = " << arr2.at(ii) << Nl;
     }
     
     CHECK_EQUAL(arr.at(0), arr2.at(0));

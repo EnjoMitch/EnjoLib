@@ -1,9 +1,9 @@
 #ifndef COUTBUF_H
 #define COUTBUF_H
 
-#include <3rdParty/stdfwd.hh>
 //#include <STD/Ostream.hpp>
-#include <Util/Osstream.hpp>
+#include <Ios/Osstream.hpp>
+#include <3rdParty/stdfwd.hh>
 
 namespace EnjoLib
 {
@@ -22,7 +22,6 @@ class Log
         Osstream m_ostr;
         bool m_verbose;
 };
-const char NL3 = '\n';
 }
 
 

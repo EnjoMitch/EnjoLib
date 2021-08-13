@@ -182,7 +182,7 @@ VecD Statistical::Standardize( const ScalingOpStandardize & scaleOp, const VecD 
     std::transform(applyVec.begin(), applyVec.end(), std::back_inserter(ret), scaleOp);
     return ret;
 }
-Matrix Statistical::Standardize( const std::vector<ScalingOpStandardize> & scalersOp, const Matrix & applyMat ) const
+Matrix Statistical::Standardize( const EnjoLib::Array<ScalingOpStandardize> & scalersOp, const Matrix & applyMat ) const
 {
     Assertions::NonEmpty(applyMat, "Statistical::Standardize - applyMat");
     Assertions::SizesEqual( scalersOp.size(), applyMat.GetNCols(), "Statistical::Standardize - applyMat");

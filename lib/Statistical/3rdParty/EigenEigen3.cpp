@@ -78,10 +78,10 @@ std::vector<EigenValueVector> EigenEigen3::GetEigenValVecClient( const Matrix & 
     if (es.info() != Eigen::ComputationInfo::Success)
     {
         ELO
-        LOG << "Eigenvalue Calculation not successful: " << es.info() << NL3;
+        LOG << "Eigenvalue Calculation not successful: " << es.info() << Nl;
         //cout << m.Print() << endl;
         throw EnjoLib::ExceptRuntimeError("Eigenvalue Calculation not successful " + CharManipulations().ToStr(es.info()));
-        LOG << "After throw: " << es.info() << NL3;
+        LOG << "After throw: " << es.info() << Nl;
     }
 
     const auto & eval  = es.eigenvalues();

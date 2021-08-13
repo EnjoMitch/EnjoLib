@@ -1,6 +1,6 @@
 #include "ProtocolCreatorFile.hpp"
 
-#include <Util/Ofstream.hpp>
+#include <Ios/Ofstream.hpp>
 
 using namespace EnjoLib;
 
@@ -21,7 +21,7 @@ bool ProtocolCreatorFile::ToFile() const
     Ofstream ofs(m_fileName, m_mustSucceed);
     if (ofs.is_open())
     {
-        ofs << Get() << NL;
+        ofs << Get() << Nl;
         return true;
     }
     return false;

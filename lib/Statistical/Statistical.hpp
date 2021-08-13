@@ -35,6 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "../3rdParty/stdfwd.hh"
 #include "../Util/VecD.hpp"
+#include <Template/Array.hpp>
 
 namespace EnjoLib
 {
@@ -69,7 +70,7 @@ class Statistical
 
         VecD StandardizeInvert( const ScalingOpStandardizeInvert & scaleOp, const VecD & applyVec ) const;
         VecD Standardize( const ScalingOpStandardize & scaleOp, const VecD & applyVec ) const;
-        Matrix  Standardize( const stdfwd::vector<ScalingOpStandardize> & scalersOp, const Matrix & applyMat ) const;
+        Matrix  Standardize( const EnjoLib::Array<ScalingOpStandardize> & scalersOp, const Matrix & applyMat ) const;
         VecD Standardize( const VecD & refVec, const VecD & applyVec ) const;
         VecD Standardize( const VecD & refVec ) const;
         Matrix  Standardize( const Matrix & refMat, const Matrix & applyMat ) const;

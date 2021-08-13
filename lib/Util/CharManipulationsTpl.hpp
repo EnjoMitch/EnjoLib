@@ -6,8 +6,8 @@
 #include <Util/Except.hpp>
 #include <Util/VecStr.hpp>
 
-#include <Util/Osstream.hpp>
-#include <Util/Isstream.hpp>
+#include <Ios/Osstream.hpp>
+#include <Ios/Isstream.hpp>
 
 namespace EnjoLib
 {
@@ -40,7 +40,7 @@ template <class T> T CharManipulationsTpl::ToNumber(const Str & in) const
     T number;
     if (!ToNumber<T>(in, &number))
     {
-        const Str msg = "Not number: '" + in + "'";
+        const Str msg = "Not number: '" + in + "' or not compatible with the given type.";
         throw EnjoLib::ExceptInvalidArg(msg.c_str());
     }
 
