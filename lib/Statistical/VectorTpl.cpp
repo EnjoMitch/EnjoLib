@@ -39,10 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Math/GeneralMath.hpp>
 
 //#include <STD/Algorithm.hpp>
-#include <STD/Iostream.hpp>
 #include <numeric>
-
-#include <STD/Iomanip.hpp>
 
 using namespace EnjoLib;
 
@@ -130,7 +127,7 @@ EnjoLib::Str VectorTpl<T>::Print(int precision) const
     EnjoLib::Osstream ss;
     if (precision > 0)
     {
-        ss.OStr() << std::setprecision(precision);
+        ss.SetPrecision(precision);
     }
     for (CIt cit = this->begin(), citend = this->end(); cit != citend; ++cit)
     {

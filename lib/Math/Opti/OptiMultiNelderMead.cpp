@@ -5,7 +5,6 @@
 //#include "../../Statistical/VectorD.hpp"
 #include "../../Util/VecD.hpp"
 #include <STD/Iostream.hpp>
-#include <STD/Iomanip.hpp>
 #include <Ios/Osstream.hpp>
 
 using namespace std;
@@ -67,7 +66,8 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
         oss << "\n";
         for ( i = 0; i < n; i++ )
         {
-            oss.OStr() << "  " << setw(14) << start[i] << "\n";
+            oss.SetW(14);
+            oss << "  " << start[i] << "\n";
         }
         oss << "\n";
         oss << "  F(X) = " << ynewlo << "\n";
@@ -85,7 +85,8 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
         oss << "\n";
         for ( i = 0; i < n; i++ )
         {
-            oss.OStr() << "  " << setw(14) << xmin[i] << "\n";
+            oss.SetW(14);
+            oss.OStr() << "  " << xmin[i] << "\n";
         }
 
         oss << "\n";

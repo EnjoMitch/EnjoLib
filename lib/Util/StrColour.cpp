@@ -1,8 +1,7 @@
 #include "StrColour.hpp"
 
-#include <STD/Iostream.hpp>
+#include <Util/CharManipulations.hpp>
 #include <Ios/Osstream.hpp>
-#include <STD/Iomanip.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -15,8 +14,8 @@ StrColour::~StrColour(){}
 EnjoLib::Str StrColour::GenNorm(float val, int precision)
 {
     Osstream oss;
-    oss.OStr() << std::setprecision(precision);
-    oss.OStr() << std::fixed;
+    oss.SetPrecision(precision);
+    oss.Fixed();
     oss << val;
     
     return GenNorm(val, oss.str());
@@ -24,8 +23,8 @@ EnjoLib::Str StrColour::GenNorm(float val, int precision)
 EnjoLib::Str StrColour::GenBright(float val, int precision)
 {
     Osstream oss;
-    oss.OStr() << std::setprecision(precision);
-    oss.OStr() << std::fixed;
+    oss.SetPrecision(precision);
+    oss.Fixed();
     oss << val;
     
     return GenBright(val, oss.str());
@@ -69,7 +68,7 @@ EnjoLib::Str StrColour::Gen(int col, const EnjoLib::Str & str)
 
 EnjoLib::Str StrColour::startTxt(int col)
 {
-    return "\x1B[" + std::to_string(col) + "m";
+    return "\x1B[" + CharManipulations().ToStr(col) + "m";
 }
 
 /*

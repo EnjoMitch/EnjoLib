@@ -1,14 +1,39 @@
 #include <Ios/Ostream.hpp>
 #include <STD/Ostream.hpp>
+#include <STD/Iomanip.hpp>
 
 using namespace EnjoLib;
-Ostream::Ostream()
+Ostream::Ostream(){}
+Ostream::~Ostream(){}
+
+Ostream & Ostream::SetPrecision(int prec)
 {
+    OStr() << std::setprecision(prec);
+    return *this;
 }
 
-Ostream::~Ostream()
+Ostream & Ostream::SetW(int width)
 {
+    OStr() << std::setw(width);
+    return *this;
+}
 
+Ostream & Ostream::SetFill(char toFill)
+{
+    OStr() << std::setfill(toFill);
+    return *this;
+}
+
+Ostream & Ostream::Fixed()
+{
+    std::fixed(OStr());
+    return *this;
+}
+
+Ostream & Ostream::Scientific()
+{
+    std::scientific(OStr());
+    return *this;
 }
 
 

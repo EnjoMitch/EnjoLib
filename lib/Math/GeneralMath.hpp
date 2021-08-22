@@ -66,6 +66,7 @@ struct GeneralMath
     LineParams CalcLineParams(const Point & p1, const Point & p2) const;
     double Log(double n) const;
 	double Log2(double n) const;
+	double Log10(double n) const;
 	double PowInt(double x, int exp) const;
 	double Sqrt(double x) const;
 	/// Returns angle in <-PI, PI> range

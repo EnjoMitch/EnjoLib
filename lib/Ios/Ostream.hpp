@@ -15,6 +15,12 @@ class Ostream
         virtual stdfwd::ostream & OStr() = 0;
         virtual const stdfwd::ostream & OStr() const = 0;
         
+        Ostream & SetPrecision(int prec);
+        Ostream & SetW(int width);
+        Ostream & SetFill(char toFill);
+        Ostream & Fixed();
+        Ostream & Scientific();
+        
         template <class T> Ostream& operator << (const T & val);
 
     protected:

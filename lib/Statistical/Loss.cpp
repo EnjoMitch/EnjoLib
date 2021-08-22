@@ -6,9 +6,7 @@
 #include <Util/PimplDeleter.hpp>
 #include <Ios/Osstream.hpp>
 
-#include <STD/Ostream.hpp>
 #include <STD/Map.hpp>
-#include <STD/Iomanip.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -48,7 +46,9 @@ EnjoLib::Str Loss::PrintRel() const
 {
     Osstream oss;
     const GeneralMath gmat;
-    oss.OStr() << "loss = " << gmat.round(sum*100)/100.0 << " ± " << setprecision(3) << GetRelDiff() * 100 << " % ";
+    oss << "loss = " << gmat.round(sum*100)/100.0 << " ± ";
+    oss.SetPrecision(3);
+    oss << GetRelDiff() * 100 << " % ";
     return oss.str();
 }
 

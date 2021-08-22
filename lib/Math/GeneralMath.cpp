@@ -91,6 +91,11 @@ double GeneralMath::Log2( double n ) const
     return log(n) / log(2.0);
 }
 
+double GeneralMath::Log10(double n) const
+{
+    return log10(n);
+}
+
 double GeneralMath::Cosh(double x) const
 {
     return cosh(x);

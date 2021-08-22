@@ -4,7 +4,6 @@
 #include "StrColour.hpp"
 
 #include <Ios/Osstream.hpp>
-#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 
 #include <STD/Iostream.hpp>
