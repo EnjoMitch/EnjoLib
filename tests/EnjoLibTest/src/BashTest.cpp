@@ -1,21 +1,23 @@
 #include "BashTest.h"
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
+
 #include <ctime>
 
 using namespace std;
+using namespace EnjoLib;
 
 BashTest::BashTest()
 {
-
+    ELO
 
    std::time_t result = std::time(NULL);
    const std::tm* t =  std::localtime(&result);
    if(t->tm_wday == 1 and t->tm_mday <= 7)
-    std::cout << "true" << std::endl;
+    LOG << "true" << Endl;
     else
-    std::cout << "false" << std::endl;
+    LOG << "false" << Endl;
 
-    cout << "Today = " << t->tm_wday << endl;
+    LOG << "Today = " << t->tm_wday << Endl;
 }
 
 BashTest::~BashTest()

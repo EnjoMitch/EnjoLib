@@ -2,7 +2,7 @@
 #include "OptiSubject.hpp"
 #include "../GeneralMath.hpp"
 #include <cmath>
-#include <utility>
+#include <Template/AlgoSTDThin.hpp>
 #include "../Burkardt/BrentBurkardt.hpp"
 
 using namespace EnjoLib;
@@ -10,7 +10,7 @@ using namespace EnjoLib;
 OptiBrent::OptiBrent(double minArg, double maxArg, double eps)
 {
     if (minArg > maxArg)
-        std::swap(minArg, maxArg);
+        AlgoSTDThin().Swap(minArg, maxArg);
 
     this->m_minArg = minArg;
     this->m_maxArg = maxArg;

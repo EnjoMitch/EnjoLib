@@ -53,7 +53,7 @@
 */
 
 #include <type_traits>
-#include <utility>
+#include <STD/Utility.hpp>
 #if !defined(CORRADE_ASSERT) && !defined(NDEBUG)
 #include <cassert>
 #endif

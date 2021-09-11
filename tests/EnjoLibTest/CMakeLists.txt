@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME} ${SRCS})
 add_test(${PROJECT_NAME} ${PROJECT_NAME})
 enjoSetupTarget(${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} EnjoLib)
+#enjo_target_pch(${PROJECT_NAME} src/pch_test.h) # Non existant yet
 enjo_target_unity(${PROJECT_NAME})
 
 # Make sure the compiler can find include files for our Hello library

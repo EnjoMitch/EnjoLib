@@ -31,6 +31,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -60,6 +61,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -86,6 +88,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -114,6 +117,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -142,6 +146,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 			</Target>
 			<Target title="Release-x64">
@@ -168,6 +173,7 @@
 					<Add directory="Statistical/3rdParty" />
 					<Add directory="Util/" />
 					<Add directory="STD" />
+					<Add directory="Ios" />
 				</Compiler>
 				<ExtraCommands>
 					<Add after="./run-tests.sh" />
@@ -196,6 +202,24 @@
 			<Add directory="/usr/lib/x86_64-linux-gnu/mkl" />
 		</Linker>
 		<Unit filename="3rdParty/stdfwd.hh" />
+		<Unit filename="Ios/Ifstream.cpp" />
+		<Unit filename="Ios/Ifstream.hpp" />
+		<Unit filename="Ios/IoManip.cpp" />
+		<Unit filename="Ios/IoManip.hpp" />
+		<Unit filename="Ios/IosBase.cpp" />
+		<Unit filename="Ios/IosBase.hpp" />
+		<Unit filename="Ios/Isstream.cpp" />
+		<Unit filename="Ios/Isstream.hpp" />
+		<Unit filename="Ios/Istream.cpp" />
+		<Unit filename="Ios/Istream.hpp" />
+		<Unit filename="Ios/Ofstream.cpp" />
+		<Unit filename="Ios/Ofstream.hpp" />
+		<Unit filename="Ios/Osstream.cpp" />
+		<Unit filename="Ios/Osstream.hpp" />
+		<Unit filename="Ios/Ostream.cpp" />
+		<Unit filename="Ios/Ostream.hpp" />
+		<Unit filename="Ios/Sstream.cpp" />
+		<Unit filename="Ios/Sstream.hpp" />
 		<Unit filename="ML/CrossValidation.cpp" />
 		<Unit filename="ML/CrossValidation.hpp" />
 		<Unit filename="Math/AxisRescale.cpp" />
@@ -309,6 +333,8 @@
 		<Unit filename="STD/Algorithm.hpp" />
 		<Unit filename="STD/Fstream.cpp" />
 		<Unit filename="STD/Fstream.hpp" />
+		<Unit filename="STD/Iomanip.cpp" />
+		<Unit filename="STD/Iomanip.hpp" />
 		<Unit filename="STD/Iostream.cpp" />
 		<Unit filename="STD/Iostream.hpp" />
 		<Unit filename="STD/Istream.cpp" />
@@ -317,12 +343,18 @@
 		<Unit filename="STD/Map.hpp" />
 		<Unit filename="STD/Ostream.cpp" />
 		<Unit filename="STD/Ostream.hpp" />
+		<Unit filename="STD/Set.cpp" />
+		<Unit filename="STD/Set.hpp" />
 		<Unit filename="STD/Sstream.cpp" />
 		<Unit filename="STD/Sstream.hpp" />
 		<Unit filename="STD/StdExcept.cpp" />
 		<Unit filename="STD/StdExcept.hpp" />
 		<Unit filename="STD/String.cpp" />
 		<Unit filename="STD/String.hpp" />
+		<Unit filename="STD/Tuple.cpp" />
+		<Unit filename="STD/Tuple.hpp" />
+		<Unit filename="STD/Utility.cpp" />
+		<Unit filename="STD/Utility.hpp" />
 		<Unit filename="STD/Vector.cpp" />
 		<Unit filename="STD/Vector.hpp" />
 		<Unit filename="STD/VectorCpp.cpp" />
@@ -457,6 +489,8 @@
 		<Unit filename="Template/ValArray.hpp" />
 		<Unit filename="Template/VecT.cpp" />
 		<Unit filename="Template/VecT.hpp" />
+		<Unit filename="Template/VecTMath.cpp" />
+		<Unit filename="Template/VecTMath.hpp" />
 		<Unit filename="Template/VectorViewable.cpp" />
 		<Unit filename="Template/VectorViewable.hpp" />
 		<Unit filename="Template/View.cpp" />
@@ -502,10 +536,6 @@
 		<Unit filename="Util/HtmlGen.hpp" />
 		<Unit filename="Util/IVec.cpp" />
 		<Unit filename="Util/IVec.hpp" />
-		<Unit filename="Util/Ifstream.cpp" />
-		<Unit filename="Util/Ifstream.hpp" />
-		<Unit filename="Util/Isstream.cpp" />
-		<Unit filename="Util/Isstream.hpp" />
 		<Unit filename="Util/Iters.cpp" />
 		<Unit filename="Util/Iters.hpp" />
 		<Unit filename="Util/LinuxNetwork.cpp" />
@@ -518,10 +548,8 @@
 		<Unit filename="Util/LoopThreaded.hpp" />
 		<Unit filename="Util/NonCopyable.cpp" />
 		<Unit filename="Util/NonCopyable.hpp" />
-		<Unit filename="Util/Ofstream.cpp" />
-		<Unit filename="Util/Ofstream.hpp" />
-		<Unit filename="Util/Osstream.cpp" />
-		<Unit filename="Util/Osstream.hpp" />
+		<Unit filename="Util/Pair.cpp" />
+		<Unit filename="Util/Pair.hpp" />
 		<Unit filename="Util/Pimpl.hpp" />
 		<Unit filename="Util/PimplCopier.hpp" />
 		<Unit filename="Util/PimplDeleter.hpp" />
@@ -558,6 +586,8 @@
 		<Unit filename="Util/ToolsMixed.hpp" />
 		<Unit filename="Util/Trim.cpp" />
 		<Unit filename="Util/Trim.hpp" />
+		<Unit filename="Util/Tuple.cpp" />
+		<Unit filename="Util/Tuple.hpp" />
 		<Unit filename="Util/ValueWithDescription.cpp" />
 		<Unit filename="Util/ValueWithDescription.hpp" />
 		<Unit filename="Util/VecD.cpp" />

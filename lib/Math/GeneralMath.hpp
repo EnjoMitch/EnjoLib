@@ -69,6 +69,7 @@ struct GeneralMath
 	double Log10(double n) const;
 	double PowInt(double x, int exp) const;
 	double Sqrt(double x) const;
+	double Exp(double x) const;
 	/// Returns angle in <-PI, PI> range
 	double GetInPIRange( double angle ) const;
 	/// Returns angle in <-2PI, 2PI> range

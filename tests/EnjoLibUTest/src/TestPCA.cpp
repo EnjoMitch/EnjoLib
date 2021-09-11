@@ -8,8 +8,6 @@
 #include <Statistical/PCAAuto.hpp>
 #include <Statistical/EigenAbstract.hpp>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

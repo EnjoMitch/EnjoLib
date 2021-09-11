@@ -34,14 +34,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "OptiSubject.hpp"
 #include "../GeneralMath.hpp"
 #include <cmath>
-#include <utility>
+#include <Template/AlgoSTDThin.hpp>
 
 using namespace EnjoLib;
 
 OptiBinSearch::OptiBinSearch(double minArg, double maxArg, double eps)
 {
     if (minArg > maxArg)
-        std::swap(minArg, maxArg);
+        AlgoSTDThin().Swap(minArg, maxArg);
 
     this->m_minArg = minArg;
     this->m_maxArg = maxArg;

@@ -5,8 +5,6 @@
 #include <Util/CharManipulations.hpp>
 #include <Util/Str.hpp>
 
-//#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 
@@ -17,7 +15,10 @@ TEST(Strace_1)
 // : msg
     const CharManipulations cman;
     const char * msg = "msg";
-    const Str gen = STRACE_THROW(msg);
+    
+    ///
+    const Str gen = STRACE_THROW(msg); // Line number 20
+    ///
     //cout << gen << endl;
     CHECK(cman.Contains(gen, msg));
     CHECK(cman.Contains(gen, "Strace_1"));

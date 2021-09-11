@@ -1,17 +1,16 @@
 #include "pch_test.h"
 
-#include <STD/Iostream.hpp>
-
+#include <Util/CoutBuf.hpp>
 
 #include <UnitTest++/UnitTest++.h>
 //#include <cmath>
 
 using namespace std;
-//using namespace EnjoLib;
+using namespace EnjoLib;
 
 int main()
 {
-    cout << "Testing EnjoLib!" << endl;
+    LOGL << "Testing EnjoLib!" << Endl;
     return UnitTest::RunAllTests();
 }
 

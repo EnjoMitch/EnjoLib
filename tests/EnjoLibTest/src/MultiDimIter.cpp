@@ -1,9 +1,9 @@
 #include "MultiDimIter.h"
 #include <Math/MultiDimIter/MultiDimIterTpl.hpp>
 #include <Math/MultiDimIter/IMultiDimIterConsumerTpl.hpp>
-#include <STD/VectorCpp.hpp>
+#include <Util/CoutBuf.hpp>
 
-#include <STD/Iostream.hpp>
+#include <STD/VectorCpp.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -19,11 +19,12 @@ class Consumer : public IMultiDimIterConsumerTpl
 
 void Consumer::Consume(const EnjoLib::VecD & data)
 {
+    ELO
     for (int i = 0; i < int(data.size()); i++)
     {
-        cout << data[i] << ' ';
+        LOG << data[i] << ' ';
     }
-    cout << endl;
+    LOG << Endl;
 }
 
 class ConsumerDummy : public IMultiDimIterConsumerTpl

@@ -3,8 +3,6 @@
 #include <Statistical/MovingWindow.hpp>
 #include <UnitTest++/UnitTest++.h>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

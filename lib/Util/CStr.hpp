@@ -2,12 +2,13 @@
 #define CSTR_H
 
 #include "Str.hpp"
-#include <STD/String.hpp>
+#include <Util/CharManipulations.hpp>
 
 template <class T>
 static EnjoLib::Str ToStr(const T & t, char sep = '|')
 {
-    return std::to_string(t) + sep;
+    const EnjoLib::CharManipulations cman;
+    return cman.ToStr(t) + sep;
 }
 
 class CStr
@@ -18,7 +19,7 @@ class CStr
         template <class T>
         EnjoLib::Str operator() (const T & t) const
         {
-            return EnjoLib::Str(t, m_sep).str();
+            return EnjoLib::Str(t, m_sep);
         }
 
     private:

@@ -2,7 +2,7 @@
 #include "GeneralMath.hpp"
 
 #include <STD/VectorCpp.hpp>
-#include <utility>
+#include <Util/Pair.hpp>
 #include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 
@@ -11,7 +11,7 @@ using namespace EnjoLib;
 
 SplineLin::~SplineLin(){}
 SplineLin::SplineLin(const EnjoLib::VecD& in)
-: spline(new std::vector<std::pair<EnjoLib::Point, EnjoLib::Point> >)
+: spline(new std::vector<EnjoLib::Pair<EnjoLib::Point, EnjoLib::Point> >)
 {
     for (int i = 1; i < int(in.size()); ++i)
     {
@@ -20,7 +20,7 @@ SplineLin::SplineLin(const EnjoLib::VecD& in)
         const double x2 = (i-0);
         const double y1 = in.at(i-1);
         const double y2 = in.at(i-0);
-        spline.GetRW().push_back(make_pair(Point(x1, y1), Point(x2, y2)));
+        spline.GetRW().push_back(EnjoLib::MakePair(Point(x1, y1), Point(x2, y2)));
     }
 }
 
@@ -29,14 +29,14 @@ double SplineLin::Interpol(double x) const
     GeneralMath gm;
     for (unsigned i = 0; i < spline.Get().size(); ++i)
     {
-        const pair<Point, Point> & segment = spline.Get().at(i);
+        const Pair<Point, Point> & segment = spline.Get().at(i);
         if (segment.first.x <= x && x <= segment.second.x)
         {
             return gm.LinearInterpol(x, segment.first, segment.second);
         }
     }
     // Oops. Didn't find yet. Perhaps it's a rounding error
-    const pair<Point, Point> & segmentLast = spline.Get().at(spline.Get().size()-1);
+    const Pair<Point, Point> & segmentLast = spline.Get().at(spline.Get().size()-1);
     int xRounded = gm.round(x);
     if (xRounded == segmentLast.second.x)
     {

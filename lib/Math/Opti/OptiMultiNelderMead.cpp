@@ -4,8 +4,9 @@
 #include "../../Statistical/Assertions.hpp"
 //#include "../../Statistical/VectorD.hpp"
 #include "../../Util/VecD.hpp"
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
 #include <Ios/Osstream.hpp>
+#include <Ios/IoManip.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -66,7 +67,7 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
         oss << "\n";
         for ( i = 0; i < n; i++ )
         {
-            oss.SetW(14);
+            IoManip::SetW(oss, 14);
             oss << "  " << start[i] << "\n";
         }
         oss << "\n";
@@ -85,7 +86,7 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
         oss << "\n";
         for ( i = 0; i < n; i++ )
         {
-            oss.SetW(14);
+            IoManip::SetW(oss, 14);
             oss.OStr() << "  " << xmin[i] << "\n";
         }
 
@@ -95,7 +96,7 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
         oss << "\n";
         oss << "  Number of iterations = " << icount << "\n";
         oss << "  Number of restarts =   " << numres << "\n";
-        cout << oss.str();
+        LOGL << oss.str();
     }
     delete [] start;
     delete [] step;

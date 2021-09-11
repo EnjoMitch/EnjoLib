@@ -11,15 +11,9 @@ class Ostream
     public:
         Ostream();
         virtual ~Ostream();
-        
+
         virtual stdfwd::ostream & OStr() = 0;
         virtual const stdfwd::ostream & OStr() const = 0;
-        
-        Ostream & SetPrecision(int prec);
-        Ostream & SetW(int width);
-        Ostream & SetFill(char toFill);
-        Ostream & Fixed();
-        Ostream & Scientific();
         
         template <class T> Ostream& operator << (const T & val);
 
@@ -34,8 +28,10 @@ class Ostream
         void AddVal(const char * val);
         void AddVal(const stdfwd::string & val);
         void AddVal(const EnjoLib::Str & str);
+        void AddVal(const Ostream & ostr);
 
     private:
+        void AddStr(const stdfwd::string & val);
 };
 
 template <class T> Ostream& Ostream::operator << (const T & val)

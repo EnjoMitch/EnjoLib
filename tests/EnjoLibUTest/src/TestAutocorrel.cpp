@@ -4,7 +4,6 @@
 #include <Statistical/Autocorrelation.hpp>
 //#include <Statistical/VecD.hpp>
 #include <Util/VecD.hpp>
-#include <STD/Iostream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

@@ -125,6 +125,11 @@ double GeneralMath::Sqrt(double x) const
     return sqrt(x);
 }
 
+double GeneralMath::Exp(double x) const
+{
+    return exp(x);
+}
+
 double GeneralMath::LinearInterpol( double x, const Point & p1, const Point & p2 ) const
 {
     // y = ax + b

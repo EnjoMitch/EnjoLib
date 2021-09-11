@@ -14,8 +14,8 @@ class IosBase
     private:
 };
 
-static const char Nl = '\n';
-static const char * Endl = "!ENDL_BABY!";
+extern const char Nl;
+extern const char * Endl;
 
 }
 

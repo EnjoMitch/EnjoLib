@@ -1,7 +1,6 @@
 #include "Nelder.h"
 
-#include <STD/Iostream.hpp>
-
+#include <Util/CoutBuf.hpp>
 #include <Math/Opti/OptiMultiNelderMead.hpp>
 #include <Math/Opti/OptiMultiBinSearch.hpp>
 #include "OptiMultiRosenbrok.h"
@@ -22,14 +21,11 @@ void Nelder::Run() const
     {
         OptiMultiRosenbrok subj;
         Result<VecD > res = OptiMultiNelderMead().Run( subj );
-        cout << "Rosenbrock Nelder = " << res.value.at(0) << ", " << res.value.at(1) << endl;
+        LOGL << "Rosenbrock Nelder = " << res.value.at(0) << ", " << res.value.at(1) << Endl;
     }
     {
         OptiMultiRosenbrok subj;
         Result<VecD > res = OptiMultiBinSearch().Run( subj, 50, 0.0001 );
-        cout << "Rosenbrock BinSer = " << res.value.at(0) << ", " << res.value.at(1) << endl;
+        LOGL << "Rosenbrock BinSer = " << res.value.at(0) << ", " << res.value.at(1) << Endl;
     }
-
-
-
 }

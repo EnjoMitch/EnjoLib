@@ -2,6 +2,7 @@
 
 #include <Util/CharManipulations.hpp>
 #include <Ios/Osstream.hpp>
+#include <Ios/IoManip.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -14,8 +15,7 @@ StrColour::~StrColour(){}
 EnjoLib::Str StrColour::GenNorm(float val, int precision)
 {
     Osstream oss;
-    oss.SetPrecision(precision);
-    oss.Fixed();
+    oss << IoManip::SetPrecision(oss, precision) << IoManip::Fixed(oss);
     oss << val;
     
     return GenNorm(val, oss.str());
@@ -23,8 +23,7 @@ EnjoLib::Str StrColour::GenNorm(float val, int precision)
 EnjoLib::Str StrColour::GenBright(float val, int precision)
 {
     Osstream oss;
-    oss.SetPrecision(precision);
-    oss.Fixed();
+    oss << IoManip::SetPrecision(oss, precision) << IoManip::Fixed(oss);
     oss << val;
     
     return GenBright(val, oss.str());

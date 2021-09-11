@@ -3,7 +3,6 @@
 #include <UnitTest++/UnitTest++.h>
 
 #include <Util/VecOp.hpp>
-#include <STD/Iostream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

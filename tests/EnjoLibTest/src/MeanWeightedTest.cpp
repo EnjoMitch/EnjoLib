@@ -1,9 +1,9 @@
 #include "MeanWeightedTest.h"
 #include <Statistical/MeanWeighted.hpp>
-
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
 
 using namespace std;
+using namespace EnjoLib;
 
 MeanWeightedTest::MeanWeightedTest()
 {
@@ -11,7 +11,7 @@ MeanWeightedTest::MeanWeightedTest()
     wmn.AddValWeight(1, 3);
     wmn.AddValWeight(3, 1);
 
-    cout << "Mean = " << wmn.GetMean() << endl;
+    LOGL << "Mean = " << wmn.GetMean() << Endl;
 }
 
 MeanWeightedTest::~MeanWeightedTest()

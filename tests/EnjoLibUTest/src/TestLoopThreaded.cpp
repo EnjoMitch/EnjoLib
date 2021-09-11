@@ -6,8 +6,6 @@
 #include <Template/VecT.hpp>
 #include <Util/VecD.hpp>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

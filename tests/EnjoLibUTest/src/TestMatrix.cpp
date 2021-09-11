@@ -3,7 +3,6 @@
 #include <UnitTest++/UnitTest++.h>
 #include <Statistical/Matrix.hpp>
 
-#include <STD/Iostream.hpp>
 #include <STD/VectorCpp.hpp>
 #include <Util/VecD.hpp>
 

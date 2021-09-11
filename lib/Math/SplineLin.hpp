@@ -2,6 +2,7 @@
 #define SPLINELIN_H
 
 #include <Util/VecD.hpp>
+#include <Util/Pair.hpp>
 #include <Template/SafePtr.hpp>
 #include "../Systems/Point.hpp"
 
@@ -24,7 +25,7 @@ class SplineLin
 
     private:
         int GetSplineSize() const;
-        SafePtr<stdfwd::vector<std::pair<EnjoLib::Point, EnjoLib::Point> > > spline;
+        SafePtr<stdfwd::vector<EnjoLib::Pair<EnjoLib::Point, EnjoLib::Point> > > spline;
 };
 }
 #endif // SPLINELIN_H

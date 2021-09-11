@@ -2,17 +2,20 @@
 
 #include <Statistical/Centroid.hpp>
 #include <Statistical/VectorD.hpp>
-#include <STD/Iostream.hpp>
-#include <sstream>
+#include <Math/RandomMath.hpp>
+#include <Ios/Osstream.hpp>
+#include <Util/CoutBuf.hpp>
 
 using namespace EnjoLib;
 using namespace std;
 
 CentroidTest::CentroidTest()
 {
+    ELO
     Centroid<VectorD> centr;
 
-    srand(time(NULL));
+    const RandomMath rmath;
+    rmath.RandSeed();
     int numVec = 5;
     int dims = 8;
 
@@ -23,18 +26,17 @@ CentroidTest::CentroidTest()
         VectorD in;
         for (int i = 0; i < dims; ++i)
         {
-            double y = (1.0 * rand() / (RAND_MAX));
+            double y = rmath.Rand(0, 1);
             in.push_back(y);
         }
         samples.push_back(in);
-        ostringstream ossFile;
+        Osstream ossFile;
         ossFile << "var" << n;
-        cout << in.PrintPython(ossFile.str().c_str());
+        LOG << in.PrintPython(ossFile.str().c_str());
     }
 
     VectorD centroid = centr.Calc(samples);
-    cout << centroid.PrintPython("centroid");
-
+    LOG << centroid.PrintPython("centroid");
 }
 
 CentroidTest::~CentroidTest()

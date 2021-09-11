@@ -1,14 +1,14 @@
 #ifndef AXISRESCALE_H
 #define AXISRESCALE_H
 
-#include <utility>
+#include <Util/Pair.hpp>
 
 namespace EnjoLib
 {
 class AxisRescale
 {
     public:
-        typedef std::pair<double, double> PairD;
+        typedef Pair<double, double> PairD;
         AxisRescale(const PairD & axisStartEndFrom,
                     const PairD & axisStartEndTo);
         virtual ~AxisRescale(){}

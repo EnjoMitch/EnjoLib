@@ -3,8 +3,7 @@
 #include <Template/CorradePointer.h>
 #include <Template/CorradePointer.h>
 #include <Template/SharedPtr.hpp>
-
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -19,7 +18,7 @@ struct Dest
 {
     virtual ~Dest()
     {
-        cout << "Dest::~Dest()\n";
+        LOGL << "Dest::~Dest()\n";
     }
     float a = 5;
 };
@@ -36,6 +35,7 @@ Pointer<A> FactorySafeTest()
 
 static void TestUnique()
 {
+    ELO
     Corrade::Containers::Pointer<A> ptr;
     try
     {
@@ -43,16 +43,16 @@ static void TestUnique()
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        LOG << "Successfully thrown\n " << ex.what() << Endl;
     }
     try
     {
-        cout << (*ptr).a << endl;
-        cout << ptr->a << endl;
+        LOG << (*ptr).a << Endl;
+        LOG << ptr->a << Endl;
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        LOG << "Successfully thrown\n " << ex.what() << Endl;
     }
     Corrade::Containers::Pointer<A> barePtr = FactoryPolimorpmTest();
     try
@@ -62,27 +62,27 @@ static void TestUnique()
     catch (std::exception & ex)
     {
         // Doesn't reach this!
-        cout << "Successfully thrown polimorph\n " << ex.what() << endl;
+        LOG << "Successfully thrown polimorph\n " << ex.what() << Endl;
     }
 
     ptr = Corrade::Containers::Pointer<A>(new A());
-    cout << "Val = " << ptr->a << endl;
+    LOG << "Val = " << ptr->a << Endl;
 
     {
         Corrade::Containers::Pointer<Dest> pdest = Corrade::Containers::Pointer<Dest>(new Dest);
     }
-    cout << "~Dest should have been called\n";
+    LOG << "~Dest should have been called\n";
 
     {
         SharedPtr<Dest> pdest = SharedPtr<Dest>(new Dest);
     }
-    cout << "~Dest should have been called\n";
+    LOG << "~Dest should have been called\n";
     }
     
     
 void TestCorrade()
     {
-
+        ELO
         Pointer<A> ptr;
     try
     {
@@ -90,16 +90,16 @@ void TestCorrade()
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        LOG << "Successfully thrown\n " << ex.what() << Endl;
     }
     try
     {
-        cout << (*ptr).a << endl;
-        cout << ptr->a << endl;
+        LOG << (*ptr).a << Endl;
+        LOG << ptr->a << Endl;
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        LOG << "Successfully thrown\n " << ex.what() << Endl;
     }
     Pointer<A> barePtr = FactorySafeTest();
     try
@@ -109,17 +109,17 @@ void TestCorrade()
     catch (std::exception & ex)
     {
         // Doesn't reach this!
-        cout << "Successfully thrown polimorph\n " << ex.what() << endl;
+        LOG << "Successfully thrown polimorph\n " << ex.what() << Endl;
     }
 
     ptr = Pointer<A>(new A());
-    cout << "Val = " << ptr->a << endl;
+    LOG << "Val = " << ptr->a << Endl;
 
     {
         Pointer<Dest> pdest = Pointer<Dest>(new Dest);
         //Pointer<Dest> pdest(Pointer<Dest>(new Dest));
     }
-    cout << "~Dest should have been called\n";
+    LOG << "~Dest should have been called\n";
 }
 
 UniquePtrTest::~UniquePtrTest(){}
@@ -127,7 +127,5 @@ UniquePtrTest::UniquePtrTest()
 {
     TestUnique();
     TestCorrade();
-
-
 }
 

@@ -3,8 +3,6 @@
 #include <UnitTest++/UnitTest++.h>
 #include <Util/CharManipulations.hpp>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

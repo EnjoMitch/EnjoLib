@@ -9,8 +9,6 @@
 #include <Template/CorradePointer.h>
 #include <STD/VectorCpp.hpp>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

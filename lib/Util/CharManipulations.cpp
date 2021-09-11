@@ -34,6 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "CharManipulations.hpp"
 #include "CharManipulationsTpl.hpp"
 #include <Util/Except.hpp>
+#include <Util/Pair.hpp>
 
 #include <STD/Ostream.hpp>
 #include <STD/Algorithm.hpp>
@@ -105,12 +106,12 @@ bool CharManipulations::Contains(const EnjoLib::Str & str, const EnjoLib::Str & 
     return (str.str().find(toFind.c_str()) != std::string::npos);
 }
 
-std::pair<Str, Str> CharManipulations::GetFileNameExtension(const Str & fileWithExt) const
+EnjoLib::Pair<Str, Str> CharManipulations::GetFileNameExtension(const Str & fileWithExt) const
 {
     std::size_t found = fileWithExt.str().find_last_of(".");
     if (found == std::string::npos)
-        return std::pair<Str, Str>();
-    return make_pair(fileWithExt.str().substr(0,found), fileWithExt.str().substr(found+1));
+        return EnjoLib::Pair<Str, Str>();
+    return EnjoLib::Pair<Str, Str>(fileWithExt.str().substr(0,found), fileWithExt.str().substr(found+1));
 }
 
 

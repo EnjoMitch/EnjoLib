@@ -7,8 +7,8 @@ option(USE_OPTI_O3 	"Use O3" ON)
 option(USE_OPTI_O0 	"Use O0" OFF)
 option(USE_OPTI_NATIVE 	"Use native build" OFF)
 option(USE_OPTI_GENERIC	"Use generic build" OFF)
+option(USE_DEBUG 	"Use Debug" OFF)
 option(USE_DEP_TREE 	"Use Dep Tree -H" OFF)
-option(USE_COTIRE 	"Use Cotire" OFF)
 option(USE_CCACHE 	"Use CCache" ON)
 option(USE_COMPIL_PROFILER "Use compilation profiling (Clang)" OFF)
 
@@ -58,9 +58,33 @@ macro (enjo_target_unity target)
 	endif()
 endmacro()
 
+# TODO: Make speed tests
+macro (enjo_target_pch target pch)
+	if (USE_PCH)
+		enjo_target_pch_internal(${target} ${pch})
+	endif()
+endmacro()
+
+macro (enjo_target_pch_agress target)
+	if (USE_PCH)
+		if (USE_PCH_AGGRESS)
+			enjo_target_pch_internal(${target} ${pch})
+			target_compile_options(${target} PRIVATE "-fpch-preprocess")
+		endif()
+	endif()
+endmacro()
+
+macro (enjo_target_pch_internal target pch)
+	target_precompile_headers(${target} PRIVATE ${pch}) # Might be slower. Interferes with ccache
+endmacro()
+
 #if (USE_RELEASE)
 #	set(CMAKE_CONFIGURATION_TYPES "MinSizeRel" CACHE STRING "" FORCE)
 #endif()
+if (USE_DEBUG)
+	set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "" FORCE)
+endif()
+
 if (USE_OPTI_O3)
 	add_compile_options("-O3")
 	#add_compile_options("-flto") # Breaks multi-tf-test in dynamic linkage
@@ -97,14 +121,7 @@ else()
 	endif()
 endif()
 
-if (USE_COTIRE)
-    include(cotire)
-endif()
-
 macro (SetupCotire target)
-    if (USE_COTIRE)
-        cotire(${target})
-    endif()
 endmacro()
 
 function (enjoSetupTarget target)
@@ -136,6 +153,9 @@ function (enjoSymlink projName linkSrc linkDst)
 endfunction()
 function (enjoSymlinkData projName)
 	enjoSymlink(${projName} ${CMAKE_CURRENT_SOURCE_DIR}/data data)
+endfunction()
+function (enjoSymlinkCfg projName)
+	enjoSymlink(${projName} ${CMAKE_CURRENT_SOURCE_DIR}/cfg cfg)
 endfunction()
 
 function (enjoCopyFollowSymlinks source dest)

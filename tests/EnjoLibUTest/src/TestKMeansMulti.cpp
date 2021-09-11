@@ -4,8 +4,6 @@
 #include <Statistical/VectorD.hpp>
 #include <Statistical/MeanWeighted.hpp>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

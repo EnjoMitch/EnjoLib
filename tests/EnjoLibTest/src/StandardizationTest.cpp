@@ -3,9 +3,9 @@
 //#include <Statistical/VecD.hpp>
 #include <Statistical/Matrix.hpp>
 #include <Util/Str.hpp>
+#include <Util/CoutBuf.hpp>
 
 #include <STD/VectorCpp.hpp>
-#include <STD/Iostream.hpp>
 
 
 using namespace EnjoLib;
@@ -21,59 +21,61 @@ StandardizationTest::StandardizationTest()
 
 void StandardizationTest::TestVec() const
 {
+    ELO
     Statistical stat;
     const VecD vec = GetVec();
     {
         const VecD standardized = stat.Standardize(vec);
-        cout << standardized.PrintPython("Std");
-        cout << "std = " << stat.StandardDeviation(standardized) << endl;
+        LOG << standardized.PrintPython("Std");
+        LOG << "std = " << stat.StandardDeviation(standardized) << Endl;
     }
     {
         VecD apply;
         apply.push_back(vec.at(0));
         apply.push_back(vec.at(1));
         const VecD standardized = stat.Standardize(vec, apply);
-        cout << standardized.PrintPython("Std") << "above should be equal\n";
-        cout << "std = " << stat.StandardDeviation(standardized) << endl;
+        LOG << standardized.PrintPython("Std") << "above should be equal\n";
+        LOG << "std = " << stat.StandardDeviation(standardized) << Endl;
     }
 }
 
 void StandardizationTest::TestMat() const
 {
+    ELO
     Statistical stat;
     const Matrix mat = GetMat();
     {
         const Matrix standardized = stat.Standardize(mat);
-        cout << standardized.PrintScilab("Std");
-        cout << "std = " << stat.StandardDeviation(standardized.T().at(0)) << endl;
-        cout << "std = " << stat.StandardDeviation(standardized.T().at(1)) << endl;
+        LOG << standardized.PrintScilab("Std");
+        LOG << "std = " << stat.StandardDeviation(standardized.T().at(0)) << Endl;
+        LOG << "std = " << stat.StandardDeviation(standardized.T().at(1)) << Endl;
     }
     {
         //VecD apply;
         //apply.push_back(vec.at(0));
         //apply.push_back(vec.at(1));
         //const VecD standardized = stat.Standardize(vec, apply);
-        //cout << standardized.PrintPython("Std") << "above should be equal\n";
-        //cout << "std = " << stat.StandardDeviation(standardized) << endl;
+        //LOG << standardized.PrintPython("Std") << "above should be equal\n";
+        //LOG << "std = " << stat.StandardDeviation(standardized) << Endl;
     }
 }
 
 void StandardizationTest::TestMatStdDev() const
 {
-    cout << '\n' << "TestMatStdDev()\n";
+    ELO
+    LOG << '\n' << "TestMatStdDev()\n";
     const Statistical stat;
     {
         const Matrix mat = GetMat();
         const Matrix standardized = stat.Standardize(mat);
-        cout << standardized.PrintScilab("Std");
-        cout << "Mean = " << standardized.T().at(1).Mean() << endl;
-        cout << "StdDev 2d = " << stat.StandardDeviation(standardized) << endl;
-        cout << "std = " << stat.StandardDeviation(standardized.T().at(0)) << endl;
-        //cout << "std = " << stat.StandardDeviation(standardized.T().at(1)) << endl;
+        LOG << standardized.PrintScilab("Std");
+        LOG << "Mean = " << standardized.T().at(1).Mean() << Endl;
+        LOG << "StdDev 2d = " << stat.StandardDeviation(standardized) << Endl;
+        LOG << "std = " << stat.StandardDeviation(standardized.T().at(0)) << Endl;
+        //LOG << "std = " << stat.StandardDeviation(standardized.T().at(1)) << Endl;
 
         EnjoLib::VecD vecd(vector<double>{20, -20});
-        cout << "DistToMean = " << stat.DistFromMean(standardized, stat.Standardize(vecd)) << endl;
-
+        LOG << "DistToMean = " << stat.DistFromMean(standardized, stat.Standardize(vecd)) << Endl;
         //stat.Centroid(
     }
 }

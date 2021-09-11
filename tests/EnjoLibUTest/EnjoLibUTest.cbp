@@ -71,6 +71,7 @@
 		<Unit filename="src/TestLoopThreaded.cpp" />
 		<Unit filename="src/TestMatrix.cpp" />
 		<Unit filename="src/TestMovingWindow.cpp" />
+		<Unit filename="src/TestNew.cpp" />
 		<Unit filename="src/TestOfstream.cpp" />
 		<Unit filename="src/TestOpti.cpp" />
 		<Unit filename="src/TestPCA.cpp" />
@@ -80,6 +81,7 @@
 		<Unit filename="src/TestStackTrace.cpp" />
 		<Unit filename="src/TestStatistical.cpp" />
 		<Unit filename="src/TestStr.cpp" />
+		<Unit filename="src/TestTuple.cpp" />
 		<Unit filename="src/TestVector.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/pch_test.h">

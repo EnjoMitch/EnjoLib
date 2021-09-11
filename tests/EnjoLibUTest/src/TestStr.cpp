@@ -5,8 +5,6 @@
 
 #include <UnitTest++/UnitTest++.h>
 
-#include <STD/Iostream.hpp>
-
 using namespace std;
 using namespace EnjoLib;
 

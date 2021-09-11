@@ -1,7 +1,6 @@
 #include "ClusteringTest.h"
 #include <Statistical/KMeans1d.hpp>
-
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -11,6 +10,7 @@ ClusteringTest::~ClusteringTest(){}
 
 void ClusteringTest::Run()
 {
+    ELO
     KMeans1d kmeans(false);
     EnjoLib::VecF op;
     op.push_back((0));
@@ -18,19 +18,19 @@ void ClusteringTest::Run()
     op.push_back((12));
     op.push_back((14));
 
-    cout << "in:" << endl;
+    LOG << "in:" << Endl;
     for (const float & o : op)
     {
-        cout << o << endl;
+        LOG << o << Endl;
         kmeans.AddObservation(o);
     }
     int reductions = 2;
     EnjoLib::VecF ret = kmeans.Reduce(reductions);
 
-    cout << "\nout: (reductions = " << reductions << ")" << endl;
+    LOG << "\nout: (reductions = " << reductions << ")" << Endl;
     for (const float & o : ret)
     {
-        cout << o << endl;
+        LOG << o << Endl;
     }
         //float result = ret.at(0).level;
         //float expected = 1;

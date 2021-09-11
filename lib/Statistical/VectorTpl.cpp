@@ -35,6 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "../Util/CharManipulationsTplVec.hpp"
 #include "../Util/Tokenizer.hpp"
 #include <Ios/Osstream.hpp>
+#include <Ios/IoManip.hpp>
 #include <Util/Except.hpp>
 #include <Math/GeneralMath.hpp>
 
@@ -127,7 +128,7 @@ EnjoLib::Str VectorTpl<T>::Print(int precision) const
     EnjoLib::Osstream ss;
     if (precision > 0)
     {
-        ss.SetPrecision(precision);
+        IoManip::SetPrecision(ss, precision);
     }
     for (CIt cit = this->begin(), citend = this->end(); cit != citend; ++cit)
     {

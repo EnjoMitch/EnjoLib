@@ -5,6 +5,7 @@
 #include <Util/PimplCopier.hpp>
 #include <Util/PimplDeleter.hpp>
 #include <Ios/Osstream.hpp>
+#include <Ios/IoManip.hpp>
 
 #include <STD/Map.hpp>
 
@@ -47,7 +48,7 @@ EnjoLib::Str Loss::PrintRel() const
     Osstream oss;
     const GeneralMath gmat;
     oss << "loss = " << gmat.round(sum*100)/100.0 << " ± ";
-    oss.SetPrecision(3);
+    IoManip::SetPrecision(oss, 3);
     oss << GetRelDiff() * 100 << " % ";
     return oss.str();
 }

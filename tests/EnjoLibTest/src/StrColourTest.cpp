@@ -1,6 +1,6 @@
 #include "StrColourTest.hpp"
 #include <Util/StrColour.hpp>
-#include <STD/Iostream.hpp>
+#include <Util/CoutBuf.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -8,8 +8,9 @@ using namespace EnjoLib;
 StrColourTest::~StrColourTest(){}
 StrColourTest::StrColourTest()
 {
-    cout << StrColour::Gen(31, "Czerw") << endl;
-    cout << StrColour::GenNorm(StrColour::Col::Red, "Czerw") << endl;
-    cout << StrColour::GenNorm(StrColour::Col::Green, "Ziel") << endl;
-    cout << StrColour::GenBright(StrColour::ColBright::Green, "ZielJasny") << endl;
+    ELO
+    LOG << StrColour::Gen(31, "Czerw") << Endl;
+    LOG << StrColour::GenNorm(StrColour::Col::Red, "Czerw") << Endl;
+    LOG << StrColour::GenNorm(StrColour::Col::Green, "Ziel") << Endl;
+    LOG << StrColour::GenBright(StrColour::ColBright::Green, "ZielJasny") << Endl;
 }

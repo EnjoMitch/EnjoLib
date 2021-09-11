@@ -5,8 +5,7 @@
 #include <Template/CacheRAMThreadSafe.hpp>
 #include <Util/Str.hpp>
 #include <UnitTest++/UnitTest++.h>
-#include <STD/Iostream.hpp>
-#include <tuple>
+#include <STD/Tuple.hpp>
 
 using namespace EnjoLib;
 

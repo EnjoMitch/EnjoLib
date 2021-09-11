@@ -6,9 +6,6 @@
 #include "../Util/CharManipulations.hpp"
 #include "../Util/Tokenizer.hpp"
 
-
-#include <STD/String.hpp>
-
 using namespace EnjoLib;
 // Used for reconstruction
 ScalingOpStandardize::ScalingOpStandardize(double refMean, double refStdDev)
@@ -40,8 +37,8 @@ double ScalingOpStandardize::operator()(const double inVal) const
 }
 EnjoLib::Str ScalingOpStandardize::ToStr() const
 {
-    //CharManipulations cman;
-    const EnjoLib::Str str = std::to_string(m_refMean) + " " + std::to_string(m_refStdDev);
+    const CharManipulations cman;
+    const EnjoLib::Str str = cman.ToStr(m_refMean) + " " + cman.ToStr(m_refStdDev);
     //cout << m_refMean << ", " << m_refStdDev << ", " << str << endl;
     return str;
 }

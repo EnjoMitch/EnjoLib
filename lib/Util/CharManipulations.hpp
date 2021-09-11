@@ -36,6 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <Util/Str.hpp>
 #include <Util/VecStr.hpp>
+#include <Util/Pair.hpp>
 #include <3rdParty/stdfwd.hh>
 
 namespace EnjoLib
@@ -55,7 +56,7 @@ public:
 	bool Contains(const EnjoLib::Str & str, const EnjoLib::Str & toFind) const;
 	//bool EndsWith(const EnjoLib::Str & str, const EnjoLib::Str & sufffix) const;
 	bool EndsWith(const Str & str, const Str & sufffix) const;
-	stdfwd::pair<Str, Str> GetFileNameExtension(const Str & fileWithExt) const;
+	EnjoLib::Pair<Str, Str> GetFileNameExtension(const Str & fileWithExt) const;
 	bool ToDouble(const EnjoLib::Str & in, double * d) const;
 	double ToDouble(const EnjoLib::Str & in) const;
 	int ToInt(const EnjoLib::Str & in) const;

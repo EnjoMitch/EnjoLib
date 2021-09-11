@@ -2,8 +2,7 @@
 #include <Template/IterAdaptStd.hpp>
 #include <Util/Iters.hpp>
 
-#include <iterator>
-#include <algorithm>
+#include <STD/Algorithm.hpp>
 #include <numeric>
 
 using namespace EnjoLib;

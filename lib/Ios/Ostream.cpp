@@ -1,41 +1,9 @@
 #include <Ios/Ostream.hpp>
 #include <STD/Ostream.hpp>
-#include <STD/Iomanip.hpp>
 
 using namespace EnjoLib;
 Ostream::Ostream(){}
 Ostream::~Ostream(){}
-
-Ostream & Ostream::SetPrecision(int prec)
-{
-    OStr() << std::setprecision(prec);
-    return *this;
-}
-
-Ostream & Ostream::SetW(int width)
-{
-    OStr() << std::setw(width);
-    return *this;
-}
-
-Ostream & Ostream::SetFill(char toFill)
-{
-    OStr() << std::setfill(toFill);
-    return *this;
-}
-
-Ostream & Ostream::Fixed()
-{
-    std::fixed(OStr());
-    return *this;
-}
-
-Ostream & Ostream::Scientific()
-{
-    std::scientific(OStr());
-    return *this;
-}
-
 
 void Ostream::AddVal(double val)
 {
@@ -75,19 +43,36 @@ void Ostream::AddVal(unsigned int val)
 void Ostream::AddVal(const char * val)
 {
     //Add(val);
-    OStr() << val;
+    AddStr(val);
 }
 
 void Ostream::AddVal(const std::string & val)
 {
-    //Add(val);
-    OStr() << val;
+    AddStr(val);
 }
 
 void Ostream::AddVal(const EnjoLib::Str & val)
 {
     //Add(val);
-    OStr() << val;
+    AddStr(val.str());
+}
+
+void Ostream::AddStr(const stdfwd::string & val)
+{
+    if (val == Endl)
+    {
+        OStr() << std::endl;
+    }
+    else
+    {
+        //Add(val);
+        OStr() << val;
+    }
+}
+
+void Ostream::AddVal(const Ostream & ostr)
+{
+
 }
 
 /*

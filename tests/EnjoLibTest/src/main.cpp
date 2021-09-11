@@ -21,22 +21,20 @@
 //#include "CoutBufTest.h"
 
 #include <Util/Tokenizer.hpp>
-
-#include <STD/Iostream.hpp>
-
-#include <cmath>
+#include <Util/CoutBuf.hpp>
 
 using namespace std;
 using namespace EnjoLib;
 
 int main()
 {
+    ELO
     Tokenizer tok;
-    string testMsg = "EURCAD|Feed|Data";
+    Str testMsg = "EURCAD|Feed|Data";
     auto ret = tok.Tokenize(testMsg, '|');
-    cout << ret.at(0) << endl;
-    cout << ret.at(1) << endl;
-    cout << ret.at(2) << endl;
+    LOG << ret.at(0) << Endl;
+    LOG << ret.at(1) << Endl;
+    LOG << ret.at(2) << Endl;
     
     
 
