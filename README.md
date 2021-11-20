@@ -8,7 +8,7 @@ The library had been originally written as a common part of [my modules](http://
 
 # Licensing
 Copyright: Szymon Ender and other contributors (see individual files)
-License: **mostly** BSD, GPL v.2 & GPL v.3. See below:
+License: **mostly** BSD-3, GPL v.2 & GPL v.3. See below:
 
 Although the majority of the project is BSD-licensed, some specific parts are GPL-licensed. Please take note of the copyright notices of the headers of the classes, that you'd like to reuse in other projects. In near future, the copyleft GPL code shall be extracted into a seperate library, which will be GPL-only. Currently the classes awaiting for this extraction are:
 - Prof. Buckard's numerical classes under `lib/Math/Burkardt`
