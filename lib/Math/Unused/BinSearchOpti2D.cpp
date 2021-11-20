@@ -1,7 +1,6 @@
 #include "BinSearchOpti2D.hpp"
 #include "BinSearchOpti2DSubject.hpp"
 #include "../GeneralMath.hpp"
-#include <cmath>
 #include <Util/Pair.hpp>
 
 using namespace EnjoLib;

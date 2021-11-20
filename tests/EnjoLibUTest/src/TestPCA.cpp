@@ -7,6 +7,7 @@
 #include <Statistical/PCA.hpp>
 #include <Statistical/PCAAuto.hpp>
 #include <Statistical/EigenAbstract.hpp>
+#include <Statistical/EigenFactory.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -16,7 +17,8 @@ TEST(PCA_TestSizes)
     const Matrix & iris = DataSets::GetIris();
 
     const int numFeaturesToLeave = 3;
-    const PCA pca(iris, numFeaturesToLeave);
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
+    const PCA pca(*eig, iris, numFeaturesToLeave);
 
     const Matrix & xtr = pca.Transform(iris);
 
@@ -28,7 +30,8 @@ TEST(PCA_Inverse_close)
 {
     const int numFeaturesToLeave = 3;
     const Matrix & iris = DataSets::GetIris();
-    const PCA pca(iris, numFeaturesToLeave);
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
+    const PCA pca(*eig, iris, numFeaturesToLeave);
     const Matrix & xtr  = pca.Transform(iris);
     const Matrix & xinv = pca.InverseTransform(xtr);
 
@@ -44,7 +47,8 @@ TEST(PCA_Inverse_not_equal)
 {
     const int numFeaturesToLeave = 3;
     const Matrix & iris = DataSets::GetIris();
-    const PCA pca(iris, numFeaturesToLeave);
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
+    const PCA pca(*eig, iris, numFeaturesToLeave);
     const Matrix & xtr  = pca.Transform(iris);
     const Matrix & xinv = pca.InverseTransform(xtr);
 
@@ -59,7 +63,8 @@ TEST(PCA_covariance_working_example_PDF_1)
     //cout << "PDF 1\n";
     const Matrix & data = DataSets::GetPDF();
     const int numFeaturesToLeave = 1;
-    const PCA pca(data, numFeaturesToLeave);
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
+    const PCA pca(*eig, data, numFeaturesToLeave);
     const Matrix & xtr  = pca.Transform(data);
 
     CHECK_ARRAY2D_CLOSE(DataSets::GetPDFTransform1(), xtr, data.GetNRows(), numFeaturesToLeave, 0.001);
@@ -70,7 +75,8 @@ TEST(PCA_covariance_working_example_PDF_2)
     //cout << "PDF 2\n";
     const Matrix & data = DataSets::GetPDF();
     const int numFeaturesToLeave = 2;
-    const PCA pca(data, numFeaturesToLeave);
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
+    const PCA pca(*eig, data, numFeaturesToLeave);
     const Matrix & xtr  = pca.Transform(data);
 
     CHECK_ARRAY2D_CLOSE(DataSets::GetPDFTransform2(), xtr, data.GetNRows(), numFeaturesToLeave, 0.001);
@@ -79,28 +85,29 @@ TEST(PCA_covariance_working_example_PDF_2)
 TEST(PCA_auto)
 {
     const Matrix & data = DataSets::GetIris();
+    const auto eig = EigenFactory().Create(EIGENTYPE_DEFAULT);
     const PCAAuto pcaAuto;
     {
         const double quality = 0.91;
         const int expected = 1;
-        const int minComp1 = pcaAuto.FindMinimalComponents(data, quality);
-        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(data, quality);
+        const int minComp1 = pcaAuto.FindMinimalComponents(*eig, data, quality);
+        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(*eig, data, quality);
         CHECK_EQUAL(expected, minComp1);
         CHECK_EQUAL(expected, minComp2);
     }
     {
         const double quality = 0.9999;
         const int expected = 4;
-        const int minComp1 = pcaAuto.FindMinimalComponents(data, quality);
-        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(data, quality);
+        const int minComp1 = pcaAuto.FindMinimalComponents(*eig, data, quality);
+        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(*eig, data, quality);
         CHECK_EQUAL(expected, minComp1);
         CHECK_EQUAL(expected, minComp2);
     }
     {
         const double quality = 0.93;
         const int expected = 1;
-        const int minComp1 = pcaAuto.FindMinimalComponents(data, quality);
-        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(data, quality);
+        const int minComp1 = pcaAuto.FindMinimalComponents(*eig, data, quality);
+        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(*eig, data, quality);
         CHECK_EQUAL(expected, minComp1);
         CHECK_EQUAL(expected, minComp2);
         //cout << "minComp = " << minComp << endl;
@@ -108,8 +115,8 @@ TEST(PCA_auto)
     {
         const double quality = 0.2;
         const int expected = 1;
-        const int minComp1 = pcaAuto.FindMinimalComponents(data, quality);
-        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(data, quality);
+        const int minComp1 = pcaAuto.FindMinimalComponents(*eig, data, quality);
+        const int minComp2 = pcaAuto.FindMinimalComponentsBinSearch(*eig, data, quality);
         CHECK_EQUAL(expected, minComp1);
         CHECK_EQUAL(expected, minComp2);
         //cout << "minComp = " << minComp << endl;

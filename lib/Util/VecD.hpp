@@ -26,6 +26,7 @@ class VecD : public IVecT<double>
         //VecD( const stdfwd::initializer_list<float> & init );
         VecD( const stdfwd::initializer_list<double> & init );
         VecD( const stdfwd::vector<bool> & init );
+        VecD( const IIterable<double> & init );
         VecD( int n );
         VecD( int n, const double & val );
         VecD( const stdfwd::string & data );
@@ -68,6 +69,7 @@ class VecD : public IVecT<double>
         VecD Slice  (unsigned idx, unsigned len) const;
         VecD SliceTS(unsigned idx, unsigned len) const;
         VecD Diffs() const;
+        VecD Smooth(unsigned numToSmooth) const;
         VecD LogSigned() const;
 
         stdfwd::vector<bool> ToVecBool() const;
@@ -89,8 +91,9 @@ class VecD : public IVecT<double>
         bool operator > (const VecD & par) const;
         bool operator < (const VecD & par) const;
         bool operator != (const VecD & par) const;
-        
+
         bool operator == (const VecD & par) const;
+        bool operator == (const IVecT<double> & par) const override;
 
 
         const double & at(size_t idx) const override;
@@ -109,17 +112,17 @@ class VecD : public IVecT<double>
 
         double & First() override;
         double & Last() override;
-        
+
         double & front() override;
         double & back() override;
-        
+
         const double & front() const override;
         const double & back() const override;
 
         void reserve(size_t siz);
 
         VecD & operator = (size_t idx);
-        
+
         IITER_IMPL
 
         //typedef blRawIterator<double>              iterator;
@@ -127,9 +130,9 @@ class VecD : public IVecT<double>
 
         //typedef blRawReverseIterator<double>       reverse_iterator;
         //typedef blRawReverseIterator<const double> const_reverse_iterator;
-        
+
         //iterator erase( const_iterator pos );
-        
+
         //iterator                                       begin() ;
         //iterator                                       end() ;
 
@@ -141,7 +144,7 @@ class VecD : public IVecT<double>
 
         //const_reverse_iterator                         crbegin() const ;
         //const_reverse_iterator                         crend() const ;
-        
+
         friend class boost::serialization::access;
         // When the class Archive corresponds to an output archive, the
         // & operator is defined similar to <<.  Likewise, when the class Archive

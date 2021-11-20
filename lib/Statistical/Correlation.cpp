@@ -1,10 +1,10 @@
-#include "Correlation.hpp"
+#include <Statistical/Correlation.hpp>
 #include <Util/Except.hpp>
 
 #include <Ios/Osstream.hpp>
 #include <Util/CoutBuf.hpp>
+#include <Math/GeneralMath.hpp>
 #include <numeric>
-#include <cmath>
 
 using namespace EnjoLib;
 
@@ -82,7 +82,8 @@ double Correlation::SqrtSumSquare(const VecD & ar, double mean) const
         double var = (ar[i] - mean);
         sum += var * var;
     }
-    return std::sqrt(sum);
+    const GeneralMath gmat;
+    return gmat.Sqrt(sum);
 }
 
 

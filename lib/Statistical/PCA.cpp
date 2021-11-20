@@ -20,13 +20,12 @@ const EnjoLib::Str PCA::STR_FEAT = "-feat";
 
 PCA::~PCA(){}
 PCA:: PCA(){}
-PCA:: PCA(const Matrix & xxx, int numFeaturesToLeave)
+PCA:: PCA(const EigenAbstract & eigen, const Matrix & xxx, int numFeaturesToLeave)
 {
     const Statistical stat;
-    const Corrade::Containers::Pointer<EigenAbstract> eigen = EigenAbstract::CreateDefault();
     const Matrix & covMat = stat.CovarianceMatrix(xxx);
     m_origMean = stat.MeanCols(xxx);
-    m_featVec = eigen->GetSortedFeatureVectorNumber(covMat, numFeaturesToLeave);
+    m_featVec = eigen.GetSortedFeatureVectorNumber(covMat, numFeaturesToLeave);
 }
 
 PCA:: PCA(const EnjoLib::Str & fileNameBase)

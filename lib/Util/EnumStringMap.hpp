@@ -3,26 +3,54 @@
 
 #include <Util/Pimpl.hpp>
 #include <Util/Str.hpp>
+#include <Template/ArrayFwd.hpp>
 #include <3rdParty/stdfwd.hh>
 
-class EnumStringMap// : public std::map<unsigned int, EnjoLib::Str>
+namespace EnjoLib {
+
+class EnumStringMap // : public std::map<unsigned int, Str>
 {
     public:
         EnumStringMap();
         virtual ~EnumStringMap();
-        
-        const EnjoLib::Str & at(unsigned int enumId) const;
-        const EnjoLib::Str & operator[](unsigned int enumId) const;
+
+        bool Has(unsigned int enumId) const;
+        bool HasName(const Str & name) const;
+
+        const Str & at(unsigned int enumId) const;
+        const Str & operator[](unsigned int enumId) const;
+
+        unsigned int atRev(const Str & name) const;
         size_t size() const;
-        const stdfwd::map<unsigned int, EnjoLib::Str> & Data() const;
-        
-        typedef stdfwd::map<unsigned int, EnjoLib::Str> value_type;
-        
+
+        Array<Str> GetNames() const;
+        const   stdfwd::map<unsigned int, Str> & Data() const;
+        const   stdfwd::map<Str, unsigned int> & DataInv() const;
+
+        typedef stdfwd::map<unsigned int, Str> value_type;
+
+        template <class T> T ToType(unsigned int enumId) const;
+        template <class T> T ToType(const Str & name)    const;
+
+
     protected:
         /// Use this to add all elements of the enum in your class
-        void Add( unsigned int enumId, const EnjoLib::Str & name );
+        void Add( unsigned int enumId, const Str & name );
     private:
         PIMPL
 };
 
+template <class T>
+T EnumStringMap::ToType(unsigned int enumId) const
+{
+    return static_cast<T>(enumId);
+}
+
+template <class T>
+T EnumStringMap::ToType(const Str & name) const
+{
+    return ToType<T>(atRev(name));
+}
+
+}
 #endif // ENUMSTRINGMAP_H

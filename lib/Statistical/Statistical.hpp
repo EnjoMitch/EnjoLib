@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "../3rdParty/stdfwd.hh"
 #include "../Util/VecD.hpp"
-#include <Template/Array.hpp>
+#include <Template/ArrayFwd.hpp>
 
 namespace EnjoLib
 {
@@ -58,6 +58,7 @@ class Statistical
         double StandardDeviation( const VecD & v ) const;
         double StandardDeviation( const Matrix & m ) const;
         double DistFromMean( const Matrix & m, const VecD & v ) const;
+        double Mean( const VecD & v ) const;
         double Median( const VecD & v ) const;
         double Variance( const VecD & v ) const;
         double Covariance( const VecD & v1, const VecD & v2 ) const;

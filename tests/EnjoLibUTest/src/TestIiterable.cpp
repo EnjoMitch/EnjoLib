@@ -65,3 +65,12 @@ TEST(IIterable_low_bound)
     std::lower_bound(wrp.begin(), wrp.end(), inp);
     //CHECK_EQUAL(res, inp);
 }
+
+TEST(IIterable_contains)
+{
+    const float inp = 33;
+    VectorViewable<float> vecView, vecViewEmpty;
+    vecView.dat.push_back(inp);
+    CHECK(vecView.Contains(inp));
+    CHECK(not vecView.Contains(inp+1));
+}

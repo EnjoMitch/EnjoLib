@@ -46,6 +46,7 @@ class Array : public IIterable<T>
         }
         
         Array(const Array & other)
+        : Array()
         {
             Cpy(other);
         }
@@ -68,13 +69,14 @@ class Array : public IIterable<T>
             Init(data, size);
         }
         
-        void Init(const T * data, unsigned size)
+        void Init(const T * data, unsigned size, bool copyLast = true)
         {
             T * dataNew = new T[size]();
             Delete();
             m_ptr.Init(dataNew);
-            // TODO: use memcpy
-            for (unsigned i = 0; i < size; ++i)
+            /// TODO: use memcpy
+            const size_t size2Copy = copyLast ? size : size-1;
+            for (unsigned i = 0; i < size2Copy; ++i)
             {
                 dataNew[i] = data[i];
             }
@@ -129,6 +131,14 @@ class Array : public IIterable<T>
         {
             return m_ptr.get();
         }
+        
+        /// Highly inefficient
+        void push_back(const T & val)
+        {
+            const T * dat = m_ptr.IsValid() ? data() : nullptr;
+            Init(dat, size() + 1, false);
+            back() = val;
+        }
 
         IITER_IMPL_TEMPLATE
 
@@ -140,7 +150,7 @@ class Array : public IIterable<T>
             InitContainer(other);
         }
 
-        void Delete() 
+        void Delete()
         {
         }
         

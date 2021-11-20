@@ -140,13 +140,15 @@
 			<Add option="-DBOOST_ERROR_CODE_HEADER_ONLY" />
 			<Add directory="/home/enjo/devel/lib/tree/include" />
 			<Add directory="../lib" />
+			<Add directory="." />
 		</Compiler>
 		<Linker>
 			<Add library="boost_filesystem" />
 			<Add library="boost_system" />
 			<Add library="boost_iostreams" />
-			<Add library="zstd" />
+			<Add library="boost_program_options" />
 			<Add library="EnjoLib" />
+			<Add library="zstd" />
 			<Add directory="../../../../lib/tree/lib" />
 			<Add directory="/home/enjo/devel/lib/tree/lib" />
 		</Linker>
@@ -159,6 +161,8 @@
 		<Unit filename="EnjoLibBoost/KMeans.cpp" />
 		<Unit filename="EnjoLibBoost/KMeans.hpp" />
 		<Unit filename="EnjoLibBoost/KMeansTest.cpp" />
+		<Unit filename="EnjoLibBoost/ProgramOptions.cpp" />
+		<Unit filename="EnjoLibBoost/ProgramOptions.hpp" />
 		<Unit filename="EnjoLibBoost/Serialization.cpp" />
 		<Unit filename="EnjoLibBoost/Serialization.hpp" />
 		<Unit filename="EnjoLibBoost/Zipping.cpp" />

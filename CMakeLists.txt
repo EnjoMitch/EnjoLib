@@ -25,6 +25,7 @@ add_subdirectory(lib)
 if (BUILD_BOOST)
 	add_subdirectory(libBoost)
 endif()
+add_subdirectory(libStat3rd)
 #add_subdirectory(progs/libPoco)
 
 

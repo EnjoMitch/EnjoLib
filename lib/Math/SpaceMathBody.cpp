@@ -30,10 +30,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <STD/Algorithm.hpp>
-#include <cmath>
 #include "SpaceMathBody.hpp"
 #include "Constants.hpp"
+#include "GeneralMath.hpp"
+
+#include <Template/AlgoSTDThin.hpp>
+
 using namespace EnjoLib;
 
 SpaceMathBody::SpaceMathBody(double mass, double radius)
@@ -48,16 +50,16 @@ SpaceMathBody::~SpaceMathBody()
 double SpaceMathBody::GetHohmannDVCircularise( double r1, double r2) const
 {
     PrepareData(r1, r2);
-
-    const double dv = sqrt(m_mi/r2) * ( 1 - sqrt(2*r1 / (r1+r2)) );
+    const GMat gmat;
+    const double dv = gmat.Sqrt(m_mi/r2) * ( 1 - gmat.Sqrt(2*r1 / (r1+r2)) );
     return dv;
 }
 
 double SpaceMathBody::GetHohmannDVExtend( double r1, double r2 ) const
 {
     PrepareData(r1, r2);
-
-    const double dv = sqrt(m_mi/r1) * ( sqrt(2*r2 / (r1+r2)) - 1 );
+    const GMat gmat;
+    const double dv = gmat.Sqrt(m_mi/r1) * ( gmat.Sqrt(2*r2 / (r1+r2)) - 1 );
     return dv;
 }
 
@@ -80,9 +82,10 @@ double SpaceMathBody::CalcEcc( double rp, double ra ) const
 
 double SpaceMathBody::CalcH( double rp, double ra ) const
 {
+    const GMat gmat;
     const double e = CalcEcc(rp, ra);
     const double a = CalcA(rp, ra);
-    const double h = sqrt(m_mi * a * ( 1 - (e * e)));
+    const double h = gmat.Sqrt(m_mi * a * ( 1 - (e * e)));
 
 	return h;
 }
@@ -104,8 +107,9 @@ double SpaceMathBody::CalcMi( double mass ) const
 
 double SpaceMathBody::CalcPeriod( double PeA, double ApA ) const
 {
+    const GMat gmat;
     const double a = CalcA(PeA, ApA);
-	const double T = 2*PI * sqrt(a*a*a / m_mi);
+	const double T = 2*PI * gmat.Sqrt(a*a*a / m_mi);
 
 	return T;
 }
@@ -115,7 +119,7 @@ void SpaceMathBody::PrepareData(double & alt1, double & alt2) const
     alt1 += m_radius;
     alt2 += m_radius;
     if (alt1 > alt2)
-        std::swap(alt1, alt2);
+        AlgoSTDThin().Swap(alt1, alt2);
 }
 
 double SpaceMathBody::CalcEnergyFromVelRadius( double vel, double r ) const

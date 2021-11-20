@@ -158,6 +158,18 @@ EnjoLib::Str CharManipulations::MakeLeadingZeroes(int d, unsigned numZeroes) con
     return ret;
 }
 
+EnjoLib::Str CharManipulations::UpperCase2Sentence(const EnjoLib::Str & inp) const
+{
+    if (inp.empty())
+    {
+        return inp;
+    }
+    EnjoLib::Str ret = Replace(inp, "_", " ");
+    ret = ToLower(ret);
+    ret.at(0) = ToUpper(ret.at(0));
+    return ret;
+}
+
 bool CharManipulations::ToDouble(const EnjoLib::Str & in, double * d) const
 {
     return CharManipulationsTpl().ToNumber<double>(in, d);
@@ -189,6 +201,23 @@ Str CharManipulations::ToLower(Str in) const
     std::transform(in.strRef().begin(), in.strRef().end(), in.strRW().begin(), ::tolower);
     return in;
 }
+
+char CharManipulations::ToUpper(char in) const
+{
+    Str inStr = " ";
+    inStr.at(0) = in;
+    const Str ret = ToUpper(inStr);
+    return ret.at(0);
+}
+
+char CharManipulations::ToLower(char in) const
+{
+    Str inStr = " ";
+    inStr.at(0) = in;
+    const Str ret = ToLower(inStr);
+    return ret.at(0);
+}
+
 
 EnjoLib::Str CharManipulations::GetLineSeparator(unsigned num, char sep) const
 {

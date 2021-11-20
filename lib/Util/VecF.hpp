@@ -21,19 +21,19 @@ class VecF : public IVecT<float>
         virtual ~VecF();
         VecF( const VecF & other );
         VecF & operator=(const VecF & other);
-        
+
         EnjoLib::Str ToStr() const; // TODO
         EnjoLib::Str Print(int precision = 0) const; // TODO
         EnjoLib::Str PrintScilab( const char * varName ) const;
         EnjoLib::Str PrintPython( const char * varName ) const;
-        
-        
+
+
         const float * data() const override;
         float * data() override;
         const stdfwd::vector<float> & Data() const override;
         stdfwd::vector<float> DataCopy() const override;
         stdfwd::vector<float> & DataRW() override;
-        
+
         void Add(float val);
 
         //! Length of vector
@@ -48,11 +48,12 @@ class VecF : public IVecT<float>
         float Max() const;
         float MaxAbs() const;
         float Min() const;
-        
+
         VecF AdjustMean() const;
         VecF Slice  (unsigned idx, unsigned len) const;
         VecF SliceTS(unsigned idx, unsigned len) const;
         VecF Diffs() const;
+        VecF Smooth(unsigned numToSmooth) const;
         VecF LogSigned() const;
 
         const float & at(size_t idx) const override;
@@ -63,13 +64,13 @@ class VecF : public IVecT<float>
         void push_back(const float & val) override;
         void emplace_back(const float & val) override;
         void pop_back();
-        
+
         size_t size() const override;
         bool empty() const override;
         virtual void clear() override;
-       
+
         void reserve(size_t siz);
-        
+
         stdfwd::vector<bool> ToVecBool() const;
 
         VecF & operator += (const VecF & par);
@@ -89,19 +90,21 @@ class VecF : public IVecT<float>
         bool operator > (const VecF & par) const;
         bool operator < (const VecF & par) const;
         bool operator != (const VecF & par) const;
-        
+
+        bool operator == (const IVecT<float> & par) const override;
+
         const float & First() const override;
         const float & Last() const override;
 
         float & First() override;
         float & Last() override;
-        
+
         float & front() override;
         float & back() override;
-        
+
         const float & front() const override;
         const float & back() const override;
-        
+
         IITER_IMPL
 
     protected:

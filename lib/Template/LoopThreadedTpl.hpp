@@ -4,6 +4,8 @@
 #include "../Util/LoopThreaded.hpp"
 #include <STD/Vector.hpp>
 #include <Template/IVecT.hpp>
+#include <Util/ThreadWrap.hpp>
+
 #include <future>
 #include <functional>
 
@@ -19,7 +21,7 @@ class LoopThreadedTpl
     public:
         LoopThreadedTpl(int sizeInput,
                         std::function<TOut(const TIn&)> funcConv,
-                        int numCores = std::thread::hardware_concurrency())
+                        int numCores = EnjoLib::ThreadWrap::GetConcurrency())
         : m_loopThreaded(sizeInput, numCores)
         , m_datasets(numCores)
         , m_funcConv(funcConv)
@@ -115,7 +117,7 @@ class LoopThreadedTpl
     template <class TIn, class TOut>
     std::vector<TOut> ConvertVectorThreaded(const std::vector<TIn> & vinput,
                                             std::function<TOut(const TIn&)> funcConv,
-                                            int numCores = std::thread::hardware_concurrency())
+                                            int numCores = EnjoLib::ThreadWrap::GetConcurrency())
     {
         LoopThreadedTpl<TIn, TOut> loop(vinput.size(), funcConv, numCores);
         
@@ -128,7 +130,7 @@ class LoopThreadedTpl
     template <class TIn, class TOut>
     std::vector<TOut> ConvertVectorThreaded2(const IVecT<TIn> & vinput,
                                             std::function<TOut(const TIn&)> funcConv,
-                                            int numCores = std::thread::hardware_concurrency())
+                                            int numCores = EnjoLib::ThreadWrap::GetConcurrency())
     {
         LoopThreadedTpl<TIn, TOut> loop(vinput.size(), funcConv, numCores);
         std::vector<TIn> convIn;

@@ -24,7 +24,7 @@ PCAAuto::~PCAAuto(){}
 class PCAAutoRootSubject : public RootSubject
 {
 public:
-    PCAAutoRootSubject(const EnjoLib::Matrix & xxx, double minQuality);
+    PCAAutoRootSubject(const EigenAbstract & eigen, const EnjoLib::Matrix & xxx, double minQuality);
     double GetRefValue() const override { return m_minQuality; };
     /// Should return the function's value for a given argument.
     double UpdateGetValue( double arg ) override;
@@ -32,14 +32,16 @@ public:
 
 protected:
 private:
+    const EigenAbstract & m_eigen;
     double m_minQuality;
     EnjoLib::Matrix m_xxx;
     EnjoLib::Matrix m_xxxT;
     std::map<int, double> m_cache; /// TODO: This could go to a RootSubjectDiscrete class
 };
 
-PCAAutoRootSubject::PCAAutoRootSubject(const Matrix & xxx, double minQuality)
-: m_minQuality(minQuality)
+PCAAutoRootSubject::PCAAutoRootSubject(const EigenAbstract & eigen, const Matrix & xxx, double minQuality)
+: m_eigen(eigen)
+, m_minQuality(minQuality)
 , m_xxx(xxx)
 , m_xxxT(xxx.T())
 {}
@@ -52,13 +54,13 @@ double PCAAutoRootSubject::UpdateGetValue(double arg)
         //cout << "Cached " << feat2leave << endl;
         //return m_cache[feat2leave];
     }
-    const double relMax = PCAAuto::GetQuality(m_xxx, m_xxxT, feat2leave);
+    const double relMax = PCAAuto::GetQuality(m_eigen, m_xxx, m_xxxT, feat2leave);
     //cout << "Curr quality = " << relMax << ", feat = " << feat2leave << endl;// << ", currMax = " << currMax << ", globMax = " << globMax << endl;
     //m_cache[feat2leave] = relMax;
     return relMax;
 }
 
-int PCAAuto::FindMinimalComponents(const Matrix & xxx, const double minQuality) const
+int PCAAuto::FindMinimalComponents(const EigenAbstract & eigen, const Matrix & xxx, const double minQuality) const
 {
     double prevRelMax = 0;
     const Matrix & xxxT = xxx.T();
@@ -66,7 +68,7 @@ int PCAAuto::FindMinimalComponents(const Matrix & xxx, const double minQuality) 
     for (int feat2leave = 1; feat2leave < xxx.GetNCols(); ++feat2leave)
     //for (int feat2leave = xxx.GetNCols() - 1; feat2leave >= 1; --feat2leave)
     {
-        const double relMax = PCAAuto::GetQuality(xxx, xxxT, feat2leave);
+        const double relMax = PCAAuto::GetQuality(eigen, xxx, xxxT, feat2leave);
         //cout << "Curr quality = " << relMax << ", feat = " << feat2leave << endl;// << ", currMax = " << currMax << ", globMax = " << globMax << endl;
         if (prevRelMax == 0)
         {
@@ -87,9 +89,9 @@ int PCAAuto::FindMinimalComponents(const Matrix & xxx, const double minQuality) 
     return xxx.GetNCols();
 }
 
-double PCAAuto::GetQuality(const Matrix & xxx, const Matrix & xxxT, const int feat2leave)
+double PCAAuto::GetQuality(const EigenAbstract & eigen, const Matrix & xxx, const Matrix & xxxT, const int feat2leave)
 {
-    const PCA pca(xxx, feat2leave);
+    const PCA pca(eigen, xxx, feat2leave);
     const Matrix & xtr = pca.Transform(xxx);
     const Matrix & inv = pca.InverseTransform(xtr);
     const Matrix & invT = inv.T();
@@ -131,9 +133,9 @@ double PCAAuto::GetQuality(const Matrix & xxx, const Matrix & xxxT, const int fe
     return relMax;
 }
 
-int PCAAuto::FindMinimalComponentsBinSearch(const Matrix & xxx, const double minQuality, const double minArg) const
+int PCAAuto::FindMinimalComponentsBinSearch(const EigenAbstract & eigen, const Matrix & xxx, const double minQuality, const double minArg) const
 {
-    PCAAutoRootSubject pcaRS(xxx, minQuality);
+    PCAAutoRootSubject pcaRS(eigen, xxx, minQuality);
     //const double minArg = 1;
     //const double minArg = xxx.GetNCols() / 2;
     Corrade::Containers::Pointer<IRootAlgo> rootAlgo = RootFactory::Create(RootType::ROOT_BIN_SEARCH, minArg, xxx.GetNCols(), 1);

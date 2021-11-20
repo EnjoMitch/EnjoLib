@@ -31,16 +31,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "EigenAbstract.hpp"
-#include <STD/Algorithm.hpp>
-#include <cmath>
 #include "EigenValueComparator.hpp"
 #include "Assertions.hpp"
 #include "Matrix.hpp"
 #include "../Util/VecD.hpp"
 #include "../Template/CorradePointer.h"
-#include <STD/VectorCpp.hpp>
-
+#include <Math/GeneralMath.hpp>
 //#include <Util/CoutBuf.hpp>
+
+#include <STD/VectorCpp.hpp>
+#include <STD/Algorithm.hpp>
 
 //using namespace std;
 using namespace EnjoLib;
@@ -89,18 +89,20 @@ Matrix EigenAbstract::GetSortedFeatureVectorNumber( const Matrix & m, unsigned n
 Matrix EigenAbstract::GetSortedFeatureVectorFactor( const Matrix & m, double leaveFactor ) const
 {
     Matrix ret;
+    const GeneralMath gmat;
     const std::vector<EigenValueVector> & cvec = GetEigenValVec( m, true );
     double maxEigenVal = 1;
     if ( ! cvec.empty() )
         maxEigenVal = cvec.begin()->GetValue();
 
-    for (unsigned i = 0; i < cvec.size() && fabs(cvec[i].GetValue() / maxEigenVal) >= leaveFactor; ++i)
+    for (unsigned i = 0; i < cvec.size() && gmat.Fabs(cvec[i].GetValue() / maxEigenVal) >= leaveFactor; ++i)
     {
         ret.push_back(cvec[i].GetVector());
     }
     return ret;
 }
 
+/*
 /// Temporary
 #include "3rdParty/EigenEigen3.hpp"
 #include "3rdParty/EigenMKL.hpp"
@@ -132,3 +134,5 @@ Corrade::Containers::Pointer<EigenAbstract> EigenAbstract::CreateNumpy()
 {
     return Corrade::Containers::Pointer<EigenAbstract>(new EigenNumpy());
 }
+
+*/

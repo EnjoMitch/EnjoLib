@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef GREATCIRCLEADVMATH_HPP_INCLUDED
 #define GREATCIRCLEADVMATH_HPP_INCLUDED
 
-#include <STD/Vector.hpp>
+#include <Template/Array.hpp>
 
 namespace EnjoLib
 {
@@ -44,11 +44,11 @@ struct Geo;
 class GreatCircleAdvMath
 {
     public:
-        std::vector<Point> CalculateGreatCircle( double rad, double latStart, double lonStart, bool numerical = false, double fixedStep = 0.02 );
+        Array<Point> CalculateGreatCircle( double rad, double latStart, double lonStart, bool numerical = false, double fixedStep = 0.02 );
         ThreeSphericals Calc3SphericalsAroundHalfGlobe( double latStart, double lonStart, double r );
 
     private:
-        void PushGeoBackAsPoint( double rad, const std::vector<Geo> & vGeo, std::vector<Point> * vRet );
+        
 };
 }
 

@@ -20,6 +20,7 @@ class IoManip
 
     private:
 };
+typedef IoManip Iom;
 }
 
 #endif // IOMANIP_HPP

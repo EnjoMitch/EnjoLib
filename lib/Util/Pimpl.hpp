@@ -25,7 +25,7 @@
     
 #define PIMPL_LAX \
     PIMPL_GUTS \
-    EnjoLib::SafePtr<Impl, PimplDeleter> m_impl;
+    EnjoLib::SafePtrNullable<Impl, PimplDeleter> m_impl;
     
 #define PIMPL_CPY \
     PIMPL_GUTS \

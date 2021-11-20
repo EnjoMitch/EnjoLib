@@ -1,10 +1,12 @@
 #include "OptiMultiBinSearch.hpp"
 #include "OptiMultiSubject.hpp"
 #include <Math/MultiDimIter/MultiDimIterTpl.hpp>
+#include <Template/Array.hpp>
 //#include <Statistical/VectorD.hpp>
+#include <Util/CoutBuf.hpp>
+
 #include <STD/VectorCpp.hpp>
 #include <cstddef>
-#include <Util/CoutBuf.hpp>
 
 using namespace EnjoLib;
 using namespace std;

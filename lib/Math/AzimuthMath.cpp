@@ -31,7 +31,6 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cmath>
 #include "AzimuthMath.hpp"
 #include "Constants.hpp"
 #include "../Systems/Point.hpp"
@@ -42,30 +41,32 @@ using namespace EnjoLib;
 double AzimuthMath::CalcAzimuth( double latitude, double inclination )
 {
     double azimuth;
+    const GeneralMath gmat;
 
-    if ( fabs(latitude - inclination) > 0.001 && inclination > fabs(latitude) )
-        azimuth = asin( cos(inclination) / cos(latitude));
+    if ( gmat.Fabs(latitude - inclination) > 0.001 && inclination > gmat.Fabs(latitude) )
+        azimuth = gmat.Asin( gmat.Cos(inclination) / gmat.Cos(latitude));
     else
         azimuth = PI/2.0;
 
-    azimuth = GeneralMath().GetIn0_2PIRange(azimuth);
+    azimuth = gmat.GetIn0_2PIRange(azimuth);
     return azimuth;
 }
 
 double AzimuthMath::CalcTrueAzimuth( double latitude, double inclination, const Point & shVel, double mi, double targetRadius )
 {
+    const GeneralMath gmat;
     const double azimuth = CalcAzimuth( latitude, inclination );
     // target orbit's velocity for this azimuth
-    const double tgt_orbit_v_module = sqrt(mi/targetRadius);
-    const double tgt_orbit_v_y = tgt_orbit_v_module * cos(azimuth); // northern velocity
-    const double tgt_orbit_v_x = tgt_orbit_v_module * sin(azimuth); // eastern velocity
+    const double tgt_orbit_v_module = gmat.Sqrt(mi/targetRadius);
+    const double tgt_orbit_v_y = tgt_orbit_v_module * gmat.Cos(azimuth); // northern velocity
+    const double tgt_orbit_v_x = tgt_orbit_v_module * gmat.Sin(azimuth); // eastern velocity
 
-    double lnch_v_y = tgt_orbit_v_y - fabs(shVel.y);
+    double lnch_v_y = tgt_orbit_v_y - gmat.Fabs(shVel.y);
     const double lnch_v_x = tgt_orbit_v_x - shVel.x;
 
     if (lnch_v_y == 0) lnch_v_y = 0.01; //div by zero protection
-    double true_azimuth = atan2( lnch_v_x, lnch_v_y );
+    double true_azimuth = gmat.Atan2( lnch_v_x, lnch_v_y );
 
-    true_azimuth = GeneralMath().GetIn0_2PIRange(true_azimuth);
+    true_azimuth = gmat.GetIn0_2PIRange(true_azimuth);
     return true_azimuth;
 }

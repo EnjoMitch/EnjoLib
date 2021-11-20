@@ -1,8 +1,10 @@
 #include <Ios/Ifstream.hpp>
+
+#include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 //#include <Util/CoutBuf.hpp>
+
 #include <STD/Fstream.hpp>
-#include <Ios/Osstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;

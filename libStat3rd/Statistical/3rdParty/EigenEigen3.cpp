@@ -31,8 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "EigenEigen3.hpp"
-#include "../Matrix.hpp"
-#include "../../Util/VecD.hpp"
+#include <Statistical/Matrix.hpp>
+#include <Util/VecD.hpp>
 #include <Util/Except.hpp>
 #include <Util/CharManipulations.hpp>
 

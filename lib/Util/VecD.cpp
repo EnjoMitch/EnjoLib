@@ -1,6 +1,8 @@
 #include "VecD.hpp"
 #include "VecF.hpp"
 #include "Str.hpp"
+
+#include <Util/CoutBuf.hpp>
 #include <Util/PimplDeleter.hpp>
 #include <Statistical/VectorD.hpp>
 #include <Statistical/Assertions.hpp>
@@ -20,6 +22,14 @@ struct VecD::Impl
     Impl( int n, const double & val ) : dat(n, val) {}
     Impl( const stdfwd::string & data ) : dat(data) {}
     Impl( const Str & data ) : dat(data.c_str()) {}
+    Impl( const IIterable<double> & init )
+    {
+        dat.reserve(init.size());
+        for (const auto & val : init)
+        {
+            dat.push_back(val);
+        }
+    }
     VectorD dat;
 };
 
@@ -58,6 +68,7 @@ std::vector<bool> VecD::ToVecBool() const
 VecD::VecD()
 : m_impl(new Impl())
 {
+    //LOGL << "Vec Constr\n";
 }
 
 VecD::~VecD(){}
@@ -65,7 +76,7 @@ VecD::~VecD(){}
 VecD::VecD( int n, const double & val )
 : m_impl(new Impl(n, val))
 {
-    
+
 }
 
 VecD::VecD( const VecF & init )
@@ -80,11 +91,12 @@ VecD::VecD( const VecD & other )
 
 }
 VecD & VecD::operator=(const VecD & other)
-{
+{   /// TODO: impl not initialized
      GetImplRW() = other.GetImpl();
      return *this;
 }
 
+VecD::VecD( const IIterable<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::initializer_list<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::vector<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::vector<float> & init ): m_impl(new Impl(init)){}
@@ -185,6 +197,10 @@ VecD VecD::Diffs() const
 {
     return m_impl->dat.Diffs();
 }
+VecD VecD::Smooth(unsigned numToSmooth) const
+{
+    return m_impl->dat.Smooth(numToSmooth);
+}
 
 const double & VecD::at(size_t idx) const
 {
@@ -225,7 +241,7 @@ void VecD::clear()
 
 void VecD::emplace_back(const double & val)
 {
-    return m_impl->dat.emplace_back(val);
+    m_impl->dat.emplace_back(val);
 }
 
 VecD & VecD::operator += (const VecD & par)
@@ -357,3 +373,11 @@ VecD::const_reverse_iterator                         VecD::crbegin() const {retu
 VecD::const_reverse_iterator                         VecD::crend() const {return const_reverse_iterator(&m_impl->dat[-1]);}
 
 */
+
+bool VecD::operator == (const IVecT<double> & par) const
+{
+    /// TODO: Repetition
+    Assertions::Throw("Unimplemented", "VecD::operator == ");
+    return false;
+}
+

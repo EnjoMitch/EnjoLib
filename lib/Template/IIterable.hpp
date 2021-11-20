@@ -36,8 +36,21 @@ class IIterableConst
         {
             return (cbegin() + idx).operator->(); 
         }
-        
 
+        bool Contains(const T & other) const
+        {
+            for (size_t i = 0; i < size(); ++i)
+            //for (const T & mine : cbegin())
+            {
+                const T & mine = operator [](i);
+                if (mine == other)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
     protected:
 
     private:

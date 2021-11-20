@@ -1,5 +1,7 @@
 #include "OptiMultiRosenbrok.h"
 #include "Rosenbrok.h"
+#include <Template/Array.hpp>
+
 #include <STD/VectorCpp.hpp>
 
 using namespace EnjoLib;

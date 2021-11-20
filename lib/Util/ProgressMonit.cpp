@@ -37,8 +37,8 @@ void ProgressMonit::PrintPercentDone(size_t i, size_t sz) const
 
     if (i == sz - 1)
     {
-        ELO
-        LOG << "  Done!" << Nl;
+        //ELO
+        //LOG << "  Done!" << Nl;
     }
         
 }

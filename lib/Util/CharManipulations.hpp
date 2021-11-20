@@ -52,6 +52,7 @@ public:
 	EnjoLib::Str ToStr(double d, unsigned precision) const; // Don't use!
 	EnjoLib::Str ToStr(int i) const;
 	EnjoLib::Str MakeLeadingZeroes(int d, unsigned numZeroes) const;
+	EnjoLib::Str UpperCase2Sentence(const EnjoLib::Str & in) const;
 	bool StartsWith(const EnjoLib::Str & str, const EnjoLib::Str & prefix) const;
 	bool Contains(const EnjoLib::Str & str, const EnjoLib::Str & toFind) const;
 	//bool EndsWith(const EnjoLib::Str & str, const EnjoLib::Str & sufffix) const;
@@ -61,12 +62,14 @@ public:
 	double ToDouble(const EnjoLib::Str & in) const;
 	int ToInt(const EnjoLib::Str & in) const;
 	bool ToInt(const EnjoLib::Str & in, int * i) const;
-	
+
 
     VecStr EndsWith(const VecStr & files, const Str & sufffix) const;
-	
+
 	Str ToUpper(Str in) const;
 	Str ToLower(Str in) const;
+	char ToUpper(char inp) const;
+	char ToLower(char inp) const;
 	EnjoLib::Str GetLineSeparator(unsigned num, char sep = '-') const;
 
 private:

@@ -1,6 +1,7 @@
 #include "Centroid.hpp"
 #include <Statistical/VectorD.hpp>
 #include <Statistical/VectorF.hpp>
+#include <Template/Array.hpp>
 #include <Util/VecD.hpp>
 #include <Util/VecF.hpp>
 #include <Util/Str.hpp>
@@ -14,7 +15,7 @@ template<class T>
 Centroid<T>::~Centroid(){}
 
 template<class T>
-T Centroid<T>::Calc(const std::vector<T> & vec) const
+T Centroid<T>::Calc(const IIterable<T> & vec) const
 {
     try
     {
@@ -24,7 +25,7 @@ T Centroid<T>::Calc(const std::vector<T> & vec) const
         {
             for (unsigned dim = 0; dim < numDims; ++dim)
             {
-                centr.at(dim) += vec.at(n).at(dim);
+                centr.at(dim) += vec.at(n).at(dim); /// TODO: Make at() compatible with STD. No IterConst?
             }
         }
         for (unsigned dim = 0; dim < numDims; ++dim)
@@ -41,6 +42,8 @@ T Centroid<T>::Calc(const std::vector<T> & vec) const
 
 namespace EnjoLib
 {
+    //template class Centroid<Array<double>>;
+    //template class Centroid<Array<float>>;
     template class Centroid<VectorD>;
     template class Centroid<VectorF>;
     template class Centroid<VecD>;

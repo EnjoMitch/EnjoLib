@@ -35,6 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Util/CoutBuf.hpp>
 #include <Ios/Ofstream.hpp>
 #include <Ios/Ifstream.hpp>
+#include <Template/Array.hpp>
 
 #include <STD/VectorCpp.hpp>
 #include <STD/String.hpp>
@@ -95,15 +96,49 @@ bool FileUtils::DirExists( const EnjoLib::Str & dirName ) const
         return false;
 }
 
+EnjoLib::Str FileUtils::ProcessDir(const EnjoLib::Str & dirName) const
+{
+    return dirName;
+    
+    if (dirName.empty())
+        return dirName;
+    
+    if (dirName.back() == '/')
+    {
+        EnjoLib::Str dirRet = dirName;
+        dirRet.pop_back();
+        return dirRet;
+    }
+    return dirName;
+}
+
 void FileUtils::CreateDirIfNotExistsLinux(const EnjoLib::Str & dirName) const
 {
-    if (DirExists(dirName))
+    const Str & dir = ProcessDir(dirName);
+    if (DirExists(dir))
         return;
-    const EnjoLib::Str command = "mkdir -p " + dirName;
+    const EnjoLib::Str command = "mkdir -p " + dir;
     if (int err = system(command.c_str()))
     {
         ELO
         LOG << "FileUtils::CreateDirIfNotExistsLinux(): err = " << err << Nl;
+    }
+}
+
+void FileUtils::RemoveAllInDirLinux(const EnjoLib::Str & dirName) const
+{
+    const Str & dir = ProcessDir(dirName);
+    if (!DirExists(dir))
+    {
+        LOGL << "FileUtils::RemoveAllInDirLinux(): Dir doesn't exist = " << dir << Nl;
+        return;
+    }
+        
+    const EnjoLib::Str command = "rm " + dir + "/*";
+    if (int err = system(command.c_str()))
+    {
+        ELO
+        LOG << "FileUtils::RemoveAllInDirLinux(): err = " << err << Nl;
     }
 }
 

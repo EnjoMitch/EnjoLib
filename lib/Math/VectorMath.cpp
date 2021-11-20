@@ -30,10 +30,11 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cmath>
 #include "VectorMath.hpp"
+#include "GeneralMath.hpp"
 #include "../Systems/Vect3.hpp"
 #include "../Systems/Point.hpp"
+
 using namespace EnjoLib;
 
 double VectorMath::dot(const Vect3 & a, const Vect3 & b )
@@ -52,15 +53,17 @@ Vect3 VectorMath::cross(const Vect3 & a, const Vect3 & b )
 
 double VectorMath::angle(const Vect3 & a, const Vect3 & b )
 {
+    const GeneralMath gmat;
     const Vect3 & aNorm = a.norm();
     const Vect3 & bNorm = b.norm();
 
-    return atan2( cross(aNorm, bNorm).len(), dot(aNorm, bNorm) );
+    return gmat.Atan2( cross(aNorm, bNorm).len(), dot(aNorm, bNorm) );
 }
 
 double VectorMath::angle(const Point & a, const Point & b )
 {
-	return atan2(a.y - b.y, a.x - b.x);
+    const GeneralMath gmat;
+	return gmat.Atan2(a.y - b.y, a.x - b.x);
 }
 
 Point VectorMath::Cast3Donto2D(const Vect3 & in3D, const Vect3 & v1, const Vect3 & v2)

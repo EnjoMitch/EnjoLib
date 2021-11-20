@@ -22,7 +22,7 @@ struct VecT<T>::Impl
     }
     Impl( int n ) : dat(n) {}
     Impl( int n, const T & val ) : dat(n, val) {}
-    
+
     std::vector<T> dat;
 };
 
@@ -48,120 +48,137 @@ VecT<T> & VecT<T>::operator=(const VecT<T> & other)
      return *this;
 }
 
-template <class T> 
+template <class T>
 const T * VecT<T>::data() const
 {
     return GetImpl().dat.data();
 }
 
-template <class T> 
+template <class T>
 T * VecT<T>::data()
 {
     return GetImplRW().dat.data();
 }
 
-template <class T> 
+template <class T>
 const std::vector<T> & VecT<T>::Data() const
 {
     return m_impl->dat;
 }
 
-template <class T> 
+template <class T>
 std::vector<T> VecT<T>::DataCopy() const
 {
     return m_impl->dat;
 }
 
-template <class T> 
+template <class T>
 std::vector<T> & VecT<T>::DataRW()
 {
     return m_impl->dat;
 }
 
-template <class T> 
+template <class T>
 const T & VecT<T>::at(size_t idx) const
 {
     return m_impl->dat.at(idx);
 }
 
-template <class T> 
+template <class T>
 const T & VecT<T>::operator[](size_t idx) const
 {
     return m_impl->dat[idx];
 }
 
-template <class T> 
+template <class T>
+bool VecT<T>::operator== (const IVecT<T> & val) const
+{
+    if (this->size() != val.size())
+    {
+        return false;
+    }
+    for (unsigned i = 0; i < val.size(); ++i)
+    {
+        if (operator[](i) != val[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <class T>
 size_t VecT<T>::size() const
 {
     return Data().size();
 }
 
-template <class T> 
+template <class T>
 T &  VecT<T>::atw(size_t idx)
 {
     return m_impl->dat.at(idx);
 }
 
-template <class T> 
+template <class T>
 T &  VecT<T>::operator[](size_t idx)
 {
     return m_impl->dat.operator[](idx);
 }
 
-template <class T> 
+template <class T>
 void  VecT<T>::push_back(const T & val)
 {
     return m_impl->dat.push_back(val);
 }
 
-template <class T> 
+template <class T>
 void VecT<T>::emplace_back(const T & val)
 {
-    return m_impl->dat.emplace_back(val);
+    m_impl->dat.emplace_back(val);
 }
 
 
-template <class T> 
+template <class T>
 bool  VecT<T>::empty() const
 {
     return m_impl->dat.empty();
 }
 
-template <class T> 
+template <class T>
 void VecT<T>::clear()
 {
     m_impl->dat.clear();
 }
 
-template <class T> 
+template <class T>
 const T & VecT<T>::First() const
 {
     Assertions::NonEmpty(*this, "First");
     return GetImpl().dat.front();
 }
 
-template <class T> 
+template <class T>
 const T & VecT<T>::Last() const
 {
     Assertions::NonEmpty(*this, "Last");
     return GetImpl().dat.back();
 }
 
-template <class T> 
+template <class T>
 T & VecT<T>::First()
 {
     Assertions::NonEmpty(*this, "First");
     return GetImplRW().dat.front();
 }
 
-template <class T> 
+template <class T>
 T & VecT<T>::Last()
 {
     Assertions::NonEmpty(*this, "Last");
     return GetImplRW().dat.back();
 }
 
-template <class T> 
+template <class T>
 bool VecT<T>::Contains(const T & searched) const
 {
     return std::find(m_impl->dat.begin(), m_impl->dat.end(), searched) != m_impl->dat.end();
@@ -180,7 +197,7 @@ template <class T> typename VecT<T>::const_iterator VecT<T>::cbegin() const   {r
 template <class T> typename VecT<T>::const_iterator VecT<T>::cend()   const   {return end();}
 
 namespace EnjoLib {
-    PIMPL_DELETER_TEMPLATE_INSTANT(VecT, std::string)    
+    PIMPL_DELETER_TEMPLATE_INSTANT(VecT, std::string)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, EnjoLib::Str)
     //PIMPL_DELETER_TEMPLATE_INSTANT(VecT, bool)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, float)
@@ -189,7 +206,7 @@ namespace EnjoLib {
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, long)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, unsigned long)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, unsigned long long)
-    
+
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, std::string*)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, EnjoLib::Str*)
     PIMPL_DELETER_TEMPLATE_INSTANT(VecT, bool*)

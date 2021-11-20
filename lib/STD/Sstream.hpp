@@ -1,5 +1,5 @@
-#ifndef SSTREAM_HPP
-#define SSTREAM_HPP
+#ifndef SSTREAM1_HPP
+#define SSTREAM1_HPP
 
 #include <sstream>
 

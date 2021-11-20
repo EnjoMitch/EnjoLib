@@ -6,10 +6,11 @@
 
 namespace EnjoLib
 {
+class EigenAbstract;
 class PCA
 {
     public:
-        PCA(const Matrix & xxx, int numFeaturesToLeave);
+        PCA(const EigenAbstract & eigen, const Matrix & xxx, int numFeaturesToLeave);
         PCA(const EnjoLib::Str & fileNameBase);
         PCA();
         virtual ~PCA();
@@ -28,6 +29,7 @@ class PCA
     private:
         static const EnjoLib::Str STR_MEAN;
         static const EnjoLib::Str STR_FEAT;
+        
         VecD m_origMean;
         Matrix m_featVec;
         

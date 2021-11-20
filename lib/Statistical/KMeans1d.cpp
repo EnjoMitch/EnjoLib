@@ -7,6 +7,7 @@
 #include "../Math/GeneralMath.hpp"
 #include <Util/Except.hpp>
 #include <Ios/Osstream.hpp>
+#include <Template/Array.hpp>
 
 #include <STD/VectorCpp.hpp>
 

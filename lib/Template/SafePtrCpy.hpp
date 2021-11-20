@@ -33,6 +33,7 @@ class SafePtrCpy : public Ptr
         virtual ~SafePtrCpy(){}
         
         SafePtrCpy(const SafePtrCpy & other)
+        : PtrType(nullptr)
         {
             Cpy(other);
         }

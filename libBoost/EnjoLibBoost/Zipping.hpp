@@ -2,14 +2,13 @@
 #define ZIPPING_H
 
 #include <Ios/Osstream.hpp>
-#include <3rdParty/stdfwd.hh>
 
 class Zipping
 {
     public:
         Zipping();
         virtual ~Zipping();
-        void UnzipFile(const std::string & zipFileName, EnjoLib::Osstream & sstrOut) const;
+        void UnzipFile(const std::string & zipFileName, EnjoLib::Ostream & sstrOut) const;
 
     protected:
     private:

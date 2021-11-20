@@ -96,9 +96,43 @@ double GeneralMath::Log10(double n) const
     return log10(n);
 }
 
+double GeneralMath::Ceil(double x) const
+{
+    return std::ceil(x);
+}
+double GeneralMath::Floor(double x) const
+{
+    return std::floor(x);
+}
+
+double GeneralMath::Asin(double x) const
+{
+    return asin(x);
+}
+
+double GeneralMath::Atan(double x) const
+{
+    return atan(x);
+}
+
+double GeneralMath::Atan2(double y, double x) const
+{
+    return atan2(y, x);
+}
+
 double GeneralMath::Cosh(double x) const
 {
     return cosh(x);
+}
+
+double GeneralMath::Cos(double x) const
+{
+    return cos(x);
+}
+
+double GeneralMath::Sin(double x) const
+{
+    return sin(x);
 }
 
 // https://stackoverflow.com/a/34660211
@@ -120,6 +154,11 @@ double GeneralMath::PowInt(double base, int exp) const
     }
 }
 
+double GeneralMath::Pow(double x, double exp) const
+{
+    return pow(x, exp);
+}
+
 double GeneralMath::Sqrt(double x) const
 {
     return sqrt(x);
@@ -128,6 +167,11 @@ double GeneralMath::Sqrt(double x) const
 double GeneralMath::Exp(double x) const
 {
     return exp(x);
+}
+
+double GeneralMath::Fmod(double x, double y) const
+{
+    return fmod(x, y);
 }
 
 double GeneralMath::LinearInterpol( double x, const Point & p1, const Point & p2 ) const

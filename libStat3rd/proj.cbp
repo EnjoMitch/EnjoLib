@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="EnjoLibStat3rd" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/EnjoLibStat3rd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-pg" />
+					<Add option="-fPIC" />
+					<Add option="-g" />
+					<Add option="-ffast-math" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+					<Add directory="../lib/bin/Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/EnjoLibStat3rd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
+					<Add option="-fPIC" />
+					<Add option="-ffast-math" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../lib/bin/Release" />
+				</Linker>
+			</Target>
+			<Target title="Windows Release">
+				<Option output="bin/Release/EnjoLibStat3rd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="MinGW32 Release">
+				<Option output="bin/Release-MinGW32/EnjoLibStat3rd.a" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release-MinGW32/" />
+				<Option type="2" />
+				<Option compiler="mingw_32" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="`/usr/i686-w64-mingw32/bin/wx-config  --version=3.0 --static=yes --debug=no --cflags`" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static-libgcc" />
+					<Add option="-static-libstdc++" />
+				</Linker>
+			</Target>
+			<Target title="Windows Debug">
+				<Option output="bin/Debug/EnjoLibStat3rd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+			</Target>
+			<Target title="Release-x64">
+				<Option output="bin/Release-x64/EnjoLibStat3rd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release-x64" />
+				<Option object_output="obj/Release-x64/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-fPIC" />
+					<Add option="-std=c++0x" />
+					<Add option="-ffast-math" />
+					<Add directory="Math" />
+					<Add directory="Util" />
+					<Add directory="Statistical" />
+					<Add directory="Math/Opti" />
+					<Add directory="Math/Opti/Root" />
+					<Add directory="Math/" />
+					<Add directory="Math/MultiDimIter" />
+					<Add directory="ML" />
+					<Add directory="Template" />
+					<Add directory="Statistical/3rdParty" />
+					<Add directory="Util/" />
+					<Add directory="STD" />
+					<Add directory="Ios" />
+				</Compiler>
+				<Linker>
+					<Add directory="../lib/bin/Release-x64" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="#./run-tests.sh" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-Wno-unused-variable" />
+			<Add option="-Wno-unused-but-set-variable" />
+			<Add option="-Werror=switch" />
+			<Add option="-Werror=return-type" />
+			<Add option="-Wl,--no-undefined" />
+			<Add option="-DEIGEN_USE_MKL_ALL" />
+			<Add option="-DMKL_LP64" />
+			<Add directory="../lib" />
+			<Add directory="/home/enjo/devel/lib/tree/include" />
+			<Add directory="/usr/include/eigen3" />
+			<Add directory="/usr/include/mkl" />
+			<Add directory="." />
+		</Compiler>
+		<Linker>
+			<Add option="-lmkl_rt -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" />
+			<Add library="crypto" />
+			<Add library="newmat" />
+			<Add library="EnjoLib" />
+			<Add library="gsl" />
+			<Add directory="/home/enjo/devel/lib/tree/lib" />
+			<Add directory="/usr/lib/x86_64-linux-gnu/mkl" />
+		</Linker>
+		<Unit filename="Statistical/3rdParty/CorrelationAF.cpp" />
+		<Unit filename="Statistical/3rdParty/CorrelationAF.hpp" />
+		<Unit filename="Statistical/3rdParty/EigenEigen3.cpp" />
+		<Unit filename="Statistical/3rdParty/EigenEigen3.hpp" />
+		<Unit filename="Statistical/3rdParty/EigenMKL.cpp" />
+		<Unit filename="Statistical/3rdParty/EigenMKL.hpp" />
+		<Unit filename="Statistical/3rdParty/EigenNewmat10.cpp" />
+		<Unit filename="Statistical/3rdParty/EigenNewmat10.hpp" />
+		<Unit filename="Statistical/3rdParty/EigenNumpy.cpp" />
+		<Unit filename="Statistical/3rdParty/EigenNumpy.hpp" />
+		<Unit filename="Statistical/3rdParty/FFT.cpp" />
+		<Unit filename="Statistical/3rdParty/FFT.hpp" />
+		<Unit filename="Statistical/3rdParty/GSLWrap.cpp" />
+		<Unit filename="Statistical/3rdParty/GSLWrap.hpp" />
+		<Unit filename="Statistical/3rdParty/Gaussian.cpp" />
+		<Unit filename="Statistical/3rdParty/Gaussian.hpp" />
+		<Unit filename="Statistical/3rdParty/RegressionAF.cpp" />
+		<Unit filename="Statistical/3rdParty/RegressionAF.hpp" />
+		<Unit filename="Statistical/3rdParty/RegressionEigen.cpp" />
+		<Unit filename="Statistical/3rdParty/RegressionEigen.hpp" />
+		<Unit filename="Statistical/3rdParty/RegressionGSL.cpp" />
+		<Unit filename="Statistical/3rdParty/RegressionGSL.hpp" />
+		<Unit filename="Statistical/3rdParty/Wavelet.cpp" />
+		<Unit filename="Statistical/3rdParty/Wavelet.hpp" />
+		<Unit filename="Statistical/EigenFactory.cpp" />
+		<Unit filename="Statistical/EigenFactory.hpp" />
+		<Unit filename="Statistical/RegressionFactory.cpp" />
+		<Unit filename="Statistical/RegressionFactory.hpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="src/EnjoLibStat3rdApp.cpp" main="EnjoLibStat3rdFrame" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/EnjoLibStat3rdMain.wxs" src="src/EnjoLibStat3rdMain.cpp" hdr="src/EnjoLibStat3rdMain.h" fwddecl="0" i18n="1" name="EnjoLibStat3rdMain" language="CPP" />
+					<wxDialog wxs="wxsmith/PersonDialog.wxs" src="src/PersonDialog.cpp" hdr="src/PersonDialog.h" fwddecl="1" i18n="1" name="PersonDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/PairDialog.wxs" src="src/PairDialog.cpp" hdr="src/PairDialog.h" fwddecl="0" i18n="1" name="PairDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/DialogCalendar.wxs" src="src/DialogCalendar.cpp" hdr="src/DialogCalendar.h" fwddecl="0" i18n="1" name="DialogCalendar" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

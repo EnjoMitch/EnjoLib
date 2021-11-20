@@ -17,6 +17,7 @@
 				</Compiler>
 				<Linker>
 					<Add directory="../../lib/bin/Debug" />
+					<Add directory="../../libStat3rd/bin/Debug" />
 				</Linker>
 			</Target>
 			<Target title="Release-x64">
@@ -30,6 +31,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add directory="../../libStat3rd/bin/Release-x64" />
 					<Add directory="../../lib/bin/Release-x64" />
 				</Linker>
 			</Target>
@@ -39,12 +41,15 @@
 			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add directory="../../lib" />
+			<Add directory="../../libStat3rd" />
 		</Compiler>
 		<Linker>
+			<Add library="EnjoLibStat3rd" />
+			<Add library="blas" />
 			<Add library="EnjoLib" />
-			<Add library="crypto" />
-			<Add library="UnitTest++" />
 			<Add library="pthread" />
+			<Add library="UnitTest++" />
+			<Add library="crypto" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="#./run-tests.sh" />
@@ -78,9 +83,13 @@
 		<Unit filename="src/TestPimpl.cpp" />
 		<Unit filename="src/TestPimpl.h" />
 		<Unit filename="src/TestSelectBestFromBest.cpp" />
+		<Unit filename="src/TestSstream.cpp" />
 		<Unit filename="src/TestStackTrace.cpp" />
 		<Unit filename="src/TestStatistical.cpp" />
 		<Unit filename="src/TestStr.cpp" />
+		<Unit filename="src/TestStrConst.cpp" />
+		<Unit filename="src/TestTokenizer.cpp" />
+		<Unit filename="src/TestToolsMixed.cpp" />
 		<Unit filename="src/TestTuple.cpp" />
 		<Unit filename="src/TestVector.cpp" />
 		<Unit filename="src/main.cpp" />

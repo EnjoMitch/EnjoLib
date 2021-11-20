@@ -41,7 +41,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Constants.hpp"
 #include "VectorMath.hpp"
 
+#include <STD/VectorCpp.hpp>
+
 using namespace EnjoLib;
+
+static void GreatCircleAdvMath_PushGeoBackAsPoint( double rad, const std::vector<Geo> & vGeo, std::vector<Point> * vRet )
+{
+    for ( std::vector<Geo>::const_iterator it = vGeo.begin(); it != vGeo.end(); ++it )
+        (*vRet).push_back(SystemsConverter(*it, rad).GetPoint());
+}
 
 ThreeSphericals GreatCircleAdvMath::Calc3SphericalsAroundHalfGlobe( double latStart, double lonStart, double r )
 {
@@ -69,7 +77,7 @@ ThreeSphericals GreatCircleAdvMath::Calc3SphericalsAroundHalfGlobe( double latSt
     return ThreeSphericals(sph1, sph2, sph3);
 }
 
-std::vector <Point> GreatCircleAdvMath::CalculateGreatCircle( double rad, double latStart, double lonStart, bool numerical, double fixedStep )
+Array<Point> GreatCircleAdvMath::CalculateGreatCircle( double rad, double latStart, double lonStart, bool numerical, double fixedStep )
 {
     if (fixedStep <= 0)
         return std::vector <Point>();
@@ -136,16 +144,10 @@ std::vector <Point> GreatCircleAdvMath::CalculateGreatCircle( double rad, double
 
     std::vector<Point> vRet;
     // Put into vector in a proper order
-    PushGeoBackAsPoint( rad, vGeo12, &vRet );
-    PushGeoBackAsPoint( rad, vGeo23, &vRet );
-    PushGeoBackAsPoint( rad, vGeo34, &vRet );
-    PushGeoBackAsPoint( rad, vGeo41, &vRet );
+    GreatCircleAdvMath_PushGeoBackAsPoint( rad, vGeo12, &vRet );
+    GreatCircleAdvMath_PushGeoBackAsPoint( rad, vGeo23, &vRet );
+    GreatCircleAdvMath_PushGeoBackAsPoint( rad, vGeo34, &vRet );
+    GreatCircleAdvMath_PushGeoBackAsPoint( rad, vGeo41, &vRet );
 
     return vRet;
-}
-
-void GreatCircleAdvMath::PushGeoBackAsPoint( double rad, const std::vector<Geo> & vGeo, std::vector<Point> * vRet )
-{
-    for ( std::vector<Geo>::const_iterator it = vGeo.begin(); it != vGeo.end(); ++it )
-        (*vRet).push_back(SystemsConverter(*it, rad).GetPoint());
 }

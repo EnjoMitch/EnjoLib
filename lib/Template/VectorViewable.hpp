@@ -14,6 +14,14 @@ class VectorViewable : public IIterable<T>
         : dat(dat)
         {
         }
+        VectorViewable(const IIterableConst<T> & itr)
+        {
+            dat.reserve(itr.size());
+            for (const T & val : itr)
+            {
+                dat.push_back(val);
+            }
+        }
         VectorViewable()
         {
         }

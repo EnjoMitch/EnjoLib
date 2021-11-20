@@ -1,7 +1,7 @@
 #ifndef EIGENMKL_HPP
 #define EIGENMKL_HPP
 
-#include "../EigenAbstract.hpp"
+#include <Statistical/EigenAbstract.hpp>
 
 namespace EnjoLib
 {

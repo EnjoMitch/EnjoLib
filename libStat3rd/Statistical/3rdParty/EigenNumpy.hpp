@@ -1,7 +1,7 @@
 #ifndef EIGENNUMPY_HPP
 #define EIGENNUMPY_HPP
 
-#include "../EigenAbstract.hpp"
+#include <Statistical/EigenAbstract.hpp>
 
 namespace EnjoLib
 {

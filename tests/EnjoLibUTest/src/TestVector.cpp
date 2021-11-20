@@ -51,6 +51,31 @@ TEST(Vector_diff)
     tss3[0];
 }
 
+TEST(Vector_smooth1)
+{
+    //new VecF();
+    const VecF & tssSmt = tssHalf1st.Smooth(3);
+    const VecF exp {2, 3, 4};
+    CHECK_EQUAL(exp.size(), tssSmt.size());
+    CHECK_ARRAY_EQUAL(exp, tssSmt, exp.size());
+}
+
+TEST(Vector_smooth_oversize)
+{
+    const VecF & tssSmt = tssHalf1st.Smooth(10);
+    const VecF exp {3};
+    CHECK_EQUAL(exp.size(), tssSmt.size());
+    CHECK_ARRAY_EQUAL(exp, tssSmt, exp.size());
+}
+
+TEST(Vector_smooth_sizecorner)
+{
+    const VecF & tssSmt = tssHalf1st.Smooth(5);
+    const VecF exp {3};
+    CHECK_EQUAL(exp.size(), tssSmt.size());
+    CHECK_ARRAY_EQUAL(exp, tssSmt, exp.size());
+}
+
 static VecD Create()
 {
     VecD ret;

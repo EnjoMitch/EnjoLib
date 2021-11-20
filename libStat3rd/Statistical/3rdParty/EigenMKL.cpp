@@ -1,7 +1,7 @@
 #include "EigenMKL.hpp"
 #include "EigenEigen3.hpp"
-#include "../Matrix.hpp"
-#include "../../Template/CorradePointer.h"
+#include <Statistical/Matrix.hpp>
+#include <Template/CorradePointer.h>
 #include <STD/VectorCpp.hpp>
 
 using namespace EnjoLib;

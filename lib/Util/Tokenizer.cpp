@@ -1,7 +1,8 @@
-#include "Tokenizer.hpp"
+#include <Util/Tokenizer.hpp>
 
 #include <Ios/Isstream.hpp>
 #include <Ios/Ifstream.hpp>
+#include <Util/CharManipulations.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -41,6 +42,21 @@ VecStr Tokenizer::GetLines(EnjoLib::Istream & is, bool excludeFirstLine) const
     return lines;
 }
 
+/*
+VecStr Tokenizer::GetLines(std::istream & is, bool excludeFirstLine) const
+{
+    Str line;
+    VecStr lines;
+    if (excludeFirstLine)
+        std::getline(is, line.strRW());
+    while (std::getline(is, line.strRW()))
+    {
+        lines.push_back(line);
+    }
+    return lines;
+}
+*/
+
 VecStr Tokenizer::GetLinesStr(const Str & strData, bool excludeFirstLine) const
 {
     return Tokenize(strData, '\n');
@@ -62,4 +78,26 @@ void Tokenizer::WorkOnLines(EnjoLib::Istream & is, IWorksOnLine & worker, bool e
     {
         worker.Work(line);
     }
+}
+
+VecStr Tokenizer::FilterLines(const VecStr & lines, char tagComment) const
+{
+    VecStr ret;
+    const CharManipulations cman;
+    for (Str line : lines)
+    {
+        line = cman.Trim(line);
+        line = cman.Replace(line, "\t", " ");
+        line = cman.Replace(line, "  ", " ");
+        if (line.empty())
+        {
+            continue;
+        }
+        if (cman.StartsWith(line, tagComment))
+        {
+            continue;
+        }
+        ret.push_back(line);
+    }
+    return ret;
 }

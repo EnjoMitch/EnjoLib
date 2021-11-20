@@ -1,10 +1,17 @@
 #include "EnumStringMap.hpp"
 #include <Util/PimplDeleter.hpp>
-#include <STD/Map.hpp>
+#include <Template/Array.hpp>
 
+#include <STD/Map.hpp>
+#include <STD/VectorCpp.hpp>
+
+using namespace EnjoLib;
+
+/// TODO: Use Bimap?
 struct EnumStringMap::Impl
 {
-    std::map<unsigned int, EnjoLib::Str> mapEnum;
+    std::map<unsigned int, Str> mapEnum;
+    std::map<Str, unsigned int> mapName;
 };
 PIMPL_DELETER(EnumStringMap)
 
@@ -14,26 +21,55 @@ EnumStringMap::EnumStringMap()
 
 EnumStringMap::~EnumStringMap(){}
 
-void EnumStringMap::Add( unsigned int enumId, const EnjoLib::Str & name )
+void EnumStringMap::Add( unsigned int enumId, const Str & name )
 {
     GetImplRW().mapEnum[enumId] = name;
+    GetImplRW().mapName[name]   = enumId;
 }
 
-const EnjoLib::Str & EnumStringMap::at(unsigned int enumId) const
+const Str & EnumStringMap::at(unsigned int enumId) const
 {
     return GetImpl().mapEnum.at( enumId );
 }
 
-const EnjoLib::Str & EnumStringMap::operator[](unsigned int enumId) const
+unsigned int EnumStringMap::atRev(const Str & name) const
+{
+     return GetImpl().mapName.at( name );
+}
+
+const Str & EnumStringMap::operator[](unsigned int enumId) const
 {
     return at( enumId );
+}
+
+bool EnumStringMap::Has(unsigned int enumId) const
+{
+    return GetImpl().mapEnum.find(enumId) != GetImpl().mapEnum.end();
+}
+bool EnumStringMap::HasName(const Str & name) const
+{
+    return GetImpl().mapName.find(name) != GetImpl().mapName.end();
 }
 
 size_t EnumStringMap::size() const
 {
     return GetImpl().mapEnum.size();
 }
-const stdfwd::map<unsigned int, EnjoLib::Str> & EnumStringMap::Data() const
+const std::map<unsigned int, Str> & EnumStringMap::Data() const
 {
     return GetImpl().mapEnum;
+}
+const std::map<Str, unsigned int> & EnumStringMap::DataInv() const
+{
+    return GetImpl().mapName;
+}
+
+Array<Str> EnumStringMap::GetNames() const
+{
+    std::vector<Str> ret;
+    for (value_type::const_iterator it = GetImpl().mapEnum.begin(); it != GetImpl().mapEnum.end(); ++it)
+    {
+        ret.push_back(it->second);
+    }
+    return ret;
 }

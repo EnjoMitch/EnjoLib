@@ -13,7 +13,7 @@ file( GLOB SRCS src/*.cpp */*.h */*.hpp)
 add_executable(${PROJECT_NAME} ${SRCS})
 add_test(${PROJECT_NAME} ${PROJECT_NAME})
 enjoSetupTarget(${PROJECT_NAME})
-target_link_libraries(${PROJECT_NAME} EnjoLib UnitTest++)
+target_link_libraries(${PROJECT_NAME} EnjoLibStat3rd UnitTest++)
 enjo_target_pch(${PROJECT_NAME} src/pch_test.h)
 enjo_target_unity(${PROJECT_NAME})
 

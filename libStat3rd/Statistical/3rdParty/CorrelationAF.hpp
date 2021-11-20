@@ -22,10 +22,10 @@ class CorrelationAF
     protected:
 
     private:
-        af::array Calculate(const af::array & x, const af::array & y) const;
-        af::array Mean(const af::array & ar) const;
-        af::array SqrtSumSquare(const af::array & ar, const af::array & mean) const;
-        af::array SumNumerator(const af::array & x, const af::array & y, const af::array & meanX, const af::array & meanY) const;
+        //af::array Calculate(const af::array & x, const af::array & y) const;
+        //af::array Mean(const af::array & ar) const;
+        //af::array SqrtSumSquare(const af::array & ar, const af::array & mean) const;
+        //af::array SumNumerator(const af::array & x, const af::array & y, const af::array & meanX, const af::array & meanY) const;
 
         double m_correlation;
 };

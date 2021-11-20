@@ -1,4 +1,5 @@
 #include "OptiMultiSubject.hpp"
+#include <Template/Array.hpp>
 
 using namespace EnjoLib;
 

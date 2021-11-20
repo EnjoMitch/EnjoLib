@@ -161,23 +161,10 @@
 					<Add option="-fPIC" />
 					<Add option="-std=c++0x" />
 					<Add option="-ffast-math" />
-					<Add directory="Math" />
 					<Add directory="Util" />
-					<Add directory="Statistical" />
-					<Add directory="Math/Opti" />
-					<Add directory="Math/Opti/Root" />
-					<Add directory="Math/" />
-					<Add directory="Math/MultiDimIter" />
-					<Add directory="ML" />
 					<Add directory="Template" />
-					<Add directory="Statistical/3rdParty" />
-					<Add directory="Util/" />
-					<Add directory="STD" />
-					<Add directory="Ios" />
+					<Add directory="Statistical" />
 				</Compiler>
-				<ExtraCommands>
-					<Add after="./run-tests.sh" />
-				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
@@ -195,9 +182,6 @@
 			<Add directory="/usr/include/mkl" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmkl_rt -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" />
-			<Add library="crypto" />
-			<Add library="newmat" />
 			<Add directory="/home/enjo/devel/lib/tree/lib" />
 			<Add directory="/usr/lib/x86_64-linux-gnu/mkl" />
 		</Linker>
@@ -341,6 +325,10 @@
 		<Unit filename="STD/Istream.hpp" />
 		<Unit filename="STD/Map.cpp" />
 		<Unit filename="STD/Map.hpp" />
+		<Unit filename="STD/MapPch.hpp">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
 		<Unit filename="STD/Ostream.cpp" />
 		<Unit filename="STD/Ostream.hpp" />
 		<Unit filename="STD/Set.cpp" />
@@ -359,14 +347,6 @@
 		<Unit filename="STD/Vector.hpp" />
 		<Unit filename="STD/VectorCpp.cpp" />
 		<Unit filename="STD/VectorCpp.hpp" />
-		<Unit filename="Statistical/3rdParty/EigenEigen3.cpp" />
-		<Unit filename="Statistical/3rdParty/EigenEigen3.hpp" />
-		<Unit filename="Statistical/3rdParty/EigenMKL.cpp" />
-		<Unit filename="Statistical/3rdParty/EigenMKL.hpp" />
-		<Unit filename="Statistical/3rdParty/EigenNewmat10.cpp" />
-		<Unit filename="Statistical/3rdParty/EigenNewmat10.hpp" />
-		<Unit filename="Statistical/3rdParty/EigenNumpy.cpp" />
-		<Unit filename="Statistical/3rdParty/EigenNumpy.hpp" />
 		<Unit filename="Statistical/Assertions.cpp" />
 		<Unit filename="Statistical/Assertions.hpp" />
 		<Unit filename="Statistical/Autocorrelation.cpp" />
@@ -383,6 +363,8 @@
 		<Unit filename="Statistical/EigenValueComparator.hpp" />
 		<Unit filename="Statistical/EigenValueVector.cpp" />
 		<Unit filename="Statistical/EigenValueVector.hpp" />
+		<Unit filename="Statistical/Formatters.cpp" />
+		<Unit filename="Statistical/Formatters.hpp" />
 		<Unit filename="Statistical/KMeans1d.cpp" />
 		<Unit filename="Statistical/KMeans1d.hpp" />
 		<Unit filename="Statistical/KMeans1dCluster.cpp" />
@@ -401,6 +383,10 @@
 		<Unit filename="Statistical/PCA.hpp" />
 		<Unit filename="Statistical/PCAAuto.cpp" />
 		<Unit filename="Statistical/PCAAuto.hpp" />
+		<Unit filename="Statistical/RegressionAbstract.cpp" />
+		<Unit filename="Statistical/RegressionAbstract.hpp" />
+		<Unit filename="Statistical/RegressionFactoryAbstract.cpp" />
+		<Unit filename="Statistical/RegressionFactoryAbstract.hpp" />
 		<Unit filename="Statistical/ScalingOpStandardize.cpp" />
 		<Unit filename="Statistical/ScalingOpStandardize.hpp" />
 		<Unit filename="Statistical/ScalingOpStandardizeInvert.cpp" />
@@ -440,6 +426,8 @@
 		<Unit filename="Template/AlgoVariadic.hpp" />
 		<Unit filename="Template/Array.cpp" />
 		<Unit filename="Template/Array.hpp" />
+		<Unit filename="Template/ArrayFwd.cpp" />
+		<Unit filename="Template/ArrayFwd.hpp" />
 		<Unit filename="Template/CacheCleanupPolFactory.cpp" />
 		<Unit filename="Template/CacheCleanupPolFactory.hpp" />
 		<Unit filename="Template/CacheRAM.cpp" />
@@ -454,11 +442,15 @@
 		<Unit filename="Template/CacheRAMFunctional.hpp" />
 		<Unit filename="Template/CacheRAMThreadSafe.cpp" />
 		<Unit filename="Template/CacheRAMThreadSafe.hpp" />
+		<Unit filename="Template/CorradeArray.h" />
+		<Unit filename="Template/CorradeArrayView.h" />
 		<Unit filename="Template/CorradePointer.cpp" />
 		<Unit filename="Template/CorradePointer.h" />
 		<Unit filename="Template/CorradePointerFwd.h" />
 		<Unit filename="Template/IIterable.cpp" />
 		<Unit filename="Template/IIterable.hpp" />
+		<Unit filename="Template/IIterableFwd.cpp" />
+		<Unit filename="Template/IIterableFwd.hpp" />
 		<Unit filename="Template/IVecT.cpp" />
 		<Unit filename="Template/IVecT.hpp" />
 		<Unit filename="Template/IterAdaptStd.cpp" />
@@ -467,6 +459,8 @@
 		<Unit filename="Template/Iters2.hpp" />
 		<Unit filename="Template/LoopThreadedTpl.cpp" />
 		<Unit filename="Template/LoopThreadedTpl.hpp" />
+		<Unit filename="Template/Map.cpp" />
+		<Unit filename="Template/Map.hpp" />
 		<Unit filename="Template/PtrHelper.cpp" />
 		<Unit filename="Template/PtrHelper.hpp" />
 		<Unit filename="Template/SafePtr.cpp" />
@@ -493,6 +487,8 @@
 		<Unit filename="Template/VecTMath.hpp" />
 		<Unit filename="Template/VectorViewable.cpp" />
 		<Unit filename="Template/VectorViewable.hpp" />
+		<Unit filename="Template/VectorViewableFwd.cpp" />
+		<Unit filename="Template/VectorViewableFwd.hpp" />
 		<Unit filename="Template/View.cpp" />
 		<Unit filename="Template/View.hpp" />
 		<Unit filename="Template/Viewable.cpp" />
@@ -514,6 +510,8 @@
 		<Unit filename="Util/Bool3State.hpp" />
 		<Unit filename="Util/CStr.cpp" />
 		<Unit filename="Util/CStr.hpp" />
+		<Unit filename="Util/CalendarGregorian.cpp" />
+		<Unit filename="Util/CalendarGregorian.hpp" />
 		<Unit filename="Util/CharManipulations.cpp" />
 		<Unit filename="Util/CharManipulations.hpp" />
 		<Unit filename="Util/CharManipulationsTpl.cpp" />
@@ -542,8 +540,6 @@
 		<Unit filename="Util/LinuxNetwork.hpp" />
 		<Unit filename="Util/LinuxSystemCalls.cpp" />
 		<Unit filename="Util/LinuxSystemCalls.hpp" />
-		<Unit filename="Util/LinuxTools.cpp" />
-		<Unit filename="Util/LinuxTools.hpp" />
 		<Unit filename="Util/LoopThreaded.cpp" />
 		<Unit filename="Util/LoopThreaded.hpp" />
 		<Unit filename="Util/NonCopyable.cpp" />
@@ -570,8 +566,12 @@
 		<Unit filename="Util/Str.hpp" />
 		<Unit filename="Util/StrColour.cpp" />
 		<Unit filename="Util/StrColour.hpp" />
+		<Unit filename="Util/StrConst.cpp" />
+		<Unit filename="Util/StrConst.hpp" />
 		<Unit filename="Util/StrImpl.cpp" />
 		<Unit filename="Util/StrImpl.hpp" />
+		<Unit filename="Util/ThreadWrap.cpp" />
+		<Unit filename="Util/ThreadWrap.hpp" />
 		<Unit filename="Util/Time.cpp" />
 		<Unit filename="Util/Time.hpp" />
 		<Unit filename="Util/TimeComponents.cpp" />
@@ -602,6 +602,8 @@
 		<Unit filename="Util/VecStr.hpp" />
 		<Unit filename="Util/VectorNonCopyable.cpp" />
 		<Unit filename="Util/VectorNonCopyable.hpp" />
+		<Unit filename="Util/WriterConditional.cpp" />
+		<Unit filename="Util/WriterConditional.hpp" />
 		<Unit filename="Visual/Canvas.cpp" />
 		<Unit filename="Visual/Canvas.hpp" />
 		<Unit filename="Visual/CanvasMovableScallable.cpp" />

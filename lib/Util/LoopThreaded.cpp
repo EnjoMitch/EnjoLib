@@ -51,7 +51,7 @@ Ticks::Ticks(const string & symbolName, const VecStr & lines, bool skipHeader)
     m_ticks.clear();
 
     const Timer timer;
-    const int numCores = thread::hardware_concurrency();
+    const int numCores = EnjoLib::ThreadWrap::GetConcurrency();
     const LoopThreaded loopThreaded(lines.size(), numCores);
 
     vector<VecStr> dataSets(numCores);

@@ -1,6 +1,6 @@
 #include "BoundSearch.hpp"
-//#include "GeneralMath.hpp"
-#include <cmath>
+#include "../GeneralMath.hpp"
+//#include <cmath>
 
 
 using namespace EnjoLib;
@@ -24,10 +24,11 @@ Result<double> BoundSearch::FindLower(OptiSubject & subj, double start, double m
 
 Result<double> BoundSearch::Find(OptiSubject & subj, double start, bool upper, double minIncrement, double maxIncrement)
 {
+    const GeneralMath gmat;
     // Input data preprocessing - determine search direction and adjust increments
     int sign = upper ? 1 : -1;
-    minIncrement = sign * fabs(minIncrement);
-    maxIncrement = sign * fabs(maxIncrement);
+    minIncrement = sign * gmat.Fabs(minIncrement);
+    maxIncrement = sign * gmat.Fabs(maxIncrement);
     // Initial conditions
     double testArg = start;
     double value = subj.UpdateGetValue(testArg);
@@ -39,7 +40,7 @@ Result<double> BoundSearch::Find(OptiSubject & subj, double start, bool upper, d
         if (incrExceeded == false)
         {
             incr = incr * 2;
-            if (maxIncrement != 0 && fabs(incr) > fabs(maxIncrement))
+            if (maxIncrement != 0 && gmat.Fabs(incr) > gmat.Fabs(maxIncrement))
             {
                 incrExceeded = true;
                 incr = maxIncrement; // Don't increase the increment anymore

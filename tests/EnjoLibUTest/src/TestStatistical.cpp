@@ -6,6 +6,7 @@
 #include <Statistical/Matrix.hpp>
 #include <Statistical/Statistical.hpp>
 #include <Statistical/EigenAbstract.hpp>
+#include <Statistical/EigenFactory.hpp>
 #include <Template/CorradePointer.h>
 #include <STD/VectorCpp.hpp>
 
@@ -67,7 +68,7 @@ TEST(Statistical_covariance_working_example_PDF)
     const double EPS = 0.001;
     CHECK_ARRAY2D_CLOSE(covExp, cov, covExp.GetNRows(), covExp.GetNCols(), EPS);
 
-    const Corrade::Containers::Pointer<EigenAbstract> peigen = EigenAbstract::CreateDefault();
+    const Corrade::Containers::Pointer<EigenAbstract> peigen = EigenFactory().Create(EIGENTYPE_DEFAULT);
     const std::vector<EigenValueVector> evalvec = peigen->GetEigenValVec(cov, true);
 
     CHECK_CLOSE(1.28402771, evalvec.at(0).GetValue(), EPS);

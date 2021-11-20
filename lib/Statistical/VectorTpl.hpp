@@ -53,6 +53,7 @@ class VectorTpl : public std::vector<T>
         VectorTpl Slice  (unsigned idx, unsigned len) const;
         VectorTpl SliceTS(unsigned idx, unsigned len) const;
         VectorTpl Diffs() const;
+        VectorTpl Smooth(unsigned numToSmooth) const;
         VectorTpl LogSigned() const;
 
         VectorTpl & operator += (const VectorTpl & par);

@@ -37,6 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Ios/Osstream.hpp>
 #include <Ios/IoManip.hpp>
 #include <Util/Except.hpp>
+#include <Util/CoutBuf.hpp>
 #include <Math/GeneralMath.hpp>
 
 //#include <STD/Algorithm.hpp>
@@ -272,6 +273,29 @@ VectorTpl<T> VectorTpl<T>::Diffs() const
     {
         const T & diff = this->at(i) - this->at(i-1);
         ret.Add(diff);
+    }
+    return ret;
+}
+
+template<class T>
+VectorTpl<T> VectorTpl<T>::Smooth(unsigned numToSmooth) const
+{
+    Assertions::IsNonZero(numToSmooth, "VectorTpl<T>::Smooth(unsigned numToSmooth)");
+    if (numToSmooth > this->size())
+    {
+        numToSmooth = this->size();
+    }
+    VectorTpl<T> ret;
+    
+    for (size_t i = numToSmooth - 1; i < this->size(); ++i)
+    {
+        T sum = 0;
+        for (size_t j = i - numToSmooth + 1; j <= i; ++j)
+        {
+            sum += this->at(j);
+        }
+        const T avg = sum / T(numToSmooth);
+        ret.Add(avg);
     }
     return ret;
 }

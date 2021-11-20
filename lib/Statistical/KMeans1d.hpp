@@ -2,7 +2,7 @@
 #define KMeans1d_H
 
 #include <Util/VecF.hpp>
-#include <Template/Array.hpp>
+#include <Template/ArrayFwd.hpp>
 
 namespace EnjoLib
 {

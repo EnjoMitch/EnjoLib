@@ -2,7 +2,7 @@
 #define OPTIMULTISUBJECT_H
 
 #include <Util/VecD.hpp>
-#include <Template/Array.hpp>
+#include <Template/ArrayFwd.hpp>
 
 namespace EnjoLib
 {

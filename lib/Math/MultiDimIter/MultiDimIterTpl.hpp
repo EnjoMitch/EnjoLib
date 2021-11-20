@@ -6,6 +6,8 @@
 namespace EnjoLib
 {
 class IMultiDimIterConsumerTpl;
+
+/// Iterates the input data each by each.
 class MultiDimIterTpl
 {
     public:
@@ -15,7 +17,7 @@ class MultiDimIterTpl
         typedef VecD Vt;
         typedef Matrix VVt;
 
-        void StartIteration(const Matrix & data, IMultiDimIterConsumerTpl & consumer);
+        void StartIteration(const VVt & data, IMultiDimIterConsumerTpl & consumer);
     protected:
     private:
         void IterateTpl(IMultiDimIterConsumerTpl & consumer, const VVt & data, Vt & res, unsigned d = 0);

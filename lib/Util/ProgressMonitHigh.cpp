@@ -39,7 +39,10 @@ void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib:
     m_prevPercentDone = percentDone;
 
     if (i == sz - 1)
-        std::cout << "  Done!" << std::endl;
+    {
+        //std::cout << "  Done!" << std::endl;
+    }
+        
 }
 
 void ProgressMonitHigh::Reset()

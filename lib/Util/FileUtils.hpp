@@ -35,7 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <Util/VecStr.hpp>
 #include <Ios/Istream.hpp>
-#include <Template/Array.hpp>
+#include <Template/ArrayFwd.hpp>
 
 class istream;
 
@@ -50,10 +50,13 @@ public:
     bool FileExists( const EnjoLib::Str & fileName ) const;
     bool DirExists( const EnjoLib::Str & dirName ) const;
     void CreateDirIfNotExistsLinux(const EnjoLib::Str & dirName) const;
+    void RemoveAllInDirLinux(const EnjoLib::Str & dirName) const;
     EnjoLib::Str GetBaseDir(const EnjoLib::Str & fullPath) const;
     size_t GetNumLinesFile( const EnjoLib::Str & fileName, bool skipHeader = false ) const;
     size_t GetNumLinesFile( EnjoLib::Istream & is, bool skipHeader = false ) const;
     void Remove(const EnjoLib::Str & fileName);
+    
+    EnjoLib::Str ProcessDir(const EnjoLib::Str & dirName) const;
 
 private:
     VecStr GetOneSection( EnjoLib::Istream & file, const EnjoLib::Str & endMarker ) const;

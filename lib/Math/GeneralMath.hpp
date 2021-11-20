@@ -67,9 +67,13 @@ struct GeneralMath
     double Log(double n) const;
 	double Log2(double n) const;
 	double Log10(double n) const;
+	double Ceil(double x) const;
+	double Floor(double x) const;
 	double PowInt(double x, int exp) const;
+	double Pow(double x, double exp) const;
 	double Sqrt(double x) const;
 	double Exp(double x) const;
+	double Fmod(double x, double y) const;
 	/// Returns angle in <-PI, PI> range
 	double GetInPIRange( double angle ) const;
 	/// Returns angle in <-2PI, 2PI> range
@@ -78,7 +82,12 @@ struct GeneralMath
 	double GetIn0_2PIRange( double angle ) const;
 	/// Returns sign of argument: 1, -1 or 0, if x == 0
 	int sign( double x ) const;
+	double Asin(double x) const;
+	double Atan(double x) const;
+	double Atan2(double y, double x) const;
 	double Cosh(double x) const;
+	double Cos(double x) const;
+	double Sin(double x) const;
 	/// Iteration limit for bound binary search
 	int GetMaxIterBinSearchBound(double minArg, double maxArg, double eps) const;
 	EnjoLib::VecD UniformDistr(int n, double min, double max) const;
@@ -89,6 +98,8 @@ struct GeneralMath
     /// Applies points faster than linear and is symmetric
     double PointsPower(double x, double power) const;
 };
+
+typedef GeneralMath GMat;
 }
 
 #endif // GENERALMATH_HPP_INCLUDED

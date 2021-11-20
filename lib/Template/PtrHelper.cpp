@@ -9,6 +9,10 @@ PtrHelper::~PtrHelper(){}
 
 long PtrHelper::GetMinSize(const char * src, long maxSize)
 {
+    if (src == nullptr)
+    {
+        return 0;
+    }
     const size_t typeSz = strlen(src);
     size_t minSz = maxSize;
     if (typeSz < minSz)
@@ -21,7 +25,10 @@ long PtrHelper::GetMinSize(const char * src, long maxSize)
 void PtrHelper::Copy(char * dst, const char * src, long maxSize)
 {
     const size_t minSz = GetMinSize(src, maxSize);
-    memcpy(dst, src, minSz);
+    if (minSz > 0 && src != nullptr)
+    {
+        memcpy(dst, src, minSz);
+    }
 }
 
 void PtrHelper::ThrowIfCondMet(bool condition, const char * typeName, const char * subTypeName)

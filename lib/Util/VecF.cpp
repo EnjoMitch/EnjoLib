@@ -178,6 +178,11 @@ VecF VecF::Diffs() const
 {
     return m_impl->dat.Diffs();
 }
+VecF VecF::Smooth(unsigned numToSmooth) const
+{
+    return m_impl->dat.Smooth(numToSmooth);
+}
+
 float & VecF::at(size_t idx)
 {
     return m_impl->dat.at(idx);
@@ -222,7 +227,7 @@ void VecF::clear()
 
 void VecF::emplace_back(const float & val)
 {
-    return m_impl->dat.emplace_back(val);
+    m_impl->dat.emplace_back(val);
 }
 
 
@@ -331,3 +336,11 @@ VecF::const_iterator VecF::begin() const    {return const_iterator(&m_impl->dat[
 VecF::const_iterator VecF::end()   const    {return const_iterator(&m_impl->dat[size()]);}
 VecF::const_iterator VecF::cbegin() const   {return begin();}
 VecF::const_iterator VecF::cend()   const   {return end();}
+
+
+bool VecF::operator == (const IVecT<float> & par) const
+{
+    /// TODO: Repetition
+    Assertions::Throw("Unimplemented", "VecF::operator == ");
+    return false;
+}

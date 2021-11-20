@@ -37,11 +37,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "ScalingOpStandardize.hpp"
 #include "ScalingOpStandardizeInvert.hpp"
 
-#include "../Math/GeneralMath.hpp"
+#include <Math/GeneralMath.hpp>
+#include <Template/Array.hpp>
 
 #include <STD/VectorCpp.hpp>
-//#include <cstdlib>
-#include <cmath>
 #include <STD/Algorithm.hpp>
 //#include <Util/CoutBuf.hpp>
 
@@ -79,14 +78,16 @@ double Statistical::SumMulDiffMean( const VecD & v1, const VecD & v2 ) const
 
 double Statistical::StandardDeviation( const VecD & v ) const
 {
+    const GeneralMath gmat;
     Assertions::AtLeast2Dimensions(v,"Statistical::StandardDeviation");
     const double variance = Variance(v);
-    const double sd = sqrt(variance);
+    const double sd = gmat.Sqrt(variance);
     return sd;
 }
 
 double Statistical::StandardDeviation( const Matrix & m ) const
 {
+    const GeneralMath gmat;
     double sumVariances = 0;
     const Matrix & mT = m.T();
     for (size_t i = 0; i < mT.size(); ++i)
@@ -94,12 +95,13 @@ double Statistical::StandardDeviation( const Matrix & m ) const
         const double variance = Variance(mT.at(i));
         sumVariances += variance;
     }
-    const double sd = sqrt(sumVariances);
+    const double sd = gmat.Sqrt(sumVariances);
     return sd;
 }
 
 double Statistical::DistFromMean( const Matrix & m, const VecD & v ) const
 {
+    const GeneralMath gmat;
     //Assertions::AtLeast2Dimensions(m,"Statistical::DistFromMean");
     const Matrix & mT = m.T();
     double sumVariances = 0;
@@ -111,7 +113,7 @@ double Statistical::DistFromMean( const Matrix & m, const VecD & v ) const
         const double n = mT.at(i).size() - 1;
         sumVariances += diffSquare / n;
     }
-    const double sd = sqrt(sumVariances);
+    const double sd = gmat.Sqrt(sumVariances);
     return sd;
 }
 
@@ -156,6 +158,11 @@ Matrix Statistical::CovarianceMatrix( const Matrix & data ) const
         }
     }
     return covMat;
+}
+
+double Statistical::Mean( const VecD & v ) const
+{
+    return v.Mean();
 }
 
 double Statistical::Median( const VecD & v ) const
@@ -235,6 +242,7 @@ Matrix Statistical::Standardize( const Matrix & refMat ) const
 
 double Statistical::RMS( const VecD & v) const
 {
+    const GeneralMath gmat;
     Assertions::NonEmpty(v, "Statistical::RMS");
     double sumSquared = 0;
     for (unsigned i = 0; i < v.size(); ++i)
@@ -244,7 +252,7 @@ double Statistical::RMS( const VecD & v) const
         sumSquared += val2;
     }
     const double divided = sumSquared / double(v.size());
-    const double squareroot = sqrt(divided);
+    const double squareroot = gmat.Sqrt(divided);
     return squareroot;
 }
 
@@ -308,6 +316,7 @@ double Statistical::ME(const VecD & v) const
 /// Calculates distance between means in terms of standard deviations' distance
 double Statistical::CohendEffectSize(const VecD & v1, const VecD & v2) const
 {
+    const GeneralMath gmat;
     const char * idd = "Statistical::CohendEffectSize";
     Assertions::AtLeast2Dimensions(v1, idd);
     Assertions::AtLeast2Dimensions(v2, idd);
@@ -318,7 +327,7 @@ double Statistical::CohendEffectSize(const VecD & v1, const VecD & v2) const
     const double mn1 = v1.Mean();
     const double mn2 = v2.Mean();
 
-    const double pooledStdDev = sqrt(((sz1 - 1) * var1 + (sz2 - 1) * var2) / (sz1 + sz2 - 2));
+    const double pooledStdDev = gmat.Sqrt(((sz1 - 1) * var1 + (sz2 - 1) * var2) / (sz1 + sz2 - 2));
     Assertions::IsNonZero(pooledStdDev, idd);
     const double effectSize = (mn1 - mn2) / pooledStdDev;
     return effectSize;

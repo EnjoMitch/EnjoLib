@@ -12,11 +12,13 @@ class SafePtr : public SafePtrThin<T, Deleter, Base>
 public:
     using value_type = T;
 
+    /*
     SafePtr()
     : SafePtrThin<T, Deleter, Base>()
     {
 
     }
+    */
     SafePtr(T * ptr)
     : SafePtrThin<T, Deleter, Base>(ptr)
     {
@@ -35,6 +37,23 @@ public:
 private:
     constexpr static const char * className = "SafePtr";
 };
+
+template<class T, class Deleter=DefaultPtrDeleter<T>, class Base=NonCopyable>
+class SafePtrNullable : public SafePtr<T, Deleter, Base>
+{
+public:
+    using value_type = T;
+    
+    SafePtrNullable()
+    : SafePtr<T, Deleter, Base>(nullptr)
+    {
+    }
+    SafePtrNullable(T * ptr)
+    : SafePtr<T, Deleter, Base>(ptr)
+    {
+    }
+};
+
 }
 
 #endif // SAFEPTR_HPP

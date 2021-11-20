@@ -234,3 +234,20 @@ TEST(Array_clear)
     CHECK_EQUAL(true, arr.empty());
     CHECK_EQUAL(0,    arr.size());
 }
+
+TEST(Array_pushBack)
+{
+    VecF data = std::vector<float>{2, 0, 1};
+    Array<float> arr(data);
+    arr.push_back(5);
+    CHECK_EQUAL(5, arr.back());
+    CHECK_EQUAL(4,    arr.size());
+}
+
+TEST(Array_pushBackEpmty)
+{
+    Array<float> arr;
+    arr.push_back(5);
+    CHECK_EQUAL(5, arr.back());
+    CHECK_EQUAL(1,    arr.size());
+}

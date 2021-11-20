@@ -40,17 +40,26 @@ namespace EnjoLib
 {
 class Matrix;
 
+enum EigenType
+{
+    EIGENTYPE_DEFAULT,
+    EIGENTYPE_EIGEN3,
+    EIGENTYPE_MKL,
+    EIGENTYPE_NEWMAT,
+    EIGENTYPE_NUMPY
+};
+
 class EigenAbstract
 {
     public:
         EigenAbstract();
         virtual ~EigenAbstract();
-
+        /// TODO: Return array
         Matrix GetSortedFeatureVectorNumber( const Matrix & m, unsigned number) const;
         Matrix GetSortedFeatureVectorFactor( const Matrix & m, double leaveFactor ) const;
         Matrix GetSortedFeatureVector( const Matrix & m ) const;
         stdfwd::vector<EigenValueVector> GetEigenValVec( const Matrix & m, bool sorted ) const;
-
+/*
         static Corrade::Containers::Pointer<EigenAbstract> CreateEigen3();
         static Corrade::Containers::Pointer<EigenAbstract> CreateMKL();
         static Corrade::Containers::Pointer<EigenAbstract> CreateDefault();
@@ -58,12 +67,12 @@ class EigenAbstract
         static Corrade::Containers::Pointer<EigenAbstract> CreateNewmat();
 #endif
         static Corrade::Containers::Pointer<EigenAbstract> CreateNumpy();
-
+*/
     protected:
         virtual stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const = 0;
 
     private:
-
 };
+
 }
 #endif // EIGENABSTRACT_H

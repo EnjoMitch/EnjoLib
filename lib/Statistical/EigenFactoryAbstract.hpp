@@ -1,6 +1,7 @@
 #ifndef EIGENFACTORYABSTRACT_H
 #define EIGENFACTORYABSTRACT_H
 
+#include "EigenAbstract.hpp"
 #include "../Template/CorradePointer.h"
 
 namespace EnjoLib
@@ -12,7 +13,7 @@ class EigenFactoryAbstract
         EigenFactoryAbstract();
         virtual ~EigenFactoryAbstract();
 
-        virtual Corrade::Containers::Pointer<EigenAbstract> CreateEigen() const = 0;
+        virtual Corrade::Containers::Pointer<EigenAbstract> Create(const EigenType & eigType) const = 0;
 
     protected:
 

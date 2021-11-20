@@ -2,6 +2,7 @@
 #include "Tokenizer.hpp"
 #include "CharManipulations.hpp"
 #include "StrColour.hpp"
+#include <Math/GeneralMath.hpp>
 
 #include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
@@ -39,6 +40,39 @@ void ToolsMixed::Animation09AZ(int * idx) const
 void ToolsMixed::AnimationCustom(int * idx, const EnjoLib::Str & animSeries) const
 {
     cout << '\b' << animSeries.at((*idx)++ % animSeries.size()) << flush;
+}
+
+Str ToolsMixed::GenBars10(double percentage, const char barFull, const char barEmpty) const
+{
+    const Str tagStart = "[";
+    const Str tagEnd   = "]";
+    const Str tagOn    = barFull;
+    const Str tagOff   = barEmpty;
+    
+    const int numBars = 10;
+    
+    int percentage0_10 = int(GMat().round(percentage / 10.0));
+    if (percentage0_10 > numBars)
+    {
+        percentage0_10 = numBars;
+    }
+    
+    Osstream oss;
+    oss << tagStart;
+    oss << GenChars(tagOn,  percentage0_10);
+    oss << GenChars(tagOff, numBars - percentage0_10);
+    oss << tagEnd;
+    return oss.str();
+}
+
+Str ToolsMixed::GenChars(const Str & pattern, int numberOfRepetitions) const
+{
+    Osstream oss;
+    for (int i = 0; i < numberOfRepetitions; ++i)
+    {
+        oss << pattern;
+    }
+    return oss.str();
 }
 
 std::map<EnjoLib::Str, EnjoLib::Str> ToolsMixed::FromPythonDict(const EnjoLib::Str & dictStr) const

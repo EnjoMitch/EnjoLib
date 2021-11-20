@@ -1,11 +1,11 @@
 #ifndef CENTROID_H
 #define CENTROID_H
 
-#include <STD/Vector.hpp>
+#include <Template/IIterable.hpp>
 
 namespace EnjoLib
 {
-template<class T> class VectorTpl;
+//template<class T> class VectorTpl;
 
 template<class T>
 class Centroid
@@ -13,7 +13,7 @@ class Centroid
     public:
         Centroid();
         virtual ~Centroid();
-        T Calc(const std::vector<T> & vec) const;
+        T Calc(const IIterable<T> & vec) const;
 
     protected:
 
