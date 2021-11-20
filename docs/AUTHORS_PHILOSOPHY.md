@@ -17,5 +17,5 @@ The industry's take of it is that "Agile" quickly regressed into Waterfall with 
 
 Well, that's all about me! 
 
-If, after reading my exhale of arrogance, you still haven't smashed the screen in rage to pieces, then you've just passed the test :) Welcome and please use the code freely in accordance to the licenses. If you'd like to give something back, then roll up your sleeves and please read [CONTRIBUTING](docs/CONTRIBUTING.md). Don't worry - I don't bite. I only bite the hipocritic industry back :)
+If, after reading my exhale of arrogance, you still haven't smashed the screen in rage to pieces, then you've just passed the test :) Welcome and please use the code freely in accordance to the licenses. If you'd like to give something back, then roll up your sleeves and please read [CONTRIBUTING](CONTRIBUTING.md). Don't worry - I don't bite. I only bite the hipocritic industry back :)
 
