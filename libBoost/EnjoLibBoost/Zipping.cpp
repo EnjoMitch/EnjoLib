@@ -1,5 +1,6 @@
 #include "Zipping.hpp"
 
+#include <sstream> // Fixes Boost 1.71 bug under Clang
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/copy.hpp>
 //#include <boost/iostreams/filter/zlib.hpp>
