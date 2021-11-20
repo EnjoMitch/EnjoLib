@@ -30,7 +30,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "FileUtils.hpp"
+#include <Util/FileUtils.hpp>
 #include "CharManipulations.hpp"
 #include <Util/CoutBuf.hpp>
 #include <Ios/Ofstream.hpp>
@@ -99,10 +99,10 @@ bool FileUtils::DirExists( const EnjoLib::Str & dirName ) const
 EnjoLib::Str FileUtils::ProcessDir(const EnjoLib::Str & dirName) const
 {
     return dirName;
-    
+
     if (dirName.empty())
         return dirName;
-    
+
     if (dirName.back() == '/')
     {
         EnjoLib::Str dirRet = dirName;
@@ -133,7 +133,7 @@ void FileUtils::RemoveAllInDirLinux(const EnjoLib::Str & dirName) const
         LOGL << "FileUtils::RemoveAllInDirLinux(): Dir doesn't exist = " << dir << Nl;
         return;
     }
-        
+
     const EnjoLib::Str command = "rm " + dir + "/*";
     if (int err = system(command.c_str()))
     {

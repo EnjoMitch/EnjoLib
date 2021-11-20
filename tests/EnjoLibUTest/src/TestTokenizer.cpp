@@ -42,7 +42,7 @@ TEST(GetLines_basic2)
     VecStr contentMod;
     contentMod.push_back("a");
     contentMod.push_back("c");
-    CHECK(!(contentMod == lines)); /// TODO: impl !=
+    CHECK(contentMod != lines);
 }
 
 TEST(FilterLines_comment)

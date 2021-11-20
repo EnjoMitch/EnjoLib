@@ -24,6 +24,7 @@ class IVecT : public IIterable<T>
         virtual const T & operator[](size_t idx) const = 0;
         virtual T & operator[](size_t idx) = 0;
         virtual bool operator == (const IVecT<T> & val) const = 0;
+        bool operator != (const IVecT<T> & val) const;
         virtual void push_back(const T & val) = 0;
         virtual void emplace_back(const T & val) = 0;
         virtual size_t size() const = 0;
@@ -46,6 +47,12 @@ class IVecT : public IIterable<T>
 
     private:
 };
+
+template <class T>
+bool IVecT<T>::operator != (const IVecT<T> & val) const
+{
+    return ! (this->operator == (val));
+}
 }
 
 #endif // IVECT_HPP
