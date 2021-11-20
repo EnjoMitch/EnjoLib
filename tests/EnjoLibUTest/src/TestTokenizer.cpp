@@ -1,6 +1,7 @@
 #include "pch_test.h"
 
 #include <Util/Tokenizer.hpp>
+#include <Util/ToolsMixed.hpp>
 #include <Ios/Sstream.hpp>
 #include <Ios/Ofstream.hpp>
 #include <UnitTest++/UnitTest++.h>
@@ -20,7 +21,7 @@ TEST(GetLines_basic)
 
 TEST(GetLines_basic2)
 {
-    const Str tmpFile = "/tmp/test-tokenizer.txt";
+    const Str tmpFile = ToolsMixed().GetTmpDir() + "/test-tokenizer.txt";
     VecStr content;
     content.push_back("a");
     content.push_back("b");
