@@ -30,10 +30,10 @@ extern std::ostream cnull;
 
 std::ostream & GetLog(bool verbose);
 
-#define ELOG(verbose) EnjoLib::Log logLocal(verbose);
+#define ELOG(verbose) EnjoLib::Log logLocal(verbose); /// TODO: Document what these do and how to use them
 #define ELO ELOG(true)
 #define LOG logLocal.GetLog()
 #define LOGL ELO LOG
-    
+
 
 #endif // COUTBUF_H

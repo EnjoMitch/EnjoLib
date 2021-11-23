@@ -25,3 +25,7 @@ void ThreadWrap::SleepForMilliseconds(int milliseconds)
     std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
 }
 
+void ThreadWrap::Yield()
+{
+    std::this_thread::yield();
+}

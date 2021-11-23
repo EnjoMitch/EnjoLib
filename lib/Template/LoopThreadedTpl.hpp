@@ -66,7 +66,7 @@ class LoopThreadedTpl
                     futures.push_back(std::async (FunVec, data, m_funcConv));
                 }
             }
-                
+
             if (isMultiThread)
             {
                 for(auto &e : futures)
@@ -84,7 +84,7 @@ class LoopThreadedTpl
                     output.push_back(tick);
                 }
             }
-            
+
             return output;
         }
 
@@ -120,10 +120,10 @@ class LoopThreadedTpl
                                             int numCores = EnjoLib::ThreadWrap::GetConcurrency())
     {
         LoopThreadedTpl<TIn, TOut> loop(vinput.size(), funcConv, numCores);
-        
+
         return loop.AddInputVectorGetOutputVector(vinput);
     }
-    
+
     /**
     Global function version, that infers the template parameters from the function parameter.
     */
@@ -134,7 +134,7 @@ class LoopThreadedTpl
     {
         LoopThreadedTpl<TIn, TOut> loop(vinput.size(), funcConv, numCores);
         std::vector<TIn> convIn;
-        for (const auto tin : vinput)
+        for (const auto tin : vinput) // Trying out something
         {
             convIn.push_back(tin);
         }

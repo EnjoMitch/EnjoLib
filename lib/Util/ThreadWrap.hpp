@@ -7,9 +7,10 @@ class ThreadWrap
     public:
         ThreadWrap();
         virtual ~ThreadWrap();
-        
+
         static int GetConcurrency();
         static void SleepForMilliseconds(int milliseconds);
+        static void Yield();
 
     protected:
 
