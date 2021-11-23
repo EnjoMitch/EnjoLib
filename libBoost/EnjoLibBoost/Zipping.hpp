@@ -3,15 +3,19 @@
 
 #include <Ios/Osstream.hpp>
 
+namespace EnjoLibBoost
+{
+
 class Zipping
 {
     public:
         Zipping();
         virtual ~Zipping();
-        void UnzipFile(const std::string & zipFileName, EnjoLib::Ostream & sstrOut) const;
+        void UnzipFile(const EnjoLib::Str & zipFileName, EnjoLib::Ostream & sstrOut) const;
 
     protected:
     private:
 };
+}
 
 #endif // ZIPPING_H

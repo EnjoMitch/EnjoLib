@@ -9,6 +9,7 @@
 
 #include <Ios/Ifstream.hpp>
 
+using namespace EnjoLibBoost;
 
 Zipping::Zipping()
 {
@@ -18,7 +19,7 @@ Zipping::~Zipping()
 {
 }
 
-void Zipping::UnzipFile(const std::string & zipFileName, EnjoLib::Ostream & sstrOut) const
+void Zipping::UnzipFile(const EnjoLib::Str & zipFileName, EnjoLib::Ostream & sstrOut) const
 {
     namespace bio = boost::iostreams;
     EnjoLib::Ifstream file(zipFileName, std::ios_base::binary);
