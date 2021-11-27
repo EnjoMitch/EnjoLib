@@ -42,7 +42,7 @@ endif()
 if (WITH_FEATURE_GSL)
 	file( GLOB SRC_GSL Statistical/3rdParty/*GSL* Statistical/3rdParty/FFT.* Statistical/3rdParty/Gaussian.* Statistical/3rdParty/Wavelet.* )
 	set( SRCS ${SRCS} ${SRC_GSL})
-	set (EXTRA_LIBS ${EXTRA_LIBS} gsl)
+	set (EXTRA_LIBS ${EXTRA_LIBS} gsl gslcblas)
 endif()
 
 add_library (${PROJECT_NAME} ${LINK_TYPE} ${SRCS})
