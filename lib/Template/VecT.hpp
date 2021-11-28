@@ -27,8 +27,8 @@ class VecT : public IVecT<T>
         VecT();
         VecT(int n);
         VecT(int n, const T & val);
-        VecT( const stdfwd::vector<T> & init );
-        VecT( const stdfwd::initializer_list<T> & init );
+        VecT( const STDFWD::vector<T> & init );
+        VecT( const STDFWD::initializer_list<T> & init );
         VecT( const_iterator beg, const_iterator endd );
 
         virtual ~VecT();
@@ -38,9 +38,9 @@ class VecT : public IVecT<T>
         virtual const T * data() const override;
         virtual T * data() override;
 
-        virtual const stdfwd::vector<T> & Data() const override;
-        virtual stdfwd::vector<T> DataCopy() const override;
-        virtual stdfwd::vector<T> & DataRW() override;
+        virtual const STDFWD::vector<T> & Data() const override;
+        virtual STDFWD::vector<T> DataCopy() const override;
+        virtual STDFWD::vector<T> & DataRW() override;
 
         virtual const T & at(size_t idx) const override;
         virtual const T & operator[](size_t idx) const override;

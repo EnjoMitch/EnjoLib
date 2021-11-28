@@ -44,7 +44,7 @@ namespace EnjoLib
 {
 class VecD;
 class Str;
-class Matrix// : public stdfwd::vector<VecD>
+class Matrix// : public STDFWD::vector<VecD>
 {
     public:
         EnjoLib::Str ToStr() const;
@@ -55,13 +55,13 @@ class Matrix// : public stdfwd::vector<VecD>
         Matrix();
         Matrix(int n);
         Matrix(int n, int m);
-        Matrix(const stdfwd::vector<VecD> & vec);
+        Matrix(const STDFWD::vector<VecD> & vec);
 
         virtual ~Matrix();
 
         Matrix(const Matrix & mat);
         Matrix & operator = (const Matrix & mat);
-        
+
         VecD & atw(size_t idx);
 
         void Add(const VecD & vec);
@@ -77,8 +77,8 @@ class Matrix// : public stdfwd::vector<VecD>
         VecD GetCol(int colNum) const;
         int GetNRows() const;
         int GetNCols() const;
-        Matrix FilterByMask(const stdfwd::vector<bool> & mask) const;
-        Matrix & FilterByMaskMe(const stdfwd::vector<bool> & mask);
+        Matrix FilterByMask(const STDFWD::vector<bool> & mask) const;
+        Matrix & FilterByMaskMe(const STDFWD::vector<bool> & mask);
         Matrix FilterByMaskD(const VecD & mask) const;
         Matrix & FilterByMaskMeD(const VecD & mask);
 
@@ -122,13 +122,13 @@ class Matrix// : public stdfwd::vector<VecD>
         const_reverse_iterator                         crbegin() const;
         const_reverse_iterator                         crend() const;
         */
-        
+
         typedef Iter<const VecD>        const_iterator;
         typedef Iter<VecD>              iterator;
-        
+
         const_iterator                                      begin() const ;
         const_iterator                                       end() const ;
-        
+
         iterator                                        begin() ;
         iterator                                        end() ;
         const_iterator                                 cbegin() const ;

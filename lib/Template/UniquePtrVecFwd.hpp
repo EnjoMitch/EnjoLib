@@ -11,8 +11,8 @@ namespace EnjoLib
 }
 
 template<class T, class D=std::default_delete<T>>
-using VecUPtr = stdfwd::vector<EnjoLib::UniquePtr<T, D>>;
+using VecUPtr = STDFWD::vector<EnjoLib::UniquePtr<T, D>>;
 template<class T, class D=std::default_delete<T>, class B=EnjoLib::NonCopyable>
-using VecUPtrNew = stdfwd::vector<EnjoLib::SafePtr<T, D, B>>;
+using VecUPtrNew = STDFWD::vector<EnjoLib::SafePtr<T, D, B>>;
 
 #endif // UNIQUEPTRVECFWD_HPP_INCLUDED

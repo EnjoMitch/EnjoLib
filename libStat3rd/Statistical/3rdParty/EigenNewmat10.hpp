@@ -44,7 +44,7 @@ class EigenNewmat10 : public EigenAbstract
         virtual ~EigenNewmat10();
 
     protected:
-        stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
+        STDFWD::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
 
     private:
 

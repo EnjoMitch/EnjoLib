@@ -64,13 +64,13 @@ bool Ofstream::is_open() const
     return m_ofstream->is_open();
 }
 
-stdfwd::ostream & Ofstream::OStr()
+STDFWD::ostream & Ofstream::OStr()
 {
     return *m_ostream;
 }
 
 
-const stdfwd::ostream & Ofstream::OStr() const
+const STDFWD::ostream & Ofstream::OStr() const
 {
     return *m_ostream;
 }

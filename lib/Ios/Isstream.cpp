@@ -15,12 +15,12 @@ Isstream::Isstream(const EnjoLib::Str & inp)
     }
 }
 
-const stdfwd::istream & Isstream::IStr() const
+const STDFWD::istream & Isstream::IStr() const
 {
     return *m_istream;
 }
 
-stdfwd::istream & Isstream::IStr()
+STDFWD::istream & Isstream::IStr()
 {
     return *m_istream;
 }

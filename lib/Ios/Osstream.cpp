@@ -21,12 +21,12 @@ EnjoLib::Str Osstream::str() const
     return m_ostream->str();
 }
 
-const stdfwd::ostream & Osstream::OStr() const
+const STDFWD::ostream & Osstream::OStr() const
 {
     return *m_ostream;
 }
 
-stdfwd::ostream & Osstream::OStr()
+STDFWD::ostream & Osstream::OStr()
 {
     return *m_ostream;
 }

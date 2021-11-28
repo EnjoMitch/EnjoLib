@@ -9,13 +9,13 @@
 
 #if defined(STD_EL) || defined(STD_SSTREAM)
     #define STD_SSTREAM_FINAL
-    
+
     #include <STD/Sstream.hpp>
 #endif
 
 namespace EnjoLib {
 
-class Sstream :  
+class Sstream :
 #ifdef STD_SSTREAM_FINAL
     public std::stringstream
 #else
@@ -25,20 +25,20 @@ class Sstream :
     public:
         Sstream();
         virtual ~Sstream();
-        
+
         void SetStr(const EnjoLib::Str & inp);
         Str ToStr() const;
-        
+
 #ifdef STD_SSTREAM_FINAL
     std::istream & IStr() { return *this; }
     std::ostream & OStr() { return *this; }
     const std::ostream & OStr() const { return *this; }
     const std::istream & IStr() const { return *this; }
 #else
-    stdfwd::ostream & OStr() override;
-    stdfwd::istream & IStr() override;
-    const stdfwd::ostream & OStr() const override;
-    const stdfwd::istream & IStr() const override;
+    STDFWD::ostream & OStr() override;
+    STDFWD::istream & IStr() override;
+    const STDFWD::ostream & OStr() const override;
+    const STDFWD::istream & IStr() const override;
 #endif // STD_SSTREAM_FINAL
 
     protected:

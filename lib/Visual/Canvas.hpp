@@ -60,7 +60,7 @@ public:
 
 
 protected:
-    void ScalePointVector(const stdfwd::vector<Point> & in, stdfwd::vector<Point> * out ) const;
+    void ScalePointVector(const STDFWD::vector<Point> & in, STDFWD::vector<Point> * out ) const;
     Point ScalePoint( const Point & p ) const;
     double CalculateAutoZoomValue() const;
 

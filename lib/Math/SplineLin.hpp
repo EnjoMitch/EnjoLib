@@ -25,7 +25,7 @@ class SplineLin
 
     private:
         int GetSplineSize() const;
-        SafePtr<stdfwd::vector<EnjoLib::Pair<EnjoLib::Point, EnjoLib::Point> > > spline;
+        SafePtr<STDFWD::vector<EnjoLib::Pair<EnjoLib::Point, EnjoLib::Point> > > spline;
 };
 }
 #endif // SPLINELIN_H

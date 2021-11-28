@@ -24,22 +24,22 @@ Str Sstream::ToStr() const
     return m_sstream->str();
 }
 
-stdfwd::ostream & Sstream::OStr()
+STDFWD::ostream & Sstream::OStr()
 {
     return *m_sstream;
 }
 
-const stdfwd::ostream & Sstream::OStr() const
+const STDFWD::ostream & Sstream::OStr() const
 {
     return *m_sstream;
 }
 
-stdfwd::istream & Sstream::IStr()
+STDFWD::istream & Sstream::IStr()
 {
     return *m_sstream;
 }
 
-const stdfwd::istream & Sstream::IStr() const
+const STDFWD::istream & Sstream::IStr() const
 {
     return *m_sstream;
 }

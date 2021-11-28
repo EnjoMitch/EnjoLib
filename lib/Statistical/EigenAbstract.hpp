@@ -58,7 +58,7 @@ class EigenAbstract
         Matrix GetSortedFeatureVectorNumber( const Matrix & m, unsigned number) const;
         Matrix GetSortedFeatureVectorFactor( const Matrix & m, double leaveFactor ) const;
         Matrix GetSortedFeatureVector( const Matrix & m ) const;
-        stdfwd::vector<EigenValueVector> GetEigenValVec( const Matrix & m, bool sorted ) const;
+        STDFWD::vector<EigenValueVector> GetEigenValVec( const Matrix & m, bool sorted ) const;
 /*
         static Corrade::Containers::Pointer<EigenAbstract> CreateEigen3();
         static Corrade::Containers::Pointer<EigenAbstract> CreateMKL();
@@ -69,7 +69,7 @@ class EigenAbstract
         static Corrade::Containers::Pointer<EigenAbstract> CreateNumpy();
 */
     protected:
-        virtual stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const = 0;
+        virtual STDFWD::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const = 0;
 
     private:
 };

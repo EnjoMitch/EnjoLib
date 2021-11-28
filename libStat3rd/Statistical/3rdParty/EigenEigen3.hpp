@@ -43,7 +43,7 @@ class EigenEigen3 : public EigenAbstract
         EigenEigen3();
         virtual ~EigenEigen3();
 
-        stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
+        STDFWD::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
     protected:
 
 

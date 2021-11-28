@@ -63,7 +63,7 @@ void Istream::PushVal(float * val)
 {
     IStr() >> *val;
 }
-void Istream::PushVal(stdfwd::string * val)
+void Istream::PushVal(STDFWD::string * val)
 {
     IStr() >> *val;
 }

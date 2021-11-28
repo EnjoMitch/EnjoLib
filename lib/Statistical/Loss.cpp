@@ -11,7 +11,7 @@
 
 using namespace std;
 using namespace EnjoLib;
-// SharedPtr<stdfwd::map<int, VecD>>
+// SharedPtr<STDFWD::map<int, VecD>>
 
 struct Loss::Impl
 {

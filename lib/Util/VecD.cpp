@@ -20,7 +20,7 @@ struct VecD::Impl
     Impl( const double * init, size_t szz ) : dat(std::vector<double>(init, init + szz)) {}
     Impl( int n ) : dat(n) {}
     Impl( int n, const double & val ) : dat(n, val) {}
-    Impl( const stdfwd::string & data ) : dat(data) {}
+    Impl( const STDFWD::string & data ) : dat(data) {}
     Impl( const Str & data ) : dat(data.c_str()) {}
     Impl( const IIterable<double> & init )
     {
@@ -100,9 +100,9 @@ VecD::VecD( const IIterable<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::initializer_list<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::vector<double> & init ): m_impl(new Impl(init)){}
 VecD::VecD( const std::vector<float> & init ): m_impl(new Impl(init)){}
-VecD::VecD( const stdfwd::vector<bool> & init ): m_impl(new Impl(init)){}
+VecD::VecD( const STDFWD::vector<bool> & init ): m_impl(new Impl(init)){}
 VecD::VecD( int n ): m_impl(new Impl(n)){}
-VecD::VecD( const stdfwd::string & data ): m_impl(new Impl(data)){}
+VecD::VecD( const STDFWD::string & data ): m_impl(new Impl(data)){}
 VecD::VecD( const Str & data )           : m_impl(new Impl(data)){}
 
 EnjoLib::Str VecD::ToStr() const

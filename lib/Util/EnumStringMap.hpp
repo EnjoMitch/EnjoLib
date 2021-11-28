@@ -24,10 +24,10 @@ class EnumStringMap // : public std::map<unsigned int, Str>
         size_t size() const;
 
         Array<Str> GetNames() const;
-        const   stdfwd::map<unsigned int, Str> & Data() const;
-        const   stdfwd::map<Str, unsigned int> & DataInv() const;
+        const   STDFWD::map<unsigned int, Str> & Data() const;
+        const   STDFWD::map<Str, unsigned int> & DataInv() const;
 
-        typedef stdfwd::map<unsigned int, Str> value_type;
+        typedef STDFWD::map<unsigned int, Str> value_type;
 
         template <class T> T ToType(unsigned int enumId) const;
         template <class T> T ToType(const Str & name)    const;

@@ -6,16 +6,16 @@
 #include <Template/SafePtr.hpp>
 
 namespace EnjoLib {
-    
+
 class Osstream : public Ostream
 {
     public:
         Osstream();
         virtual ~Osstream();
-        
-        stdfwd::ostream & OStr() override;
-        const stdfwd::ostream & OStr() const override;
-        
+
+        STDFWD::ostream & OStr() override;
+        const STDFWD::ostream & OStr() const override;
+
         EnjoLib::Str Str() const;
         EnjoLib::Str str() const;
 
