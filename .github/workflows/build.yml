@@ -94,7 +94,7 @@ jobs:
         util/ci-mingw.sh
 
 
-build-macos:
+  build-macos:
     runs-on: macOS-latest
     env:
       CCACHE_TEMPDIR: /tmp/.ccache-temp
