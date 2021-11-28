@@ -23,17 +23,17 @@ class VecD : public IVecT<double>
         using value_type = double;
 
         VecD();
-        //VecD( const stdfwd::initializer_list<float> & init );
-        VecD( const stdfwd::initializer_list<double> & init );
-        VecD( const stdfwd::vector<bool> & init );
+        //VecD( const STDFWD::initializer_list<float> & init );
+        VecD( const STDFWD::initializer_list<double> & init );
+        VecD( const STDFWD::vector<bool> & init );
         VecD( const IIterable<double> & init );
         VecD( int n );
         VecD( int n, const double & val );
-        VecD( const stdfwd::string & data );
+        VecD( const STDFWD::string & data );
         VecD( const Str & data );
 
-        VecD( const stdfwd::vector<double> & init );
-        VecD( const stdfwd::vector<float> & init );
+        VecD( const STDFWD::vector<double> & init );
+        VecD( const STDFWD::vector<float> & init );
         VecD( const VecF & init );
         virtual ~VecD();
         VecD( const VecD & other );
@@ -46,9 +46,9 @@ class VecD : public IVecT<double>
 
         const double * data() const override;
         double * data() override;
-        const stdfwd::vector<double> & Data() const override;
-        stdfwd::vector<double> DataCopy() const override;
-        stdfwd::vector<double> & DataRW() override;
+        const STDFWD::vector<double> & Data() const override;
+        STDFWD::vector<double> DataCopy() const override;
+        STDFWD::vector<double> & DataRW() override;
 
         void Add(double val);
 
@@ -72,7 +72,7 @@ class VecD : public IVecT<double>
         VecD Smooth(unsigned numToSmooth) const;
         VecD LogSigned() const;
 
-        stdfwd::vector<bool> ToVecBool() const;
+        STDFWD::vector<bool> ToVecBool() const;
 
         VecD & operator += (const VecD & par);
         VecD & operator -= (const VecD & par);

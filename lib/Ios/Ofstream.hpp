@@ -37,10 +37,10 @@ class Ofstream : public Ostream
         void IsOpenThrow() const;
         bool is_open() const;
         void flush();
-        
+
         EnjoLib::Str Str() const;
-        stdfwd::ostream & OStr() override;
-        const stdfwd::ostream & OStr() const override;
+        STDFWD::ostream & OStr() override;
+        const STDFWD::ostream & OStr() const override;
 
     protected:
 

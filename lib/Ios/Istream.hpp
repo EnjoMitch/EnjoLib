@@ -11,14 +11,14 @@ class Istream
     public:
         Istream();
         virtual ~Istream();
-        
-        virtual stdfwd::istream & IStr() = 0;
-        virtual const stdfwd::istream & IStr() const = 0;
-        
+
+        virtual STDFWD::istream & IStr() = 0;
+        virtual const STDFWD::istream & IStr() const = 0;
+
         bool good() const;
         bool operator !() const;
         operator bool() const;
-        
+
         template <class T> friend Istream& operator >> (Istream&, T & val);
 
     protected:
@@ -31,7 +31,7 @@ class Istream
         void PushVal(char * val);
         void PushVal(double * val);
         void PushVal(float * val);
-        void PushVal(stdfwd::string * val);
+        void PushVal(STDFWD::string * val);
         void PushVal(EnjoLib::Str * val);
 
     private:

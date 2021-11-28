@@ -14,9 +14,9 @@ class VecF : public IVecT<float>
         VecF();
         VecF( int n );
         VecF( int n, float val );
-        VecF( const stdfwd::initializer_list<double> & init );
-        VecF( const stdfwd::vector<float> & init );
-        VecF( const stdfwd::vector<double> & init );
+        VecF( const STDFWD::initializer_list<double> & init );
+        VecF( const STDFWD::vector<float> & init );
+        VecF( const STDFWD::vector<double> & init );
         VecF( const IVecT<float> & init );
         virtual ~VecF();
         VecF( const VecF & other );
@@ -30,9 +30,9 @@ class VecF : public IVecT<float>
 
         const float * data() const override;
         float * data() override;
-        const stdfwd::vector<float> & Data() const override;
-        stdfwd::vector<float> DataCopy() const override;
-        stdfwd::vector<float> & DataRW() override;
+        const STDFWD::vector<float> & Data() const override;
+        STDFWD::vector<float> DataCopy() const override;
+        STDFWD::vector<float> & DataRW() override;
 
         void Add(float val);
 
@@ -71,7 +71,7 @@ class VecF : public IVecT<float>
 
         void reserve(size_t siz);
 
-        stdfwd::vector<bool> ToVecBool() const;
+        STDFWD::vector<bool> ToVecBool() const;
 
         VecF & operator += (const VecF & par);
         VecF & operator -= (const VecF & par);

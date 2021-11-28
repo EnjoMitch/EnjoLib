@@ -9,7 +9,7 @@
 
 namespace EnjoLib
 {
-    
+
 template <class TKeyT, class TValueT>
 struct ICalcCacheRes
 {
@@ -30,7 +30,7 @@ class CacheRAMBase
 
         using TKey = TKeyT;
         using TValue = TValueT;
-        using Map = stdfwd::map<TKey, TValue>;
+        using Map = STDFWD::map<TKey, TValue>;
 
         virtual const TValue & Add(const TKey & key, const TValue & val) = 0;
         virtual bool Has(const TKey & key) const = 0;
@@ -40,7 +40,7 @@ class CacheRAMBase
         virtual TValue & GetRW(const TKey & key) = 0;
         virtual const Map & GetMap() const = 0;
         virtual Map & GetMapRW() = 0;
-        
+
         virtual void SetCacheCleaupPolicy(CacheRAMCleanupPolBase * ccp)
         {
             m_ccp.Init(ccp);

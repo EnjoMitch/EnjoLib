@@ -53,12 +53,12 @@ void Ifstream::close()
     m_ifstream->close();
 }
 
-const stdfwd::istream & Ifstream::IStr() const
+const STDFWD::istream & Ifstream::IStr() const
 {
     return *m_ifstream;
 }
 
-stdfwd::istream & Ifstream::IStr()
+STDFWD::istream & Ifstream::IStr()
 {
     return *m_ifstream;
 }

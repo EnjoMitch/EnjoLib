@@ -36,13 +36,13 @@ class Ifstream : public Istream
 
         const EnjoLib::Str & GetFileName() const { return m_fileName; }
         void IsOpenThrow() const;
-        
-        stdfwd::istream & IStr() override;
-        const stdfwd::istream & IStr() const override;
-        
+
+        STDFWD::istream & IStr() override;
+        const STDFWD::istream & IStr() const override;
+
         bool is_open() const;
         void close();
-    
+
     protected:
 
     private:

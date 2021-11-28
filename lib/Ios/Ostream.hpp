@@ -12,9 +12,9 @@ class Ostream
         Ostream();
         virtual ~Ostream();
 
-        virtual stdfwd::ostream & OStr() = 0;
-        virtual const stdfwd::ostream & OStr() const = 0;
-        
+        virtual STDFWD::ostream & OStr() = 0;
+        virtual const STDFWD::ostream & OStr() const = 0;
+
         template <class T> Ostream& operator << (const T & val);
 
     protected:
@@ -26,12 +26,12 @@ class Ostream
         void AddVal(char val);
         void AddVal(double val);
         void AddVal(const char * val);
-        void AddVal(const stdfwd::string & val);
+        void AddVal(const STDFWD::string & val);
         void AddVal(const EnjoLib::Str & str);
         void AddVal(const Ostream & ostr);
 
     private:
-        void AddStr(const stdfwd::string & val);
+        void AddStr(const STDFWD::string & val);
 };
 
 template <class T> Ostream& Ostream::operator << (const T & val)

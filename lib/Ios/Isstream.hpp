@@ -6,16 +6,16 @@
 #include <Template/SafePtr.hpp>
 
 namespace EnjoLib {
-    
+
 class Isstream : public Istream
 {
     public:
         Isstream(const EnjoLib::Str & inp = "");
         virtual ~Isstream();
-        
-        stdfwd::istream & IStr() override;
-        const stdfwd::istream & IStr() const override;
-        
+
+        STDFWD::istream & IStr() override;
+        const STDFWD::istream & IStr() const override;
+
         void str(const EnjoLib::Str & inp);
         EnjoLib::Str str() const;
 

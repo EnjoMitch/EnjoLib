@@ -74,7 +74,7 @@ Matrix::Matrix(int n, int m)
         push_back( VecD(m) );
 }
 
-Matrix::Matrix(const stdfwd::vector<VecD> & vec)
+Matrix::Matrix(const STDFWD::vector<VecD> & vec)
 : m_impl(new Impl(vec))
 {
 

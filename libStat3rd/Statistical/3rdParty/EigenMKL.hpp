@@ -12,7 +12,7 @@ class EigenMKL : public EigenAbstract
         virtual ~EigenMKL();
 
     protected:
-        stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
+        STDFWD::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
 
     private:
 };

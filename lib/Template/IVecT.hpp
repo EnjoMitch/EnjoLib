@@ -17,9 +17,9 @@ class IVecT : public IIterable<T>
         virtual const T * data() const = 0;
         virtual T * data() = 0;
 
-        virtual const stdfwd::vector<T> & Data() const = 0;
-        virtual stdfwd::vector<T> DataCopy() const = 0;
-        virtual stdfwd::vector<T> & DataRW() = 0;
+        virtual const STDFWD::vector<T> & Data() const = 0;
+        virtual STDFWD::vector<T> DataCopy() const = 0;
+        virtual STDFWD::vector<T> & DataRW() = 0;
 
         virtual const T & operator[](size_t idx) const = 0;
         virtual T & operator[](size_t idx) = 0;

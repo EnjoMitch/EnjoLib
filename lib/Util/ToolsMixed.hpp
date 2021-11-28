@@ -18,7 +18,7 @@ class ToolsMixed
         void AnimationCustom(int * idx, const Str & animSeries) const;
         Str GenBars10(double percentage0_100, const char barFull = '=', const char barEmpty = ' ') const;
         Str GenChars(const Str & pattern, int numberOfRepetitions) const;
-        stdfwd::map<Str, Str> FromPythonDict(const Str & dictStr) const;
+        STDFWD::map<Str, Str> FromPythonDict(const Str & dictStr) const;
         void SystemCallWarn(const Str & command, const Str & functionName) const;
         bool SystemCallWarnBool(const Str & command, const Str & functionName) const;
         void SystemCallThrow(const Str & command, const Str & functionName) const;

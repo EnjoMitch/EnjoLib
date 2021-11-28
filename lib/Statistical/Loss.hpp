@@ -21,9 +21,9 @@ struct Loss
 
     bool operator < (const Loss & other) const;
     bool operator == (const int64_t & i) const;
-    
-    const stdfwd::map<int, VecD> & labelIdErrors() const;
-    stdfwd::map<int, VecD> & labelIdErrors();
+
+    const STDFWD::map<int, VecD> & labelIdErrors() const;
+    STDFWD::map<int, VecD> & labelIdErrors();
 
     double sum;
     double stdDev;
@@ -31,8 +31,8 @@ struct Loss
     double regB;
     double correlDistError;
     double correlTargetError;
-    //SharedPtr<stdfwd::map<int, VecD>> labelIdErrors;
-    
+    //SharedPtr<STDFWD::map<int, VecD>> labelIdErrors;
+
     PIMPL_CPY
 };
 

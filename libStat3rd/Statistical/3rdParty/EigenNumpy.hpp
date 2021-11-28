@@ -12,7 +12,7 @@ class EigenNumpy : public EigenAbstract
         virtual ~EigenNumpy();
 
     protected:
-        stdfwd::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
+        STDFWD::vector<EigenValueVector> GetEigenValVecClient( const Matrix & m ) const;
 
     private:
 };
