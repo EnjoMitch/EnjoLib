@@ -35,7 +35,7 @@ using namespace EnjoLib;
 
 TimerChrono::TimerChrono()
 {
-    m_start = Clock::now();
+    auto m_start = Clock::now();
 }
 
 TimerChrono::~TimerChrono()
