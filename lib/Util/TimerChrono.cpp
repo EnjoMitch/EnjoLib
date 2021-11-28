@@ -45,20 +45,20 @@ TimerChrono::~TimerChrono()
 double TimerChrono::ToNowSeconds() const
 {
     auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::seconds>(static_cast<long>tend - static_cast<long>m_start).count();
+    return std::chrono::duration_cast<std::chrono::seconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
 }
 double TimerChrono::ToNowMilliseconds() const
 {
     auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::milliseconds>(static_cast<long>tend - static_cast<long>m_start).count();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
 }
 double TimerChrono::ToNowMicroseconds() const
 {
     auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::microseconds>(static_cast<long>tend - static_cast<long>m_start).count();
+    return std::chrono::duration_cast<std::chrono::microseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
 }
 long TimerChrono::ToNowNanoseconds() const
 {
     auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::nanoseconds>(static_cast<long>tend - static_cast<long>m_start).count();
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
 }
