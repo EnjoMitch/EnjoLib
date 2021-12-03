@@ -15,7 +15,6 @@ cmake -G "${GEN}" ../.. \
 -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}" \
 -DUSE_STATIC="ON" \
 -DUSE_UNITY="ON" \
--DBoost_INCLUDE_DIR="/home/enjo/devel/lib/boost/1.71.0/include/" \
 && ${MAKE} || ${MAKE} && ${MAKE} install
 ctest --verbose -R EnjoLibTest
 ctest --output-on-failure
