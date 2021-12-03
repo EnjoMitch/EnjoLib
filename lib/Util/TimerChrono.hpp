@@ -48,7 +48,7 @@ class TimerChrono
         long ToNowNanoseconds() const;
     protected:
     private:
-        typedef std::chrono::time_point<std::chrono::system_clock> TP;
+        typedef std::chrono::high_resolution_clock::time_point TP;
         typedef std::chrono::high_resolution_clock Clock;
         TP m_start;
 };
