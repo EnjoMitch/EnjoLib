@@ -35,7 +35,7 @@ using namespace EnjoLib;
 
 TimerChrono::TimerChrono()
 {
-    auto m_start = Clock::now();
+    m_start = Clock::now();
 }
 
 TimerChrono::~TimerChrono()
@@ -44,21 +44,21 @@ TimerChrono::~TimerChrono()
 
 double TimerChrono::ToNowSeconds() const
 {
-    auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::seconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
+    TP tend = Clock::now();
+    return std::chrono::duration_cast<std::chrono::seconds>(tend - m_start).count();
 }
 double TimerChrono::ToNowMilliseconds() const
 {
-    auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::milliseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
+    TP tend = Clock::now();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(tend - m_start).count();
 }
 double TimerChrono::ToNowMicroseconds() const
 {
-    auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::microseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
+    TP tend = Clock::now();
+    return std::chrono::duration_cast<std::chrono::microseconds>(tend - m_start).count();
 }
 long TimerChrono::ToNowNanoseconds() const
 {
-    auto tend = Clock::now();
-    return std::chrono::duration_cast<std::chrono::nanoseconds>(static_cast<long>(tend) - static_cast<long>(m_start)).count();
+    TP tend = Clock::now();
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(tend - m_start).count();
 }
