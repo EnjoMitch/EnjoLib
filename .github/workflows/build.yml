@@ -110,7 +110,7 @@ jobs:
         key:          ccache-${{ runner.os }}-build-${{ github.sha }}
         restore-keys: ccache-${{ runner.os }}-build-
     - name: install dependencies
-      run: HOMEBREW_NO_AUTO_UPDATE=1 brew install boost libboost boost-python openssl ccache gnuplot eigen unittest gsl armadillo
+      run: HOMEBREW_NO_AUTO_UPDATE=1 brew install boost openssl ccache gnuplot eigen unittest gsl armadillo
     - name: build
       run: util/ci-clang.sh
 
