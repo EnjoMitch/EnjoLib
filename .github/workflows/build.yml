@@ -93,3 +93,24 @@ jobs:
         ccache --max-size=150M
         util/ci-mingw.sh
 
+
+  build-macos:
+    runs-on: macOS-latest
+    env:
+      CCACHE_TEMPDIR: /tmp/.ccache-temp
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    # Volatile cache
+    - name: ccache
+      uses: actions/cache@v2
+      with:
+        path: /Users/runner/Library/Caches/ccache
+        key:          ccache-${{ runner.os }}-build-${{ github.sha }}
+        restore-keys: ccache-${{ runner.os }}-build-
+    - name: install dependencies
+      run: HOMEBREW_NO_AUTO_UPDATE=1 brew install boost openssl ccache gnuplot eigen unittest gsl armadillo
+    - name: build
+      run: util/ci-clang.sh
+
