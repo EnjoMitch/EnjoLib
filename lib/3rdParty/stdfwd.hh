@@ -7,6 +7,7 @@
 	#include <iostream>
 	#include <ostream>
 	#include <istream>
+	#include <set>
 	#define STDFWD std
 #else
 	#include "stdfwd-orig.hh"
