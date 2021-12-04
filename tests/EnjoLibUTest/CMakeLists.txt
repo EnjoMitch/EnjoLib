@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5.1)
 include(../../cmake/util.cmake)
 project(EnjoLibUTest)
 enable_testing()
-find_package(UnitTest++ REQUIRED)
+find_package(UnitTest++)
 #include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../lib")
 
 file( GLOB SRCS src/*.cpp */*.h */*.hpp)

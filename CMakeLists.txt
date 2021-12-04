@@ -45,7 +45,9 @@ if (BUILD_TESTS)
 	# Test load balancing
 	# Sooner defined will start sooner
 	add_subdirectory(tests/EnjoLibTest)
-	add_subdirectory(tests/EnjoLibUTest)
+	if(NOT APPLE) # TODO: Problem with UnitTest++ missing CMake module
+        	add_subdirectory(tests/EnjoLibUTest)
+    	endif()
 endif()
 
 
