@@ -9,9 +9,18 @@
 
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/copy.hpp>
+#ifdef __APPLE__
+	#include <boost/iostreams/filter/gzip.hpp>
+	#define COMPRESSOR 	gzip_compressor
+	#define DECOMPRESSOR 	gzip_decompressor
+#else
+	#include <boost/iostreams/filter/lzma.hpp>
+	#define COMPRESSOR 	lzma_compressor
+	#define DECOMPRESSOR 	lzma_decompressor
+#endif
 //#include <boost/iostreams/filter/zlib.hpp>
 //#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/filter/lzma.hpp>
+//#include <boost/iostreams/filter/lzma.hpp>
 //#include <boost/iostreams/filter/zstd.hpp>
 
 #include <3rdParty/stdfwd.hh>
@@ -124,7 +133,8 @@ void Serialization<T>::ArchiveZipped(const std::string & serializedFileName, con
     //out.push(bio::zlib_compressor()); // Windows TODO
     //out.push(bio::gzip_compressor());   // POSIX   TODO
     //out.push(bio::zstd_compressor());   // POSIX   TODO
-    out.push(bio::lzma_compressor());   // POSIX   TODO
+    //out.push(bio::lzma_compressor());   // POSIX   TODO
+    out.push(bio::COMPRESSOR());
     out.push(file);
     SerializationLowLevel<decltype(out), T>().ArchiveFSBinary(out, t); // Only binary is possible
 }
@@ -138,7 +148,8 @@ T Serialization<T>::RestoreZipped(const std::string & serializedFileName) const
     //in.push(bio::zlib_decompressor());     // Windows TODO
     //in.push(bio::gzip_decompressor());  // POSIX   TODO
     //in.push(bio::zstd_decompressor());  // POSIX   TODO
-    in.push(bio::lzma_decompressor());  // POSIX   TODO
+    //in.push(bio::lzma_decompressor());  // POSIX   TODO
+    in.push(bio::DECOMPRESSOR());
     in.push(file);
     return SerializationLowLevel<decltype(in), T>().RestoreFSBinary(in); // Only binary is possible
 }
