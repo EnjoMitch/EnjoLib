@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5.1)
 include(../../cmake/util.cmake)
 project(EnjoLibUTest)
 enable_testing()
-
+find_package(UnitTest++ REQUIRED)
 #include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../lib")
 
 file( GLOB SRCS src/*.cpp */*.h */*.hpp)
@@ -13,7 +13,7 @@ file( GLOB SRCS src/*.cpp */*.h */*.hpp)
 add_executable(${PROJECT_NAME} ${SRCS})
 add_test(${PROJECT_NAME} ${PROJECT_NAME})
 enjoSetupTarget(${PROJECT_NAME})
-target_link_libraries(${PROJECT_NAME} EnjoLibStat3rd UnitTest++)
+target_link_libraries(${PROJECT_NAME} EnjoLibStat3rd ${UNITTEST_LIBRARIES})
 enjo_target_pch(${PROJECT_NAME} src/pch_test.h)
 enjo_target_unity(${PROJECT_NAME})
 
