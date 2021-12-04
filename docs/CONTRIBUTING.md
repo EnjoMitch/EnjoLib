@@ -15,3 +15,5 @@ Contributions are very welcome and most will be merged, as long as the basic pri
 - The new code shall have a BSD-licence (or compatible) clause at the **end** of each file. Any copyleft code shall go to the GPL submodule (TODO: once the module is ready. For now, a clear copyright notice is enough).
 - I might tip you for great contributions, but I can't promise this at all times, so don't feel undervalued, if I don't do it. Sometimes I may be simply outta loot.
 
+Recommended reading:
+- *Clean Code: A Handbook of Agile Software Craftsmanship* by Robert C. Martin
