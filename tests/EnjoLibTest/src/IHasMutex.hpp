@@ -1,9 +1,11 @@
 #ifndef IHASMUTEX_HPP
 #define IHASMUTEX_HPP
 
+#include <mutex>
+
 namespace std
 {
-    class mutex;
+    //class mutex;
 }
 
 class IHasMutex
