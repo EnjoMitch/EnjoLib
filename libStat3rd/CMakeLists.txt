@@ -40,9 +40,10 @@ if (WITH_FEATURE_EIGEN)
 endif()
 
 if (WITH_FEATURE_GSL)
+	FindGSL
 	file( GLOB SRC_GSL Statistical/3rdParty/*GSL* Statistical/3rdParty/FFT.* Statistical/3rdParty/Gaussian.* Statistical/3rdParty/Wavelet.* )
 	set( SRCS ${SRCS} ${SRC_GSL})
-	set (EXTRA_LIBS ${EXTRA_LIBS} gsl gslcblas)
+	set (EXTRA_LIBS ${EXTRA_LIBS} GSL::gsl GSL::gslcblas)
 endif()
 
 add_library (${PROJECT_NAME} ${LINK_TYPE} ${SRCS})
