@@ -29,7 +29,7 @@ if (WITH_FEATURE_NEWMAT)
 endif()
 
 if (WITH_FEATURE_EIGEN)
-	find_package(Eigen3)
+	find_package(Eigen3 REQUIRED)
 	include_directories(${EIGEN3_INCLUDE_DIRS})
 		
 	file( GLOB SRC_NM  Statistical/3rdParty/EigenEigen3.* Statistical/3rdParty/RegressionEigen.*)
@@ -40,7 +40,7 @@ if (WITH_FEATURE_EIGEN)
 endif()
 
 if (WITH_FEATURE_GSL)
-	FindGSL
+	find_package(GSL REQUIRED)
 	file( GLOB SRC_GSL Statistical/3rdParty/*GSL* Statistical/3rdParty/FFT.* Statistical/3rdParty/Gaussian.* Statistical/3rdParty/Wavelet.* )
 	set( SRCS ${SRCS} ${SRC_GSL})
 	set (EXTRA_LIBS ${EXTRA_LIBS} GSL::gsl GSL::gslcblas)
