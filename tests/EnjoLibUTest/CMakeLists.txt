@@ -5,15 +5,19 @@ include(../../cmake/util.cmake)
 project(EnjoLibUTest)
 enable_testing()
 find_package(UnitTest++)
-#include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../lib")
 
 file( GLOB SRCS src/*.cpp */*.h */*.hpp)
 
-#link_directories("~/devel/lib/tree/lib")
 add_executable(${PROJECT_NAME} ${SRCS})
 add_test(${PROJECT_NAME} ${PROJECT_NAME})
 enjoSetupTarget(${PROJECT_NAME})
-target_link_libraries(${PROJECT_NAME} EnjoLibStat3rd UnitTest++ ${UNITTEST_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${UTPP_INCLUDE_DIRS})
+if (APPLE)
+	# Workaround for brew not providing CMake module
+	target_include_directories(${PROJECT_NAME} PUBLIC /usr/local/opt/unittest-cpp/include)
+	target_link_directories   (${PROJECT_NAME} PUBLIC /usr/local/opt/unittest-cpp/lib)
+endif()
+target_link_libraries(${PROJECT_NAME} EnjoLibStat3rd UnitTest++)
 enjo_target_pch(${PROJECT_NAME} src/pch_test.h)
 enjo_target_unity(${PROJECT_NAME})
 
