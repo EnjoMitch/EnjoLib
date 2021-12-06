@@ -66,7 +66,7 @@ TEST(Concatenate_date)
 TEST(Concatenate_PowInt)
 {
     CHECK_EQUAL(pow(3, 2), gmat.PowInt(3, 2));
-    CHECK_EQUAL(pow(2.5, 2), gmat.PowInt(2.5, 2));
-    CHECK_EQUAL(pow(2.5, 5), gmat.PowInt(2.5, 5));
+    CHECK_CLOSE(pow(2.5, 2), gmat.PowInt(2.5, 2));
+    CHECK_CLOSE(pow(2.5, 5), gmat.PowInt(2.5, 5));
 }
 
