@@ -35,6 +35,11 @@ void Ostream::AddVal(long long unsigned int val)
     OStr() << val;
 }
 
+void Ostream::AddVal(long long int val)
+{
+    OStr() << val;
+}
+
 void Ostream::AddVal(unsigned int val)
 {
     OStr() << val;
