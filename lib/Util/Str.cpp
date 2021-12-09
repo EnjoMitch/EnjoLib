@@ -11,6 +11,16 @@ Str::Str():                 Str(std::string()){}
 Str::Str(const Str & str):  Str(str.str()){}
 Str::Str(const char crr): Str(std::string(1, crr)) {}
 Str::Str(const char * str): Str(std::string(str)) {}
+Str::Str(const wchar_t * str): Str(std::string())
+{
+    const std::wstring wstr(str);
+    // your new String
+    const std::string bstr(wstr.begin(), wstr.end());
+    // Show String
+    strRW() = bstr;
+    /// TODO: This is plain wrong and assumes, that the incoming parameter is standard ASCII, not the extended one.
+    // https://stackoverflow.com/questions/27720553/conversion-of-wchar-t-to-string
+}
 Str::Str(size_t num, const char crr): Str(std::string(num, crr)) {}
 
 Str::Str(const std::string & str)
@@ -32,11 +42,11 @@ const char * Str::c_str() const
 {
     return m_pimp->dat.c_str();
 }
-std::string Str::str() const 
+std::string Str::str() const
 {
     return m_pimp->dat;
 }
-std::string & Str::strRW() 
+std::string & Str::strRW()
 {
     return m_pimp->dat;
 }
