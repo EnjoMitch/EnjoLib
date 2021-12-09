@@ -27,10 +27,16 @@ Istream::operator bool() const
 }
 
 
+void Istream::PushVal(long long int * val)
+{
+    IStr() >> *val;
+}
+
 void Istream::PushVal(long long unsigned int * val)
 {
     IStr() >> *val;
 }
+
 void Istream::PushVal(long unsigned int * val)
 {
     IStr() >> *val;
