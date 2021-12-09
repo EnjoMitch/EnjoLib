@@ -4,8 +4,6 @@
 #include <Ios/Ofstream.hpp>
 #include <Ios/Ifstream.hpp>
 
-//#include <wstring>
-
 using namespace EnjoLib;
 
 Str::~Str(){}
