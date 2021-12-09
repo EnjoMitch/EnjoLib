@@ -22,6 +22,7 @@ class Str
         Str();
         Str(const char crr);
         Str(const char * str);
+        Str(const wchar_t * str);
         Str(size_t num, const char crr);
         Str(const std::string & str);
         Str(const Str & str);
