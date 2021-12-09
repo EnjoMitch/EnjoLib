@@ -9,19 +9,24 @@
 
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/copy.hpp>
+
 #ifdef __APPLE__
-	#include <boost/iostreams/filter/gzip.hpp>
-	#define COMPRESSOR 	gzip_compressor
+    #include <boost/iostreams/filter/gzip.hpp>
+	#define COMPRESSOR 	    gzip_compressor
 	#define DECOMPRESSOR 	gzip_decompressor
 #else
-	#include <boost/iostreams/filter/lzma.hpp>
-	#define COMPRESSOR 	lzma_compressor
-	#define DECOMPRESSOR 	lzma_decompressor
+    #ifdef WIN32
+        #include <boost/iostreams/filter/zlib.hpp>
+        #define COMPRESSOR 	    zlib_compressor
+        #define DECOMPRESSOR 	zlib_decompressor
+    #else
+        #include <boost/iostreams/filter/lzma.hpp>
+        #define COMPRESSOR 	    lzma_compressor
+        #define DECOMPRESSOR 	lzma_decompressor
+    #endif // WIN32
 #endif
-//#include <boost/iostreams/filter/zlib.hpp>
-//#include <boost/iostreams/filter/gzip.hpp>
-//#include <boost/iostreams/filter/lzma.hpp>
-//#include <boost/iostreams/filter/zstd.hpp>
+
+//#include <boost/iostreams/filter/zstd.hpp> // For future
 
 #include <3rdParty/stdfwd.hh>
 #include <fstream>
