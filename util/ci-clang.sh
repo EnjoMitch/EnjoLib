@@ -15,7 +15,8 @@ cmake -G "${GEN}" ../.. \
 -DCMAKE_CXX_COMPILER="${CMAKE_CXX_COMPILER}" \
 -DUSE_STATIC="ON" \
 -DUSE_UNITY="ON" \
-&& ${MAKE} || ${MAKE} && ${MAKE} install
-ctest --verbose -R EnjoLibTest
+-DBUILD_BOOST="ON" \
+-DBUILD_WX="ON" \
+&& ${MAKE} || ${MAKE} && ${MAKE} install && ctest --verbose -R EnjoLibTest
 ctest --output-on-failure
 
