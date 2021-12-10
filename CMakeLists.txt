@@ -31,8 +31,7 @@ add_subdirectory(libStat3rd)
 
 
 if (BUILD_WX)
-#	add_subdirectory(progs/libwx)
-#	add_subdirectory(progs/stock/wxConfQT)
+	add_subdirectory(libwx)
 #	if (BUILD_WX_APPS)
 		#add_subdirectory(progs/wx/wxLanChat)
 #		add_subdirectory(progs/wx/wxWyswietlaczZdjec)
