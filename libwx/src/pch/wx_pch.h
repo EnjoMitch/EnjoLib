@@ -30,7 +30,7 @@
     #include <wx/string.h>
     #include <wx/event.h>
     #include <wx/dcclient.h>
-    #include <wx/image.h>
+    //#include <wx/image.h>
 #endif // WX_PRECOMP
 
 #endif // WX_PCH_H_INCLUDED
