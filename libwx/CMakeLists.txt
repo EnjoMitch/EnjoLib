@@ -16,6 +16,7 @@ else()
 	find_package(wxWidgets COMPONENTS ${WX_COMPS} REQUIRED)
 	include(${wxWidgets_USE_FILE})
 	#message(FATAL_ERROR ${wxWidgets_USE_FILE})
+	message(STATUS "Found wx libs: '${wxWidgets_LIBRARIES}'")
 endif()
 
 
