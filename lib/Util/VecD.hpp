@@ -27,8 +27,8 @@ class VecD : public IVecT<double>
         VecD( const STDFWD::initializer_list<double> & init );
         VecD( const STDFWD::vector<bool> & init );
         VecD( const IIterable<double> & init );
-        VecD( int n );
-        VecD( int n, const double & val );
+        explicit VecD( int n );
+        explicit VecD( int n, const double & val );
         VecD( const STDFWD::string & data );
         VecD( const Str & data );
 

@@ -12,8 +12,8 @@ class VecF : public IVecT<float>
 {
     public:
         VecF();
-        VecF( int n );
-        VecF( int n, float val );
+        explicit VecF( int n );
+        explicit VecF( int n, float val );
         VecF( const STDFWD::initializer_list<double> & init );
         VecF( const STDFWD::vector<float> & init );
         VecF( const STDFWD::vector<double> & init );
