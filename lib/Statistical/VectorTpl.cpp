@@ -500,6 +500,29 @@ void * VectorTpl<T>::operator new (size_t szz)
     throw EnjoLib::ExceptRuntimeError("VectorTpl<T>::new not implemented!");
 }
 
+template<class T>
+void VectorTpl<T>::pop_front()
+{
+    if (this->empty())
+    {
+        return;
+    }
+    this->erase(this->begin());
+}
+
+template<class T>
+void VectorTpl<T>::push_front(const double & val)
+{
+    VectorTpl<T> cpy;
+    cpy.reserve(this->size() + 1);
+    cpy.Add(val);
+    for (It it = this->begin(), itend = this->end(); it != itend; ++it)
+    {
+        cpy.Add(*it);
+    }
+    *this = cpy;
+}
+
 
 namespace EnjoLib {
     template class VectorTpl<float>;

@@ -32,6 +32,10 @@ class VectorTpl : public std::vector<T>
         void Add(const VectorTpl<T> & vec);
         
         std::vector<bool> ToVecBool() const;
+        
+        //! Suboptimal:
+        void pop_front();
+        void push_front(const double & val);
 
         //! Length of vector
         T Len() const;

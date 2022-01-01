@@ -230,6 +230,32 @@ void  VecD::push_back(const double & val)
 {
     return m_impl->dat.push_back(val);
 }
+void VecD::pop_back()
+{
+    if (empty())
+    {
+        return;
+    }
+    m_impl->dat.pop_back();
+}
+
+void VecD::pop_front()
+{
+    if (empty())
+    {
+        return;
+    }
+    m_impl->dat.pop_front();
+}
+void VecD::push_front(const double & val)
+{
+    m_impl->dat.push_front(val);
+}
+void VecD::emplace_front(const double & val)
+{
+    m_impl->dat.push_front(val);
+}
+
 bool  VecD::empty() const
 {
     return m_impl->dat.empty();

@@ -25,8 +25,17 @@ class IVecT : public IIterable<T>
         virtual T & operator[](size_t idx) = 0;
         virtual bool operator == (const IVecT<T> & val) const = 0;
         bool operator != (const IVecT<T> & val) const;
+
+        // Standard
         virtual void push_back(const T & val) = 0;
         virtual void emplace_back(const T & val) = 0;
+        virtual void pop_back() = 0;
+        
+        // Odd and suboptimal
+        virtual void pop_front() = 0;
+        virtual void push_front(const T & val) = 0;
+        virtual void emplace_front(const T & val) = 0;
+        
         virtual size_t size() const = 0;
         virtual bool  empty() const = 0;
         virtual void  clear() = 0;

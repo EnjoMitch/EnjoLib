@@ -63,7 +63,11 @@ class VecF : public IVecT<float>
         float & operator[](size_t idx) override;
         void push_back(const float & val) override;
         void emplace_back(const float & val) override;
-        void pop_back();
+        
+        void pop_front() override;
+        void pop_back() override;
+        void push_front(const float & val) override;
+        void emplace_front(const float & val) override;
 
         size_t size() const override;
         bool empty() const override;
