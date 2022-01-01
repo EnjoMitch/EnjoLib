@@ -9,9 +9,7 @@
 
 #include <STD/Algorithm.hpp>
 #include <STD/String.hpp>
-//#include <unordered_set>
-//#include <numeric>
-//#include <random>
+#include <STD/VectorCpp.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -21,7 +19,7 @@ template <class T>
 void AlgoSTDIVec<T>::Sort(EnjoLib::IVecT<T> * v) const
 {
     std::sort(v->DataRW().begin(), v->DataRW().end());
-    
+
     IterAdaptStd<T> adapter(v);
     //std::sort(adapter.begin(), adapter.end()); /// TODO: Crashes SR @ LongWick (system test)
 }
@@ -31,7 +29,7 @@ template <class T>
 void AlgoSTDIVec<T>::Reverse(EnjoLib::IVecT<T>  * v) const
 {
     std::reverse(v->DataRW().begin(), v->DataRW().end());
-    
+
     IterAdaptStd<T> adapter(v);
     //std::reverse(adapter.begin(), adapter.end());
 }
@@ -58,31 +56,28 @@ T AlgoSTDIVec<T>::Last(const EnjoLib::IVecT<T> & ivec) const
 }
 
 template <class T>
-T AlgoSTDIVec<T>::SumLast(const EnjoLib::IVecT<T> & ivec, std::size_t num) const
+void AlgoSTDIVec<T>::SumVectors(const IVecT<T> & vec1, const IVecT<T> & vec2, IVecT<T> * pvecOut) const
 {
-    /*
-    if (num > v.size())
+    pvecOut->clear();
+    for (size_t i = 0; i < vec1.size(); ++i)
     {
-        throw std::out_of_range("AlgoSTDIVec<T>::SumLast: size = " + to_string(v.size()) + ", requested = " + to_string(num) );
+        pvecOut->push_back(vec1.at(i));
     }
-    T sum {0};
-    return std::accumulate(v.Data().cend() - num, v.Data().cend(), sum);
-    
-    //const IterAdaptStdConst<T> adapter(&v);
-    //return std::accumulate(adapter.cend() - num, adapter.cend(), sum);
-    */
-    const IterAdaptStdConst<T> adapter(&ivec);
-    
-    const std::vector<T> & vec = ivec.Data();
-    return AlgoSTD<T>().SumLast(vec, num);
+    for (size_t i = 0; i < vec2.size(); ++i)
+    {
+        pvecOut->push_back(vec2.at(i));
+    }
 }
 
 
 namespace EnjoLib {
+    template class AlgoSTDIVec<Str>;
     template class AlgoSTDIVec<string>;
     template class AlgoSTDIVec<float>;
     template class AlgoSTDIVec<double>;
     template class AlgoSTDIVec<int>;
     template class AlgoSTDIVec<unsigned long>;
     template class AlgoSTDIVec<unsigned long long>;
+    template class AlgoSTDIVec<VecF>;
+    template class AlgoSTDIVec<VecD>;
 }

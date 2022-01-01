@@ -11,19 +11,16 @@ namespace EnjoLib
     template <class T>
     class AlgoSTD
     {
-        public:           
+        public:
             void Sort(std::vector<T> * v) const;
             void Sort(std::deque<T>  * v) const;
-            
+
             void Reverse(std::vector<T> * v) const;
             void Reverse(std::deque<T>  * v) const;
-            
+
             void Shuffle(std::vector<T> * pvec) const;
 
             size_t RemoveDuplicatesKeepOrder(std::vector<T> * vec) const;
-            
-
-            T SumLast(const std::vector<T>    & v, std::size_t num) const;
 
             T Last(const std::vector<T> & v) const;
     };
