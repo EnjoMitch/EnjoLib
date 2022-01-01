@@ -15,6 +15,8 @@ class Osstream : public Ostream
 
         STDFWD::ostream & OStr() override;
         const STDFWD::ostream & OStr() const override;
+        
+        void Clear();
 
         EnjoLib::Str Str() const;
         EnjoLib::Str str() const;
