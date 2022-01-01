@@ -137,6 +137,42 @@ void VecT<T>::emplace_back(const T & val)
     m_impl->dat.emplace_back(val);
 }
 
+template <class T>
+void VecT<T>::pop_back()
+{
+    if (this->empty())
+    {
+        return;
+    }
+    m_impl->dat.pop_back();
+}
+
+template <class T>
+void VecT<T>::pop_front()
+{
+    if (this->empty())
+    {
+        return;
+    }
+    m_impl->dat.erase(m_impl->dat.begin());
+}
+template <class T>
+void VecT<T>::push_front(const T & val)
+{
+    VecT<T> cpy;
+    cpy.push_back(val);
+    for (size_t i = 0; i < this->size(); ++i)
+    {
+        cpy.push_back(this->operator[](i));
+    }
+    *this = cpy;
+}
+template <class T>
+void VecT<T>::emplace_front(const T & val)
+{
+    this->push_front(val);
+}
+
 
 template <class T>
 bool  VecT<T>::empty() const

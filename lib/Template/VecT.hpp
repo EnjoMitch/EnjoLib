@@ -49,6 +49,12 @@ class VecT : public IVecT<T>
         virtual bool operator == (const IVecT<T> & val) const override;
         virtual void push_back(const T & val) override;
         virtual void emplace_back(const T & val) override;
+        virtual void pop_back() override;
+        
+        virtual void pop_front() override;
+        virtual void push_front(const T & val) override;
+        virtual void emplace_front(const T & val) override;
+        
         virtual size_t size() const override;
         virtual bool empty() const override;
         virtual void clear() override;

@@ -17,12 +17,14 @@ namespace EnjoLib
             
             void Reverse(std::vector<T> * v) const;
             void Reverse(std::deque<T>  * v) const;
-
-            size_t RemoveDuplicatesKeepOrder(std::vector<T> * vec) const;
+            
             void Shuffle(std::vector<T> * pvec) const;
 
-            T SumLast(const std::vector<T>    & v, std::size_t num) const;
+            size_t RemoveDuplicatesKeepOrder(std::vector<T> * vec) const;
             
+
+            T SumLast(const std::vector<T>    & v, std::size_t num) const;
+
             T Last(const std::vector<T> & v) const;
     };
 }
