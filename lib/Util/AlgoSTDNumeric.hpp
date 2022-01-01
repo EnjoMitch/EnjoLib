@@ -2,6 +2,7 @@
 #define ALGOSTDNUMERIC_HPP
 
 #include <STD/Vector.hpp>
+#include <cstddef>
 
 namespace EnjoLib
 {

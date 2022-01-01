@@ -4,6 +4,7 @@
 //#include "../Util/IVec.hpp"
 #include <STD/Vector.hpp>
 #include <deque>
+#include <cstddef>
 
 namespace EnjoLib
 {

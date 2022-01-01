@@ -4,6 +4,7 @@
 //#include "../Util/IVec.hpp"
 #include "../Template/IVecT.hpp"
 #include "../Template/IIterable.hpp"
+#include <cstddef>
 /// TODO: Should use IIterable, but IVecT<T> crashes in system test - invalid pointer.
 namespace EnjoLib
 {
