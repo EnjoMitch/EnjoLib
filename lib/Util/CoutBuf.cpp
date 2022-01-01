@@ -29,15 +29,20 @@ struct EnjoLib::LogImpl
     std::wostream m_wcnull;
 };
 */
-Log::Log(bool verbose)
-//: m_impl(new LogImpl())
+LogBuf::LogBuf(bool verbose)
+//: m_impl(new LogBufImpl())
 //: m_cnull(0)
 //, m_wcnull(0)
 : m_verbose(verbose)
 {
 }
 
-Log::~Log()
+LogBuf::~LogBuf()
+{
+    Flush();
+}
+
+void LogBuf::Flush()
 {
     if (m_verbose)
     {
@@ -45,12 +50,13 @@ Log::~Log()
         if (not str.empty())
         {
             std::cout << str;
+            m_ostr.Clear();
         }
     }
 }
 
 /*
-std::ostream & Log::GetLog(bool verbose)
+std::ostream & LogBuf::GetLog(bool verbose)
 {
     if (verbose)
         return std::cout;
@@ -60,7 +66,15 @@ std::ostream & Log::GetLog(bool verbose)
 }
 */
 
-Osstream & Log::GetLog()
+Ostream & LogBuf::GetLog()
 {
     return m_ostr;
+}
+
+Log::Log(){}
+Log::~Log(){}
+
+Ostream & Log::GetLog()
+{
+    return m_cout;
 }

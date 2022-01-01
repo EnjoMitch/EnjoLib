@@ -1,20 +1,26 @@
 #include "CoutBufTestEL.h"
 #include <Util/CoutBuf.hpp>
 
+#include <iostream>
+
 CoutBufTestEL::CoutBufTestEL()
 {
     {
-        EnjoLib::Log log(true);
-        log.GetLog() << "COUT BUF TEST2\n";
+        EnjoLib::LogBuf log(true);
+        log.GetLog() << "COUT BUF TEST2" << EnjoLib::Nl;
     }
     {
-        EnjoLib::Log log(false);
-        log.GetLog() << "I shouldn't be displayed\n";
+        EnjoLib::LogBuf log(false);
+        log.GetLog() << "I shouldn't be displayed" << EnjoLib::Nl;
     }
     
     {
         ELOG(true)
-        LOG << "COUT BUF TEST3\n";
+        LOG << "COUT BUF TEST3" << EnjoLib::Nl;
+    }
+    {
+        LOGL << "COUT BUF First" << EnjoLib::Endl;
+        std::cout << "COUT BUF Second" << std::endl;
     }
 }
 

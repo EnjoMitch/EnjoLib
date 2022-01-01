@@ -64,7 +64,7 @@ void Ostream::AddVal(const EnjoLib::Str & val)
 
 void Ostream::AddStr(const STDFWD::string & val)
 {
-    if (val == Endl) /// TODO: This doesn't really work for LOGL macro - it doesn't prune the line, only at the desctructor.
+    if (val == Endl)
     {
         OStr() << std::endl;
     }
