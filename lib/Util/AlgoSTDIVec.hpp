@@ -4,7 +4,6 @@
 //#include "../Util/IVec.hpp"
 #include "../Template/IVecT.hpp"
 #include "../Template/IIterable.hpp"
-#include <cstddef>
 /// TODO: Should use IIterable, but IVecT<T> crashes in system test - invalid pointer.
 namespace EnjoLib
 {
@@ -12,12 +11,12 @@ namespace EnjoLib
     class AlgoSTDIVec
     {
         public:
-            void Sort(IVecT<T>    * v) const;            
+            void Sort(IVecT<T>    * v) const;
             void Reverse(IVecT<T> * v) const;
             void Shuffle(IVecT<T> * pvec) const;
+            void SumVectors(const IVecT<T> & vec1, const IVecT<T> & vec2, IVecT<T> * pvecOut) const;
             size_t RemoveDuplicatesKeepOrder(IVecT<T> * vec) const;
 
-            T SumLast(const IVecT<T> & v, std::size_t num) const;
             T Last(const IVecT<T> & v) const;
     };
 }
