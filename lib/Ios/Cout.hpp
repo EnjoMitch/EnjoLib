@@ -17,7 +17,7 @@ class Cout : public Ostream
     protected:
 
     private:
-        std::ostream & m_ostream;
+        STDFWD::ostream & m_ostream;
 };
 }
 
