@@ -299,6 +299,18 @@ VecD Statistical::RemoveLeadingZeroes( const VecD & vec ) const
     return ret;
 }
 
+VecD Statistical::CumSum(const VecD & inp) const
+{
+    VecD ret;
+    double sum = 0;
+    for (const double & val : inp)
+    {
+        sum += val;
+        ret.Add(sum);
+    }
+    return ret;
+}
+
 double Statistical::METwo(const VecD & v1, const VecD & v2) const
 {
     Assertions::NonEmpty(v1, "Statistical::METwo");
