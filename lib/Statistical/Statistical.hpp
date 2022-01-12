@@ -68,7 +68,10 @@ class Statistical
         double SpreadMinMax2Avg( const VecD & v ) const;
 
         VecD RemoveLeadingZeroes( const VecD & v ) const;
-
+        
+        /// Cumulative sum
+        VecD CumSum(const VecD & inp) const;
+        
         VecD StandardizeInvert( const ScalingOpStandardizeInvert & scaleOp, const VecD & applyVec ) const;
         VecD Standardize( const ScalingOpStandardize & scaleOp, const VecD & applyVec ) const;
         Matrix  Standardize( const EnjoLib::Array<ScalingOpStandardize> & scalersOp, const Matrix & applyMat ) const;
