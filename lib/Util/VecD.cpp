@@ -64,6 +64,16 @@ std::vector<bool> VecD::ToVecBool() const
 {
     return m_impl->dat.ToVecBool();
 }
+VecF VecD::ToVecF() const
+{
+    VecF ret(this->size());
+    for (size_t i = 0; i < this->size(); ++i)
+    {
+        const auto & thisVal = this->at(i);
+        ret.at(i) = thisVal;
+    }
+    return ret;
+}
 
 VecD::VecD()
 : m_impl(new Impl())
@@ -174,6 +184,11 @@ void VecD::Add(double val)
     m_impl->dat.Add(val);
 }
 
+VecD VecD::Abs() const
+{
+    return m_impl->dat.Abs();
+}
+
 VecD VecD::AdjustMean() const
 {
     return m_impl->dat.AdjustMean();
@@ -280,6 +295,17 @@ VecD & VecD::operator -= (const VecD & par)
     m_impl->dat.operator -=(par.GetImpl().dat);
     return *this;
 }
+VecD & VecD::operator *= (const VecD & par)
+{
+    m_impl->dat.operator *=(par.GetImpl().dat);
+    return *this;
+}
+VecD & VecD::operator /= (const VecD & par)
+{
+    m_impl->dat.operator /=(par.GetImpl().dat);
+    return *this;
+}
+
 VecD & VecD::operator /= (const double f)
 {
     m_impl->dat.operator /=(f);
@@ -308,6 +334,14 @@ VecD VecD::operator + (const VecD & par) const
 VecD VecD::operator - (const VecD & par) const
 {
     return m_impl->dat.operator -(par.GetImpl().dat);
+}
+VecD VecD::operator * (const VecD & par) const
+{
+    return m_impl->dat.operator *(par.GetImpl().dat);
+}
+VecD VecD::operator / (const VecD & par) const
+{
+    return m_impl->dat.operator /(par.GetImpl().dat);
 }
 VecD VecD::operator - () const
 {

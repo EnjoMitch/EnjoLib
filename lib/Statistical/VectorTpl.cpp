@@ -166,8 +166,19 @@ EnjoLib::Str VectorTpl<T>::PrintScilab( const char * varName ) const
 template<class T>
 T VectorTpl<T>::Len() const
 {
-    const GeneralMath gmat;
-    return gmat.Sqrt( SumSquares() );
+    return GMat().Sqrt( SumSquares() );
+}
+
+template<class T>
+VectorTpl<T> VectorTpl<T>::Abs() const
+{
+    VectorTpl<T> ret(this->size());
+    for (size_t i = 0; i < this->size(); ++i)
+    {
+        const T & thisVal = this->at(i);
+        ret.at(i) = GMat().Fabs(thisVal);
+    }
+    return ret;
 }
 
 template<class T>
@@ -286,7 +297,7 @@ VectorTpl<T> VectorTpl<T>::Smooth(unsigned numToSmooth) const
         numToSmooth = this->size();
     }
     VectorTpl<T> ret;
-    
+
     for (size_t i = numToSmooth - 1; i < this->size(); ++i)
     {
         T sum = 0;
@@ -435,6 +446,26 @@ VectorTpl<T> & VectorTpl<T>::operator -= (const VectorTpl<T> &  p)
 }
 
 template<class T>
+VectorTpl<T> & VectorTpl<T>::operator *= (const VectorTpl<T> &  p)
+{
+    Assertions::SizesEqual(*this, p, "VectorTpl::*=");
+    for (size_t i = 0; i < this->size(); ++i)
+        this->at(i) *= p[i];
+
+    return *this;
+}
+
+template<class T>
+VectorTpl<T> & VectorTpl<T>::operator /= (const VectorTpl<T> &  p)
+{
+    Assertions::SizesEqual(*this, p, "VectorTpl::/=");
+    for (size_t i = 0; i < this->size(); ++i)
+        this->at(i) /= p[i];
+
+    return *this;
+}
+
+template<class T>
 VectorTpl<T> VectorTpl<T>::operator + (const VectorTpl<T> &  p) const
 {
     Assertions::SizesEqual(*this, p, "VectorTpl::+");
@@ -446,6 +477,20 @@ VectorTpl<T> VectorTpl<T>::operator - (const VectorTpl<T> &  p) const
 {
     Assertions::SizesEqual(*this, p, "VectorTpl::-");
     return VectorTpl(*this) -= p;
+}
+
+template<class T>
+VectorTpl<T> VectorTpl<T>::operator * (const VectorTpl<T> &  p) const
+{
+    Assertions::SizesEqual(*this, p, "VectorTpl::*");
+    return VectorTpl(*this) *= p;
+}
+
+template<class T>
+VectorTpl<T> VectorTpl<T>::operator / (const VectorTpl<T> &  p) const
+{
+    Assertions::SizesEqual(*this, p, "VectorTpl::/");
+    return VectorTpl(*this) /= p;
 }
 
 template<class T>

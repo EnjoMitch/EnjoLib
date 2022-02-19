@@ -22,7 +22,7 @@ class VectorTpl : public std::vector<T>
         VectorTpl( const EnjoLib::Str & data );
         VectorTpl();
         virtual ~VectorTpl();
-        
+
         T & atw(size_t idx);
 
         template<class U>
@@ -30,15 +30,16 @@ class VectorTpl : public std::vector<T>
 
         void Add(const T & val);
         void Add(const VectorTpl<T> & vec);
-        
+
         std::vector<bool> ToVecBool() const;
-        
+
         //! Suboptimal:
         void pop_front();
         void push_front(const double & val);
 
-        //! Length of vector
+        //! Numerical length of vector (not number of elements, size()!)
         T Len() const;
+        VectorTpl Abs() const;
         //! Normalised copy of vector
         VectorTpl Norm() const;
         T SumSquares() const;
@@ -62,13 +63,17 @@ class VectorTpl : public std::vector<T>
 
         VectorTpl & operator += (const VectorTpl & par);
         VectorTpl & operator -= (const VectorTpl & par);
-        VectorTpl & operator /= (const T f);
-        VectorTpl & operator *= (const T f);
+        VectorTpl & operator *= (const VectorTpl & par);
+        VectorTpl & operator /= (const VectorTpl & par);
         VectorTpl & operator += (const T f);
         VectorTpl & operator -= (const T f);
+        VectorTpl & operator *= (const T f);
+        VectorTpl & operator /= (const T f);
 
         VectorTpl operator + (const VectorTpl & par) const;
         VectorTpl operator - (const VectorTpl & par) const;
+        VectorTpl operator * (const VectorTpl & par) const;
+        VectorTpl operator / (const VectorTpl & par) const;
         VectorTpl operator - () const;
         VectorTpl operator + (const T f) const;
         VectorTpl operator - (const T f) const;
@@ -76,7 +81,7 @@ class VectorTpl : public std::vector<T>
         VectorTpl operator / (const T f) const;
         bool operator > (const VectorTpl & par) const;
         bool operator < (const VectorTpl & par) const;
-        
+
         void * operator new (size_t szz);
 
 

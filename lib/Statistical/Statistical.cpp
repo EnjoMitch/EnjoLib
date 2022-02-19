@@ -417,3 +417,11 @@ double Statistical::SpreadMinMax2Avg( const VecD & vvv ) const
     return spread;
 }
 
+double Statistical::GetRelatStdDev(const VecD & data, double scalingFactor) const /// TODO: Upstream
+{
+    Assertions::IsNonZero(scalingFactor, "Statistical::GetRelatStdDev scalingFactor");
+    const double median = Median(data);
+    const double stdDev = StandardDeviation(data);
+    const double stdDev2median = stdDev / median * scalingFactor;
+    return stdDev2median;
+}

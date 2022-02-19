@@ -155,6 +155,11 @@ void VecF::Add(float val)
     m_impl->dat.Add(val);
 }
 
+VecF VecF::Abs() const
+{
+    return m_impl->dat.Abs();
+}
+
 VecF VecF::AdjustMean() const
 {
     return m_impl->dat.AdjustMean();
@@ -291,6 +296,15 @@ VecF VecF::operator - (const VecF & par) const
 {
     return m_impl->dat.operator -(par.GetImpl().dat);
 }
+VecF VecF::operator * (const VecF & par) const
+{
+    return m_impl->dat.operator *(par.GetImpl().dat);
+}
+VecF VecF::operator / (const VecF & par) const
+{
+    return m_impl->dat.operator /(par.GetImpl().dat);
+}
+
 VecF VecF::operator - () const
 {
     return m_impl->dat.operator -();

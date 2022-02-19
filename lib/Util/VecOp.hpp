@@ -30,7 +30,7 @@ std::vector<T> VecOp::Add(const std::vector<T> & a, const std::vector<T> & b) co
     return ret;
 }
 
-template <class T> 
+template <class T>
 Array<T> VecOp::AddArr(const Array<T> & one, const Array<T> & two) const
 {
     std::vector<T> oneV;

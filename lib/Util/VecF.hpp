@@ -49,6 +49,7 @@ class VecF : public IVecT<float>
         float MaxAbs() const;
         float Min() const;
 
+        VecF Abs() const;
         VecF AdjustMean() const;
         VecF Slice  (unsigned idx, unsigned len) const;
         VecF SliceTS(unsigned idx, unsigned len) const;
@@ -63,7 +64,7 @@ class VecF : public IVecT<float>
         float & operator[](size_t idx) override;
         void push_back(const float & val) override;
         void emplace_back(const float & val) override;
-        
+
         void pop_front() override;
         void pop_back() override;
         void push_front(const float & val) override;
@@ -79,13 +80,17 @@ class VecF : public IVecT<float>
 
         VecF & operator += (const VecF & par);
         VecF & operator -= (const VecF & par);
-        VecF & operator /= (const float f);
-        VecF & operator *= (const float f);
+        VecF & operator *= (const VecF & par);
+        VecF & operator /= (const VecF & par);
         VecF & operator += (const float f);
         VecF & operator -= (const float f);
+        VecF & operator *= (const float f);
+        VecF & operator /= (const float f);
 
         VecF operator + (const VecF & par) const;
         VecF operator - (const VecF & par) const;
+        VecF operator * (const VecF & par) const;
+        VecF operator / (const VecF & par) const;
         VecF operator - () const;
         VecF operator + (const float f) const;
         VecF operator - (const float f) const;

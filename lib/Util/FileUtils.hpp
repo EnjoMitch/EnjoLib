@@ -37,8 +37,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <Ios/Istream.hpp>
 #include <Template/ArrayFwd.hpp>
 
-class istream;
-
 namespace EnjoLib
 {
 class FileUtils

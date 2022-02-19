@@ -76,7 +76,7 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
 
 
 
-    return Result<VecD >(m_vopt, false);
+    return Result<VecD >(m_vopt, true);
 }
 
 void OptiMultiBinSearch::Consume(const EnjoLib::VecD & data)
