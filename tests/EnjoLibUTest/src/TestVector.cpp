@@ -89,4 +89,42 @@ TEST(Vector_copy)
     observations.size();
 }
 
+TEST(Vector_pop_front_empty)
+{
+    VecF vec;
+    CHECK_EQUAL(0, vec.size());
+    vec.pop_front();
+    CHECK_EQUAL(0, vec.size());
+}
 
+TEST(Vector_pop_front_2elements)
+{
+    VecF vec {1, 2};
+    CHECK_EQUAL(2, vec.size());
+    vec.pop_front();
+    CHECK_EQUAL(1, vec.size());
+    CHECK_EQUAL(2, vec.at(0));
+}
+
+TEST(Vector_pop_back_2elements)
+{
+    VecF vec {1, 2};
+    vec.pop_back();
+    CHECK_EQUAL(1, vec.size());
+    CHECK_EQUAL(1, vec.at(0));
+}
+
+TEST(Vector_push_front_2elements)
+{
+    VecF vec {2};
+    vec.push_front(1);
+    CHECK_EQUAL(2, vec.size());
+    CHECK_EQUAL(1, vec.at(0));
+}
+
+TEST(Vector_push_back_empty)
+{
+    VecF vec;
+    vec.pop_back();
+    CHECK_EQUAL(0, vec.size());
+}

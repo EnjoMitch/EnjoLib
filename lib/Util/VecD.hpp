@@ -27,8 +27,8 @@ class VecD : public IVecT<double>
         VecD( const STDFWD::initializer_list<double> & init );
         VecD( const STDFWD::vector<bool> & init );
         VecD( const IIterable<double> & init );
-        VecD( int n );
-        VecD( int n, const double & val );
+        explicit VecD( int n );
+        explicit VecD( int n, const double & val );
         VecD( const STDFWD::string & data );
         VecD( const Str & data );
 
@@ -103,6 +103,12 @@ class VecD : public IVecT<double>
         double & operator[](size_t idx) override;
         void push_back(const double & val) override;
         void emplace_back(const double & val) override;
+        
+        void pop_front() override;
+        void pop_back() override;
+        void push_front(const double & val) override;
+        void emplace_front(const double & val) override;
+        
         size_t size() const override;
         bool empty() const override;
         virtual void clear() override;

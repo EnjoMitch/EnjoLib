@@ -1,13 +1,15 @@
-#include "AlgoSTD.hpp"
+#include <Util/AlgoSTD.hpp>
+
 #include <Util/VecD.hpp>
 #include <Util/VecF.hpp>
 #include <Util/Str.hpp>
-#include <STD/Algorithm.hpp>
-#include <numeric>
-#include <STD/String.hpp>
-#include <unordered_set>
-#include <random>
 #include <Util/Except.hpp>
+
+#include <STD/String.hpp>
+#include <STD/Algorithm.hpp>
+//#include <numeric>
+#include <set>
+#include <random>
 
 using namespace std;
 using namespace EnjoLib;
@@ -35,22 +37,11 @@ void AlgoSTD<T>::Reverse(std::deque<T> * v) const
     std::reverse(v->begin(), v->end());
 }
 
-template <class T>
-T AlgoSTD<T>::SumLast(const std::vector<T> & v, std::size_t num) const
-{
-    if (num > v.size())
-    {
-        throw ExceptLengthError("AlgoSTD<T>::SumLast: size = " + to_string(v.size()) + ", requested = " + to_string(num) );
-    }
-    T sum = 0;
-    return std::accumulate(v.cend() - num, v.cend(), sum);
-}
-
 template<class T>
 size_t AlgoSTD<T>::RemoveDuplicatesKeepOrder(std::vector<T> * pvec) const
 {
     std::vector<T> & vec = *pvec;
-    std::unordered_set<T> seen;
+    std::set<T> seen;
 
     const auto newEnd = std::remove_if(vec.begin(), vec.end(), [&seen](const T& value)
     {
@@ -77,17 +68,18 @@ template<class T>
 T AlgoSTD<T>::Last(const std::vector<T> & v) const
 {
     const auto ret = v.at(v.size() - 1);
-    return ret; 
+    return ret;
 }
 
 
 namespace EnjoLib {
+    template class AlgoSTD<Str>;
     template class AlgoSTD<string>;
     template class AlgoSTD<float>;
     template class AlgoSTD<double>;
     template class AlgoSTD<int>;
     template class AlgoSTD<unsigned long>;
     template class AlgoSTD<unsigned long long>;
-    //template class AlgoSTD<VecF>; // Won't work
-    //template class AlgoSTD<VecD>; // Won't work
+    template class AlgoSTD<VecF>;
+    template class AlgoSTD<VecD>;
 }

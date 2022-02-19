@@ -1,4 +1,4 @@
-#include "VecOpThin.hpp"
+#include <Util/VecOpThin.hpp>
 #include <Util/VecD.hpp>
 #include <STD/VectorCpp.hpp>
 #include <STD/Algorithm.hpp>

@@ -1,5 +1,6 @@
-#include "AlgoSTDIVec.hpp"
+#include <Util/AlgoSTDIVec.hpp>
 
+#include <Util/AlgoSTD.hpp>
 #include <Util/VecD.hpp>
 #include <Util/VecF.hpp>
 #include <Util/Except.hpp>
@@ -8,9 +9,7 @@
 
 #include <STD/Algorithm.hpp>
 #include <STD/String.hpp>
-#include <unordered_set>
-#include <numeric>
-#include <random>
+#include <STD/VectorCpp.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -20,7 +19,7 @@ template <class T>
 void AlgoSTDIVec<T>::Sort(EnjoLib::IVecT<T> * v) const
 {
     std::sort(v->DataRW().begin(), v->DataRW().end());
-    
+
     IterAdaptStd<T> adapter(v);
     //std::sort(adapter.begin(), adapter.end()); /// TODO: Crashes SR @ LongWick (system test)
 }
@@ -30,30 +29,55 @@ template <class T>
 void AlgoSTDIVec<T>::Reverse(EnjoLib::IVecT<T>  * v) const
 {
     std::reverse(v->DataRW().begin(), v->DataRW().end());
-    
-    //IterAdaptStd<T> adapter(v);
+
+    IterAdaptStd<T> adapter(v);
     //std::reverse(adapter.begin(), adapter.end());
 }
 
-template <class T>
-T  AlgoSTDIVec<T>::SumLast(const EnjoLib::IVecT<T>  & v, std::size_t num) const
+template<class T>
+size_t AlgoSTDIVec<T>::RemoveDuplicatesKeepOrder(EnjoLib::IVecT<T> * pvec) const
 {
-    if (num > v.size())
-    {
-        throw std::out_of_range("AlgoSTDIVec<T>::SumLast: size = " + to_string(v.size()) + ", requested = " + to_string(num) );
-    }
-    T sum {0};
-    return std::accumulate(v.Data().cend() - num, v.Data().cend(), sum);
-    
-    //const IterAdaptStdConst<T> adapter(&v);
-    //return std::accumulate(adapter.cend() - num, adapter.cend(), sum);
+    std::vector<T> & vec = pvec->DataRW();
+    return AlgoSTD<T>().RemoveDuplicatesKeepOrder(&vec);
 }
 
+template<class T>
+void AlgoSTDIVec<T>::Shuffle(EnjoLib::IVecT<T> * pvec) const
+{
+    std::vector<T> & vec = pvec->DataRW();
+    AlgoSTD<T>().Shuffle(&vec);
+}
+
+template<class T>
+T AlgoSTDIVec<T>::Last(const EnjoLib::IVecT<T> & ivec) const
+{
+    const std::vector<T> & vec = ivec.Data();
+    return AlgoSTD<T>().Last(vec);
+}
+
+template <class T>
+void AlgoSTDIVec<T>::SumVectors(const IVecT<T> & vec1, const IVecT<T> & vec2, IVecT<T> * pvecOut) const
+{
+    pvecOut->clear();
+    for (size_t i = 0; i < vec1.size(); ++i)
+    {
+        pvecOut->push_back(vec1.at(i));
+    }
+    for (size_t i = 0; i < vec2.size(); ++i)
+    {
+        pvecOut->push_back(vec2.at(i));
+    }
+}
+
+
 namespace EnjoLib {
+    template class AlgoSTDIVec<Str>;
     template class AlgoSTDIVec<string>;
     template class AlgoSTDIVec<float>;
     template class AlgoSTDIVec<double>;
     template class AlgoSTDIVec<int>;
     template class AlgoSTDIVec<unsigned long>;
     template class AlgoSTDIVec<unsigned long long>;
+    template class AlgoSTDIVec<VecF>;
+    template class AlgoSTDIVec<VecD>;
 }

@@ -214,8 +214,29 @@ void  VecF::push_back(const float & val)
 }
 void  VecF::pop_back()
 {
+    if (empty())
+    {
+        return;
+    }
     return m_impl->dat.pop_back();
 }
+void VecF::pop_front()
+{
+    if (empty())
+    {
+        return;
+    }
+    m_impl->dat.pop_front();
+}
+void VecF::push_front(const float & val)
+{
+    m_impl->dat.push_front(val);
+}
+void VecF::emplace_front(const float & val)
+{
+    m_impl->dat.push_front(val);
+}
+
 bool  VecF::empty() const
 {
     return m_impl->dat.empty();

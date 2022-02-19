@@ -30,3 +30,8 @@ STDFWD::ostream & Osstream::OStr()
 {
     return *m_ostream;
 }
+
+void Osstream::Clear()
+{
+    m_ostream->str("");
+}

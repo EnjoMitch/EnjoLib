@@ -56,7 +56,10 @@ Str ToolsMixed::GenBars10(double percentage, const char barFull, const char barE
     {
         percentage0_10 = numBars;
     }
-    
+    if (percentage0_10 < 0)
+    {
+        percentage0_10 = 0;
+    }
     Osstream oss;
     oss << tagStart;
     oss << GenChars(tagOn,  percentage0_10);

@@ -1,4 +1,7 @@
 #include <Statistical/Formatters.hpp>
+#include <Statistical/Statistical.hpp>
+#include <Math/GeneralMath.hpp>
+#include <Util/ToolsMixed.hpp>
 #include <Util/StrColour.hpp>
 #include <Ios/Osstream.hpp>
 #include <Ios/IoManip.hpp>
@@ -36,4 +39,46 @@ EnjoLib::Str Formatters::FormatVar(const double var, bool color, int prec) const
         oss << var;
     }
     return oss.str();
+}
+
+EnjoLib::Str Formatters::VecLabel() const
+{
+    return "Mean Median ± StDev%  │ StDev bar";
+}
+
+EnjoLib::Str Formatters::FormatVec(const VecD & vec, bool color, double multiplier) const
+{
+    const StrColour col;
+    const Statistical stat;
+    const GMat gmat;
+
+    const double mean   = stat.Mean(vec) * multiplier;
+    const double median = stat.Median(vec) * multiplier;
+    const double stdDev = stat.StandardDeviation(vec) * multiplier;
+    const double stdDevPerc = stdDev / median * 100;
+    const double stdDevPercAbs = gmat.Fabs(stdDevPerc);
+
+    Osstream oss;
+    oss << IoManip::SetPrecision(oss, 3);
+    oss << IoManip::Fixed(oss);
+
+    //oss << "| ";
+
+    oss << FormatVar(mean, color) << " ";
+    oss << FormatVar(median, color);
+    oss << IoManip::SetPrecision(oss, 1);
+    Str density = "░";
+    density = "";
+    /*
+    if (stdDevPercAbs > 33)
+    {
+        density = "▒";
+    }
+    if (stdDevPercAbs > 50)
+    {
+        density = "▓"; make 10 bars
+    }
+    */
+    oss << " ± " << density << "" << stdDevPercAbs << "%\t " << ToolsMixed().GenBars10(stdDevPercAbs);
+    return oss.Str();
 }
