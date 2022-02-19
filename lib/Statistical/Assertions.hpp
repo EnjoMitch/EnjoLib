@@ -47,24 +47,24 @@ class Assertions
     public:
         static void NonEmpty( const Matrix & v1,    const char * identifier );
         template<class T> static void IsEqual( const T & val1, const T & val2, const char * identifier );
-        
+
         template<class T> static void NonEmpty( const IVecT<T> & v1, const char * identifier );
         template<class T> static void SizesEqual( const IVecT<T> & v1, const IVecT<T> & v2, const char * identifier );
         template<class T> static void SizesEqual( const IVecT<T> & v1, size_t refSize, const char * identifier );
         template<class T> static void AtLeast2Dimensions( const IVecT<T> & v, const char * identifier );
-        
+
         static void NonEmpty( const VecD & v1, const char * identifier );
         static void SizesEqual( const VecD & v1, const VecD & v2, const char * identifier );
         static void SizesEqual( const VecD & v1, size_t refSize, const char * identifier );
         static void AtLeast2Dimensions( const VecD & v, const char * identifier );
-        
+
         template<class T> static void NonEmpty( const VectorTpl<T> & v1, const char * identifier );
         template<class T> static void SizesEqual( const VectorTpl<T> & v1, const VectorTpl<T> & v2, const char * identifier );
         template<class T> static void SizesEqual( const VectorTpl<T> & v1, size_t refSize, const char * identifier );
         template<class T> static void AtLeast2Dimensions( const VectorTpl<T> & v, const char * identifier );
         template<class C> static void IndexInBoundsContainer( size_t idx, const C & container, const char * identifier );
-        
-        
+
+
         static void SizesEqual( size_t sz, size_t refSize, const char * identifier );
         static void SizesAtLeast( size_t sz, size_t refSize, const char * identifier );
         template<class T> static void IsNonZero( T val, const char * identifier );
@@ -75,18 +75,21 @@ class Assertions
         static void Throw(const char * msg, const char * identifier);
         static void Throw(const char * msg, int val, const char * identifier);
         static void IndexInBounds( size_t idx, size_t szz, const char * identifier );
+
+
+        static bool In(double a, double between, double c);
     protected:
     private:
 };
 
-    
+
     template<class T>
     void Assertions::IsEqual( const T & val1, const T & val2, const char * identifier )
     {
         if (val1 != val2)
             Throw("Not equal at: ", identifier);
     }
-    
+
     template<class T>
     void Assertions::NonEmpty( const IVecT<T> & v1, const char * identifier )
     {
@@ -113,7 +116,7 @@ class Assertions
         if ( vs1 < 2 )
             Throw("Dimension must be at least 2", identifier);
     }
-    
+
     template<class T>
     void Assertions::NonEmpty( const VectorTpl<T> & v1, const char * identifier )
     {
@@ -147,9 +150,9 @@ class Assertions
         if ( val == 0 )
             Throw("Zero value", identifier);
     }
-    
-    template<class C> 
-    void Assertions::IndexInBoundsContainer( size_t idx, const C & container, const char * identifier )
+
+    template<class C>
+    void EnjoLib::Assertions::IndexInBoundsContainer( size_t idx, const C & container, const char * identifier )
     {
         if (idx >= container.size())
         {

@@ -10,7 +10,7 @@ class AlgoSTDThin
         template <class T> const T & Min(const T & left, const T & right) const;
         template <class T> const T & Max(const T & left, const T & right) const;
         template <class T> void Swap(T & left, T & right) const;
-        
+
 
     protected:
 
@@ -48,7 +48,7 @@ template <class T> const T & AlgoSTDThin::Max(const T & left, const T & right) c
 
 template <class T> void AlgoSTDThin::Swap(T & left, T & right) const
 {
-    T & tmp = left;
+    const T tmp = left;
     left = right;
     right = tmp;
 }

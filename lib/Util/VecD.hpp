@@ -65,6 +65,7 @@ class VecD : public IVecT<double>
         double MaxAbs() const;
         double Min() const;
 
+        VecD Abs() const;
         VecD AdjustMean() const;
         VecD Slice  (unsigned idx, unsigned len) const;
         VecD SliceTS(unsigned idx, unsigned len) const;
@@ -73,16 +74,21 @@ class VecD : public IVecT<double>
         VecD LogSigned() const;
 
         STDFWD::vector<bool> ToVecBool() const;
+        VecF ToVecF() const;
 
         VecD & operator += (const VecD & par);
         VecD & operator -= (const VecD & par);
-        VecD & operator /= (const double f);
+        VecD & operator *= (const VecD & par);
+        VecD & operator /= (const VecD & par);
         VecD & operator *= (const double f);
+        VecD & operator /= (const double f);
         VecD & operator += (const double f);
         VecD & operator -= (const double f);
 
         VecD operator + (const VecD & par) const;
         VecD operator - (const VecD & par) const;
+        VecD operator * (const VecD & par) const;
+        VecD operator / (const VecD & par) const;
         VecD operator - () const;
         VecD operator + (const double f) const;
         VecD operator - (const double f) const;
@@ -103,12 +109,12 @@ class VecD : public IVecT<double>
         double & operator[](size_t idx) override;
         void push_back(const double & val) override;
         void emplace_back(const double & val) override;
-        
+
         void pop_front() override;
         void pop_back() override;
         void push_front(const double & val) override;
         void emplace_front(const double & val) override;
-        
+
         size_t size() const override;
         bool empty() const override;
         virtual void clear() override;

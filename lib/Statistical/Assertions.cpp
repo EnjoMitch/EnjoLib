@@ -30,13 +30,14 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "Assertions.hpp"
-#include "VectorTpl.hpp"
-#include "Matrix.hpp"
-#include "../Util/VecD.hpp"
+#include <Statistical/Assertions.hpp>
+#include <Statistical/VectorTpl.hpp>
+#include <Statistical/Matrix.hpp>
+#include <Util/VecD.hpp>
 
 #include <Util/CharManipulations.hpp>
 #include <Util/Except.hpp>
+#include <Template/AlgoSTDThin.hpp>
 #include <Ios/Osstream.hpp>
 
 using namespace EnjoLib;
@@ -63,7 +64,7 @@ void Assertions::Square( const Matrix & m, const char * identifier )
             const EnjoLib::Str msg = EnjoLib::Str("Matrix not square at\n") + identifier + "()\n";
             throw EnjoLib::ExceptInvalidArg( msg.c_str() );
         }
-            
+
     }
 }
 void Assertions::NonEmpty( const Matrix & mat, const char * identifier )
@@ -164,10 +165,17 @@ void Assertions::AtLeast2Dimensions( const VecD & v, const char * identifier )
         Throw("Dimension must be at least 2", identifier);
 }
 
-void Assertions::IndexInBounds( size_t idx, size_t szz, const char * identifier )
+void EnjoLib::Assertions::IndexInBounds( size_t idx, size_t szz, const char * identifier )
 {
     if (idx >= szz)
     {
         Assertions::Throw(identifier, "Index above size");
     }
+}
+
+bool EnjoLib::Assertions::In(double a, double mid, double c)
+{
+    if (a > c)
+        AlgoSTDThin().Swap(a, c);
+    return (a < mid && mid <= c);
 }

@@ -44,7 +44,7 @@ class Array : public IIterable<T>
         {
             Delete();
         }
-        
+
         Array(const Array & other)
         : Array()
         {
@@ -60,7 +60,7 @@ class Array : public IIterable<T>
         , m_sz(other.m_sz)
         {
         }
-        
+
         template <class Cont>
         void InitContainer(const Cont & container)
         {
@@ -68,7 +68,7 @@ class Array : public IIterable<T>
             const T * data = container.data();
             Init(data, size);
         }
-        
+
         void Init(const T * data, unsigned size, bool copyLast = true)
         {
             T * dataNew = new T[size]();
@@ -82,7 +82,7 @@ class Array : public IIterable<T>
             }
             m_sz = size;
         }
-        
+
         const T & at(size_t i) const override
         {
             Assertions::IndexInBounds(i, m_sz, "Array");
@@ -93,7 +93,7 @@ class Array : public IIterable<T>
             Assertions::IndexInBounds(i, m_sz, "Array");
             return data()[i];
         }
-        
+
         const T & front() const
         {
             return at(0);
@@ -110,29 +110,32 @@ class Array : public IIterable<T>
         {
             return atw(m_sz - 1);
         }
-        
+
         size_t size() const override
         {
             return m_sz;
         }
-        
+
         void clear()
         {
             m_ptr.Init(nullptr);
             m_sz = 0;
         }
-        
+
         const T * data() const
         {
             return m_ptr.get();
         }
-        
+
         T * data()
         {
             return m_ptr.get();
         }
-        
-        /// Highly inefficient
+
+        /// Highly inefficient for runtime.
+        /*
+        Better use std::vector::push_back() and then convert to Array
+        */
         void push_back(const T & val)
         {
             const T * dat = m_ptr.IsValid() ? data() : nullptr;
@@ -153,11 +156,11 @@ class Array : public IIterable<T>
         void Delete()
         {
         }
-        
+
         friend class boost::serialization::access;
-        template<class Archive> 
+        template<class Archive>
         void serialize(Archive & ar, const unsigned int version); /// TODO: Do other templates this way, including PIMPL, etc.
-    
+
         SafePtr<T, DefaultPtrDeleterArray<T>> m_ptr;
         unsigned m_sz = 0;
 };
