@@ -41,6 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Constants.hpp"
 #include "VectorMath.hpp"
 
+#include <Template/Array.hpp>
+
 #include <STD/VectorCpp.hpp>
 
 using namespace EnjoLib;
