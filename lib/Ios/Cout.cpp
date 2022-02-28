@@ -15,6 +15,11 @@ Cout::~Cout()
     //dtor
 }
 
+void Cout::Flush()
+{
+    m_ostream.flush();
+}
+
 std::ostream & Cout::OStr()
 {
     return m_ostream;

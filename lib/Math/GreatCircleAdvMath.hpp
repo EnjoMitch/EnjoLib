@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef GREATCIRCLEADVMATH_HPP_INCLUDED
 #define GREATCIRCLEADVMATH_HPP_INCLUDED
 
-#include <Template/Array.hpp>
+#include <Template/ArrayFwd.hpp>
 
 namespace EnjoLib
 {
@@ -48,7 +48,7 @@ class GreatCircleAdvMath
         ThreeSphericals Calc3SphericalsAroundHalfGlobe( double latStart, double lonStart, double r );
 
     private:
-        
+
 };
 }
 
