@@ -1,9 +1,10 @@
 #include <Util/ToolsMixed.hpp>
+
 #include "Tokenizer.hpp"
 #include "CharManipulations.hpp"
 #include "StrColour.hpp"
 #include <Math/GeneralMath.hpp>
-
+#include <Ios/Cout.hpp>
 #include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
 
@@ -39,7 +40,9 @@ void ToolsMixed::Animation09AZ(int * idx) const
 
 void ToolsMixed::AnimationCustom(int * idx, const EnjoLib::Str & animSeries) const
 {
-    cout << '\b' << animSeries.at((*idx)++ % animSeries.size()) << flush;
+    Cout out;
+    out << '\b' << animSeries.at((*idx)++ % animSeries.size());
+    out.Flush();
 }
 
 Str ToolsMixed::GenBars10(double percentage, const char barFull, const char barEmpty) const
@@ -48,9 +51,9 @@ Str ToolsMixed::GenBars10(double percentage, const char barFull, const char barE
     const Str tagEnd   = "]";
     const Str tagOn    = barFull;
     const Str tagOff   = barEmpty;
-    
+
     const int numBars = 10;
-    
+
     int percentage0_10 = int(GMat().round(percentage / 10.0));
     if (percentage0_10 > numBars)
     {
@@ -106,7 +109,8 @@ void ToolsMixed::SystemCallWarn(const EnjoLib::Str & command, const EnjoLib::Str
 {
     if (int err = system(command.c_str()))
     {
-        std::cout << StrColour::GenWarn(SystemCallPrepareMessage(command, functionName, err)) << std::endl;
+        Cout out;
+        out << StrColour::GenWarn(SystemCallPrepareMessage(command, functionName, err)) << Nl;
     }
 }
 

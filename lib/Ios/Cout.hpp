@@ -11,6 +11,7 @@ class Cout : public Ostream
         Cout();
         virtual ~Cout();
 
+        void Flush();
         STDFWD::ostream & OStr() override;
         const STDFWD::ostream & OStr() const override;
 
