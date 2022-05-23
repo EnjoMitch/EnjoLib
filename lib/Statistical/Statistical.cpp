@@ -299,6 +299,40 @@ VecD Statistical::RemoveLeadingZeroes( const VecD & vec ) const
     return ret;
 }
 
+
+VecD Statistical::ReplaceLeadingZeroes( const VecD & vec ) const
+{
+    VecD ret;
+    double fst = 0;
+    for (unsigned i = 0; i < vec.size(); ++i)
+    {
+        const double val = vec.at(i);
+        if (val != 0 && fst == 0)
+        {
+            fst = val;
+        }
+    }
+    bool firstNonZero = false;
+    for (unsigned i = 0; i < vec.size(); ++i)
+    {
+        const double val = vec.at(i);
+        if (val == 0 && ! firstNonZero)
+        {
+            ret.Add(fst);
+            continue;
+        }
+        else
+        {
+            firstNonZero = true;
+        }
+        if (firstNonZero)
+        {
+            ret.Add(val);
+        }
+    }
+    return ret;
+}
+
 VecD Statistical::CumSum(const VecD & inp) const
 {
     VecD ret;
