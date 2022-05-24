@@ -136,13 +136,20 @@ class Array : public IIterable<T>
         /*
         Better use std::vector::push_back() and then convert to Array
         */
+        /*
+        This is completely wrong and UBs:
         void push_back(const T & val)
         {
             const T * dat = m_ptr.IsValid() ? data() : nullptr;
             Init(dat, size() + 1, false);
             back() = val;
         }
-
+        Alternative that might work?:
+        void push_back(const T & val)
+        {
+            *this = Array(with val)
+        }
+        */
         IITER_IMPL_TEMPLATE
 
     protected:

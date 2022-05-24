@@ -235,6 +235,8 @@ TEST(Array_clear)
     CHECK_EQUAL(0,    arr.size());
 }
 
+/// TODO: Revive but without UBs...
+/*
 TEST(Array_pushBack)
 {
     VecF data = std::vector<float>{2, 0, 1};
@@ -251,3 +253,4 @@ TEST(Array_pushBackEpmty)
     CHECK_EQUAL(5, arr.back());
     CHECK_EQUAL(1,    arr.size());
 }
+*/
