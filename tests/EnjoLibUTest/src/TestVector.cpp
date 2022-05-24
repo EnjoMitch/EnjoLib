@@ -128,3 +128,10 @@ TEST(Vector_push_back_empty)
     vec.pop_back();
     CHECK_EQUAL(0, vec.size());
 }
+
+TEST(Vector_add)
+{
+    VecD vec = Create();
+    vec += 1;
+    CHECK_EQUAL(2, vec.at(0));
+}
