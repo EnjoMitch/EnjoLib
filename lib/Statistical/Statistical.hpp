@@ -69,6 +69,7 @@ class Statistical
         double GetRelatStdDev(const VecD & data, double scalingFactor = 1) const;
 
         VecD RemoveLeadingZeroes( const VecD & v ) const;
+        VecD ReplaceLeadingZeroes( const VecD & vec ) const;
 
         /// Cumulative sum
         VecD CumSum(const VecD & inp) const;
