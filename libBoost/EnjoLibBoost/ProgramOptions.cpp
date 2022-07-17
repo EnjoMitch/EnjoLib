@@ -43,19 +43,19 @@ T ProgramOptions::GetTFromMap(const char * opt, T defaultVal) const
     return defaultVal;
 }
 
-int ProgramOptions::GetIntFromMap(const char * opt) const
+int ProgramOptions::GetIntFromMap(const char * opt, int defaultVal) const
 {
-    return GetTFromMap(opt, int(0));
+    return GetTFromMap(opt, defaultVal);
 }
 
-float ProgramOptions::GetFloatFromMap(const char * opt) const
+float ProgramOptions::GetFloatFromMap(const char * opt, float defaultVal) const
 {
-    return GetTFromMap(opt, float(0));
+    return GetTFromMap(opt, defaultVal);
 }
 
-EnjoLib::Str ProgramOptions::GetStrFromMap(const char * opt) const
+EnjoLib::Str ProgramOptions::GetStrFromMap(const char * opt, const EnjoLib::Str & defaultVal) const
 {
-    return GetTFromMap(opt, EnjoLib::Str());
+    return GetTFromMap(opt, defaultVal);
 }
 
 bool ProgramOptions::GetBoolFromMap(const char * opt) const
