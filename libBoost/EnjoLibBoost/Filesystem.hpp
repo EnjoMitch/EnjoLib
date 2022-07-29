@@ -16,7 +16,7 @@ public:
     bool IsDir(const Str & dir) const;
     bool Copy(const Str & srcPath, const Str & dstPath, bool overwrite = true) const;
     Str GetFilePath(const Str & dir, const Str & fileName) const;
-    VecStr ListDir(const Str & dir, const Str & contains = "") const;
+    VecStr ListDir(const Str & dir, const Str & contains = "", bool filesOnly = true) const;
 
 protected:
 private:
