@@ -2,9 +2,9 @@
 #include "ProgressMonit.hpp"
 #include "../Math/GeneralMath.hpp"
 #include "../Util/TimeComponents.hpp"
-#include <Ios/Osstream.hpp>
 
-#include <STD/Iostream.hpp>
+#include <Ios/Cout.hpp>
+#include <Ios/Osstream.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -14,17 +14,18 @@ ProgressMonitHigh::~ProgressMonitHigh(){}
 
 void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib::Str & idd, bool onPercentChange) const
 {
+    Cout out;
     Osstream oss;
     ProgressMonit pm(m_numBars);
     int percentDone = pm.GetPercentDoneInt(i, sz);
     if (! onPercentChange || percentDone != m_prevPercentDone)
     {
         for (int i = 0; i < m_prevStringSize; ++i)
-            cout << '\b'; // Move back
+            out << '\b'; // Move back
         for (int i = 0; i < m_prevStringSize; ++i)
-            cout << ' ';  // Erase by filling with spaces
+            out << ' ';  // Erase by filling with spaces
         for (int i = 0; i < m_prevStringSize; ++i)
-            cout << '\b'; // Move back again for the next printout
+            out << '\b'; // Move back again for the next printout
 
         double sec = m_timer.GetElapsedSeconds();
         double leftTime = GeneralMath().round(pm.GetTimeLeft(i, sz, sec));
@@ -33,7 +34,8 @@ void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib:
 
         oss << idd << ": i = " << i << " / " << sz << " = " << percentDone << "%" << " " << pm.GetProgressBar(i, sz)
         << " ETA = " << timeLeftFormatted.ToString() << ", ELA = " << timePassedFormatted.ToString();
-        cout << oss.str() << flush;
+        out << oss.str();
+        out.Flush();
         m_prevStringSize = oss.str().size();
     }
     m_prevPercentDone = percentDone;
@@ -42,7 +44,7 @@ void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib:
     {
         //std::cout << "  Done!" << std::endl;
     }
-        
+
 }
 
 void ProgressMonitHigh::Reset()
