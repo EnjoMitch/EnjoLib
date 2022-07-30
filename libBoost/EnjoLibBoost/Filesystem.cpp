@@ -1,4 +1,7 @@
 #include "Filesystem.hpp"
+
+#include <Util/CoutBuf.hpp>
+
 #include <string>
 #include <algorithm>
 #ifndef BOOST_NO_CXX11_SCOPED_ENUMS
@@ -57,8 +60,9 @@ bool Filesystem::Copy(const Str & srcPath, const Str & dstPath, bool overwrite) 
     return true;
 }
 
-VecStr Filesystem::ListDir(const Str & dir, const Str & contains) const
+VecStr Filesystem::ListDir(const Str & dir, const Str & contains, bool filesOnly) const
 {
+    //LOGL << "dir = " << dir << Nl;
     VecStr files;
     if (not is_directory(dir.c_str()))
     {
@@ -70,7 +74,10 @@ VecStr Filesystem::ListDir(const Str & dir, const Str & contains) const
     {
         if (not is_regular_file(itr->status()))
         {
-            continue;
+            if (filesOnly)
+            {
+                continue;
+            }
         }
         const Str & fileName = itr->path().filename().c_str();
         if (not contains.empty())

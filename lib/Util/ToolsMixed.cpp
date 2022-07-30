@@ -47,6 +47,65 @@ void ToolsMixed::AnimationCustom(int * idx, const EnjoLib::Str & animSeries) con
 }
 
 
+EnjoLib::Str ToolsMixed::GetPercentToAscii(double val, double minimum, double maximum) const
+{
+    Assertions::IsTrue(maximum > minimum, "maximum < minimum GetPercentToAscii");
+    const double diff = maximum - minimum;
+    Assertions::IsNonZero(diff, "diff GetPercentToAscii");
+    const double pro = (val - minimum) / diff;
+    //LOGL << pro << Nl;
+    EnjoLib::Str ret = "1";
+    
+    if (pro < 0)
+    {
+        ret = " ";
+    }
+    else if (0 <= pro && pro < 0.1)
+    {
+        ret = "_";
+    }
+    else if (0.1 <= pro && pro < 0.3)
+    {
+        ret = ".";
+    }
+    else if (0.3 <= pro && pro < 0.5)
+    {
+        ret = "░";
+    }
+    else if (0.5 <= pro && pro < 0.7)
+    {
+        ret = "▒";
+    }
+    else if (0.7 <= pro && pro < 1)
+    {
+        ret = "▓";
+    }
+    else 
+    {
+        ret = "█";
+    }
+    return ret;
+}
+
+EnjoLib::Str ToolsMixed::GetPercentToAscii(const EnjoLib::VecD & vals, double minimum, double maximum, bool decoration) const
+{
+    EnjoLib::Osstream oss;
+    if (decoration)
+    {
+        oss << "├ ";
+    }
+    for (const double val : vals)
+    {
+        oss << GetPercentToAscii(val, minimum, maximum);
+    }
+    if (decoration)
+    {
+        oss << " ┤";
+    }
+    return oss.str();
+}
+
+
 EnjoLib::Str ToolsMixed::GetPercentToAscii(double val, double minimum, double maximum, bool blocks)
 {
     Assertions::IsTrue(maximum > minimum, "maximum < minimum GetPercentToAscii");
