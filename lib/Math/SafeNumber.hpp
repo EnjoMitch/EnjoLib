@@ -2,6 +2,7 @@
 #define SAFENUMBER_H
 
 #include <Util/Except.hpp>
+#include <Ios/Ostream.hpp>
 #include <STD/Ostream.hpp>
 
 namespace EnjoLib
@@ -23,6 +24,7 @@ class SafeNumber : public IHasNumber
         SafeNumber operator / (const IHasNumber & other) const;
         void operator /= (const IHasNumber & other);
         std::ostream & Write(std::ostream &os) const;
+        EnjoLib::Ostream & Write(EnjoLib::Ostream &os) const;
         double GetNumber() const override { return val; }
 
         T val; /// Use any other mathematical function
@@ -34,6 +36,11 @@ class SafeNumber : public IHasNumber
 
 template<class T>
 std::ostream &operator<<(std::ostream &os, SafeNumber<T> const &m) {
+   return m.Write(os);
+}
+
+template<class T>
+EnjoLib::Ostream &operator<<(EnjoLib::Ostream &os, SafeNumber<T> const &m) {
    return m.Write(os);
 }
 
@@ -58,6 +65,12 @@ void SafeNumber<T>::operator /= (const IHasNumber & other)
 
 template<class T>
 std::ostream& SafeNumber<T>::Write(std::ostream& os) const
+{
+    return os << val;
+}
+
+template<class T>
+EnjoLib::Ostream& SafeNumber<T>::Write(EnjoLib::Ostream& os) const
 {
     return os << val;
 }

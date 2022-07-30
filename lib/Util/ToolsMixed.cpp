@@ -9,9 +9,9 @@
 #include <Util/Except.hpp>
 #include <Statistical/Assertions.hpp>
 
-#include <STD/Iostream.hpp>
 #include <STD/Map.hpp>
 #include <STD/Iomanip.hpp>
+#include <STD/Ostream.hpp>
 #include <ctime>
 #include <mutex>
 
@@ -47,7 +47,7 @@ void ToolsMixed::AnimationCustom(int * idx, const EnjoLib::Str & animSeries) con
 }
 
 
-EnjoLib::Str ToolsMixed::GetPercentToAscii(double val, double minimum, double maximum) const
+EnjoLib::Str ToolsMixed::GetPercentToAscii(double val, double minimum, double maximum, bool blocks)
 {
     Assertions::IsTrue(maximum > minimum, "maximum < minimum GetPercentToAscii");
     const double diff = maximum - minimum;
@@ -56,54 +56,105 @@ EnjoLib::Str ToolsMixed::GetPercentToAscii(double val, double minimum, double ma
     //LOGL << pro << Nl;
     EnjoLib::Str ret = "1";
     
-    if (pro < 0)
+    if (blocks)
     {
-        ret = " ";
+        // https://de.wikipedia.org/wiki/Unicodeblock_Blockelemente
+        if (pro < 0)
+        {
+            ret = " ";
+        }
+        else if (0 <= pro && pro < 1/8.0)
+        {
+            ret = "_";
+        }
+        else if (1/8.0 <= pro && pro < 1/4.0)
+        {
+            ret = "▁";
+        }
+        else if (1/4.0 <= pro && pro < 3/8.0)
+        {
+            ret = "▂";
+        }
+        else if (3/8.0 <= pro && pro < 1/2.0)
+        {
+            ret = "▃";
+        }
+        else if (1/2.0 <= pro && pro < 5/8.0)
+        {
+            ret = "▄";
+        }
+        else if (5/8.0 <= pro && pro < 3/4.0)
+        {
+            ret = "▅";
+        }
+        else if (3/4.0 <= pro && pro < 7/8.0)
+        {
+            ret = "▆";
+        }
+        else if (7/8.0 <= pro && pro < 1)
+        {
+            ret = "▇";
+        }
+        else 
+        {
+            ret = "█";
+        }
     }
-    else if (0 <= pro && pro < 0.1)
+    else
     {
-        ret = "_";
+        if (pro < 0)
+        {
+            ret = " ";
+        }
+        else if (0 <= pro && pro < 0.1)
+        {
+            ret = "_";
+        }
+        else if (0.1 <= pro && pro < 0.3)
+        {
+            ret = ".";
+        }
+        else if (0.3 <= pro && pro < 0.5)
+        {
+            ret = "░";
+        }
+        else if (0.5 <= pro && pro < 0.7)
+        {
+            ret = "▒";
+        }
+        else if (0.7 <= pro && pro < 1)
+        {
+            ret = "▓";
+        }
+        else 
+        {
+            ret = "█";
+        }
     }
-    else if (0.1 <= pro && pro < 0.3)
-    {
-        ret = ".";
-    }
-    else if (0.3 <= pro && pro < 0.5)
-    {
-        ret = "░";
-    }
-    else if (0.5 <= pro && pro < 0.7)
-    {
-        ret = "▒";
-    }
-    else if (0.7 <= pro && pro < 1)
-    {
-        ret = "▓";
-    }
-    else 
-    {
-        ret = "█";
-    }
+    
     return ret;
 }
 
-EnjoLib::Str ToolsMixed::GetPercentToAscii(const EnjoLib::VecD & vals, double minimum, double maximum, bool decoration) const
+EnjoLib::Str ToolsMixed::GetPercentToAscii(const EnjoLib::VecD & vals, double minimum, double maximum, const ConfigPercentToAscii & conf)
 {
     EnjoLib::Osstream oss;
-    if (decoration)
+    if (conf.decoration)
     {
         oss << "├ ";
     }
     for (const double val : vals)
     {
-        oss << GetPercentToAscii(val, minimum, maximum);
+        oss << GetPercentToAscii(val, minimum, maximum, conf.blocks);
     }
-    if (decoration)
+    if (conf.decoration)
     {
         oss << " ┤";
     }
     return oss.str();
 }
+
+EnjoLib::Str GetPercentToAsciiBlocks(double val, double minimum = 0, double maximum = 1);
+        EnjoLib::Str GetPercentToAsciiBlocks(const EnjoLib::VecD & val, double minimum = 0, double maximum = 1, bool decoration = false);
 
 Str ToolsMixed::GenBars10(double percentage, const char barFull, const char barEmpty) const
 {
@@ -178,7 +229,8 @@ bool ToolsMixed::SystemCallWarnBool(const EnjoLib::Str & command, const EnjoLib:
 {
     if (int err = system(command.c_str()))
     {
-        std::cout << StrColour::GenWarn(SystemCallPrepareMessage(command, functionName, err)) << std::endl;
+        Cout out;
+        out << StrColour::GenWarn(SystemCallPrepareMessage(command, functionName, err)) << Nl;
         return false;
     }
     return true;

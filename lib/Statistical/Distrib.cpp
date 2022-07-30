@@ -1,7 +1,11 @@
-#include "Distrib.hpp"
+#include <Statistical/Distrib.hpp>
 
+#include <Ios/Osstream.hpp>
+#include <Ios/IoManip.hpp>
 #include <Math/GeneralMath.hpp>
+#include <Math/MaxMinFindD.hpp>
 #include <Util/AlgoSTDIVec.hpp>
+#include <Util/ToolsMixed.hpp>
 #include <Statistical/Statistical.hpp>
 #include <Statistical/Assertions.hpp>
 
@@ -19,7 +23,7 @@ Distrib::~Distrib()
     //dtor
 }
 
-DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const /// TODO: Upstream
+DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
 {
     DistribData distrib;
     EnjoLib::VecD dataSorted = data;
@@ -63,4 +67,67 @@ DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const /
 bool DistribData::IsValid() const
 {
     return data.size() >= 2;
+}
+
+VecD DistribData::GetY() const
+{
+    VecD dat;
+    for (const Pair<double, double> & datPair : data)
+    {
+        dat.Add(datPair.second);
+    }
+    return dat;
+}
+
+VecD DistribData::GetX() const
+{
+    VecD dat;
+    for (const Pair<double, double> & datPair : data)
+    {
+        dat.Add(datPair.first);
+    }
+    return dat;
+}
+
+Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool blocks) const
+{
+    Osstream oss;
+    const int precision = 3;
+    oss << IoManip::SetPrecision(oss, precision);
+    const VecD & datx = distrib.GetX();
+    const VecD & daty = distrib.GetY();
+    const double maxY = daty.Max();
+    MaxMinFindD mmf(daty);
+    const auto idxMax = mmf.GetMaxIdx();
+    const double medianX = datx.at(idxMax);
+    
+    Osstream ossPos;
+    for (int i = 0; i < precision + 2 + idxMax; ++i)
+    {
+        ossPos << " ";
+    }
+    if (not oneLiner)
+    {
+        oss << Nl;
+        oss << ossPos.str();
+        if (maxY > 0) // Negative sign shifts the value left
+        {
+            //oss << "  ";
+        }
+        oss << maxY;
+        oss << Nl;
+    }
+    oss << datx.Min();
+    ToolsMixed::ConfigPercentToAscii cfg;
+    cfg.blocks = blocks;
+    oss << " " << ToolsMixed().GetPercentToAscii(daty, daty.Min(), daty.Max() * 0.99, cfg) << " ";
+    oss << datx.Max();    
+    oss << "  | Med = " << medianX << " (" << daty.Max() << ")" << ", Mean = " << datx.Mean();
+    if (not oneLiner)
+    {
+        oss << Nl;
+        oss << ossPos.str() << medianX;
+        oss << Nl;
+    }
+    return oss.str();
 }

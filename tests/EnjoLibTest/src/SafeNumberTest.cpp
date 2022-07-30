@@ -1,36 +1,31 @@
 #include "SafeNumberTest.h"
-#include <STD/Iostream.hpp>
+#include <Ios/Cout.hpp>
 #include <Math/SafeNumber.hpp>
 
 using namespace std;
 using namespace EnjoLib;
 
-SafeNumberTest::SafeNumberTest()
-{
-}
-
-SafeNumberTest::~SafeNumberTest()
-{
-    //dtor
-}
+SafeNumberTest:: SafeNumberTest(){}
+SafeNumberTest::~SafeNumberTest(){}
 
 void SafeNumberTest::Run()
 {
     const SafeNumber<float> nom(5), denom(10), zero(0);
     SafeNumber<float> nonconst(100);
     const SafeNumber<int> integer(2);
-    cout << "Res div = " << nom / denom << endl;
-    cout << "Res mul = " << nom.val * denom.val << endl;
-    cout << "Res int = " << nom / integer << endl;
+    EnjoLib::Cout out;
+    out << "Res div = " << nom / denom << Nl;
+    out << "Res mul = " << nom.val * denom.val << Nl;
+    out << "Res int = " << nom / integer << Nl;
     nonconst /= denom;
-    cout << "Res non const = " << nonconst << endl;
+    out << "Res non const = " << nonconst << Nl;
     try
     {
-        cout << "Res zero = " << nom / zero << endl;
+        out << "Res zero = " << nom / zero << Nl;
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        out << "Successfully thrown\n " << ex.what() << Nl;
     }
     try
     {
@@ -38,6 +33,6 @@ void SafeNumberTest::Run()
     }
     catch (std::exception & ex)
     {
-        cout << "Successfully thrown\n " << ex.what() << endl;
+        out << "Successfully thrown\n " << ex.what() << Nl;
     }
 }

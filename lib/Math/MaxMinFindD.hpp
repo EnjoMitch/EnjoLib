@@ -8,7 +8,7 @@ namespace EnjoLib
 class MaxMinFindD : public MaxMinFind<double>
 {
     public:
-        MaxMinFindD() {}
+        using MaxMinFind<double>::MaxMinFind;
         virtual ~MaxMinFindD() {}
 
     protected:
