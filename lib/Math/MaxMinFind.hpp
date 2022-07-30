@@ -1,6 +1,8 @@
 #ifndef MAXMINFIND_H
 #define MAXMINFIND_H
 
+#include <Template/IIterable.hpp>
+
 #include <cstdint>
 
 namespace EnjoLib
@@ -18,6 +20,17 @@ class MaxMinFind
         {
 
         }
+        
+        MaxMinFind(const IIterable<T> & itr)
+        : MaxMinFind()
+        {
+            for (size_t i = 0; i < itr.size(); ++i)
+            {
+                UpdateMaxMin(itr.at(i), i);
+            }
+        }
+        
+        
         virtual ~MaxMinFind(){}
         bool UpdateMax(     const T & comp, int64_t i = START_VAL);
         bool UpdateMin(     const T & comp, int64_t i = START_VAL);

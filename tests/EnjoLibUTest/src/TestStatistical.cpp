@@ -2,12 +2,13 @@
 
 #include "DataSets.hpp"
 
-#include <UnitTest++/UnitTest++.h>
 #include <Statistical/Matrix.hpp>
 #include <Statistical/Statistical.hpp>
 #include <Statistical/EigenAbstract.hpp>
 #include <Statistical/EigenFactory.hpp>
 #include <Template/CorradePointer.h>
+
+#include <UnitTest++/UnitTest++.h>
 #include <STD/VectorCpp.hpp>
 
 using namespace std;

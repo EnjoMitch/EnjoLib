@@ -14,6 +14,7 @@ class RandomMath
         */
         double Rand(double min, double max) const;
         void RandSeed(int seed = 0) const;
+        double SampleNormal() const;
 
     protected:
 

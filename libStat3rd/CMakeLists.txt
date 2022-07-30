@@ -30,7 +30,8 @@ endif()
 
 if (WITH_FEATURE_EIGEN)
 	find_package(Eigen3 REQUIRED)
-	
+	include_directories(${EIGEN3_INCLUDE_DIRS})
+		
 	file( GLOB SRC_NM  Statistical/3rdParty/EigenEigen3.* Statistical/3rdParty/EigenUtil.* Statistical/3rdParty/RegressionEigen.*)
 	file( GLOB SRC_MKL Statistical/3rdParty/EigenMKL.* )
     	file( GLOB SRC_NP  Statistical/3rdParty/EigenNumpy.* )

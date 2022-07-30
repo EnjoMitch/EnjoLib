@@ -18,6 +18,7 @@
 #include "VectorDTest.h"
 #include "ThreadedLoopTplTest.hpp"
 #include "StrColourTest.hpp"
+#include "MaskAlterTest.h"
 //#include "CoutBufTest.h"
 
 #include <Util/Tokenizer.hpp>
@@ -35,8 +36,8 @@ int main()
     LOG << ret.at(0) << Endl;
     LOG << ret.at(1) << Endl;
     LOG << ret.at(2) << Endl;
-    
-    
+
+
 
     ScalingTest().Run();
     KMeansTest();
@@ -54,13 +55,14 @@ int main()
     GeneralMathTest();
     VectorDTest();
     ThreadedLoopTplTest();
-    
+
     UniquePtrTest();
-    
+
     StrColourTest();
+    MaskAlterTest();
     CoutBufTest();
     CoutBufTestEL();
-    
+
     return 0;
 }
 
