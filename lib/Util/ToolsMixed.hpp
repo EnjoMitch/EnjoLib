@@ -16,7 +16,7 @@ class ToolsMixed
         Str BinHex2Str(const unsigned char* data, int len) const;
         void AnimationPropeller(int * idx) const;
         void Animation09AZ(int * idx) const;
-        void AnimationCustom(int * idx, const Str & animSeries) const;        
+        void AnimationCustom(int * idx, const Str & animSeries) const;
         struct ConfigPercentToAscii
         {
             ConfigPercentToAscii(){}
