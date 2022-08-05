@@ -25,7 +25,7 @@ class Distrib
         virtual ~Distrib();
 
         DistribData GetDistrib(const VecD & data, int numBins = 30) const;
-        EnjoLib::Str PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner = true, bool blocks = true) const;
+        EnjoLib::Str PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner = true, bool blocks = true, bool descr = true) const;
         
     protected:
 

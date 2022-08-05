@@ -22,15 +22,15 @@ TEST(Distrib_test_plot)
         data.push_back(rmath.SampleNormal());
     }
     const DistribData & distData = distr.GetDistrib(data, 40);
-    
+
     const Str & ret1 = distr.PlotLine(distData, true, false);
     const Str & ret2 = distr.PlotLine(distData, false, true);
     const Str & ret3 = distr.PlotLine(distData, false, false);
     CHECK(ret1.size());
     CHECK(ret2.size());
     CHECK(ret3.size());
-    
-    
+
+
     LOG << ret1 << Nl;
     LOG << ret2 << Nl;
     LOG << ret3 << Nl;

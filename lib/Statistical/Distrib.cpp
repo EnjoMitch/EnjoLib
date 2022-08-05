@@ -5,7 +5,7 @@
 #include <Math/GeneralMath.hpp>
 #include <Math/MaxMinFindD.hpp>
 #include <Util/AlgoSTDIVec.hpp>
-#include <Util/ToolsMixed.hpp>
+#include <Visual/AsciiPlot.hpp>
 #include <Statistical/Statistical.hpp>
 #include <Statistical/Assertions.hpp>
 
@@ -89,7 +89,7 @@ VecD DistribData::GetX() const
     return dat;
 }
 
-Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool blocks) const
+Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool blocks, bool descr) const
 {
     Osstream oss;
     const int precision = 3;
@@ -100,7 +100,7 @@ Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool 
     MaxMinFindD mmf(daty);
     const auto idxMax = mmf.GetMaxIdx();
     const double medianX = datx.at(idxMax);
-    
+
     Osstream ossPos;
     for (int i = 0; i < precision + 2 + idxMax; ++i)
     {
@@ -117,12 +117,19 @@ Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool 
         oss << maxY;
         oss << Nl;
     }
-    oss << datx.Min();
-    ToolsMixed::ConfigPercentToAscii cfg;
-    cfg.blocks = blocks;
-    oss << " " << ToolsMixed().GetPercentToAscii(daty, daty.Min(), daty.Max() * 0.99, cfg) << " ";
-    oss << datx.Max();    
-    oss << "  | Med = " << medianX << " (" << daty.Max() << ")" << ", Mean = " << datx.Mean();
+    if (descr)
+    {
+        oss << datx.Min();
+    }
+    oss << " " << AsciiPlot::Build()(AsciiPlot::Pars::BLOCKS, blocks)
+    (AsciiPlot::Pars::MINIMUM, daty.Min())
+    (AsciiPlot::Pars::MAXIMUM, daty.Max() * 0.99)
+    .Finalize().Plot(daty) << " ";
+    if (descr)
+    {
+        oss << datx.Max();
+        oss << "  | Med = " << medianX << " (" << daty.Max() << ")" << ", Mean = " << datx.Mean();
+    }
     if (not oneLiner)
     {
         oss << Nl;
