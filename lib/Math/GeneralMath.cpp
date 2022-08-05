@@ -30,12 +30,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <cmath>
-#include <ctime>
-#include "Constants.hpp"
 #include <Math/GeneralMath.hpp>
+#include "Constants.hpp"
+#include <Systems/Point.hpp>
+#include <Statistical/Assertions.hpp>
 #include "SimpsonFunctor.hpp"
-#include "../Systems/Point.hpp"
+#include <cmath>
 
 using namespace EnjoLib;
 // Simpson integration
@@ -142,7 +142,7 @@ double GeneralMath::PowInt(double base, int exp) const
     {
         return 1;
     }
-    const double temp = PowInt(base, exp/2);       
+    const double temp = PowInt(base, exp/2);
     const double temp2 = temp*temp;
     if (exp%2 == 0)
         return temp2;
@@ -150,7 +150,7 @@ double GeneralMath::PowInt(double base, int exp) const
         if(exp > 0)
             return base*temp2;
         else
-            return (temp2)/base; //negative exponent computation 
+            return (temp2)/base; //negative exponent computation
     }
 }
 
@@ -334,4 +334,13 @@ long long unsigned GeneralMath::Concatenate(long long unsigned first, long long 
         pow *= 10;
     }
     return first * pow + second;
+}
+
+double GeneralMath::ScaleVal(double val, double minimum, double maximum) const
+{
+    Assertions::IsTrue(maximum > minimum, "maximum < minimum GeneralMath::ScaleVal");
+    const double diff = maximum - minimum;
+    Assertions::IsNonZero(diff, "diff GeneralMath::ScaleVal");
+    const double pro = (val - minimum) / diff;
+    return pro;
 }

@@ -1,10 +1,10 @@
 #include <Statistical/Formatters.hpp>
 #include <Statistical/Statistical.hpp>
-#include <Math/GeneralMath.hpp>
-#include <Util/ToolsMixed.hpp>
-#include <Util/StrColour.hpp>
-#include <Ios/Osstream.hpp>
 #include <Ios/IoManip.hpp>
+#include <Ios/Osstream.hpp>
+#include <Math/GeneralMath.hpp>
+#include <Util/StrColour.hpp>
+#include <Visual/AsciiMisc.hpp>
 
 using namespace EnjoLib;
 
@@ -79,6 +79,6 @@ EnjoLib::Str Formatters::FormatVec(const VecD & vec, bool color, double multipli
         density = "▓"; make 10 bars
     }
     */
-    oss << " ± " << density << "" << stdDevPercAbs << "%\t " << ToolsMixed().GenBars10(stdDevPercAbs);
+    oss << " ± " << density << "" << stdDevPercAbs << "%\t " << AsciiMisc().GenBars10(stdDevPercAbs);
     return oss.Str();
 }

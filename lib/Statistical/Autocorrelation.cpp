@@ -1,9 +1,10 @@
 #include "Autocorrelation.hpp"
 #include "Correlation.hpp"
 #include <Util/PimplDeleter.hpp>
-#include "../Util/VecD.hpp"
-#include <STD/Map.hpp>
 #include <Util/CoutBuf.hpp>
+#include <Util/VecD.hpp>
+
+#include <STD/Map.hpp>
 
 using namespace std;
 using namespace EnjoLib;

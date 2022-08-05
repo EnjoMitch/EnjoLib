@@ -5,6 +5,7 @@
 
 #include <Ios/Cout.hpp>
 #include <Ios/Osstream.hpp>
+#include <Visual/AsciiMisc.hpp>
 
 using namespace std;
 using namespace EnjoLib;
@@ -14,19 +15,12 @@ ProgressMonitHigh::~ProgressMonitHigh(){}
 
 void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib::Str & idd, bool onPercentChange) const
 {
-    Cout out;
-    Osstream oss;
     ProgressMonit pm(m_numBars);
     int percentDone = pm.GetPercentDoneInt(i, sz);
+    /// TODO: Make it a pattern and extract it.
     if (! onPercentChange || percentDone != m_prevPercentDone)
     {
-        for (int i = 0; i < m_prevStringSize; ++i)
-            out << '\b'; // Move back
-        for (int i = 0; i < m_prevStringSize; ++i)
-            out << ' ';  // Erase by filling with spaces
-        for (int i = 0; i < m_prevStringSize; ++i)
-            out << '\b'; // Move back again for the next printout
-
+        Osstream oss;
         double sec = m_timer.GetElapsedSeconds();
         double leftTime = GeneralMath().round(pm.GetTimeLeft(i, sz, sec));
         TimeComponents timeLeftFormatted(leftTime);
@@ -34,9 +28,7 @@ void ProgressMonitHigh::PrintProgressBarTime(size_t i, size_t sz, const EnjoLib:
 
         oss << idd << ": i = " << i << " / " << sz << " = " << percentDone << "%" << " " << pm.GetProgressBar(i, sz)
         << " ETA = " << timeLeftFormatted.ToString() << ", ELA = " << timePassedFormatted.ToString();
-        out << oss.str();
-        out.Flush();
-        m_prevStringSize = oss.str().size();
+        m_prevStringSize = AsciiMisc().EraseLineGetPrevSize(oss.str(), m_prevStringSize);
     }
     m_prevPercentDone = percentDone;
 

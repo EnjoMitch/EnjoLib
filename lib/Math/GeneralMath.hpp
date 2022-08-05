@@ -97,6 +97,7 @@ struct GeneralMath
     double AbsoluteChange(double val, double valRef) const;
     /// Applies points faster than linear and is symmetric
     double PointsPower(double x, double power) const;
+    double ScaleVal(double val, double minimum, double maximum) const;
 };
 
 typedef GeneralMath GMat;
