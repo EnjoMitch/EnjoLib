@@ -9,31 +9,17 @@
 
 using namespace EnjoLib;
 
-enum class Pars
-    {
-        DECORATION,
-        COLORS,
-        BLOCKS,
-        MULTILINE,
-        HEATMAP,
-        NEGATIVE,
-        MINIMUM,
-        MAXIMUM,
-        WARNING,
-        MAX_NUM_BINS,
-        END
-    };
-    /*
-    bool decoration = false;
-    bool colors = true;
-    bool blocks = true;
-    bool heatmap = false;
-    bool negativeBlocks = false;
-    double minimum = 0;
-    double maximum = 1;
-    double warning = maximum;
-    int maxNumBins = 40; /// TODO: compress like drawdown
-    */
+/*
+bool decoration = false;
+bool colors = true;
+bool blocks = true;
+bool heatmap = false;
+bool negativeBlocks = false;
+double minimum = 0;
+double maximum = 1;
+double warning = maximum;
+int maxNumBins = 40; /// TODO: compress like drawdown
+*/
 
 AsciiPlot::~AsciiPlot(){}
 AsciiPlot:: AsciiPlot(const BuilderT & builder)
@@ -46,7 +32,7 @@ AsciiPlot:: AsciiPlot(const BuilderT & builder)
 
 Str AsciiPlot::Plot(const EnjoLib::VecD & val) const
 {
-    /// TODO: Finalize and ditch AsciiPlotGuts, as well as ConfigPercentToAscii
+    /// TODO: Finalize and ditch AsciiPlotGuts
     //AsciiPlotGuts cfg;
     //cfg.colors = Get(Pars::COLORS);
     //cfg.decoration = Get(Pars::DECORATION);
