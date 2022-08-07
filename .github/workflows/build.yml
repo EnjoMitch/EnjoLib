@@ -41,7 +41,7 @@ jobs:
         ccache --max-size=150M
         util/ci-gcc.sh
 
-build-ubuntu-low-precision:
+  build-ubuntu-low-precision:
     runs-on: ubuntu-latest
     env:
       CCACHE_COMPRESS: 1
