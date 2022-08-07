@@ -13,7 +13,7 @@ namespace EnjoLib
             virtual ~OptiMultiSubject();
 
             //virtual double Get(const EnjoLib::VecD & in) = 0;
-            virtual double Get(const double * in, int n) = 0;
+            virtual FP Get(const FP * in, int n) = 0;
 
             virtual EnjoLib::VecD GetStart() const = 0;
             virtual EnjoLib::VecD GetStep() const = 0;

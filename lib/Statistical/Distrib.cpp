@@ -27,26 +27,26 @@ DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
 {
     DistribData distrib;
     EnjoLib::VecD dataSorted = data;
-    AlgoSTDIVec<double>().Sort(&dataSorted);
-    std::vector<Pair<double, double>> distribData;
+    AlgoSTDIVec<FP>().Sort(&dataSorted);
+    std::vector<Pair<FP, FP>> distribData;
     if (dataSorted.size() < 2)
     {
         return distrib;
     }
-    const double lo = dataSorted.First();
-    const double hi = dataSorted.Last();
-    const double rangeDiff = hi - lo;
-    const double binLen = rangeDiff / double(numBins);
+    const FP lo = dataSorted.First();
+    const FP hi = dataSorted.Last();
+    const FP rangeDiff = hi - lo;
+    const FP binLen = rangeDiff / FP(numBins);
     //const int nbinLo = gm.round((lo-rangeLo) / binLen);
     //const int nbinHi = gm.round((hi-rangeLo) / binLen);
 
     for (int i = 1; i < numBins; ++i)
     {
-        const double valMin = lo + binLen * (i - 1);
-        const double valMax = lo + binLen * (i);
-        const double valMid = (valMax + valMin) / 2.0;
+        const FP valMin = lo + binLen * (i - 1);
+        const FP valMax = lo + binLen * (i);
+        const FP valMid = (valMax + valMin) / 2.0;
         int numOcurrences = 0;
-        for (const double val : dataSorted)
+        for (const FP val : dataSorted)
         {
             if (valMin <= val && val <= valMax)
             {
@@ -58,7 +58,7 @@ DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
                     break; // ?
             }
         }
-        distribData.push_back(MakePair(valMid, static_cast<double>(numOcurrences)));
+        distribData.push_back(MakePair(valMid, static_cast<FP>(numOcurrences)));
     }
     distrib.data = distribData;
     return distrib;
@@ -72,7 +72,7 @@ bool DistribData::IsValid() const
 VecD DistribData::GetY() const
 {
     VecD dat;
-    for (const Pair<double, double> & datPair : data)
+    for (const Pair<FP, FP> & datPair : data)
     {
         dat.Add(datPair.second);
     }
@@ -82,7 +82,7 @@ VecD DistribData::GetY() const
 VecD DistribData::GetX() const
 {
     VecD dat;
-    for (const Pair<double, double> & datPair : data)
+    for (const Pair<FP, FP> & datPair : data)
     {
         dat.Add(datPair.first);
     }
@@ -96,10 +96,10 @@ Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool 
     oss << IoManip::SetPrecision(oss, precision);
     const VecD & datx = distrib.GetX();
     const VecD & daty = distrib.GetY();
-    const double maxY = daty.Max();
-    MaxMinFindD mmf(daty);
+    const FP maxY = daty.Max();
+    MaxMinFind<FP> mmf(daty);
     const auto idxMax = mmf.GetMaxIdx();
-    const double medianX = datx.at(idxMax);
+    const FP medianX = datx.at(idxMax);
 
     Osstream ossPos;
     for (int i = 0; i < precision + 2 + idxMax; ++i)

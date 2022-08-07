@@ -26,7 +26,7 @@ double OptiMultiRosenbrok::Get(const EnjoLib::VecD & in)
 {
     return 0;
 }
-double OptiMultiRosenbrok::Get(const double * in, int n)
+FP OptiMultiRosenbrok::Get(const FP * in, int n)
 {
     return Rosenbrok().Eval(in);
 }

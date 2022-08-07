@@ -1,12 +1,11 @@
 #include "pch_test.h"
 
-#include "DataSets.hpp"
-
 #include <Statistical/Matrix.hpp>
 #include <Statistical/Statistical.hpp>
 #include <Statistical/EigenAbstract.hpp>
 #include <Statistical/EigenFactory.hpp>
 #include <Template/CorradePointer.h>
+#include <ML/DataSets.hpp>
 
 #include <UnitTest++/UnitTest++.h>
 #include <STD/VectorCpp.hpp>

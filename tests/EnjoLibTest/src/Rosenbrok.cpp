@@ -3,7 +3,7 @@
 Rosenbrok::Rosenbrok(){}
 Rosenbrok::~Rosenbrok(){}
 
-double Rosenbrok::Eval( const double x[2] ) const
+EnjoLib::FP Rosenbrok::Eval( const EnjoLib::FP x[2] ) const
 
 //****************************************************************************80
 //
@@ -38,9 +38,9 @@ double Rosenbrok::Eval( const double x[2] ) const
 //    Output, double ROSENBROCK, the value of the function.
 //
 {
-  double fx;
-  double fx1;
-  double fx2;
+  EnjoLib::FP fx;
+  EnjoLib::FP fx1;
+  EnjoLib::FP fx2;
 
   fx1 = x[1] - x[0] * x[0];
   fx2 = 1.0 - x[0];

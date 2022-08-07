@@ -17,9 +17,9 @@ public:
         : coeff(1+degree) {}
     Poly(const VecD & v)
         : coeff(v) {}
-    Poly(const double* c, std::size_t degree);
+    Poly(const FP* c, std::size_t degree);
 
-    virtual double operator() (double x);
+    virtual FP operator() (FP x);
 
 protected:
 private:

@@ -17,8 +17,8 @@ using namespace EnjoLib;
 
 //****************************************************************************80
 
-void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[], double xmin[],
-  double *ynewlo, double reqmin, const double step[], int konvge, int kcount,
+void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, FP start[], FP xmin[],
+  FP *ynewlo, FP reqmin, const FP step[], int konvge, int kcount,
   int *icount, int *numres, int *ifault )
 
 //****************************************************************************80
@@ -40,8 +40,8 @@ void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[]
 //    the form
 //
 //      function fn ( x, f )
-//      double fn
-//      double x(*)
+//      FP fn
+//      FP x(*)
 //
 //    and the name of this subroutine must be declared EXTERNAL in the
 //    calling routine and passed as the argument FN.
@@ -77,23 +77,23 @@ void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[]
 //
 //  Parameters:
 //
-//    Input, double FN ( double x[] ), the name of the routine which evaluates
+//    Input, FP FN ( FP x[] ), the name of the routine which evaluates
 //    the function to be minimized.
 //
 //    Input, int N, the number of variables.
 //
-//    Input/output, double START[N].  On input, a starting point
+//    Input/output, FP START[N].  On input, a starting point
 //    for the iteration.  On output, this data may have been overwritten.
 //
-//    Output, double XMIN[N], the coordinates of the point which
+//    Output, FP XMIN[N], the coordinates of the point which
 //    is estimated to minimize the function.
 //
-//    Output, double YNEWLO, the minimum value of the function.
+//    Output, FP YNEWLO, the minimum value of the function.
 //
-//    Input, double REQMIN, the terminating limit for the variance
+//    Input, FP REQMIN, the terminating limit for the variance
 //    of function values.
 //
-//    Input, double STEP[N], determines the size and shape of the
+//    Input, FP STEP[N], determines the size and shape of the
 //    initial simplex.  The relative magnitudes of its elements should reflect
 //    the units of the variables.
 //
@@ -114,12 +114,12 @@ void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[]
 //    2, iteration terminated because KCOUNT was exceeded without convergence.
 //
 {
-  double ccoeff = 0.5;
-  double del;
-  double dn;
-  double dnn;
-  double ecoeff = 2.0;
-  double eps = 0.001;
+  FP ccoeff = 0.5;
+  FP del;
+  FP dn;
+  FP dnn;
+  FP ecoeff = 2.0;
+  FP eps = 0.001;
   int i;
   int ihi;
   int ilo;
@@ -127,18 +127,18 @@ void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[]
   int jcount;
   int l;
   int nn;
-  double *p;
-  double *p2star;
-  double *pbar;
-  double *pstar;
-  double rcoeff = 1.0;
-  double rq;
-  double x;
-  double *y;
-  double y2star;
-  double ylo;
-  double ystar;
-  double z;
+  FP *p;
+  FP *p2star;
+  FP *pbar;
+  FP *pstar;
+  FP rcoeff = 1.0;
+  FP rq;
+  FP x;
+  FP *y;
+  FP y2star;
+  FP ylo;
+  FP ystar;
+  FP z;
 //
 //  Check the input parameters.
 //
@@ -160,19 +160,19 @@ void NelderMeadBurkardt::nelmin ( OptiMultiSubject & subj, int n, double start[]
     return;
   }
 
-  p = new double[n*(n+1)];
-  pstar = new double[n];
-  p2star = new double[n];
-  pbar = new double[n];
-  y = new double[n+1];
+  p = new FP[n*(n+1)];
+  pstar = new FP[n];
+  p2star = new FP[n];
+  pbar = new FP[n];
+  y = new FP[n+1];
 
   *icount = 0;
   *numres = 0;
 
   jcount = konvge;
-  dn = ( double ) ( n );
+  dn = ( FP ) ( n );
   nn = n + 1;
-  dnn = ( double ) ( nn );
+  dnn = ( FP ) ( nn );
   del = 1.0;
   rq = reqmin * dn;
 //

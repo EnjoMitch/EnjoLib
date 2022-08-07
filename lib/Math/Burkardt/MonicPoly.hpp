@@ -15,10 +15,10 @@ public:
         : coeff(degree) {}
     MonicPoly(const VecD & v)
         : coeff(v) {}
-    MonicPoly(const double* c, std::size_t degree);
+    MonicPoly(const FP* c, std::size_t degree);
         
 
-    virtual double operator() (double x);
+    virtual FP operator() (FP x);
 
 private:
     VecD coeff;

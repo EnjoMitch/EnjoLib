@@ -38,7 +38,7 @@ PCA:: PCA(const EnjoLib::Str & fileNameBase)
     {
         lineMean = tok.GetLines(fileNameBase + STR_MEAN).at(0);
         //cout << "11lineMean = " << lineMean << endl;
-        m_origMean = cman.ToNumbersVec<double>(tok.Tokenize(lineMean));
+        m_origMean = cman.ToNumbersVec<FP>(tok.Tokenize(lineMean));
     }
     catch (std::exception & ex)
     {
@@ -56,7 +56,7 @@ PCA:: PCA(const EnjoLib::Str & fileNameBase)
             {
                 continue;
             }
-            const VecD & feat = cman.ToNumbersVec<double>(tok.Tokenize(lineFeat));
+            const VecD & feat = cman.ToNumbersVec<FP>(tok.Tokenize(lineFeat));
             m_featVec.push_back(feat);
         }
     }
@@ -77,7 +77,7 @@ void PCA::LoadFromStr(const EnjoLib::Str & str)
     try
     {
         lineMean = meanLines.at(0);
-        m_origMean = cman.ToNumbersVec<double>(tok.Tokenize(lineMean));
+        m_origMean = cman.ToNumbersVec<FP>(tok.Tokenize(lineMean));
     }
     catch (std::exception & ex)
     {

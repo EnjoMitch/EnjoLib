@@ -1,13 +1,14 @@
 #ifndef ROSENBROK_H
 #define ROSENBROK_H
 
+#include <Math/FP.hpp>
 
 class Rosenbrok
 {
     public:
         Rosenbrok();
         virtual ~Rosenbrok();
-        double Eval( const double x[2] ) const;
+        EnjoLib::FP Eval( const EnjoLib::FP x[2] ) const;
     protected:
     private:
 };

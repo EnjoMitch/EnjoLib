@@ -3,6 +3,7 @@
 
 #include <Statistical/Matrix.hpp>
 
+namespace EnjoLib {
 class DataSets
 {
     public:
@@ -19,5 +20,6 @@ class DataSets
 
     private:
 };
+}
 
 #endif // DATASETS_HPP

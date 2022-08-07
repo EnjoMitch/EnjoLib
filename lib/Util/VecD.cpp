@@ -5,6 +5,7 @@
 #include <Util/CoutBuf.hpp>
 #include <Util/PimplDeleter.hpp>
 #include <Statistical/VectorD.hpp>
+#include <Statistical/VectorF.hpp>
 #include <Statistical/Assertions.hpp>
 
 
@@ -14,15 +15,16 @@ using namespace EnjoLib;
 struct VecD::Impl
 {
     Impl() {}
-    Impl(const std::vector<double> & init) : dat(init) {}
+    //Impl(const std::vector<VecD::value_type> & init) : dat(init) {}
     Impl(const std::vector<float> & init) : dat(init) {}
+    Impl(const std::vector<double> & init) : dat(init) {}
     Impl( const std::vector<bool> & init ) : dat(init) {}
-    Impl( const double * init, size_t szz ) : dat(std::vector<double>(init, init + szz)) {}
+    Impl( const value_type * init, size_t szz ) : dat(std::vector<VecD::value_type>(init, init + szz)) {}
     Impl( int n ) : dat(n) {}
-    Impl( int n, const double & val ) : dat(n, val) {}
+    Impl( int n, const value_type & val ) : dat(n, val) {}
     Impl( const STDFWD::string & data ) : dat(data) {}
     Impl( const Str & data ) : dat(data.c_str()) {}
-    Impl( const IIterable<double> & init )
+    Impl( const IIterable<VecD::value_type> & init )
     {
         dat.reserve(init.size());
         for (const auto & val : init)
@@ -30,32 +32,36 @@ struct VecD::Impl
             dat.push_back(val);
         }
     }
+#ifdef EL_FLOATING_POINT_LOW_PRECISION
+    VectorF dat;
+#else
     VectorD dat;
+#endif
 };
 
 PIMPL_DELETER(VecD)
 
-const double * VecD::data() const
+const VecD::value_type * VecD::data() const
 {
     return GetImpl().dat.data();
 }
 
-double * VecD::data()
+VecD::value_type * VecD::data()
 {
     return GetImplRW().dat.data();
 }
 
-const std::vector<double> & VecD::Data() const
+const std::vector<VecD::value_type> & VecD::Data() const
 {
     return m_impl->dat;
 }
 
-std::vector<double> VecD::DataCopy() const
+std::vector<VecD::value_type> VecD::DataCopy() const
 {
     return m_impl->dat;
 }
 
-std::vector<double> & VecD::DataRW()
+std::vector<VecD::value_type> & VecD::DataRW()
 {
     return m_impl->dat;
 }
@@ -63,6 +69,16 @@ std::vector<double> & VecD::DataRW()
 std::vector<bool> VecD::ToVecBool() const
 {
     return m_impl->dat.ToVecBool();
+}
+std::vector<double> VecD::ToVecDouble() const
+{
+    std::vector<double> ret(this->size());
+    for (size_t i = 0; i < this->size(); ++i)
+    {
+        const auto & thisVal = this->at(i);
+        ret.at(i) = thisVal;
+    }
+    return ret;
 }
 VecF VecD::ToVecF() const
 {
@@ -83,7 +99,7 @@ VecD::VecD()
 
 VecD::~VecD(){}
 
-VecD::VecD( int n, const double & val )
+VecD::VecD( int n, const value_type & val )
 : m_impl(new Impl(n, val))
 {
 
@@ -106,10 +122,14 @@ VecD & VecD::operator=(const VecD & other)
      return *this;
 }
 
-VecD::VecD( const IIterable<double> & init ): m_impl(new Impl(init)){}
-VecD::VecD( const std::initializer_list<double> & init ): m_impl(new Impl(init)){}
+VecD::VecD( const IIterable<VecD::value_type> & init ): m_impl(new Impl(init)){}
+VecD::VecD( const std::initializer_list<VecD::value_type> & init ): m_impl(new Impl(init)){}
+VecD::VecD( const std::vector<VecD::value_type> & init ): m_impl(new Impl(init)){}
+#ifdef EL_FLOATING_POINT_LOW_PRECISION
 VecD::VecD( const std::vector<double> & init ): m_impl(new Impl(init)){}
+#else
 VecD::VecD( const std::vector<float> & init ): m_impl(new Impl(init)){}
+#endif
 VecD::VecD( const STDFWD::vector<bool> & init ): m_impl(new Impl(init)){}
 VecD::VecD( int n ): m_impl(new Impl(n)){}
 VecD::VecD( const STDFWD::string & data ): m_impl(new Impl(data)){}
@@ -132,7 +152,7 @@ EnjoLib::Str VecD::PrintPython( const char * varName ) const
     return GetImpl().dat.PrintPython(varName);
 }
 
-double VecD::Len() const
+VecD::value_type VecD::Len() const
 {
     return m_impl->dat.Len();
 }
@@ -141,35 +161,35 @@ VecD VecD::Norm() const
 {
     return m_impl->dat.Norm();
 }
-double VecD::SumSquares() const
+VecD::value_type VecD::SumSquares() const
 {
     return m_impl->dat.SumSquares();
 }
-double VecD::SumAbs() const
+VecD::value_type VecD::SumAbs() const
 {
     return m_impl->dat.SumAbs();
 }
-double VecD::Sum() const
+VecD::value_type VecD::Sum() const
 {
     return m_impl->dat.Sum();
 }
-double VecD::Mean() const
+VecD::value_type VecD::Mean() const
 {
     return m_impl->dat.Mean();
 }
-double VecD::MeanWeighted() const
+VecD::value_type VecD::MeanWeighted() const
 {
     return m_impl->dat.MeanWeighted();
 }
-double VecD::Max() const
+VecD::value_type VecD::Max() const
 {
    return  m_impl->dat.Max();
 }
-double VecD::MaxAbs() const
+VecD::value_type VecD::MaxAbs() const
 {
     return m_impl->dat.MaxAbs();
 }
-double VecD::Min() const
+VecD::value_type VecD::Min() const
 {
     return m_impl->dat.Min();
 }
@@ -179,7 +199,7 @@ void VecD::reserve(size_t siz)
     m_impl->dat.reserve(siz);
 }
 
-void VecD::Add(double val)
+void VecD::Add(value_type val)
 {
     m_impl->dat.Add(val);
 }
@@ -217,11 +237,11 @@ VecD VecD::Smooth(unsigned numToSmooth) const
     return m_impl->dat.Smooth(numToSmooth);
 }
 
-const double & VecD::at(size_t idx) const
+const VecD::VecD::value_type & VecD::at(size_t idx) const
 {
     return m_impl->dat.at(idx);
 }
-const double & VecD::operator[](size_t idx) const
+const VecD::VecD::value_type & VecD::operator[](size_t idx) const
 {
     return m_impl->dat[idx];
 }
@@ -229,19 +249,19 @@ size_t VecD::size() const
 {
     return m_impl->dat.size();
 }
-double &  VecD::atw(size_t idx)
+VecD::VecD::value_type & VecD::atw(size_t idx)
 {
     return m_impl->dat.at(idx);
 }
-double & VecD::at(size_t idx)
+VecD::VecD::value_type & VecD::at(size_t idx)
 {
     return m_impl->dat.at(idx);
 }
-double &  VecD::operator[](size_t idx)
+VecD::value_type &  VecD::operator[](size_t idx)
 {
     return m_impl->dat.operator[](idx);
 }
-void  VecD::push_back(const double & val)
+void  VecD::push_back(const value_type & val)
 {
     return m_impl->dat.push_back(val);
 }
@@ -262,11 +282,11 @@ void VecD::pop_front()
     }
     m_impl->dat.pop_front();
 }
-void VecD::push_front(const double & val)
+void VecD::push_front(const value_type & val)
 {
     m_impl->dat.push_front(val);
 }
-void VecD::emplace_front(const double & val)
+void VecD::emplace_front(const value_type & val)
 {
     m_impl->dat.push_front(val);
 }
@@ -280,7 +300,7 @@ void VecD::clear()
     m_impl->dat.clear();
 }
 
-void VecD::emplace_back(const double & val)
+void VecD::emplace_back(const value_type & val)
 {
     m_impl->dat.emplace_back(val);
 }
@@ -306,22 +326,22 @@ VecD & VecD::operator /= (const VecD & par)
     return *this;
 }
 
-VecD & VecD::operator /= (const double f)
+VecD & VecD::operator /= (const value_type f)
 {
     m_impl->dat.operator /=(f);
     return *this;
 }
-VecD & VecD::operator *= (const double f)
+VecD & VecD::operator *= (const value_type f)
 {
     m_impl->dat.operator *=(f);
     return *this;
 }
-VecD & VecD::operator += (const double f)
+VecD & VecD::operator += (const value_type f)
 {
     m_impl->dat.operator +=(f);
     return *this;
 }
-VecD & VecD::operator -= (const double f)
+VecD & VecD::operator -= (const value_type f)
 {
     m_impl->dat.operator -=(f);
     return *this;
@@ -347,19 +367,19 @@ VecD VecD::operator - () const
 {
     return m_impl->dat.operator -();
 }
-VecD VecD::operator + (const double f) const
+VecD VecD::operator + (const value_type f) const
 {
     return VecD(*this) += (f);
 }
-VecD VecD::operator - (const double f) const
+VecD VecD::operator - (const value_type f) const
 {
     return VecD(*this) -= (f);
 }
-VecD VecD::operator * (const double f) const
+VecD VecD::operator * (const value_type f) const
 {
     return VecD(*this) *= (f);
 }
-VecD VecD::operator / (const double f) const
+VecD VecD::operator / (const value_type f) const
 {
     return VecD(*this) /= (f);
 }
@@ -381,32 +401,32 @@ bool VecD::operator == (const VecD & par) const
     return m_impl->dat  == par.GetImpl().dat;
 }
 
-const double & VecD::First() const
+const VecD::value_type & VecD::First() const
 {
     Assertions::NonEmpty(m_impl->dat, "First");
     return GetImpl().dat.front();
 }
-const double & VecD::Last() const
+const VecD::value_type & VecD::Last() const
 {
     Assertions::NonEmpty(m_impl->dat, "Last");
     return GetImpl().dat.back();
 }
 
-double & VecD::First()
+VecD::value_type & VecD::First()
 {
     Assertions::NonEmpty(m_impl->dat, "First");
     return GetImplRW().dat.front();
 }
-double & VecD::Last()
+VecD::value_type & VecD::Last()
 {
     Assertions::NonEmpty(m_impl->dat, "Last");
     return GetImplRW().dat.back();
 }
 
-double & VecD::front() {    return First();}
-double & VecD::back() {     return Last();}
-const double & VecD::front() const {return First();}
-const double & VecD::back()  const {return Last();}
+VecD::value_type & VecD::front() {    return First();}
+VecD::value_type & VecD::back() {     return Last();}
+const VecD::value_type & VecD::front() const {return First();}
+const VecD::value_type & VecD::back()  const {return Last();}
 
 VecD::iterator VecD::begin()          {return iterator(&m_impl->dat[0]);}
 VecD::iterator VecD::end()            {return iterator(&m_impl->dat[size()]);}
@@ -434,7 +454,7 @@ VecD::const_reverse_iterator                         VecD::crend() const {return
 
 */
 
-bool VecD::operator == (const IVecT<double> & par) const
+bool VecD::operator == (const IVecT<VecD::value_type> & par) const
 {
     /// TODO: Repetition
     Assertions::Throw("Unimplemented", "VecD::operator == ");

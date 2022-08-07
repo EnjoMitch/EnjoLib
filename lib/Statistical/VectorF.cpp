@@ -19,6 +19,23 @@ VectorF::VectorF( int n )
 : VectorTpl(n)
 {}
 
+
+VectorF::VectorF( int n, float val )
+: VectorTpl(n, val)
+{}
+
+VectorF::VectorF( const STDFWD::string & data)
+: VectorTpl(data)
+{
+    
+}
+
+VectorF::VectorF( const char * data)
+: VectorTpl(data)
+{
+    
+}
+
 VectorF::VectorF(){}
 
 VectorF::~VectorF(){}

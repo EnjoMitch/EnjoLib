@@ -8,16 +8,16 @@ Poly::~Poly()
     //dtor
 }
 
-Poly::Poly(const double* c, std::size_t degree)
-        : coeff(std::vector<double>(c, 1+c+degree)) {}
+Poly::Poly(const FP* c, std::size_t degree)
+        : coeff(std::vector<FP>(c, 1+c+degree)) {}
 
 // ======================================================================
 // Generally useful functor to evaluate a monic polynomial.
 // For details, see class definition in brent.hpp
 // Similarly, evaluate a general polynomial (not necessarily monic):
-double Poly::operator()(double x)
+FP Poly::operator()(FP x)
 {
-    double rslt(0);
+    FP rslt(0);
     for (int ii = coeff.size()-1; ii >= 0; ii--)
     {
         rslt *= x;

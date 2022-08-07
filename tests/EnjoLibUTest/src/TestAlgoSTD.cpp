@@ -36,7 +36,7 @@ static float CalcPoints()
     {
         return 0;
     }
-    AlgoSTDIVec<double>().Sort(&observations);
+    AlgoSTDIVec<FP>().Sort(&observations);
     return observations.Mean();
 }
 
