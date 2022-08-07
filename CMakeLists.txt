@@ -43,8 +43,10 @@ endif()
 if (BUILD_TESTS)
 	# Test load balancing
 	# Sooner defined will start sooner
+	add_subdirectory(tests/EnjoLibAnimTest)
+	add_subdirectory(tests/EnjoLibPerfTest)
 	add_subdirectory(tests/EnjoLibTest)
-        add_subdirectory(tests/EnjoLibUTest)
+  add_subdirectory(tests/EnjoLibUTest)
 endif()
 
 

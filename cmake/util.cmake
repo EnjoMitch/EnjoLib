@@ -11,7 +11,7 @@ option(USE_DEBUG 	"Use Debug" OFF)
 option(USE_DEP_TREE 	"Use Dep Tree -H" OFF)
 option(USE_CCACHE 	"Use CCache" ON)
 option(USE_COMPIL_PROFILER "Use compilation profiling (Clang)" OFF)
-
+option(USE_FLOATING_POINT_LOW_PRECISION "Use lower precision floating point" OFF)
 
 cmake_host_system_information(RESULT HOST_NAME QUERY HOSTNAME)
 function (enjoMessage text)

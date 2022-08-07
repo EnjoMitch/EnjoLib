@@ -12,6 +12,9 @@ class VectorF : public VectorTpl<float>
         VectorF( const std::vector<float> & init );
         VectorF( const std::vector<bool> & init );
         VectorF( int n );
+        VectorF( int n, float val);
+        VectorF( const STDFWD::string & data);
+        VectorF( const char * data);
         VectorF();
         virtual ~VectorF();
     protected:

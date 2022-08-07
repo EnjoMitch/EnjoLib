@@ -55,12 +55,12 @@ struct GSL_Wrapper_gsl_halfcomplex_wavetable
 
 VecD FFT::fit(int harmonics, int predictAhead, const VecD & dy) const
 {
-    VecD data = dy;
+    std::vector<double> data = dy.ToVecDouble();
     {
         int n = data.size();
         GSL_Wrapper_gsl_fft_real_workspace work(n);
         GSL_Wrapper_fft_real_wavetable real(n);
-        gsl_fft_real_transform (data.DataRW().data(), 1, n, real.real, work.work);
+        gsl_fft_real_transform (data.data(), 1, n, real.real, work.work);
     }
     {
         for (int i = 0; i < predictAhead; ++i)
@@ -74,7 +74,7 @@ VecD FFT::fit(int harmonics, int predictAhead, const VecD & dy) const
         }
         GSL_Wrapper_gsl_fft_real_workspace work(n);
         GSL_Wrapper_gsl_halfcomplex_wavetable hc(n);
-        gsl_fft_halfcomplex_inverse (data.DataRW().data(), 1, n, hc.hc, work.work);
+        gsl_fft_halfcomplex_inverse (data.data(), 1, n, hc.hc, work.work);
         VecD ret = data;
         return ret;
     }

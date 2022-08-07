@@ -15,14 +15,14 @@ namespace EnjoLib
             OptiMultiBinSearch();
             virtual ~OptiMultiBinSearch();
 
-            Result<VecD > Run( OptiMultiSubject & subj, int numSlices = 6, double eps = 0.001);
+            Result<VecD > Run( OptiMultiSubject & subj, int numSlices = 6, FP eps = 0.001);
 
             void Consume(const EnjoLib::VecD & data) override;
         protected:
         private:
            mutable VecD m_vopt;
-           mutable double m_yopt = 0;
-           mutable double m_epsReached = 0;
+           mutable FP m_yopt = 0;
+           mutable FP m_epsReached = 0;
            mutable OptiMultiSubject * m_subj;
 
     };

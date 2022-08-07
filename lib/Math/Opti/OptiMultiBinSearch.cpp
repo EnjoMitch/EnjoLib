@@ -22,7 +22,7 @@ OptiMultiBinSearch::~OptiMultiBinSearch()
     //dtor
 }
 
-Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, double eps)
+Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, FP eps)
 {
     m_subj = &subj;
     const VecD & start = subj.GetStart();
@@ -43,7 +43,7 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
             const double delta = len / double(numSlices + 1);
             for (int i = 0; i <= numSlices + 1; ++i)
             {
-                const double element = b.min + i * delta;
+                const FP element = b.min + i * delta;
                 spaceElements.push_back(element);
             }
             data.push_back(spaceElements.Data());
@@ -52,7 +52,7 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
         iter.StartIteration(data, *this);
         //numSlices *= 2;
         //numSlices++;
-        //MultiDimIterTpl<double>::VVt dataNew;
+        //MultiDimIterTpl<FP>::VVt dataNew;
 
         std::vector<OptiMultiSubject::Bounds> newNewBounds;
         //for (const OptiMultiSubject::Bounds & b : newBounds)
@@ -63,8 +63,8 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
             const double len = b.max - b.min;
             const double delta = len / double(numSlices + 1);
 
-            double min = m_vopt.at(dim) - delta;
-            double max = m_vopt.at(dim) + delta;
+            const double min = m_vopt.at(dim) - delta;
+            const double max = m_vopt.at(dim) + delta;
             OptiMultiSubject::Bounds nb(min, max);
             newNewBounds.push_back(nb);
 
@@ -81,14 +81,14 @@ Result<VecD > OptiMultiBinSearch::Run( OptiMultiSubject & subj, int numSlices, d
 
 void OptiMultiBinSearch::Consume(const EnjoLib::VecD & data)
 {
-    double val = m_subj->Get(data.data(), data.size());
+    const FP val = m_subj->Get(data.data(), data.size());
 
     if (m_yopt == 0 || val < m_yopt)
     {
         m_yopt = val;
         VecD vdata(data);
         VecD vopt(m_vopt);
-        double len = (vdata-vopt).Len();
+        FP len = (vdata-vopt).Len();
         m_epsReached = len;
         m_vopt = data;
         //cout << "min = " << val << endl;

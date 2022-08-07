@@ -8,16 +8,16 @@ MonicPoly::~MonicPoly()
     //dtor
 }
 
-MonicPoly::MonicPoly(const double* c, std::size_t degree)
-    : coeff(std::vector<double>(c, c+degree)) {}
+MonicPoly::MonicPoly(const FP* c, std::size_t degree)
+    : coeff(std::vector<FP>(c, c+degree)) {}
     //: coeff(VecD(c, c+degree)) {}
 
 // ======================================================================
 // Generally useful functor to evaluate a monic polynomial.
 // For details, see class definition in brent.hpp
-double MonicPoly::operator()(double x)
+FP MonicPoly::operator()(FP x)
 {
-    double rslt(1);
+    FP rslt(1);
     for (int ii = coeff.size()-1; ii >= 0; ii--)
     {
         rslt *= x;

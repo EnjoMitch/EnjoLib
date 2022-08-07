@@ -14,7 +14,7 @@ namespace EnjoLib
             OptiMultiNelderMead();
             virtual ~OptiMultiNelderMead();
 
-            Result<VecD > Run( OptiMultiSubject & subj, double eps = 0.00001, int konvge = 10, int kcount = 500 ) const;
+            Result<VecD > Run( OptiMultiSubject & subj, FP eps = 0.00001, int konvge = 10, int kcount = 500 ) const;
         protected:
         private:
     };

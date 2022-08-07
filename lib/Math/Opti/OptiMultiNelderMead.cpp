@@ -18,7 +18,7 @@ OptiMultiNelderMead::OptiMultiNelderMead()
 
 OptiMultiNelderMead::~OptiMultiNelderMead(){}
 
-Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int konvge, int kcount ) const
+Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, FP eps, int konvge, int kcount ) const
 {
     bool verbose = false;
     //verbose = true;
@@ -35,16 +35,16 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, double eps, int
     int ifault;
     int n;
     int numres;
-    double *start;
-    double *step;
-    double *xmin;
-    double ynewlo;
+    FP *start;
+    FP *step;
+    FP *xmin;
+    FP ynewlo;
 
     n = sta.size();
 
-    start = new double[n];
-    step = new double[n];
-    xmin = new double[n];
+    start = new FP[n];
+    step = new FP[n];
+    xmin = new FP[n];
 
     for (i = 0; i < n; ++i)
     {

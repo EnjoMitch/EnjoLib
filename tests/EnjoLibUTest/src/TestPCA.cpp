@@ -1,13 +1,13 @@
 #include "pch_test.h"
 
-#include "DataSets.hpp"
-
-#include <UnitTest++/UnitTest++.h>
+#include <ML/DataSets.hpp>
 #include <Statistical/Matrix.hpp>
 #include <Statistical/PCA.hpp>
 #include <Statistical/PCAAuto.hpp>
 #include <Statistical/EigenAbstract.hpp>
 #include <Statistical/EigenFactory.hpp>
+
+#include <UnitTest++/UnitTest++.h>
 
 using namespace std;
 using namespace EnjoLib;

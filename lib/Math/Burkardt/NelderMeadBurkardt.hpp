@@ -1,3 +1,4 @@
+#include <Math/FP.hpp>
 
 namespace EnjoLib{
 class OptiMultiSubject;
@@ -5,8 +6,8 @@ class OptiMultiSubject;
 
 namespace NelderMeadBurkardt
 {
-    void nelmin ( EnjoLib::OptiMultiSubject & subj, int n, double start[], double xmin[],
-      double *ynewlo, double reqmin, const double step[], int konvge, int kcount,
+    void nelmin ( EnjoLib::OptiMultiSubject & subj, int n, EnjoLib::FP start[], EnjoLib::FP xmin[],
+      EnjoLib::FP *ynewlo, EnjoLib::FP reqmin, const EnjoLib::FP step[], int konvge, int kcount,
       int *icount, int *numres, int *ifault );
     void timestamp ( );
 }

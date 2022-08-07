@@ -12,7 +12,7 @@ namespace EnjoLib
 
 struct DistribData
 {
-    Array<Pair<double, double>> data;
+    Array<Pair<FP, FP>> data;
     VecD GetY() const;
     VecD GetX() const;
     bool IsValid() const;
