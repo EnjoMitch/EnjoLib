@@ -26,13 +26,16 @@ Distrib::~Distrib()
 DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
 {
     DistribData distrib;
-    EnjoLib::VecD dataSorted = data;
-    AlgoSTDIVec<FP>().Sort(&dataSorted);
-    std::vector<Pair<FP, FP>> distribData;
-    if (dataSorted.size() < 2)
+    const size_t dsz = data.size();
+    if (dsz < 2)
     {
         return distrib;
     }
+    EnjoLib::VecD dataSorted = data;
+    AlgoSTDIVec<FP>().Sort(&dataSorted);
+    std::vector<Pair<FP, FP>> distribData;
+    distribData.reserve(numBins);
+    
     const FP lo = dataSorted.First();
     const FP hi = dataSorted.Last();
     const FP rangeDiff = hi - lo;
@@ -46,7 +49,7 @@ DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
         const FP valMax = lo + binLen * (i);
         const FP valMid = (valMax + valMin) / 2.0;
         int numOcurrences = 0;
-        for (const FP val : dataSorted)
+        for (const FP & val : dataSorted)
         {
             if (valMin <= val && val <= valMax)
             {

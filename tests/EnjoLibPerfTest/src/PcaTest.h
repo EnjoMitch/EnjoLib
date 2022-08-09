@@ -14,6 +14,9 @@ class PcaTest
         
         void TestDistrib() const;
         void TestPca1() const;
+        void TestPcaAuto() const;
+        void TestMatrixMul() const;
+        void TestMatrixTransp() const;
         
     protected:
 
