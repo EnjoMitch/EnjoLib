@@ -407,9 +407,12 @@ VecD Statistical::MeanCols( const Matrix & m ) const
 {
     VecD ret;
     const Matrix & t = m.T();
-    for (size_t i = 0; i < t.size(); ++i)
+    //const size_t tsz = t.size();
+    //for (size_t i = 0; i < tsz; ++i)
+    for (const VecD & row : t)
     {
-        ret.push_back(t.at(i).Mean());
+        //ret.push_back(t.at(i).Mean());
+        ret.push_back(row.Mean());
     }
     return ret;
 }
