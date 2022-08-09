@@ -61,17 +61,22 @@ Matrix::Matrix()
 Matrix::Matrix(int n)
 : m_impl(new Impl())
 {
+    const VecD def(n);
     this->reserve(n);
     for (int i = 0; i < n; ++i)
-        push_back( VecD(n) );
+        //push_back( VecD(n) );
+        push_back( def );
 }
 
 Matrix::Matrix(int n, int m)
 : m_impl(new Impl())
 {
+    const VecD def(m);
     this->reserve(n);
     for (int i = 0; i < n; ++i)
-        push_back( VecD(m) );
+        //push_back( VecD(m) );
+        push_back( def );
+        //m_impl->dat.emplace_back( std::move(VecD(m)) );
 }
 
 Matrix::Matrix(const STDFWD::vector<VecD> & vec)
@@ -167,9 +172,25 @@ Matrix Matrix::T() const
     const int nrows = GetNRows();
     const int ncols = GetNCols();
     Matrix t(ncols, nrows);
+    
+    int i = 0;
+    for (const VecD & row : *this)
+    {
+        int j = 0;
+        for (const FP & val : row)
+        //for (VecD & tRow : t) // Not substantially faster
+        {
+            t[j++][i] = val;
+            //tRow[i] = row[j++];
+        }
+        ++i;
+    }
+    
+    /*
     for ( int i = 0; i < nrows; ++i )
         for ( int j = 0; j < ncols; ++j )
-            t[j][i] = at(i)[j];
+            t[j][i] = operator[](i)[j];
+    */
     return t;
 }
 
@@ -186,7 +207,7 @@ Matrix Matrix::FilterByMaskD(const EnjoLib::VecD & mask) const
         row.reserve(maskSize);
         for (size_t j = 0; j < maskSize; ++j)
         {
-            const double weight = mask.at(j);
+            const FP weight = mask.at(j);
             row.push_back(at(i).at(j) * weight);
             //row.push_back(this->operator[](i)[j]);
         }
@@ -255,10 +276,35 @@ Matrix Matrix::operator * (const Matrix & par) const
     const int nrows = prod.GetNRows();
     const int ncols = prod.GetNCols();
     const int ncolsThis = GetNCols();
+    int i = 0;
+    for (VecD & row : prod)
+    {
+        const VecD & thisI = this->operator[](i);
+        int j = 0;
+        for (FP & valProd : row)
+        {
+            FP prodSum = 0;
+            
+            //for (int ai = 0; ai < ncolsThis; ++ai )
+            int ai = 0;
+            for (const VecD & vecAI : par)
+            //for (const FP & valThisAI : thisI) // Slower
+            {
+                //prodSum += at(i).at(ai) * par.at(ai).at(j);
+                //prodSum += thisI[ai] * par[ai][j];
+                prodSum += thisI[ai++] * vecAI[j];
+                //prodSum += valThisAI * par[ai++][j];
+            }
+            valProd = prodSum;
+            ++j;
+        }
+        ++i;
+    }
+    /*
     for (int i = 0; i < nrows; ++i)
         for (int j = 0; j < ncols; ++j)
         {
-            double prodSum = 0;
+            FP prodSum = 0;
             for (int ai = 0; ai < ncolsThis; ++ai )
             {
                 //prodSum += at(i).at(ai) * par.at(ai).at(j);
@@ -266,6 +312,7 @@ Matrix Matrix::operator * (const Matrix & par) const
             }
             prod[i][j] = prodSum;
         }
+    */
     return prod;
 }
 
