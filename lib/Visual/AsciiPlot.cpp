@@ -2,8 +2,10 @@
 
 #include <Visual/AsciiMisc.hpp>
 #include <Ios/Osstream.hpp>
+#include <Util/CoutBuf.hpp>
 #include <Util/StrColour.hpp>
 #include <Math/GeneralMath.hpp>
+#include <Math/MaxMinFind.hpp>
 #include <Statistical/Assertions.hpp>
 #include <Statistical/Matrix.hpp>
 
@@ -27,6 +29,7 @@ AsciiPlot:: AsciiPlot(const BuilderT & builder)
 {
     Add(Pars::MAXIMUM, 1);
     Add(Pars::BLOCKS, true);
+    Add(Pars::HEATMAP, true);
     Add(Pars::MAX_NUM_BINS, 40);
 }
 
@@ -92,6 +95,86 @@ EnjoLib::Str AsciiPlotGuts::GetMultiline(const EnjoLib::VecD & vec, double minim
     //return ret.str();
 }
 
+EnjoLib::VecD AsciiPlot::Compress(const EnjoLib::VecD & vec) const
+{
+    return AsciiPlotGuts().Compress(vec, Get(Pars::COMPRESS), Get(Pars::COMPRESS_TYPE));
+}
+
+EnjoLib::VecD AsciiPlotGuts::Compress(const EnjoLib::VecD & vec, unsigned maxLen, int type) const
+{
+    //LOGL << "Max len " << maxLen << Nl;
+    if (maxLen == 0)
+    {
+        return vec;
+    }
+    if (vec.size() < maxLen)
+    {
+        return vec;
+    }
+    VecD ret;
+    const int numBins = maxLen + 1;
+    
+    /// TODO: It's the same pattern as in Distrib.cpp
+    const FP lo = 0;
+    const FP hi = vec.size() + 1;
+    const FP rangeDiff = hi - lo;
+    const FP binLen = rangeDiff / FP(numBins);
+    //const int nbinLo = gm.round((lo-rangeLo) / binLen);
+    //const int nbinHi = gm.round((hi-rangeLo) / binLen);
+
+    for (int i = 1; i < numBins; ++i)
+    {
+        const FP valMin = lo + binLen * (i - 1);
+        const FP valMax = lo + binLen * (i);
+        const FP valMid = (valMax + valMin) / 2.0;
+        int numOcurrences = 0;
+        int j = 0;
+        FP sum = 0;
+        MaxMinFind<FP> mmf;
+        for (const FP & val : vec)
+        {
+            if (Assertions::InFast(valMin, j, valMax))
+            {
+                if (type == 0)
+                {
+                    sum += val;
+                    ++numOcurrences;
+                }
+                else
+                {
+                    mmf.UpdateMaxMin(val);
+                }
+                
+            }
+            ++j;
+        }
+        FP valFin;
+        if (type > 0)
+        {
+           valFin = mmf.GetMax(); 
+        }
+        else if (type < 0)
+        {
+           valFin = mmf.GetMin(); 
+        }
+        else // (type == 0)
+        {
+            if (numOcurrences == 0)
+            {
+                Assertions::Throw("numOcurrences == 0", "AsciiPlot::Compress");
+            }
+            const FP average = sum / FP(numOcurrences);
+            valFin = average;
+        }
+        ret.push_back(valFin);
+        
+    }
+    return ret;
+    
+    return VecD(maxLen);
+    return vec;
+}
+
 EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(const EnjoLib::Matrix & mat, const AsciiPlot & conf, double minimum, double maximum) const
 {
     EnjoLib::Osstream ret;
@@ -103,8 +186,9 @@ EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(const EnjoLib::Matrix & mat, const
     //confLoc.blocks = false;
     //confLoc.colors = false;
     //confLoc.heatmap = true;
+    const int len0 = confLoc.Compress(mat.at(0)).size();
     const bool decoration = confLoc.Get(AsciiPlot::Pars::DECORATION);
-    const Str & deco = decoration ? (" " + AsciiMisc().GenChars("–", mat.at(0).size() + 2) + Nl) : "";
+    const Str & deco = decoration ? (" " + AsciiMisc().GenChars("–", len0 + 2) + Nl) : "";
     ret << deco;
     for (const VecD & vec : mat)
     {
@@ -174,7 +258,7 @@ EnjoLib::Str AsciiPlotGuts::GetPercentToAsciiBlocksPositive(double pro) const
     else
     {
         ret = "█";
-        }
+    }
     return ret;
 }
 
@@ -226,12 +310,34 @@ EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(double val, double minimum, double
             ret = "█";
         }
     }
-
+    if (color)
+    {
+        if (not useNegativeBlocks)
+        {
+            if (val > maximum)
+            {
+                ret = StrColour::GenNorm(StrColour::Col::Red, ret);
+            }
+            else
+            {
+                ret = StrColour::GenNorm(StrColour::Col::Green, ret);
+            }
+        }
+    }
+    else
+    {
+        if (val > maximum)
+        {
+            // Something to decide later
+            //ret = StrColour::GenNorm(StrColour::Col::Red, ret);
+        }
+    }
     return ret;
 }
 
-EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(const EnjoLib::VecD & vals, const AsciiPlot & conf, double minimum, double maximum) const
+EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(const EnjoLib::VecD & valsOrig, const AsciiPlot & conf, double minimum, double maximum) const
 {
+    const EnjoLib::VecD & vals = conf.Compress(valsOrig);
     if (conf.Get(Pars::MULTILINE))
     {
         return GetMultiline(vals, minimum, maximum);
