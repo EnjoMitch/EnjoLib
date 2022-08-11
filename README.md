@@ -1,7 +1,13 @@
+![logo](docs/screenshots/promo.png)
+
 # EnjoLib
 Basic thin C++ libraries with focus on utility, portability, short compilation time and backward compatibility.
 
 Static polymorphism is prefered over template-based polymorphism, mainly due to the compilation time burden, that the template solutions typicaly impose (although they don't always have to: see for example the `lib/Template/SafePtr*.hpp` or `lib/Template/Array.hpp` templates).
+
+# Screenshots
+
+![ut](docs/screenshots/uests.png)
 
 ## A little bit or history
 The library had been originally written as a common part of [my modules](http://enderspace.de/projects/programs_en.php), extending the functionality of [Orbiter Spaceflight Simulator](http://orbit.medphys.ucl.ac.uk/), and was originally developed [here](http://sf.net/p/enjomitchsorbit). In the following years, I found other mad uses of the library, so I extracted it from there. Occasionally I will make efforts of retaining the backward compatibility with the previous repository and backport the new features from this repo.  
@@ -25,5 +31,6 @@ You may find the [licenses here](docs/licensing/).
 Run `./ci-default.sh` from the root tree.
 
 # Contributing
-If you'd like to contribute to the project, please read [CONTRIBUTING](docs/CONTRIBUTING.md) and optionally [AUTHORS_PHILOSOPHY](docs/AUTHORS_PHILOSOPHY.md)
+If you'd like to contribute to the project, please read [CONTRIBUTING](docs/CONTRIBUTING.md) and optionally [AUTHORS_PHILOSOPHY]
+(docs/AUTHORS_PHILOSOPHY.md)
 

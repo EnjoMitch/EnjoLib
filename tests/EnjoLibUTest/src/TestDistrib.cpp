@@ -38,3 +38,24 @@ TEST(Distrib_test_plot)
     LOG << ret2 << Nl;
     LOG << ret3 << Nl;
 }
+
+static void Promo(const VecD & data);
+TEST(Distrib_prmo)
+{
+    const VecD & data = GenDistribData();
+    //Promo(data);
+}
+void Promo(const VecD & data)
+{
+    ELO
+    const Distrib distr;
+    const DistribData & distData = distr.GetDistrib(data, 31);
+    LOG << "Promo:\n\n";
+    //cout << "Cov size = " << cov.SizeStr() << endl;
+    const Str & retP = distr.PlotLine(distData, true, true, false);
+    LOG << Nl << Nl;
+    LOG << StrColour::GenNorm(StrColour::Col::Green, retP) << Nl;
+    LOG << "\t    Status is" << Nl << StrColour::GenBright(StrColour::ColBright::Green, 
+           "\t     GREEN!") << Nl;
+    LOG << Nl << Nl << Nl;
+}
