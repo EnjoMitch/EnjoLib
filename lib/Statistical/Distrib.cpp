@@ -51,15 +51,19 @@ DistribData Distrib::GetDistrib(const EnjoLib::VecD & data, int numBins) const
         int numOcurrences = 0;
         for (const FP & val : dataSorted)
         {
-            if (valMin <= val && val <= valMax)
+            if (Assertions::InFast(valMin, val, valMax))
             {
                 ++numOcurrences;
             }
+            /*
             else
             {
                 if (numOcurrences > 0)
-                    break; // ?
+                {
+                    //break; // ? Breaking here makes it slower.
+                }
             }
+            */
         }
         distribData.push_back(MakePair(valMid, static_cast<FP>(numOcurrences)));
     }
@@ -103,9 +107,10 @@ Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool 
     MaxMinFind<FP> mmf(daty);
     const auto idxMax = mmf.GetMaxIdx();
     const FP medianX = datx.at(idxMax);
-
+    const int descrLen = precision + 2;
+    const int multiLineDescrPosition = idxMax + (descr ? descrLen : 0);
     Osstream ossPos;
-    for (int i = 0; i < precision + 2 + idxMax; ++i)
+    for (int i = 0; i < multiLineDescrPosition; ++i)
     {
         ossPos << " ";
     }
@@ -137,7 +142,6 @@ Str Distrib::PlotLine(const EnjoLib::DistribData & distrib, bool oneLiner, bool 
     {
         oss << Nl;
         oss << ossPos.str() << medianX;
-        oss << Nl;
     }
     return oss.str();
 }

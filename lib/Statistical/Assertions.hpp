@@ -78,6 +78,7 @@ class Assertions
 
 
         static bool In(double a, double between, double c);
+        static constexpr bool InFast(double a, double between, double c) { return (a < between && between <= c); }
     protected:
     private:
 };

@@ -177,5 +177,5 @@ bool EnjoLib::Assertions::In(double a, double mid, double c)
 {
     if (a > c)
         AlgoSTDThin().Swap(a, c);
-    return (a < mid && mid <= c);
+    return InFast(a, mid, c);
 }

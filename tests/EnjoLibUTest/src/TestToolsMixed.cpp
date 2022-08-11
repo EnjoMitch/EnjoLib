@@ -60,9 +60,11 @@ TEST(MixUtils_values_to_ascii1)
     //const double minimum = 0;
     const double maximum = inp.Max() - 2;
 
-    const Str ret = AsciiPlot::Build()(AsciiPlot::Pars::MAXIMUM, maximum).Finalize().Plot(inp);
+    const Str ret = AsciiPlot::Build()(AsciiPlot::Pars::MAXIMUM, maximum)
+    (AsciiPlot::Pars::COLORS, true)
+    .Finalize().Plot(inp);
     CHECK(ret.size());
-    LOGL << "values_to_ascii1:" << Nl << ret << Nl;
+    LOGL << "to_ascii1:\n" << ret << Nl;
 }
 
 TEST(MixUtils_multipline)
@@ -74,7 +76,7 @@ TEST(MixUtils_multipline)
     const Str ret = AsciiPlot::Build()(AsciiPlot::Pars::MAXIMUM, maximum)
     (AsciiPlot::Pars::MULTILINE, true).Finalize().Plot(inp);
     CHECK(ret.size());
-    LOGL << "multiline:" << Nl << ret << Nl;
+    LOGL << "multiline:\n" << ret << Nl;
 }
 
 TEST(MixUtils_values_to_ascii_char)
@@ -95,7 +97,7 @@ TEST(Distrib_test_plot_matrix)
     VecD data;
     const double minimum = 0.01;
     double maximum = 1;
-    const double maxJ = 5;
+    const double maxJ = 3;
     for (int j = 0; j < maxJ; ++j)
     {
         //VecD data;
@@ -125,7 +127,7 @@ TEST(Distrib_test_plot_matrix)
 TEST(AsciiPlot_builder_1)
 {
     ELO
-    LOG << "\nBuilder" << Nl;
+    LOG << "Builder\t\t";
 
     const VecD & inp = GetInputAscii();
     const double maximum = inp.Max() - 2;
@@ -134,6 +136,69 @@ TEST(AsciiPlot_builder_1)
     LOG << AsciiPlot::Build()
     (Par::COLORS, true)(Par::DECORATION, false)(Par::MAXIMUM, maximum)(Par::BLOCKS, true).
     Finalize().Plot(inp) << Nl;
-
 }
 
+
+TEST(AsciiPlot_grayscale_1)
+{
+    ELO
+    LOG << "Greyscale\t";
+    
+    const VecD & inp = GetInputAscii();
+    const double maximum = inp.Max() - 2;
+
+    using Par = AsciiPlot::Pars;
+    LOG << AsciiPlot::Build()
+    (Par::MAXIMUM, maximum)(Par::BLOCKS, false)(Par::HEATMAP, false)
+    .Finalize().Plot(inp) << Nl;
+}
+
+TEST(AsciiPlot_grayscale_2)
+{
+    ELO
+    LOG << "Grey-heat\t";
+
+    const VecD & inp = GetInputAscii();
+    const double maximum = inp.Max() - 2;
+
+    using Par = AsciiPlot::Pars;
+    LOG << AsciiPlot::Build()
+    (Par::MAXIMUM, maximum)(Par::BLOCKS, false).
+    Finalize().Plot(inp) << Nl;
+}
+
+
+TEST(AsciiPlot_compress)
+{
+    ELO
+    LOG << "Compressed\t";
+
+    const VecD & inp = GetInputAscii();
+    const double maximum = inp.Max() - 2;
+    const int maxSize = 18;
+    using Par = AsciiPlot::Pars;
+    auto builder = AsciiPlot::Build()
+    (Par::DECORATION, false)(Par::MAXIMUM, maximum)(Par::BLOCKS, true)(Par::COMPRESS, maxSize);
+    
+    const AsciiPlot & plot = builder.Finalize();
+    const Str ret = plot.Plot(inp);
+    LOG << ret << Nl;
+    
+    
+    const VecD & inpCompr = plot.Compress(inp);
+    CHECK_EQUAL(maxSize, inpCompr.size());
+    CHECK_CLOSE(inp.Mean(), inpCompr.Mean(), 0.5);
+    
+    
+    const AsciiPlot & plotMin = builder(Par::COMPRESS_TYPE, -1).Finalize();
+    const AsciiPlot & plotMax = builder(Par::COMPRESS_TYPE, +1)(Par::COLORS, true).Finalize();
+    
+    const VecD & inpComprMax = plotMax.Compress(inp);
+    const VecD & inpComprMin = plotMin.Compress(inp);
+    
+    LOG << "Compr max\t" << plotMax.Plot(inp) << Nl;
+    LOG << "Compr min\t" << plotMin.Plot(inp) << Nl;
+
+    CHECK_CLOSE(inp.Max(), inpComprMax.Max(), 0.01);
+    CHECK_CLOSE(inp.Min(), inpComprMin.Min(), 0.01);
+}
