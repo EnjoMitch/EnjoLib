@@ -1,4 +1,4 @@
-![logo](docs/screenshots/promo.png)
+![logo](docs/screenshots/promo-cut.png)
 
 # EnjoLib
 Basic thin C++ libraries with focus on utility, portability, short compilation time and backward compatibility.
