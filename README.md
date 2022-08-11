@@ -31,6 +31,5 @@ You may find the [licenses here](docs/licensing/).
 Run `./ci-default.sh` from the root tree.
 
 # Contributing
-If you'd like to contribute to the project, please read [CONTRIBUTING](docs/CONTRIBUTING.md) and optionally [AUTHORS_PHILOSOPHY]
-(docs/AUTHORS_PHILOSOPHY.md)
+If you'd like to contribute to the project, please read [CONTRIBUTING](docs/CONTRIBUTING.md) and optionally [AUTHORS_PHILOSOPHY](docs/AUTHORS_PHILOSOPHY.md)
 
