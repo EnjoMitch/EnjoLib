@@ -1,5 +1,6 @@
 #include "MaskAlterTest.h"
 #include <Util/VecD.hpp>
+#include <Util/Str.hpp>
 #include <Util/CoutBuf.hpp>
 #include <Util/CharManipulations.hpp>
 #include <bitset>
