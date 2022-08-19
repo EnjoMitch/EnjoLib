@@ -1,4 +1,5 @@
 #include "EnumStringMap.hpp"
+#include <Util/Str.hpp>
 #include <Util/PimplDeleter.hpp>
 #include <Template/Array.hpp>
 

@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef CHAR_MANIPULATIONS_HPP_INCLUDED
 #define CHAR_MANIPULATIONS_HPP_INCLUDED
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Util/VecStr.hpp>
 #include <Util/Pair.hpp>
 #include <3rdParty/stdfwd.hh>

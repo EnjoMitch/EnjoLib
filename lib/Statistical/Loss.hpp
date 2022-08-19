@@ -2,9 +2,9 @@
 #define LOSS_HPP
 
 #include <3rdParty/stdfwd.hh>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 //#include <Template/SharedPtr.hpp>
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 #include <Util/Pimpl.hpp>
 
 #include <cstdint>

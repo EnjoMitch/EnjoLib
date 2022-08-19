@@ -1,5 +1,6 @@
 #include "pch_test.h"
 
+#include <Util/Str.hpp>
 #include <Util/Tokenizer.hpp>
 #include <Util/ToolsMixed.hpp>
 #include <Ios/Sstream.hpp>

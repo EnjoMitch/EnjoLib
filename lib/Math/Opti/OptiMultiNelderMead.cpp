@@ -5,6 +5,7 @@
 //#include "../../Statistical/VectorD.hpp"
 #include "../../Util/VecD.hpp"
 #include <Util/CoutBuf.hpp>
+#include <Util/Str.hpp>
 #include <Ios/Osstream.hpp>
 #include <Ios/IoManip.hpp>
 
@@ -87,7 +88,7 @@ Result<VecD > OptiMultiNelderMead::Run( OptiMultiSubject & subj, FP eps, int kon
         for ( i = 0; i < n; i++ )
         {
             IoManip::SetW(oss, 14);
-            oss.OStr() << "  " << xmin[i] << "\n";
+            oss << "  " << xmin[i] << "\n";
         }
 
         oss << "\n";

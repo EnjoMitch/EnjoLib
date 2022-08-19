@@ -1,7 +1,7 @@
 #ifndef TRIM_H
 #define TRIM_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib
 {

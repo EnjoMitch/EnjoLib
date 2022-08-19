@@ -2,7 +2,7 @@
 #define OSTREAM_1_H
 
 #include <Ios/IosBase.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <3rdParty/stdfwd.hh>
 
 namespace EnjoLib {

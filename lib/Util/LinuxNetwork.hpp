@@ -1,7 +1,7 @@
 #ifndef LINUXNETWORK_H
 #define LINUXNETWORK_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib
 {

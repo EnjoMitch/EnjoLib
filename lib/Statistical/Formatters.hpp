@@ -1,8 +1,8 @@
 #ifndef FORMATTERS_H
 #define FORMATTERS_H
 
-#include <Util/Str.hpp>
-#include <Util/VecD.hpp>
+#include <Util/StrFwd.hpp>
+#include <Util/VecFwd.hpp>
 
 namespace EnjoLib {
 class Formatters

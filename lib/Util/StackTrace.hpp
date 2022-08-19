@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef STACKTRACE_H_INCLUDED
 #define STACKTRACE_H_INCLUDED
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Util/CharManipulations.hpp>
 #include <Util/Except.hpp> // For simplicity
 //#include <typeinfo>

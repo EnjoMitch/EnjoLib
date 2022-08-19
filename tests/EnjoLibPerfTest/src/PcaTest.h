@@ -1,7 +1,7 @@
 #ifndef PCATEST_H
 #define PCATEST_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib {
 class Timer;

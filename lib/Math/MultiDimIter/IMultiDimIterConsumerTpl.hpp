@@ -1,7 +1,7 @@
 #ifndef MULTIDIMITERCONSUMERTPL_H
 #define MULTIDIMITERCONSUMERTPL_H
 
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 
 namespace EnjoLib
 {

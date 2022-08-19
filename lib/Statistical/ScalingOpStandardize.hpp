@@ -1,7 +1,7 @@
 #ifndef SCALINGOPSTANDARDIZE_H
 #define SCALINGOPSTANDARDIZE_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib
 {

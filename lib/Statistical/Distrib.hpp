@@ -1,9 +1,8 @@
 #ifndef DISTRIB_H
 #define DISTRIB_H
 
-#include <Util/Str.hpp>
-#include <Util/VecD.hpp>
-#include <Util/VecF.hpp>
+#include <Util/StrFwd.hpp>
+#include <Util/VecFwd.hpp>
 #include <Util/Pair.hpp>
 #include <Template/Array.hpp>
 

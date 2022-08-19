@@ -2,7 +2,7 @@
 #define OSSTREAM_HPP
 
 #include <Ios/Ostream.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Template/SafePtr.hpp>
 
 namespace EnjoLib {

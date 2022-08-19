@@ -4,7 +4,7 @@
 #include "../Template/IVecT.hpp"
 #include "../3rdParty/stdfwd.hh"
 #include "../Template/Iters2.hpp"
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include "PimplThin.hpp"
 
 namespace EnjoLib {

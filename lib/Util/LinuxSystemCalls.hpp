@@ -1,7 +1,7 @@
 #ifndef LINUXSYSTEMCALLS_HPP
 #define LINUXSYSTEMCALLS_HPP
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib
 {
