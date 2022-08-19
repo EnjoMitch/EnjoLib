@@ -4,6 +4,7 @@
 #include <Ios/IoManip.hpp>
 #include <Math/GeneralMath.hpp>
 #include <Math/MaxMinFindD.hpp>
+#include <Util/Str.hpp>
 #include <Util/AlgoSTDIVec.hpp>
 #include <Visual/AsciiPlot.hpp>
 #include <Statistical/Statistical.hpp>

@@ -1,9 +1,10 @@
 #include "pch_test.h"
 
-#include <UnitTest++/UnitTest++.h>
+#include <Util/Str.hpp>
 #include <Util/ToolsMixed.hpp>
 #include <Ios/Ofstream.hpp>
 
+#include <UnitTest++/UnitTest++.h>
 #include <fstream>
 
 using namespace std;

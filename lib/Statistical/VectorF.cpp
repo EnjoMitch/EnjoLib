@@ -1,4 +1,5 @@
 #include "VectorF.hpp"
+#include <Util/Str.hpp>
 
 using namespace EnjoLib;
 

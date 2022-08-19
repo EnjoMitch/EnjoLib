@@ -1,7 +1,7 @@
 #ifndef OPTIMULTISUBJECT_H
 #define OPTIMULTISUBJECT_H
 
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 #include <Template/ArrayFwd.hpp>
 
 namespace EnjoLib

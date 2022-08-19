@@ -2,7 +2,7 @@
 #define IFSTREAM_H
 
 #include <Ios/Istream.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrConst.hpp>
 #include <Template/SafePtr.hpp>
 
 #define IFSTREAM_NEW
@@ -16,25 +16,25 @@ namespace EnjoLib
 class Ifstream : public std::ifstream
 {
     public:
-        Ifstream(const EnjoLib::Str & fileName, bool tryOpen = true);
+        Ifstream(const EnjoLib::StrConst & fileName, bool tryOpen = true);
         virtual ~Ifstream();
 
-        const EnjoLib::Str & GetFileName() const { return m_fileName; }
+        const EnjoLib::StrConst & GetFileName() const { return m_fileName; }
         void IsOpenThrow() const;
     protected:
 
     private:
         //SafePtr<std::ifstream> m_stream;
-        const EnjoLib::Str m_fileName;
+        const EnjoLib::StrConst m_fileName;
 };
 #else
 class Ifstream : public Istream
 {
     public:
-        Ifstream(const EnjoLib::Str & fileName, bool tryOpen = true);
+        Ifstream(const EnjoLib::StrConst & fileName, bool tryOpen = true);
         virtual ~Ifstream();
 
-        const EnjoLib::Str & GetFileName() const { return m_fileName; }
+        const EnjoLib::StrConst & GetFileName() const { return m_fileName; }
         void IsOpenThrow() const;
 
         STDFWD::istream & IStr() override;
@@ -48,7 +48,7 @@ class Ifstream : public Istream
     private:
         SafePtr<std::ifstream> m_ifstream;
         //SafePtr<std::istringstream> m_istream;
-        const EnjoLib::Str m_fileName;
+        const EnjoLib::StrConst m_fileName;
 };
 
 #endif // IFSTREAM_NEW

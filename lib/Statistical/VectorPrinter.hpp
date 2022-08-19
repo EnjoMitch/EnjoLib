@@ -1,7 +1,7 @@
 #ifndef VECTORPRINTER_H
 #define VECTORPRINTER_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 namespace EnjoLib
 {
 //template<class T>

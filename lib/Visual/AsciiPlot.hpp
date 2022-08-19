@@ -1,7 +1,7 @@
 #ifndef ASCIIPLOT_HPP
 #define ASCIIPLOT_HPP
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Util/VecD.hpp>
 #include <Template/BuilderTpl.hpp>
 

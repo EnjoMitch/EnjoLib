@@ -1,7 +1,6 @@
 #include "LinuxSystemCalls.hpp"
 #include "ToolsMixed.hpp"
-
-
+#include <Util/Str.hpp>
 
 using namespace EnjoLib;
 

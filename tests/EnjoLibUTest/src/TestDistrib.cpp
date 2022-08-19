@@ -1,5 +1,6 @@
 #include "pch_test.h"
 
+#include <Util/Str.hpp>
 #include <Util/VecD.hpp>
 #include <Util/CoutBuf.hpp>
 #include <Util/StrColour.hpp>

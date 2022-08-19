@@ -1,5 +1,6 @@
 #include "Time.hpp"
 
+#include <Util/Str.hpp>
 #include <Util/CoutBuf.hpp>
 
 #include <cstdio>

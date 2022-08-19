@@ -2,7 +2,7 @@
 #define ISTREAM_1_HPP
 
 #include <Ios/IosBase.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <3rdParty/stdfwd.hh>
 
 namespace EnjoLib {

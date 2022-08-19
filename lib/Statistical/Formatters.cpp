@@ -3,6 +3,7 @@
 #include <Ios/IoManip.hpp>
 #include <Ios/Osstream.hpp>
 #include <Math/GeneralMath.hpp>
+#include <Util/Str.hpp>
 #include <Util/StrColour.hpp>
 #include <Visual/AsciiMisc.hpp>
 

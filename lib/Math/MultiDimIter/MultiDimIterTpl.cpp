@@ -1,6 +1,7 @@
 #include "MultiDimIterTpl.hpp"
 #include "IMultiDimIterConsumerTpl.hpp"
 
+#include <Util/VecD.hpp>
 #include <Util/CoutBuf.hpp>
 
 using namespace EnjoLib;

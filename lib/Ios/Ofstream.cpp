@@ -19,7 +19,7 @@ Ofstream::Ofstream(const EnjoLib::Str& fileName, bool tryOpen)
 }
 */
 
-Ofstream::Ofstream(const EnjoLib::Str& fileName, bool tryOpen, bool append)
+Ofstream::Ofstream(const EnjoLib::StrConst& fileName, bool tryOpen, bool append)
 : m_ostream(new ostringstream())
 , m_ofstream(new std::ofstream(fileName.c_str(), append ? std::ios::app : std::ios::out))
 , m_fileName(fileName)
@@ -41,7 +41,7 @@ void Ofstream::IsOpenThrow() const
     //if (! m_stream->is_open())
     if (! is_open())
     {
-        throw EnjoLib::ExceptRuntimeError("Couldn't open '" + m_fileName + "' for writing!");
+        throw EnjoLib::ExceptRuntimeError("Couldn't open '" + m_fileName.str() + "' for writing!");
     }
     else
     {

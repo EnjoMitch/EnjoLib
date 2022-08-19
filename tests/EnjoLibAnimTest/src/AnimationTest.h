@@ -9,7 +9,7 @@ class AnimationTest
         virtual ~AnimationTest();
         
         void TestDistrib() const;
-        void TestRotor() const;
+        void TestRotor(int skipEvery = 1) const;
         void TestProgressBar() const;
         void TestProgressBarDistrib() const;
         void TestX() const;

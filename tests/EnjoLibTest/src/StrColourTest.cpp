@@ -1,4 +1,5 @@
 #include "StrColourTest.hpp"
+#include <Util/Str.hpp>
 #include <Util/StrColour.hpp>
 #include <Util/CoutBuf.hpp>
 

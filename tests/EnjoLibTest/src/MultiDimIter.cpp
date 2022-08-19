@@ -2,6 +2,7 @@
 #include <Math/MultiDimIter/MultiDimIterTpl.hpp>
 #include <Math/MultiDimIter/IMultiDimIterConsumerTpl.hpp>
 #include <Util/CoutBuf.hpp>
+#include <Util/VecD.hpp>
 
 #include <STD/VectorCpp.hpp>
 

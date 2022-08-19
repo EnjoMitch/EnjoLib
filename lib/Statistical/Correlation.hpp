@@ -4,7 +4,7 @@
 //#include <vector>
 //#include <Util/Except.hpp>
 //#include <numeric>
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 
 namespace EnjoLib {
 /**

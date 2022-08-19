@@ -1,7 +1,7 @@
 #ifndef VECTORTPL_H
 #define VECTORTPL_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <STD/Vector.hpp>
 
 namespace EnjoLib

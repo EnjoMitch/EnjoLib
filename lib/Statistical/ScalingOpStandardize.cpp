@@ -1,10 +1,10 @@
 #include "ScalingOpStandardize.hpp"
 #include "Assertions.hpp"
 #include "Statistical.hpp"
-#include "../Util/VecD.hpp"
-
-#include "../Util/CharManipulations.hpp"
-#include "../Util/Tokenizer.hpp"
+#include <Util/Str.hpp>
+#include <Util/VecD.hpp>
+#include <Util/Tokenizer.hpp>
+#include <Util/CharManipulations.hpp>
 
 using namespace EnjoLib;
 // Used for reconstruction

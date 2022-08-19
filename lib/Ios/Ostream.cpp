@@ -1,4 +1,5 @@
 #include <Ios/Ostream.hpp>
+#include <Util/Str.hpp>
 #include <STD/Ostream.hpp>
 
 using namespace EnjoLib;

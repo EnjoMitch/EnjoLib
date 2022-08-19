@@ -1,4 +1,5 @@
 #include <Util/CoutBuf.hpp>
+#include <Util/Str.hpp>
 #include <STD/Iostream.hpp>
 #include <STD/Ostream.hpp>
 

@@ -1,7 +1,9 @@
 #include "pch_test.h"
 
-#include <UnitTest++/UnitTest++.h>
+#include <Util/Str.hpp>
 #include <Util/CharManipulations.hpp>
+
+#include <UnitTest++/UnitTest++.h>
 
 using namespace std;
 using namespace EnjoLib;

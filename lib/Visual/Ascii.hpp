@@ -5,8 +5,8 @@
 #include <Visual/AsciiPlot.hpp>
 #include <Visual/AsciiAnimation.hpp>
 
-#include <Util/Str.hpp>
-#include <Util/VecD.hpp>
+#include <Util/StrFwd.hpp>
+#include <Util/VecFwd.hpp>
 
 namespace EnjoLib {
 class Matrix;

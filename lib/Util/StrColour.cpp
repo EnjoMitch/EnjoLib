@@ -1,5 +1,6 @@
 #include "StrColour.hpp"
 
+#include <Util/Str.hpp>
 #include <Util/CharManipulations.hpp>
 #include <Ios/Osstream.hpp>
 #include <Ios/IoManip.hpp>

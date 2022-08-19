@@ -1,9 +1,9 @@
 #include "VecF.hpp"
+
+#include <Util/Str.hpp>
 #include <Util/PimplDeleter.hpp>
 #include <Statistical/VectorF.hpp>
 #include <Statistical/Assertions.hpp>
-
-
 
 using namespace EnjoLib;
 

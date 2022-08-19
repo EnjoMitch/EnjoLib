@@ -2,6 +2,7 @@
 
 #include <Ios/Osstream.hpp>
 #include <Util/Except.hpp>
+#include <Util/Str.hpp>
 //#include <Util/CoutBuf.hpp>
 
 #include <STD/Fstream.hpp>
@@ -19,7 +20,7 @@ void Ifstream::IsOpenThrow() const
 }
 
 #ifndef IFSTREAM_NEW
-Ifstream::Ifstream(const EnjoLib::Str& fileName, bool tryOpen)
+Ifstream::Ifstream(const EnjoLib::StrConst& fileName, bool tryOpen)
 //: m_stream(new ifstream(fileName.c_str()))
 : ifstream(fileName.c_str())
 , m_fileName(fileName)
@@ -32,7 +33,7 @@ Ifstream::~Ifstream(){}
 
 #else
 
-Ifstream::Ifstream(const EnjoLib::Str& fileName, bool tryOpen)
+Ifstream::Ifstream(const EnjoLib::StrConst& fileName, bool tryOpen)
 : m_ifstream(new ifstream(fileName.c_str()))
 //, m_istream(new istringstream())
 , m_fileName(fileName)

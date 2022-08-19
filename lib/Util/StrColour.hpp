@@ -1,7 +1,7 @@
 #ifndef STRCOLOUR_HPP
 #define STRCOLOUR_HPP
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib
 {
