@@ -338,9 +338,13 @@ long long unsigned GeneralMath::Concatenate(long long unsigned first, long long 
 
 double GeneralMath::ScaleVal(double val, double minimum, double maximum) const
 {
-    Assertions::IsTrue(maximum > minimum, "maximum < minimum GeneralMath::ScaleVal");
+    Assertions::IsTrue(maximum >= minimum, "maximum <= minimum GeneralMath::ScaleVal");
     const double diff = maximum - minimum;
-    Assertions::IsNonZero(diff, "diff GeneralMath::ScaleVal");
+    //Assertions::IsNonZero(diff, "diff GeneralMath::ScaleVal");
+    if (diff == 0)
+    {
+       return 0;
+    }
     const double pro = (val - minimum) / diff;
     return pro;
 }
