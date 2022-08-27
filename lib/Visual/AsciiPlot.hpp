@@ -16,7 +16,9 @@ public:
         DECORATION,
         COLORS,
         BLOCKS,
-        MULTILINE,
+        LINE_DOUBLE,
+        LINE_TRIPLE,
+        LINE_MULTIPLE,
         HEATMAP,
         NEGATIVE,
         MINIMUM,
@@ -41,8 +43,11 @@ public:
     Str Plot(const EnjoLib::Matrix & mat) const;
     
     EnjoLib::VecD Compress(const EnjoLib::VecD & vec) const;
+    int GetLinesToPlot() const;
+    
 protected:
     AsciiPlot() {}
+    
 private:
     VecD m_pars;
 };
@@ -61,7 +66,9 @@ public:
     EnjoLib::Str GetPercentToAscii(const EnjoLib::VecD & vec,   const AsciiPlot & conf, double minimum = 0, double maximum = 1) const;
     EnjoLib::Str GetPercentToAscii(const EnjoLib::Matrix & mat, const AsciiPlot & conf, double minimum = 0, double maximum = 1) const;
     EnjoLib::Str GetMultiline() const;
-    EnjoLib::Str GetMultiline(const EnjoLib::VecD & val, double minimum = 0, double maximum = 1) const;
+    EnjoLib::Str GetMultiline(const EnjoLib::VecD & val, double minimum = 0, double maximum = 1, int lines = 1) const;
+    EnjoLib::Str GetMultilineDouble(const EnjoLib::VecD & val, double minimum, double maximum) const; /// TODO: Replace with a unified version
+    EnjoLib::Str GetMultilineTriple(const EnjoLib::VecD & val, double minimum, double maximum) const;
 };
 
 }

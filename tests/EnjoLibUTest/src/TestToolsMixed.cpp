@@ -70,14 +70,27 @@ TEST(MixUtils_values_to_ascii1)
 
 TEST(MixUtils_multipline)
 {
+    ELO
     const VecD & inp = GetInputAscii();
     //const double minimum = 0;
-    const double maximum = inp.Max() - 2;
+    const double maximum = inp.Max() - 5;
 
-    const Str ret = AsciiPlot::Build()(AsciiPlot::Pars::MAXIMUM, maximum)
-    (AsciiPlot::Pars::MULTILINE, true).Finalize().Plot(inp);
-    CHECK(ret.size());
-    LOGL << "multiline:\n" << ret << Nl;
+    const auto builder = AsciiPlot::Build()(AsciiPlot::Pars::MAXIMUM, maximum);
+    auto builder2 = builder;
+    auto builder3 = builder;
+    auto builder5 = builder;
+    const Str ret2 = builder2(AsciiPlot::Pars::LINE_DOUBLE, true).Finalize().Plot(inp);
+    const Str ret3 = builder3(AsciiPlot::Pars::LINE_TRIPLE, true).Finalize().Plot(inp);
+    const Str ret5 = builder5(AsciiPlot::Pars::LINE_MULTIPLE, 5).Finalize().Plot(inp);
+    CHECK(ret2.size());
+    CHECK(ret3.size());
+    CHECK(ret5.size());
+    CHECK(ret2.size() < ret3.size());
+    /// TODO: Implement
+    ///CHECK(ret3.size() < ret5.size());
+    LOG << "multiline2:\n" << ret2 << Nl;
+    LOG << "multiline3:\n" << ret3 << Nl;
+    LOG << "multiline5:\n" << ret5 << Nl;
 }
 
 TEST(MixUtils_values_to_ascii_char)
