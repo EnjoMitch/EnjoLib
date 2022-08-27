@@ -1,7 +1,8 @@
 #ifndef ASCIIMISC_HPP
 #define ASCIIMISC_HPP
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
+#include <cstdlib>
 
 namespace EnjoLib {
 class AsciiMisc

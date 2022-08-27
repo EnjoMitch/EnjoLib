@@ -1,4 +1,5 @@
 #include <Ios/Istream.hpp>
+#include <Util/Str.hpp>
 
 #include <STD/Istream.hpp>
 

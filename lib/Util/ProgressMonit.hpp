@@ -1,7 +1,8 @@
 #ifndef PROGRESSMONIT_H
 #define PROGRESSMONIT_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
+#include <cstdlib>
 
 namespace EnjoLib
 {

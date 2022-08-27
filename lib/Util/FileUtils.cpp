@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <Util/FileUtils.hpp>
 #include "CharManipulations.hpp"
+#include <Util/Str.hpp>
 #include <Util/CoutBuf.hpp>
 #include <Ios/Ofstream.hpp>
 #include <Ios/Ifstream.hpp>

@@ -1,5 +1,5 @@
 #include <Ios/Sstream.hpp>
-
+#include <Util/Str.hpp>
 #include <STD/Sstream.hpp>
 
 using namespace EnjoLib;

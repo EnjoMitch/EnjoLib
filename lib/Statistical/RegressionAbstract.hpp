@@ -2,7 +2,7 @@
 #define RegressionAbstract_H
 
 #include <Template/CorradePointerFwd.h>
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 
 namespace EnjoLib {
 class RegressionAbstract

@@ -2,9 +2,10 @@
 #define ENUMSTRINGMAP_H
 
 #include <Util/Pimpl.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Template/ArrayFwd.hpp>
 #include <3rdParty/stdfwd.hh>
+#include <cstdlib>
 
 namespace EnjoLib {
 

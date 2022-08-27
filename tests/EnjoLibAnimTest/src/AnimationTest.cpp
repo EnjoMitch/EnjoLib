@@ -15,6 +15,7 @@ using namespace EnjoLib;
 AnimationTest::AnimationTest()
 {
     TestRotor();
+    TestRotor(5);
     TestProgressBar();
     TestProgressBarDistrib();
     TestX();
@@ -49,13 +50,13 @@ void AnimationTest::TestDistrib() const
 
     //cout << "Cov size = " << cov.SizeStr() << endl;
 }
-void AnimationTest::TestRotor() const
+void AnimationTest::TestRotor(int skipEvery) const
 {
     LOGL << "Test rotor" << Nl;
     static int idx = 0;
     for (int i = 0; i < 200; ++i)
     {
-        AsciiAnimation().AnimationPropeller(&idx);
+        AsciiAnimation(skipEvery).AnimationPropeller(&idx);
         ThreadWrap::SleepForMilliseconds(20);
     }
 }

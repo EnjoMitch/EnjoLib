@@ -1,5 +1,6 @@
 #include "ProgressMonit.hpp"
 #include <Ios/Osstream.hpp>
+#include <Util/Str.hpp>
 #include <Util/CoutBuf.hpp>
 
 using namespace std;

@@ -2,6 +2,7 @@
 #define OFSTREAM_H
 
 #include <Ios/Ostream.hpp>
+#include <Util/StrConst.hpp>
 #include <Template/SafePtr.hpp>
 
 //#include <ostream>
@@ -13,7 +14,7 @@ namespace EnjoLib
 class Ofstream : public std::ofstream
 {
     public:
-        explicit Ofstream(const EnjoLib::Str & fileName, bool tryOpen = true);
+        explicit Ofstream(const EnjoLib::StrConst & fileName, bool tryOpen = true);
         virtual ~Ofstream();
 
         const EnjoLib::Str & GetFileName() const { return m_fileName; }
@@ -30,10 +31,10 @@ class Ofstream : public std::ofstream
 class Ofstream : public Ostream
 {
     public:
-        explicit Ofstream(const EnjoLib::Str & fileName, bool tryOpen = true, bool append = false);
+        explicit Ofstream(const EnjoLib::StrConst & fileName, bool tryOpen = true, bool append = false);
         virtual ~Ofstream();
 
-        const EnjoLib::Str & GetFileName() const { return m_fileName; }
+        const EnjoLib::StrConst & GetFileName() const { return m_fileName; }
         void IsOpenThrow() const;
         bool is_open() const;
         void flush();
@@ -47,7 +48,7 @@ class Ofstream : public Ostream
     private:
         SafePtr<std::ostringstream> m_ostream;
         SafePtr<std::ofstream> m_ofstream;
-        const EnjoLib::Str m_fileName;
+        const EnjoLib::StrConst m_fileName;
 };
 
 }

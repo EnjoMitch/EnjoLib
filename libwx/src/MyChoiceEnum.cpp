@@ -1,6 +1,7 @@
 #include "pch/wx_pch.h"
 
 #include "MyChoiceEnum.h"
+#include <Util/Str.hpp>
 #include <Util/EnumStringMap.hpp>
 #include <STD/Map.hpp>
 

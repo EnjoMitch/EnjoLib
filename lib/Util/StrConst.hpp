@@ -14,13 +14,14 @@ class StrConst
         
         const char * c_str() const;
         Str String() const;
+        Str str() const;
 
     protected:
 
     private:
         void Init(const char * str);
         
-        char m_buf [1024];
+        char m_buf [4096];
 };
 }
 

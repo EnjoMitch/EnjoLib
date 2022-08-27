@@ -1,7 +1,7 @@
 #ifndef OPTIMULTINELDERMEAD_H
 #define OPTIMULTINELDERMEAD_H
 
-#include <Util/VecD.hpp>
+#include <Util/VecFwd.hpp>
 #include "../../Util/Result.hpp"
 
 namespace EnjoLib

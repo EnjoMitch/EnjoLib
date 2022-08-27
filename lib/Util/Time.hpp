@@ -1,7 +1,7 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <ctime>
 
 namespace EnjoLib

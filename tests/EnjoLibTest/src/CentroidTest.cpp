@@ -1,11 +1,12 @@
 #include "CentroidTest.h"
 
+#include <Util/Str.hpp>
+#include <Util/CoutBuf.hpp>
 #include <Statistical/Centroid.hpp>
 #include <Statistical/VectorD.hpp>
 #include <Template/Array.hpp>
 #include <Math/RandomMath.hpp>
 #include <Ios/Osstream.hpp>
-#include <Util/CoutBuf.hpp>
 
 using namespace EnjoLib;
 using namespace std;

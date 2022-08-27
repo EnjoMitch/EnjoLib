@@ -1,10 +1,10 @@
 #include "Trim.hpp"
 
+#include <Util/Str.hpp>
 #include <STD/Algorithm.hpp>
 #include <functional>
 #include <cctype>
 #include <locale>
-
 
 using namespace std;
 using namespace EnjoLib;

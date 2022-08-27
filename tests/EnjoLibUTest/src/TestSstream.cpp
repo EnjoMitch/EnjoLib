@@ -1,8 +1,10 @@
 #include "pch_test.h"
 
-#include <UnitTest++/UnitTest++.h>
+#include <Util/Str.hpp>
 #include <Util/ToolsMixed.hpp>
 #include <Ios/Sstream.hpp>
+
+#include <UnitTest++/UnitTest++.h>
 
 using namespace std;
 using namespace EnjoLib;

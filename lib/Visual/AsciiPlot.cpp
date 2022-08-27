@@ -2,6 +2,7 @@
 
 #include <Visual/AsciiMisc.hpp>
 #include <Ios/Osstream.hpp>
+#include <Util/Str.hpp>
 #include <Util/CoutBuf.hpp>
 #include <Util/StrColour.hpp>
 #include <Math/GeneralMath.hpp>

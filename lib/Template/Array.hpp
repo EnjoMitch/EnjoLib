@@ -179,7 +179,7 @@ template <class T> typename Array<T>::const_iterator Array<T>::end()    const {r
 template <class T> typename Array<T>::const_iterator Array<T>::cbegin() const {return begin();}
 template <class T> typename Array<T>::const_iterator Array<T>::cend()   const {return end();  }
 
-#define AR2VEC(inp, out) { out.reserve(inp.size()); for (const auto & val : inp) out.push_back(val); }
+#define AR2VEC(inp, out) { out.clear(); out.reserve(inp.size()); for (const auto & val : inp) out.push_back(val); }
 }
 
 #endif // ARRAY_H

@@ -1,6 +1,7 @@
 #include "OptiMultiRosenbrok.h"
 #include "Rosenbrok.h"
 #include <Template/Array.hpp>
+#include <Util/VecD.hpp>
 
 #include <STD/VectorCpp.hpp>
 

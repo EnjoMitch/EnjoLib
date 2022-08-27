@@ -21,6 +21,7 @@
 #include "MaskAlterTest.h"
 //#include "CoutBufTest.h"
 
+#include <Util/Str.hpp>
 #include <Util/Tokenizer.hpp>
 #include <Util/CoutBuf.hpp>
 

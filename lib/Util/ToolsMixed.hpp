@@ -1,7 +1,7 @@
 #ifndef TOOLSMIXED_H
 #define TOOLSMIXED_H
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include "../3rdParty/stdfwd.hh"
 
 namespace EnjoLib

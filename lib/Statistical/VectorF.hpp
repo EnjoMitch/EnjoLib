@@ -2,6 +2,7 @@
 #define VECTORF_H
 
 #include "VectorTpl.hpp"
+#include <3rdParty/stdfwd.hh>
 
 namespace EnjoLib
 {

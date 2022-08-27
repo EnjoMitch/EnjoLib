@@ -2,7 +2,7 @@
 #define _WRITER_CONDITIONAL_H
 
 #include <Ios/Ostream.hpp>
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 
 namespace EnjoLib {
 class WriterConditional

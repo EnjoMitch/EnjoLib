@@ -28,7 +28,13 @@ void StrConst::Init(const char * str)
     //const int len = std::strlen(m_buf);
     const int len = sizeof(m_buf);
     memset(m_buf, 0, len);
-    PtrHelper::Copy(m_buf, str, len);
+    
+    if (str != nullptr)
+    {
+        const Str sanitized(str);
+        const char * cstr = sanitized.c_str();
+        PtrHelper::Copy(m_buf, cstr, len);
+    }
 }
 
 const char * StrConst::c_str() const
@@ -38,4 +44,9 @@ const char * StrConst::c_str() const
 Str StrConst::String() const
 {
     return Str(c_str());
+}
+
+Str StrConst::str() const
+{
+    return String();
 }

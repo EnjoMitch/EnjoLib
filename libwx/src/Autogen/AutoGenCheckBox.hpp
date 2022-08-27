@@ -1,7 +1,7 @@
 #ifndef AUTOGENCHECKBOX_HPP
 #define AUTOGENCHECKBOX_HPP
 
-#include <Util/Str.hpp>
+#include <Util/StrFwd.hpp>
 #include <Template/VecT.hpp>
 
 class MapCheckbox;

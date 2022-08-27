@@ -4,6 +4,7 @@
 #include <Ios/Osstream.hpp>
 #include <Ios/Ofstream.hpp>
 #include <Util/CoutBuf.hpp>
+#include <Util/Str.hpp>
 #include <Util/VecD.hpp>
 #include <Util/Timer.hpp>
 #include <Math/RandomMath.hpp>
