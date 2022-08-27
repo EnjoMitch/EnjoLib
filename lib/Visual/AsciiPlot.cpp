@@ -70,14 +70,33 @@ static EnjoLib::Str Inv(const EnjoLib::Str & str, bool color = false)
     return "\033[2;" + strCol + ";30m" + str + "\033[0m";
 }
 
-EnjoLib::Str AsciiPlotGuts::GetMultiline(const EnjoLib::VecD & vec, double minimum, double maximum) const
+EnjoLib::Str AsciiPlotGuts::GetMultiline(const EnjoLib::VecD & vec, double minimum, double maximum, int lines) const
+{
+    if (lines == 2)
+    {
+        return GetMultilineDouble(vec, minimum, maximum);
+    }
+    else
+    if (lines == 3)
+    {
+        return GetMultilineTriple(vec, minimum, maximum);
+    }
+    else
+    {
+        LOGL << StrColour::GenWarn("Not implemented AsciiPlotGuts::GetMultiline()") << " for " << lines << Nl; 
+        return GetMultilineTriple(vec, minimum, maximum);
+    }
+}
+
+
+EnjoLib::Str AsciiPlotGuts::GetMultilineDouble(const EnjoLib::VecD & vec, double minimum, double maximum) const
 {
     EnjoLib::Str line1, line2, ret;
     bool color = true;
     for (const double val : vec)
     {
         const double pro = GMat().ScaleVal(val, minimum, maximum);
-        if (val >= 0)
+        if (val >= minimum)
         {
             const Str txtPositive = GetPercentToAsciiBlocksPositive(pro);
             const StrColour::Col color = val <= maximum ? StrColour::Col::Green : StrColour::Col::Red;
@@ -96,9 +115,61 @@ EnjoLib::Str AsciiPlotGuts::GetMultiline(const EnjoLib::VecD & vec, double minim
     //return ret.str();
 }
 
+EnjoLib::Str AsciiPlotGuts::GetMultilineTriple(const EnjoLib::VecD & vec, double minimum, double maximum) const
+{
+    EnjoLib::Str line1, line2, line3, ret;
+    bool color = true;
+    for (const double val : vec)
+    {
+        const double pro = GMat().ScaleVal(val, minimum, maximum);
+        if (val < minimum)
+        {
+            line1 += " ";
+            line2 += " ";
+            line3 += GetPercentToAsciiBlocks(pro, color);   
+        }
+        else if (val <= maximum)
+        {
+            const Str txtPositive = GetPercentToAsciiBlocksPositive(pro);
+            //const StrColour::Col color = val <= maximum ? StrColour::Col::Green : StrColour::Col::Red;
+            line1 += " ";
+            //line2 += StrColour::GenNorm(color, txtPositive);
+            line2 += StrColour::GenNorm(StrColour::Col::Green, txtPositive);
+            line3 +=" ";
+        }
+        else
+        {
+            line1 += StrColour::GenNorm(StrColour::Col::Red,   GetPercentToAsciiBlocksPositive(pro - 1));
+            line2 += StrColour::GenNorm(StrColour::Col::Green, GetPercentToAsciiBlocksPositive(pro));
+            line3 +=" ";
+        }
+    }
+    ret = line1 + "\n" + line2 + "\n" + line3;
+    return ret;
+    //return ret.str();
+}
+
+
 EnjoLib::VecD AsciiPlot::Compress(const EnjoLib::VecD & vec) const
 {
     return AsciiPlotGuts().Compress(vec, Get(Pars::COMPRESS), Get(Pars::COMPRESS_TYPE));
+}
+
+int AsciiPlot::GetLinesToPlot() const
+{
+    if (Get(Pars::LINE_MULTIPLE) > 0)
+    {
+        return Get(Pars::LINE_MULTIPLE);
+    }
+    if (Get(Pars::LINE_TRIPLE) > 0)
+    {
+        return 3;
+    }
+    if (Get(Pars::LINE_DOUBLE) > 0)
+    {
+        return 2;
+    }
+    return 1;
 }
 
 EnjoLib::VecD AsciiPlotGuts::Compress(const EnjoLib::VecD & vec, unsigned maxLen, int type) const
@@ -339,9 +410,9 @@ EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(double val, double minimum, double
 EnjoLib::Str AsciiPlotGuts::GetPercentToAscii(const EnjoLib::VecD & valsOrig, const AsciiPlot & conf, double minimum, double maximum) const
 {
     const EnjoLib::VecD & vals = conf.Compress(valsOrig);
-    if (conf.Get(Pars::MULTILINE))
+    if (conf.GetLinesToPlot() > 1)
     {
-        return GetMultiline(vals, minimum, maximum);
+        return GetMultiline(vals, minimum, maximum, conf.GetLinesToPlot());
     }
     EnjoLib::Osstream oss;
     if (conf.Get(Pars::DECORATION))
