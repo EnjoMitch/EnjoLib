@@ -12,7 +12,7 @@ include(util)
 project (Enjo)
 enable_testing()
 
-option(BUILD_TESTS "Build Tests"   ON)
+option(BUILD_EL_TESTS "Build Tests"   ON)
 option(BUILD_BOOST "Build libBoost"  ON)
 option(BUILD_WX    "Build WX basic"  ON)
 option(BUILD_STAT_3RD    "Build statistical 3rd-party"  ON)
@@ -38,7 +38,7 @@ if (BUILD_WX)
 #	endif()
 endif()
 
-if (BUILD_TESTS)
+if (BUILD_EL_TESTS)
 	# Test load balancing
 	# Sooner defined will start sooner
 	add_subdirectory(tests/EnjoLibAnimTest)
