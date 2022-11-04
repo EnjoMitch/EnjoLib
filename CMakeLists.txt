@@ -13,19 +13,17 @@ project (Enjo)
 enable_testing()
 
 option(BUILD_TESTS "Build Tests"   ON)
-option(BUILD_GAMES "Build games"    ON)
-option(BUILD_MDDC  "Build MDDClone" ON)
 option(BUILD_BOOST "Build libBoost"  ON)
 option(BUILD_WX    "Build WX basic"  ON)
-option(BUILD_WX_APPS "Build WX apps"  ON)
-option(BUILD_QT    "Build QT apps"  ON)
-option(BUILD_CRYPT "Build Crypto"   OFF)
+option(BUILD_STAT_3RD    "Build statistical 3rd-party"  ON)
 
 add_subdirectory(lib)
 if (BUILD_BOOST)
 	add_subdirectory(libBoost)
 endif()
-add_subdirectory(libStat3rd)
+if (BUILD_STAT_3RD)
+	add_subdirectory(libStat3rd)
+endif()
 #add_subdirectory(progs/libPoco)
 
 
